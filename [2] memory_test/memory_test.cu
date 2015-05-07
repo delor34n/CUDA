@@ -19,12 +19,14 @@ int main(void) {
     cudaMalloc((void**)&device_array, num_bytes);
 
     //Llenamos de cero el array que se encuentra en la GPU
-    cudaMemset(device_array, 12, num_bytes);
+    cudaMemset(device_array, 0, num_bytes);
 
-    //Copiamos el contenido del array que se encuentra en la GPU en el array de la CPU
+    //Ya que no se puede acceder directamente a la memoria del device (GPU), pese a que `cudaMalloc` devuelve un puntero,
+    //debemos copiar el contenido del array que se encuentra en la GPU en el array de la CPU utilizando `cudaMemcpy`
     cudaMemcpy(host_array, device_array, num_bytes, cudaMemcpyDeviceToHost);
 
     //Imprimimos cada elemento del array del host (CPU)
+    printf("\n*** Host array ***\n");
     for(int i = 0; i < num_elements; ++i)
         printf("%d ", host_array[i]);
 
