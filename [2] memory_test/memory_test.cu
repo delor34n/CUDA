@@ -3,9 +3,9 @@
 
 int main(void) {
     //Cantidad de elementos que tendra el array.
-    int num_elements = 16;
+    const int num_elements = 16;
     //Se calcula la cantidad de bytes que se utilizara en total (int=4bytes => 16x4=64bytes)
-    int num_bytes = num_elements * sizeof(int);
+    const size_t num_bytes = size_t(num_elements) * sizeof(int);
 
     //Un puntero para la GPU
     int *device_array = 0;
@@ -20,6 +20,7 @@ int main(void) {
 
     //Llenamos de cero el array que se encuentra en la GPU
     cudaMemset(device_array, 0, num_bytes);
+    cudaMemset(device_array, 0x12, num_bytes);
 
     //Ya que no se puede acceder directamente a la memoria del device (GPU), pese a que `cudaMalloc` devuelve un puntero,
     //debemos copiar el contenido del array que se encuentra en la GPU en el array de la CPU utilizando `cudaMemcpy`
