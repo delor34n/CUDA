@@ -4,15 +4,15 @@
 #include <curand_kernel.h>
 #include <time.h>
 
-#define POBLACION 100
+#define POBLACION 20
 #define LONG_COD 20
 #define LIMITE -5.12
 #define PROB_CRUCE 0.3
 #define PROB_MUTACION 0.001
 #define INTERVALO 10.24/pow(2,LONG_COD/2)
 
-#define nThreads 10
-#define nBlocks 10
+#define nThreads 1
+#define nBlocks 5
 
 typedef struct {
     int genotipo[LONG_COD];
@@ -30,37 +30,36 @@ __host__ __device__ double fitness (double p1, double p2){
 }
 
 __global__
-void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_seleccion, curandState *dev_state){
+void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    int rand_a = (int)truncf((((POBLACION/nThreads)-1)+0.999999)*curand_uniform(&dev_state[i]));
-    int rand_b = (int)truncf((((POBLACION/nThreads)-1)+0.999999)*curand_uniform(&dev_state[i]));
-    printf("\nSELECTION[%d]: dev_poblacion[%d]: %f, RANDOM 1 = %d, RANDOM 2 = %d", threadIdx.x, i, dev_poblacion[i].aptitud, rand_a, rand_b);
+    int rand_a = (int)truncf((((POBLACION/nThreads)+1)+0.999999)*curand_uniform(&dev_state[i]));
+    int rand_b = (int)truncf((((POBLACION/nThreads)+1)+0.999999)*curand_uniform(&dev_state[i]));
 
-    /*if(i<POBLACION){
+    printf ("\nSELECTION[%d][%d]: dev_selection[%d] = %f", blockIdx.x, threadIdx.x, i, dev_poblacion[i].aptitud);
+    if(i<POBLACION){
         Individuo candidato_a, candidato_b;
 
-        candidato_a = dev_poblacion[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
-        candidato_b = dev_poblacion[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
+        candidato_a = dev_poblacion[rand_a];
+        candidato_b = dev_poblacion[rand_b];
 
         if (candidato_a.aptitud < candidato_b.aptitud)
-            dev_seleccion[i] = candidato_a;
+            dev_selection[i] = candidato_a;
         else
-            dev_seleccion[i] = candidato_b;
-    }*/
+            dev_selection[i] = candidato_b;
+        //printf ("\nSELECTION[%d][%d]: dev_selection[%d] = %f", blockIdx.x, threadIdx.x, i, dev_selection[i].aptitud);
+    }
 }
 
 __global__
-void crossSelectionKernel(Individuo * dev_seleccion){
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-    printf("\nCROSS: antes dev_seleccion[%d]: %f", i, dev_seleccion[i].aptitud);
-    dev_seleccion[i].aptitud = 3.14151617;
-    printf("\nCROSS: despues dev_seleccion[%d]: %f", i, dev_seleccion[i].aptitud);
+void crossSelectionKernel(Individuo * dev_selection){
+    //int i = blockIdx.x * blockDim.x + threadIdx.x;
+    //printf("\nCROSS: dev_selection[%d]: %f", i, dev_selection[i].aptitud);
 }
 
 __global__
 void eliteKernel(Individuo * dev_poblacion){
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-    printf("\nELITE: dev_poblacion[%d]\n", i);
+    //int i = blockIdx.x * blockDim.x + threadIdx.x;
+    //printf("\nELITE: dev_poblacion[%d]\n", i);
 }
 
 __global__
@@ -70,34 +69,42 @@ void init_rand(curandState *dev_state) {
 }
 
 Individuo generarIndividuo (void);
-Individuo * generarPoblacion (void);
+Individuo * generatePopulation (void);
 Individuo init();
+
+Individuo * fillSelection(void);
+Individuo initFellow(void);
 
 int generarBinario (void);
 void decoder (double *, double *, int *);
+void print_selection(Individuo *host_seleccion);
 
 int main (void) {
     srand(time(NULL));
     printf("[HOST] Starting script\n");
 
-    Individuo * host_seleccion= generarPoblacion(), * host_poblacion = generarPoblacion();
+    Individuo * host_seleccion = fillSelection(), * host_poblacion = generatePopulation();
     Individuo * dev_seleccion, * dev_poblacion;
+
+    print_selection(host_poblacion);
 
     /*
     * Random initialization.
     **/
     curandState *dev_state;
     cudaMalloc(&dev_state, nThreads*nBlocks);
-    init_rand<<<nThreads,nBlocks>>>(dev_state);
+    init_rand<<<nBlocks, nThreads>>>(dev_state);
 
     cudaMalloc((void**)&dev_poblacion, sizeof(Individuo)*POBLACION);
-    cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION);
+    cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION/2);
     cudaMemcpy(dev_poblacion, host_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyHostToDevice);
-    cudaMemcpy(dev_seleccion, host_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyHostToDevice);
+    cudaMemcpy(dev_seleccion, host_seleccion, sizeof(Individuo)*POBLACION/2, cudaMemcpyHostToDevice);
 
-    tournamentSelectionKernel<<<nThreads,nBlocks>>>(dev_poblacion, dev_seleccion, dev_state);
-    cudaMemcpy(dev_seleccion, host_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
-    crossSelectionKernel<<<nThreads,nBlocks>>>(dev_seleccion);
+    tournamentSelectionKernel<<<nBlocks, nThreads>>>(dev_poblacion, dev_seleccion, dev_state);
+    cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION/2, cudaMemcpyDeviceToHost);
+    print_selection(host_seleccion);
+    printf("\n");
+    //crossSelectionKernel<<<nBlocks, nThreads>>>(dev_seleccion);
 
     cudaDeviceSynchronize();
 
@@ -109,13 +116,43 @@ int main (void) {
     return 0;
 }
 
+void print_selection(Individuo *host_seleccion){
+    int i;
+    for(i=0; i<POBLACION; i++)
+        printf("\nhost_seleccion[%d] = %f", i, host_seleccion[i].aptitud);
+}
+
+Individuo * fillSelection(void) {
+    Individuo * aux;
+    int i;
+
+    aux = (Individuo *) malloc(sizeof(Individuo)*POBLACION/2);
+    for(i=0;i<POBLACION/2;i++)
+        aux[i] = initFellow();
+    return aux;
+}
+
+Individuo initFellow(void){
+    Individuo ind;
+    int i;
+    double x, y;
+
+    for (i=0; i<LONG_COD; i++)
+        ind.genotipo[i]=generarBinario();
+
+    decoder(&x, &y, ind.genotipo);
+    ind.aptitud = 0;
+
+    return ind;
+}
+
 /* PROC generarPoblacion (void) DEV (Individuo *)
  * MODIFICA nada
  * EFECTO esta funcion genera una poblacion con la cantidad de individuos dada por la
  *  macro POBLACION. para generar cada individuo utiliza la funcion generarIndividuo()
  *  y una vez ha terminado el bucle, devuelve el puntero al primer individuo
  */
-Individuo * generarPoblacion(void) {
+Individuo * generatePopulation(void) {
     Individuo * poblacion;
     int i;
 
