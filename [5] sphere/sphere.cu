@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <cuda.h>
+#include <curand.h>
+#include <curand_kernel.h>
 #include <time.h>
 
-#define POBLACION 11
+#define POBLACION 100
 #define LONG_COD 20
 #define LIMITE -5.12
 #define PROB_CRUCE 0.3
 #define PROB_MUTACION 0.001
 #define INTERVALO 10.24/pow(2,LONG_COD/2)
+
+#define nThreads 10
+#define nBlocks 10
 
 typedef struct {
     int genotipo[LONG_COD];
@@ -25,12 +30,23 @@ __host__ __device__ double fitness (double p1, double p2){
 }
 
 __global__
-void tournamentSelectionKernel(Individuo * dev_poblacion){
+void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_seleccion, curandState *dev_state){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    printf("\nSELECTION: antes dev_poblacion[%d]: %f", i, dev_poblacion[i].aptitud);
-    dev_poblacion[i].aptitud = 10.29292;
-    printf("\nSELECTION: despues dev_poblacion[%d]: %f", i, dev_poblacion[i].aptitud);
-    __syncthreads();
+    int rand_a = (int)truncf((((POBLACION/nThreads)-1)+0.999999)*curand_uniform(&dev_state[i]));
+    int rand_b = (int)truncf((((POBLACION/nThreads)-1)+0.999999)*curand_uniform(&dev_state[i]));
+    printf("\nSELECTION[%d]: dev_poblacion[%d]: %f, RANDOM 1 = %d, RANDOM 2 = %d", threadIdx.x, i, dev_poblacion[i].aptitud, rand_a, rand_b);
+
+    /*if(i<POBLACION){
+        Individuo candidato_a, candidato_b;
+
+        candidato_a = dev_poblacion[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
+        candidato_b = dev_poblacion[(int) (((double) POBLACION)*rand()/(RAND_MAX+1.0))];
+
+        if (candidato_a.aptitud < candidato_b.aptitud)
+            dev_seleccion[i] = candidato_a;
+        else
+            dev_seleccion[i] = candidato_b;
+    }*/
 }
 
 __global__
@@ -47,6 +63,12 @@ void eliteKernel(Individuo * dev_poblacion){
     printf("\nELITE: dev_poblacion[%d]\n", i);
 }
 
+__global__
+void init_rand(curandState *dev_state) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    curand_init(1234, idx, 0, &dev_state[idx]);
+}
+
 Individuo generarIndividuo (void);
 Individuo * generarPoblacion (void);
 Individuo init();
@@ -59,24 +81,29 @@ int main (void) {
     printf("[HOST] Starting script\n");
 
     Individuo * host_seleccion= generarPoblacion(), * host_poblacion = generarPoblacion();
-    Individuo * dev_seleccion, * dev_poblacion; 
-    Individuo best;
+    Individuo * dev_seleccion, * dev_poblacion;
 
-    int generacion = 0;
-    double x, y;
+    /*
+    * Random initialization.
+    **/
+    curandState *dev_state;
+    cudaMalloc(&dev_state, nThreads*nBlocks);
+    init_rand<<<nThreads,nBlocks>>>(dev_state);
 
     cudaMalloc((void**)&dev_poblacion, sizeof(Individuo)*POBLACION);
     cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION);
     cudaMemcpy(dev_poblacion, host_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyHostToDevice);
     cudaMemcpy(dev_seleccion, host_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyHostToDevice);
 
-    tournamentSelectionKernel<<<3,3>>>(dev_poblacion);
-    crossSelectionKernel<<<3,3>>>(dev_seleccion);
+    tournamentSelectionKernel<<<nThreads,nBlocks>>>(dev_poblacion, dev_seleccion, dev_state);
+    cudaMemcpy(dev_seleccion, host_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
+    crossSelectionKernel<<<nThreads,nBlocks>>>(dev_seleccion);
 
     cudaDeviceSynchronize();
 
     cudaFree(dev_poblacion);
     cudaFree(dev_seleccion);
+    cudaFree(dev_state);
 
     cudaDeviceReset();
     return 0;
