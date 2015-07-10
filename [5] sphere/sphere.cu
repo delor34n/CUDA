@@ -4,7 +4,7 @@
 #include <curand_kernel.h>
 #include <time.h>
 
-#define POBLACION 600000
+#define POBLACION 1000
 #define LONG_COD 20
 #define LIMITE -5.12
 #define PROB_CRUCE 0.3
@@ -44,18 +44,16 @@ void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_select
         curandState lstate = dev_state[idx];
         
         Individuo candidato_a, candidato_b;
-        int aux = (int) (curand_uniform(&lstate)*(POBLACION-0.00001));
-        printf("\n %d", aux);
-        candidato_a = dev_poblacion[aux];
-        
-        aux = (int) (curand_uniform(&lstate)*(POBLACION-0.00001));
-        printf("\n %d", aux);
-        candidato_b = dev_poblacion[aux];
+
+        candidato_a = dev_poblacion[(int) (curand_uniform(&lstate)*(POBLACION-0.00001))];
+        candidato_b = dev_poblacion[(int) (curand_uniform(&lstate)*(POBLACION-0.00001))];
 
         if (candidato_a.aptitud < candidato_b.aptitud)
             dev_selection[idx] = candidato_a;
         else
             dev_selection[idx] = candidato_b;
+
+        dev_state[idx] = lstate;
     }
 }
 
