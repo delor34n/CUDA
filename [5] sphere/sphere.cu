@@ -11,7 +11,7 @@
 #define PROB_MUTACION 0.001
 #define INTERVALO 10.24/pow(2,LONG_COD/2)
 
-#define nThreads 1
+#define nThreads 2
 #define nBlocks 5
 
 typedef struct {

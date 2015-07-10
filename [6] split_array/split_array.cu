@@ -2,12 +2,18 @@
 
 #define SIZE 12
 
-#define nThreads 2
-#define nBlocks 6
+#define nThreads 1
+#define nBlocks 2
 
 __global__ void splitBladeKernel(int * dev_a){
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
-    printf("\n[DEVICE; BLOCK:%d; THREAD:%d] dev_a[%d] = %d",blockIdx.x, threadIdx.x, idx, dev_a[idx]);
+    int inf_limit = SIZE/(nBlocks)*idx;
+    int sup_limit = inf_limit+SIZE/(nBlocks)-1;
+    if(idx<SIZE){
+        printf("\n%d-%d", inf_limit, sup_limit);
+
+    }
+    //printf("\n[DEVICE][BLOCK:%d; THREAD:%d] dev_a[%d] = %d; dev_a[%d] = %d",blockIdx.x, threadIdx.x, idx, dev_a[idx], idx+1, dev_a[idx+1]);
     __syncthreads();
 }
 
