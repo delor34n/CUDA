@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define POBLACION 11
+#define POBLACION 100000000
 #define LONG_COD 20
 #define LIMITE -5.12
 #define PROB_CRUCE 0.3
@@ -237,6 +237,7 @@ void AG (void) {
 
     do {
         seleccion = seleccionTorneos(poblacion);
+        exit(1);
         cruzarSeleccion(seleccion);
         seleccion[POBLACION-1] = elite(poblacion);
         free(poblacion);
