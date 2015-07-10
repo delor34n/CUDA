@@ -9,34 +9,27 @@
 #define LIMITE -5.12
 #define PROB_CRUCE 0.3
 #define PROB_MUTACION 0.001
-#define INTERVALO 10.24/c_powi(2,LONG_COD/2)
+#define INTERVALO 10.24/__powf(2,LONG_COD/2)
 
 #define BLOCKSIZE 128
 
 typedef struct {
-    int genotipo[LONG_COD];
+    char genotipo[LONG_COD];
     double aptitud;
 } Individuo;
 
-__device__ int c_powi(int a, int b){
-    int i, c;
-    for (i=0, c=1; i<b; i++)
-        c *= a;
-    return c;
-}
-
-__device__ void decoder(double * x, double * y, int * genotipo) {
+__device__ void decoder(double * x, double * y, char * genotipo) {
     int i;
     *x = *y = 0.0;
 
     // calculo del primer decimal
     for(i=0; i<LONG_COD/2; i++)
-        *x += genotipo[i] * c_powi(2, (LONG_COD/2)-(i+1));
+        *x += (int)(genotipo[i]) * __powf(2, (LONG_COD/2)-(i+1));
     *x = (*x) * INTERVALO + LIMITE;
 
     //calculo del segundo decimal
     for(;i<LONG_COD;i++)
-        *y += genotipo[i] * c_powi(2, LONG_COD-(i+1));
+        *y += (int)(genotipo[i]) * __powf(2, LONG_COD-(i+1));
     *y = (*y) * INTERVALO + LIMITE;
 }
 
