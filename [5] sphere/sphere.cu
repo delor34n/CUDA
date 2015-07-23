@@ -57,6 +57,23 @@ void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_select
     }
 }
 
+__device__
+void sonMutationBlade(Individuo *sons, curandState *dev_state, int idx){
+    int i,j;
+    double randProbability;
+    curandState lstate = dev_state[idx];
+    for(i=0;i<2;i++)
+        for(j=0;j<LONG_COD;j++)
+            randProbability = (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
+            if(randProbability<MUTATION_PROBABILITY){
+                if(sons[i].genotipo[j])
+                    sons[i].genotipo[j]=0;
+                else
+                    sons[i].genotipo[j]=1;
+            }
+    dev_state[idx] = lstate;
+}
+
 __global__
 void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -72,6 +89,8 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
                     dev_selection[idx].genotipo[j]=dev_selection[idx+1].genotipo[j];
                     dev_selection[idx+1].genotipo[j]=aux;
                 }
+
+                sonMutationBlade(&dev_selection[idx], dev_state, idx);
             }
             dev_state[idx] = lstate;
         }
