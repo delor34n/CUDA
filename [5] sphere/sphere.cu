@@ -83,6 +83,7 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
             double crossProbability = (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
             if(crossProbability < MUTATION_PROBABILITY){
                 int point, j, aux;
+                double x, y;
                 point = (int) (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
                 for(j=point; j<LONG_COD; j++){
                     aux=dev_selection[idx].genotipo[j];
@@ -91,6 +92,12 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
                 }
 
                 sonMutationBlade(&dev_selection[idx], dev_state, idx);
+
+                decoder(&x, &y, dev_selection[idx].genotipo);
+                dev_selection[idx].aptitud=fitness(x,y);
+
+                decoder(&x, &y, dev_selection[idx+1].genotipo);
+                dev_selection[idx+1].aptitud=fitness(x,y);
             }
             dev_state[idx] = lstate;
         }
