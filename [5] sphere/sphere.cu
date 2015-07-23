@@ -7,8 +7,8 @@
 #define POBLACION 1000
 #define LONG_COD 20
 #define LIMITE -5.12
-#define PROB_CRUCE 0.3
-#define PROB_MUTACION 0.001
+#define CROSS_PROBABILITY 0.3
+#define MUTATION_PROBABILITY 0.001
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
 
 #define BLOCKSIZE 128
@@ -39,10 +39,10 @@ __host__ __device__ double fitness (double p1, double p2){
 
 __global__
 void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;    
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if(idx<POBLACION){
         curandState lstate = dev_state[idx];
-        
+
         Individuo candidato_a, candidato_b;
 
         candidato_a = dev_poblacion[(int) (curand_uniform(&lstate)*(POBLACION-0.00001))];
@@ -58,9 +58,24 @@ void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_select
 }
 
 __global__
-void crossSelectionKernel(Individuo * dev_selection){
-    //int i = blockIdx.x * blockDim.x + threadIdx.x;
-    //printf("\nCROSS: dev_selection[%d]: %f", i, dev_selection[i].aptitud);
+void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if(idx<POBLACION-1){
+        if(idx==0 || !idx%2){
+            curandState lstate = dev_state[idx];
+            double crossProbability = (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
+            if(crossProbability < MUTATION_PROBABILITY){
+                int point, j, aux;
+                point = (int) (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
+                for(j=point; j<LONG_COD; j++){
+                    aux=dev_selection[idx].genotipo[j];
+                    dev_selection[idx].genotipo[j]=dev_selection[idx+1].genotipo[j];
+                    dev_selection[idx+1].genotipo[j]=aux;
+                }
+            }
+            dev_state[idx] = lstate;
+        }
+    }
 }
 
 __global__
@@ -118,15 +133,11 @@ int main (void) {
 
     init_poblacion<<<grid, block>>>(dev_poblacion, dev_state);
     tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
+    crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
 
     cudaMemcpy(host_poblacion, dev_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
     cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
-    //print_selection(host_poblacion);
-    //print_selection(host_seleccion);
     printf("\n");
-    
-    //tournamentSelectionKernel<<<nBlocks, nThreads>>>(dev_poblacion, dev_seleccion, dev_state);
-    //crossSelectionKernel<<<nBlocks, nThreads>>>(dev_seleccion);
 
     cudaDeviceSynchronize();
 
