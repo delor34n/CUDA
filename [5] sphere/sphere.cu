@@ -4,14 +4,16 @@
 #include <curand_kernel.h>
 #include <time.h>
 
-#define POBLACION 1000
+#define POBLACION 100
 #define LONG_COD 20
 #define LIMITE -5.12
 #define CROSS_PROBABILITY 0.3
 #define MUTATION_PROBABILITY 0.001
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
 
-#define BLOCKSIZE 128
+//#define BLOCKSIZE 128
+#define BLOCKSIZE 8
+#define WARPSIZE 32
 
 typedef struct {
     char genotipo[LONG_COD];
@@ -104,10 +106,46 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
     }
 }
 
+__inline__ __device__
+double warpAllReduceCompare(double val) {
+    for (int mask = WARPSIZE/2; mask > 0; mask /= 2){
+        val = fmax(val,__shfl_down(val, mask));
+    }
+    return val;
+}
+
+__inline__ __device__
+double blockReduceCompare(double val) {
+
+    static __shared__ double shared[WARPSIZE]; // Shared mem for 32 partial sums
+    int lane = threadIdx.x % WARPSIZE;
+    int wid = threadIdx.x / WARPSIZE;
+
+    val = warpAllReduceCompare(val);     // Each warp performs partial reduction
+
+    if (lane==0) shared[wid]=val; // Write reduced value to shared memory
+    __syncthreads();              // Wait for all partial reductions
+
+    //read from shared memory only if that warp existed
+    val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : 0;
+
+    if (wid==0) val = warpReduceCompare(val); //Final reduce within first warp
+
+    return val;
+}
+
 __global__
-void eliteKernel(Individuo * dev_poblacion){
-    //int i = blockIdx.x * blockDim.x + threadIdx.x;
-    //printf("\nELITE: dev_poblacion[%d]\n", i);
+void eliteKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    int k = blockIdx.x * blockDim.x + threadIdx.x;
+    double MAX = -1;
+    for(;i<POBLACION;i+=blockDim.x * gridDim.x){
+        MAX = MAX < dev_poblacion[i].aptitud ? dev_poblacion[i].aptitud : MAX;
+    }
+
+    MAX = blockReduceCompare(MAX);
+    if(threadIdx.x==0)
+        atomicMax();
 }
 
 __global__
@@ -142,6 +180,11 @@ int main (void) {
     dim3 block(BLOCKSIZE, 1, 1);
     dim3 grid(GRIDSIZE, 1, 1);
 
+    int GRIDSIZE2 = (POBLACION/4+BLOCKSIZE-1)/BLOCKSIZE;
+    dim3 grid2(GRIDSIZE2, 1, 1);
+
+    printf("grid1 = %d; grid2 = %d\n", GRIDSIZE, GRIDSIZE2);
+
     /*
     * Random initialization.
     **/
@@ -160,6 +203,7 @@ int main (void) {
     init_poblacion<<<grid, block>>>(dev_poblacion, dev_state);
     tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
     crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
+    eliteKernel<<<grid2, block>>>(dev_poblacion, dev_seleccion, dev_state);
 
     cudaMemcpy(host_poblacion, dev_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
     cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
