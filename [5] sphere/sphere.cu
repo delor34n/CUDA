@@ -15,6 +15,8 @@
 #define BLOCKSIZE 8
 #define WARPSIZE 32
 
+#define uint64 unsigned long long
+
 typedef struct {
     char genotipo[LONG_COD];
     double aptitud;
@@ -109,7 +111,7 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
 __inline__ __device__
 double warpAllReduceCompare(double val) {
     for (int mask = WARPSIZE/2; mask > 0; mask /= 2){
-        val = fmax(val,__shfl_down(val, mask));
+        val = fmax(val,__shfl_down(val, mask, WARPSIZE));
     }
     return val;
 }
@@ -129,15 +131,29 @@ double blockReduceCompare(double val) {
     //read from shared memory only if that warp existed
     val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : 0;
 
-    if (wid==0) val = warpReduceCompare(val); //Final reduce within first warp
+    if (wid==0) val = warpAllReduceCompare(val); //Final reduce within first warp
 
     return val;
+}
+
+__device__ void AtomicMax(double * const address, const double value) {
+    if (* address >= value)
+        return;
+
+    uint64 * const address_as_i = (uint64 *)address;
+    uint64 old = * address_as_i, assumed;
+    do {
+        assumed = old;
+        if (__longlong_as_double(assumed) >= value)
+            break;
+        old = atomicCAS(address_as_i, assumed, __double_as_longlong(value));
+    } while (assumed != old);
 }
 
 __global__
 void eliteKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    int k = blockIdx.x * blockDim.x + threadIdx.x;
+    //int k = blockIdx.x * blockDim.x + threadIdx.x;
     double MAX = -1;
     for(;i<POBLACION;i+=blockDim.x * gridDim.x){
         MAX = MAX < dev_poblacion[i].aptitud ? dev_poblacion[i].aptitud : MAX;
@@ -145,7 +161,7 @@ void eliteKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandSta
 
     MAX = blockReduceCompare(MAX);
     if(threadIdx.x==0)
-        atomicMax();
+        AtomicMax(&dev_poblacion[i].aptitud, MAX);
 }
 
 __global__
