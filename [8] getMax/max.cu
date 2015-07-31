@@ -103,14 +103,13 @@ int main(int argc, char ** argv){
         dim3 block(BLOCKSIZE, 1, 1);
         dim3 grid(GRIDSIZE, 1, 1);
 
-        cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
-
         sdkStartTimer(&gpu_timer);
+        cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
         eliteKernel<<<grid,block>>>(device_datos);
         cudaDeviceSynchronize();
+        cudaMemcpy(&FINALMAX, device_datos, sizeof(Dato), cudaMemcpyDeviceToHost);
         sdkStopTimer(&gpu_timer);
 
-        cudaMemcpy(&FINALMAX, device_datos, sizeof(Dato), cudaMemcpyDeviceToHost);
         printf("max time: %f\n", sdkGetTimerValue(&gpu_timer)/1000.0f);
     }
     printf("MAX = %f\n",FINALMAX);
