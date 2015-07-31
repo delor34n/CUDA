@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <cuda.h>
+#include <helper_cuda.h>
+#include <helper_functions.h>
 
-#define N 26
-#define BLOCKSIZE 8
+#define BLOCKSIZE 32
 #define WARPSIZE 32
-#define uint64 unsigned long long
+
+int N=1024;
 
 typedef struct {
-    char id[1];
-    double num;
+    float num;
 } Dato;
 
 __inline__ __device__
-double warpAllReduceCompare(double val) {
+float warpAllReduceCompare(float val) {
     for (unsigned int mask = WARPSIZE/2; mask > 0; mask /= 2){
-        val = fmax(val,__shfl_down(__double2float_rd(val), mask, WARPSIZE));
+        val = fmax(val,__shfl_down(val, mask, WARPSIZE));
     }
     return val;
 }
 
 __inline__ __device__
-double blockReduceCompare(double val) {
-    static __shared__ double shared[WARPSIZE]; // Shared mem for 32 partial sums
+float blockReduceCompare(float val) {
+    static __shared__ float shared[WARPSIZE]; // Shared mem for 32 partial sums
     int lane = threadIdx.x % WARPSIZE;
     int wid = threadIdx.x / WARPSIZE;
 
@@ -38,70 +39,89 @@ double blockReduceCompare(double val) {
 }
 
 
-__device__ void AtomicMax(double * const address, const double value) {
-    if (* address >= value)
-        return;
-    uint64 * const address_as_i = (uint64 *)address;
-    uint64 old = * address_as_i, assumed;
-    do {
+__device__ float atomicMaxf(float* address, float val) {
+    int *address_as_int =(int*)address;
+    int old = *address_as_int, assumed;
+    while (val > __int_as_float(old)) {
         assumed = old;
-        if (__longlong_as_double(assumed) >= value)
-            break;
-        old = atomicCAS(address_as_i, assumed, __double_as_longlong(value));
-    } while (assumed != old);
+        old = atomicCAS(address_as_int, assumed,
+        __float_as_int(val));
+    }
+    return __int_as_float(old);
 }
 
 __global__
 void eliteKernel(Dato * device_datos){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    int k = i;
-    double MAX = -1;
-    for(;i<N;i+=blockDim.x * gridDim.x){
-        MAX = MAX < device_datos[i].num ? device_datos[i].num : MAX;
-    }
+    float MAX = -1.0f;
+    MAX = MAX < device_datos[i].num ? device_datos[i].num : MAX;
 
     MAX = blockReduceCompare(MAX);
-    if(threadIdx.x & (warpSize-1)==0)
-        AtomicMax(&device_datos[k].num,MAX);
+    if(threadIdx.x==0){
+        atomicMaxf(&device_datos[0].num, MAX);
+    }
 }
 
 void fill(Dato *host_datos);
+float max(Dato * host_datos);
 
-int main(void){
+int main(int argc, char ** argv){
     srand(time(NULL));
-    printf("[HOST] STARTING SCRIPT\n");
+    //printf("[HOST] STARTING SCRIPT\n");
+    StopWatchInterface *timer;
+    sdkCreateTimer(&timer);
+    sdkResetTimer(&timer);
 
+    if(argc==2)
+        N = atoi(argv[1]);
     Dato *host_datos;
     Dato *device_datos;
 
     host_datos = (Dato *) malloc (sizeof(Dato)*N);
-    device_datos = (Dato *) malloc (sizeof(Dato)*N);
     cudaMalloc((void**)&device_datos, sizeof(Dato)*N);
 
+    sdkStartTimer(&timer);
     fill(host_datos);
+    sdkStopTimer(&timer);
+    printf("fill time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
 
-    int GRIDSIZE = (N/4+BLOCKSIZE-1)/BLOCKSIZE;
-    dim3 block(BLOCKSIZE, 1, 1);
-    dim3 grid(GRIDSIZE, 1, 1);
+    sdkResetTimer(&timer);
+    sdkStartTimer(&timer);
+    if(atoi(argv[2])==1){
+        float maxCPU = max(host_datos);
+        printf("\nCPU MAX = [%f] \n\n", maxCPU);
+    }else{
+        int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
+        dim3 block(BLOCKSIZE, 1, 1);
+        dim3 grid(GRIDSIZE, 1, 1);
 
-    cudaMemcpy(host_datos, device_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
-    eliteKernel<<<grid,block>>>(device_datos);
-    cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyDeviceToHost);
-    cudaDeviceSynchronize();
-    cudaDeviceReset();
+        cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
+        eliteKernel<<<grid,block>>>(device_datos);
+        cudaMemcpy(host_datos, device_datos, sizeof(Dato)*N, cudaMemcpyDeviceToHost);
+        cudaDeviceSynchronize();
+        cudaDeviceReset();
+        printf("\nCUDA MAX = %f\n", host_datos[0].num);
+    }
+    sdkStopTimer(&timer);
+    printf("max time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
 
-    printf("\nMAX = %s[%f]\n\n", host_datos[0].id, host_datos[0].num);
     printf("[HOST] SCRIPT EXECUTION FINISHED\n");
     return 0;
 }
 
 void fill(Dato *host_datos){
     int i;
-    int letter=97;
-    for(i=0;i<N;i++,letter++){
-        host_datos[i].id[0]=(char)letter;
-        host_datos[i].num=(double)(rand()/(RAND_MAX/(99.0-0.1)));
-
-        printf("%s:%f\n", host_datos[i].id, host_datos[i].num);
+    for(i=0;i<N;i++){
+        host_datos[i].num=(float)(rand()/(RAND_MAX/(99.0-0.1)));
     }
+}
+
+float max(Dato * host_datos){
+    int i;
+    float max = -1;
+    for (i=0;i<N;i++){
+        if(host_datos[i].num>max)
+            max=host_datos[i].num;
+    }
+    return max;
 }

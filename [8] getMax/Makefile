@@ -1,3 +1,3 @@
 all:
-	nvcc max.cu -o max.out -arch=compute_30 --compiler-options -Wall
+	nvcc max.cu -o max.out -arch=compute_30 -I  /usr/local/cuda/samples/common/inc -L  /usr/local/cuda/samples/common/lib --compiler-options -Wall
 clean: rm -rf max.out
