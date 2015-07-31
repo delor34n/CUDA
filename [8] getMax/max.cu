@@ -3,7 +3,7 @@
 #include <helper_cuda.h>
 #include <helper_functions.h>
 
-#define BLOCKSIZE 32
+#define BLOCKSIZE 256
 #define WARPSIZE 32
 
 int N=1024;
@@ -72,7 +72,7 @@ int main(int argc, char ** argv){
     sdkCreateTimer(&timer);
     sdkResetTimer(&timer);
 
-    if(argc==2)
+    if(argc==3)
         N = atoi(argv[1]);
     Dato *host_datos;
     Dato *device_datos;
@@ -103,7 +103,6 @@ int main(int argc, char ** argv){
     sdkStopTimer(&timer);
     printf("max time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
 
-    printf("[HOST] SCRIPT EXECUTION FINISHED\n");
     return 0;
 }
 
