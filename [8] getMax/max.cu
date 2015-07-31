@@ -89,7 +89,6 @@ int main(int argc, char ** argv){
     sdkStartTimer(&timer);
     if(atoi(argv[2])==1){
         float maxCPU = max(host_datos);
-        printf("\nCPU MAX = [%f] \n\n", maxCPU);
     }else{
         int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
         dim3 block(BLOCKSIZE, 1, 1);
@@ -100,7 +99,6 @@ int main(int argc, char ** argv){
         cudaMemcpy(host_datos, device_datos, sizeof(Dato)*N, cudaMemcpyDeviceToHost);
         cudaDeviceSynchronize();
         cudaDeviceReset();
-        printf("\nCUDA MAX = %f\n", host_datos[0].num);
     }
     sdkStopTimer(&timer);
     printf("max time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
