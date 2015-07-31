@@ -103,8 +103,8 @@ int main(int argc, char ** argv){
         dim3 block(BLOCKSIZE, 1, 1);
         dim3 grid(GRIDSIZE, 1, 1);
 
-        sdkStartTimer(&gpu_timer);
         cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
+        sdkStartTimer(&gpu_timer);
         eliteKernel<<<grid,block>>>(device_datos);
         cudaDeviceSynchronize();
         cudaMemcpy(&FINALMAX, device_datos, sizeof(Dato), cudaMemcpyDeviceToHost);
