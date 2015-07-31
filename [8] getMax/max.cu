@@ -67,7 +67,14 @@ float max(Dato * host_datos);
 
 int main(int argc, char ** argv){
     srand(time(NULL));
-    //printf("[HOST] STARTING SCRIPT\n");
+    StopWatchInterface *cpu_timer;
+    sdkCreateTimer(&cpu_timer);
+    sdkResetTimer(&cpu_timer);
+
+    StopWatchInterface *gpu_timer;
+    sdkCreateTimer(&gpu_timer);
+    sdkResetTimer(&gpu_timer);
+
     StopWatchInterface *timer;
     sdkCreateTimer(&timer);
     sdkResetTimer(&timer);
@@ -85,23 +92,28 @@ int main(int argc, char ** argv){
     sdkStopTimer(&timer);
     printf("fill time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
 
-    sdkResetTimer(&timer);
-    sdkStartTimer(&timer);
+    float FINALMAX = -1;
     if(atoi(argv[2])==1){
-        float maxCPU = max(host_datos);
+        sdkStartTimer(&cpu_timer);
+        FINALMAX = max(host_datos);
+        sdkStopTimer(&cpu_timer);
+        printf("max time: %f\n", sdkGetTimerValue(&cpu_timer)/1000.0f);
     }else{
         int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
         dim3 block(BLOCKSIZE, 1, 1);
         dim3 grid(GRIDSIZE, 1, 1);
 
         cudaMemcpy(device_datos, host_datos, sizeof(Dato)*N, cudaMemcpyHostToDevice);
+
+        sdkStartTimer(&gpu_timer);
         eliteKernel<<<grid,block>>>(device_datos);
-        cudaMemcpy(host_datos, device_datos, sizeof(Dato)*N, cudaMemcpyDeviceToHost);
         cudaDeviceSynchronize();
-        cudaDeviceReset();
+        sdkStopTimer(&gpu_timer);
+
+        cudaMemcpy(&FINALMAX, device_datos, sizeof(Dato), cudaMemcpyDeviceToHost);
+        printf("max time: %f\n", sdkGetTimerValue(&gpu_timer)/1000.0f);
     }
-    sdkStopTimer(&timer);
-    printf("max time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
+    printf("MAX = %f\n",FINALMAX);
 
     return 0;
 }
