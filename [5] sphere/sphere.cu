@@ -3,6 +3,8 @@
 #include <curand.h>
 #include <curand_kernel.h>
 #include <time.h>
+#include <helper_cuda.h>
+#include <helper_functions.h>
 
 #define POBLACION 100
 #define LONG_COD 20
@@ -11,18 +13,19 @@
 #define MUTATION_PROBABILITY 0.001
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
 
-//#define BLOCKSIZE 128
-#define BLOCKSIZE 8
+#define BLOCKSIZE 256
 #define WARPSIZE 32
+
+int N=1024;
 
 #define uint64 unsigned long long
 
 typedef struct {
     char genotipo[LONG_COD];
-    double aptitud;
+    float aptitud;
 } Individuo;
 
-__device__ void decoder(double * x, double * y, char * genotipo) {
+__device__ void decoder(float * x, float * y, char * genotipo) {
     int i;
     *x = *y = 0.0;
 
@@ -37,7 +40,7 @@ __device__ void decoder(double * x, double * y, char * genotipo) {
     *y = (*y) * INTERVALO + LIMITE;
 }
 
-__host__ __device__ double fitness (double p1, double p2){
+__host__ __device__ float fitness (float p1, float p2){
     return (p1*p1) + (p2*p2);
 }
 
@@ -62,7 +65,7 @@ void tournamentSelectionKernel(Individuo * dev_poblacion, Individuo * dev_select
 }
 
 __device__
-void sonMutationBlade(Individuo *sons, curandState *dev_state, int idx){
+void sonMutation(Individuo *sons, curandState *dev_state, int idx){
     int i,j;
     double randProbability;
     curandState lstate = dev_state[idx];
@@ -87,7 +90,7 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
             double crossProbability = (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
             if(crossProbability < MUTATION_PROBABILITY){
                 int point, j, aux;
-                double x, y;
+                float x, y;
                 point = (int) (((double) LONG_COD)*curand_uniform(&lstate)*(POBLACION-0.00001));
                 for(j=point; j<LONG_COD; j++){
                     aux=dev_selection[idx].genotipo[j];
@@ -95,7 +98,7 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
                     dev_selection[idx+1].genotipo[j]=aux;
                 }
 
-                sonMutationBlade(&dev_selection[idx], dev_state, idx);
+                sonMutation(&dev_selection[idx], dev_state, idx);
 
                 decoder(&x, &y, dev_selection[idx].genotipo);
                 dev_selection[idx].aptitud=fitness(x,y);
@@ -106,62 +109,6 @@ void crossSelectionKernel(Individuo * dev_poblacion, Individuo * dev_selection, 
             dev_state[idx] = lstate;
         }
     }
-}
-
-__inline__ __device__
-double warpAllReduceCompare(double val) {
-    for (int mask = WARPSIZE/2; mask > 0; mask /= 2){
-        val = fmax(val,__shfl_down(val, mask, WARPSIZE));
-    }
-    return val;
-}
-
-__inline__ __device__
-double blockReduceCompare(double val) {
-
-    static __shared__ double shared[WARPSIZE]; // Shared mem for 32 partial sums
-    int lane = threadIdx.x % WARPSIZE;
-    int wid = threadIdx.x / WARPSIZE;
-
-    val = warpAllReduceCompare(val);     // Each warp performs partial reduction
-
-    if (lane==0) shared[wid]=val; // Write reduced value to shared memory
-    __syncthreads();              // Wait for all partial reductions
-
-    //read from shared memory only if that warp existed
-    val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : 0;
-
-    if (wid==0) val = warpAllReduceCompare(val); //Final reduce within first warp
-
-    return val;
-}
-
-__device__ void AtomicMax(double * const address, const double value) {
-    if (* address >= value)
-        return;
-
-    uint64 * const address_as_i = (uint64 *)address;
-    uint64 old = * address_as_i, assumed;
-    do {
-        assumed = old;
-        if (__longlong_as_double(assumed) >= value)
-            break;
-        old = atomicCAS(address_as_i, assumed, __double_as_longlong(value));
-    } while (assumed != old);
-}
-
-__global__
-void eliteKernel(Individuo * dev_poblacion, Individuo * dev_selection, curandState *dev_state){
-    int i = blockIdx.x * blockDim.x + threadIdx.x;
-    //int k = blockIdx.x * blockDim.x + threadIdx.x;
-    double MAX = -1;
-    for(;i<POBLACION;i+=blockDim.x * gridDim.x){
-        MAX = MAX < dev_poblacion[i].aptitud ? dev_poblacion[i].aptitud : MAX;
-    }
-
-    MAX = blockReduceCompare(MAX);
-    if(threadIdx.x==0)
-        AtomicMax(&dev_poblacion[i].aptitud, MAX);
 }
 
 __global__
@@ -176,7 +123,7 @@ void init_poblacion(Individuo * dev_poblacion, curandState *dev_state){
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
     if(idx < POBLACION){
         int i;
-        double x, y;
+        float x, y;
         curandState lstate = dev_state[idx];
         for(i=0; i<LONG_COD; i++)
             dev_poblacion[idx].genotipo[i] = curand_uniform(&lstate) > 0.5 ? 1.0 : 0.0;
@@ -186,20 +133,76 @@ void init_poblacion(Individuo * dev_poblacion, curandState *dev_state){
     }
 }
 
+/*****************************/
+/*****************************/
+/*****************************/
+
+__inline__ __device__
+float warpAllReduceCompare(float val) {
+    for (unsigned int mask = WARPSIZE/2; mask > 0; mask /= 2){
+        val = fmax(val,__shfl_down(val, mask, WARPSIZE));
+    }
+    return val;
+}
+
+__inline__ __device__
+float blockReduceCompare(float val) {
+    static __shared__ float shared[WARPSIZE]; // Shared mem for 32 partial sums
+    int lane = threadIdx.x % WARPSIZE;
+    int wid = threadIdx.x / WARPSIZE;
+
+    val = warpAllReduceCompare(val);     // Each warp performs partial reduction
+
+    if (lane==0) shared[wid]=val; // Write reduced value to shared memory
+        __syncthreads();              // Wait for all partial reductions
+
+    //read from shared memory only if that warp existed
+    val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : 0;
+
+    if (wid==0) val = warpAllReduceCompare(val); //Final reduce within first warp
+        return val;
+}
+
+
+__device__ float atomicMaxf(float* address, float val) {
+    int *address_as_int =(int*)address;
+    int old = *address_as_int, assumed;
+    while (val > __int_as_float(old)) {
+        assumed = old;
+        old = atomicCAS(address_as_int, assumed,
+        __float_as_int(val));
+    }
+    return __int_as_float(old);
+}
+
+__global__
+void eliteKernel(Individuo * dev_seleccion){
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    float MAX = -1.0f;
+    MAX = MAX < dev_seleccion[i].aptitud ? dev_seleccion[i].aptitud : MAX;
+
+    MAX = blockReduceCompare(MAX);
+    if(threadIdx.x==0){
+        atomicMaxf(&dev_seleccion[0].aptitud, MAX);
+    }
+}
+
+/*****************************/
+/*****************************/
+/*****************************/
+
 void print_selection(Individuo *host_seleccion);
 
 int main (void) {
     srand(time(NULL));
     printf("[HOST] Starting script\n");
 
-    int GRIDSIZE = (POBLACION+BLOCKSIZE-1)/BLOCKSIZE;
+    int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
     dim3 block(BLOCKSIZE, 1, 1);
     dim3 grid(GRIDSIZE, 1, 1);
 
-    int GRIDSIZE2 = (POBLACION/4+BLOCKSIZE-1)/BLOCKSIZE;
-    dim3 grid2(GRIDSIZE2, 1, 1);
-
-    printf("grid1 = %d; grid2 = %d\n", GRIDSIZE, GRIDSIZE2);
+    Individuo BEST;
+    unsigned int generation = 0;
 
     /*
     * Random initialization.
@@ -217,16 +220,32 @@ int main (void) {
     cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION);
 
     init_poblacion<<<grid, block>>>(dev_poblacion, dev_state);
-    tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
-    crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
-    eliteKernel<<<grid2, block>>>(dev_poblacion, dev_seleccion, dev_state);
 
-    cudaMemcpy(host_poblacion, dev_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
-    cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
-    printf("\n");
+    do{
+        tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
+        crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
+        eliteKernel<<<grid,block>>>(dev_seleccion);
+        generation++;
 
-    cudaDeviceSynchronize();
+        cudaDeviceSynchronize();
+        cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
+    }while(BEST.aptitd > pow(10,-2));
 
+    eliteKernel<<<grid,block>>>(dev_seleccion);
+    cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
+    float x, y;
+    decoder(&x, &y, BEST.genotipo);
+
+    printf ("*************************************\n");
+    printf ("*          FIN DEL ALGORITMO        *\n");
+    printf ("*************************************\n");
+    printf (" - En el punto (%.5f, %.5f)\n", x, y);
+    printf (" - Su fenotipo es %.5f\n", BEST.aptitud);
+    printf (" - Es la generacion numero %i\n", generation);
+    printf ("*************************************\n");
+
+    free(host_poblacion);
+    free(host_seleccion);
     cudaFree(dev_poblacion);
     cudaFree(dev_seleccion);
     cudaFree(dev_state);

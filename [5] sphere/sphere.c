@@ -237,7 +237,6 @@ void AG (void) {
 
     do {
         seleccion = seleccionTorneos(poblacion);
-        exit(1);
         cruzarSeleccion(seleccion);
         seleccion[POBLACION-1] = elite(poblacion);
         free(poblacion);
