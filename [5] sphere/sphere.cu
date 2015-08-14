@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <cuda.h>
 #include <curand.h>
 #include <curand_kernel.h>
@@ -12,6 +13,7 @@
 #define CROSS_PROBABILITY 0.3
 #define MUTATION_PROBABILITY 0.001
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
+#define H_INTERVALO 10.24/pow(2,LONG_COD/2)
 
 #define BLOCKSIZE 256
 #define WARPSIZE 32
@@ -30,13 +32,15 @@ __device__ void decoder(float * x, float * y, char * genotipo) {
     *x = *y = 0.0;
 
     // calculo del primer decimal
-    for(i=0; i<LONG_COD/2; i++)
+    for(i=0; i<LONG_COD/2; i++){
         *x += (int)(genotipo[i]) * __powf(2, (LONG_COD/2)-(i+1));
+    }
     *x = (*x) * INTERVALO + LIMITE;
 
     //calculo del segundo decimal
-    for(;i<LONG_COD;i++)
+    for(;i<LONG_COD;i++){
         *y += (int)(genotipo[i]) * __powf(2, LONG_COD-(i+1));
+    }
     *y = (*y) * INTERVALO + LIMITE;
 }
 
@@ -192,6 +196,7 @@ void eliteKernel(Individuo * dev_seleccion){
 /*****************************/
 
 void print_selection(Individuo *host_seleccion);
+void host_decoder(float * x, float * y, char * genotipo);
 
 int main (void) {
     srand(time(NULL));
@@ -229,12 +234,12 @@ int main (void) {
 
         cudaDeviceSynchronize();
         cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
-    }while(BEST.aptitd > pow(10,-2));
+    }while(BEST.aptitud > pow(10,-2));
 
     eliteKernel<<<grid,block>>>(dev_seleccion);
     cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
     float x, y;
-    decoder(&x, &y, BEST.genotipo);
+    host_decoder(&x, &y, BEST.genotipo);
 
     printf ("*************************************\n");
     printf ("*          FIN DEL ALGORITMO        *\n");
@@ -262,5 +267,21 @@ void print_selection(Individuo *host_seleccion){
             printf("\nhost_genotipo[%d] = %d", i, host_seleccion[i].genotipo[j]);
         }
     }
+}
 
+void host_decoder(float * x, float * y, char * genotipo) {
+    int i;
+    *x = *y = 0.0;
+
+    // calculo del primer decimal
+    for(i=0; i<LONG_COD/2; i++){
+        *x += (int)(genotipo[i]) * pow((float)2, (float)(LONG_COD/2)-(i+1));
+    }
+    *x = (*x) * H_INTERVALO + LIMITE;
+
+    //calculo del segundo decimal
+    for(;i<LONG_COD;i++){
+        *y += (int)(genotipo[i]) * pow((float)2, (float)LONG_COD-(i+1));
+    }
+    *y = (*y) * H_INTERVALO + LIMITE;
 }
