@@ -13,7 +13,7 @@
 #define CROSS_PROBABILITY 0.3
 #define MUTATION_PROBABILITY 0.001
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
-#define H_INTERVALO 10.24/pow(2,LONG_COD/2)
+#define H_INTERVALO 10.24/pow((float)2,(float)LONG_COD/2)
 
 #define BLOCKSIZE 256
 #define WARPSIZE 32
@@ -27,21 +27,35 @@ typedef struct {
     float aptitud;
 } Individuo;
 
-__device__ void decoder(float * x, float * y, char * genotipo) {
+__host__ __device__ void decoder(float * x, float * y, char * genotipo) {
     int i;
     *x = *y = 0.0;
 
-    // calculo del primer decimal
-    for(i=0; i<LONG_COD/2; i++){
-        *x += (int)(genotipo[i]) * __powf(2, (LONG_COD/2)-(i+1));
-    }
-    *x = (*x) * INTERVALO + LIMITE;
+    #ifndef __CUDA__ARCH__
+        // calculo del primer decimal
+        for(i=0; i<LONG_COD/2; i++){
+            *x += (int)(genotipo[i]) * __powf(2, (LONG_COD/2)-(i+1));
+        }
+        *x = (*x) * INTERVALO + LIMITE;
 
-    //calculo del segundo decimal
-    for(;i<LONG_COD;i++){
-        *y += (int)(genotipo[i]) * __powf(2, LONG_COD-(i+1));
-    }
-    *y = (*y) * INTERVALO + LIMITE;
+        //calculo del segundo decimal
+        for(;i<LONG_COD;i++){
+            *y += (int)(genotipo[i]) * __powf(2, LONG_COD-(i+1));
+        }
+        *y = (*y) * INTERVALO + LIMITE;
+    #else
+        // calculo del primer decimal
+        for(i=0; i<LONG_COD/2; i++){
+            *x += (int)(genotipo[i]) * pow((float)2, (float)(LONG_COD/2)-(i+1));
+        }
+        *x = (*x) * H_INTERVALO + LIMITE;
+
+        //calculo del segundo decimal
+        for(;i<LONG_COD;i++){
+            *y += (int)(genotipo[i]) * pow((float)2, (float)LONG_COD-(i+1));
+        }
+        *y = (*y) * H_INTERVALO + LIMITE;
+    #endif
 }
 
 __host__ __device__ float fitness (float p1, float p2){
@@ -196,7 +210,6 @@ void eliteKernel(Individuo * dev_seleccion){
 /*****************************/
 
 void print_selection(Individuo *host_seleccion);
-void host_decoder(float * x, float * y, char * genotipo);
 
 int main (void) {
     srand(time(NULL));
@@ -239,7 +252,7 @@ int main (void) {
     eliteKernel<<<grid,block>>>(dev_seleccion);
     cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
     float x, y;
-    host_decoder(&x, &y, BEST.genotipo);
+    decoder(&x, &y, BEST.genotipo);
 
     printf ("*************************************\n");
     printf ("*          FIN DEL ALGORITMO        *\n");
@@ -267,21 +280,4 @@ void print_selection(Individuo *host_seleccion){
             printf("\nhost_genotipo[%d] = %d", i, host_seleccion[i].genotipo[j]);
         }
     }
-}
-
-void host_decoder(float * x, float * y, char * genotipo) {
-    int i;
-    *x = *y = 0.0;
-
-    // calculo del primer decimal
-    for(i=0; i<LONG_COD/2; i++){
-        *x += (int)(genotipo[i]) * pow((float)2, (float)(LONG_COD/2)-(i+1));
-    }
-    *x = (*x) * H_INTERVALO + LIMITE;
-
-    //calculo del segundo decimal
-    for(;i<LONG_COD;i++){
-        *y += (int)(genotipo[i]) * pow((float)2, (float)LONG_COD-(i+1));
-    }
-    *y = (*y) * H_INTERVALO + LIMITE;
 }
