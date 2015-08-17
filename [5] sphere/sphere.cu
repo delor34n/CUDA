@@ -7,7 +7,7 @@
 #include <helper_cuda.h>
 #include <helper_functions.h>
 
-#define POBLACION 100
+#define POBLACION 32
 #define LONG_COD 20
 #define LIMITE -5.12
 #define CROSS_PROBABILITY 0.3
@@ -15,7 +15,7 @@
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
 #define H_INTERVALO 10.24/pow((float)2,(float)LONG_COD/2)
 
-#define BLOCKSIZE 256
+#define BLOCKSIZE 32
 #define WARPSIZE 32
 
 int N=1024;
@@ -31,7 +31,7 @@ __host__ __device__ void decoder(float * x, float * y, char * genotipo) {
     int i;
     *x = *y = 0.0;
 
-    #ifndef __CUDA__ARCH__
+    #ifdef __CUDA__ARCH__
         // calculo del primer decimal
         for(i=0; i<LONG_COD/2; i++){
             *x += (int)(genotipo[i]) * __powf(2, (LONG_COD/2)-(i+1));
@@ -158,7 +158,7 @@ void init_poblacion(Individuo * dev_poblacion, curandState *dev_state){
 __inline__ __device__
 float warpAllReduceCompare(float val) {
     for (unsigned int mask = WARPSIZE/2; mask > 0; mask /= 2){
-        val = fmax(val,__shfl_down(val, mask, WARPSIZE));
+        val = fmin(val,__shfl_down(val, mask, WARPSIZE));
     }
     return val;
 }
@@ -193,15 +193,28 @@ __device__ float atomicMaxf(float* address, float val) {
     return __int_as_float(old);
 }
 
+__device__ float atomicMinf(float* addr, float value) {
+    float old = *addr, assumed;
+
+    if(old <= value) return old;
+
+    do {
+        assumed = old;
+       old = atomicCAS((unsigned int*)addr, __float_as_int(assumed), __float_as_int(value));
+    } while(old!=assumed);
+    return old;
+}
+
 __global__
 void eliteKernel(Individuo * dev_seleccion){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
-    float MAX = -1.0f;
-    MAX = MAX < dev_seleccion[i].aptitud ? dev_seleccion[i].aptitud : MAX;
+    float BEST = 1000000.0f;
+    BEST = BEST > dev_seleccion[i].aptitud ? dev_seleccion[i].aptitud : BEST;
+    printf("BEST APTITUD[%i] = %f\n", i, BEST);
 
-    MAX = blockReduceCompare(MAX);
+    BEST = blockReduceCompare(BEST);
     if(threadIdx.x==0){
-        atomicMaxf(&dev_seleccion[0].aptitud, MAX);
+        atomicMinf(&dev_seleccion[0].aptitud, BEST);
     }
 }
 
@@ -210,12 +223,13 @@ void eliteKernel(Individuo * dev_seleccion){
 /*****************************/
 
 void print_selection(Individuo *host_seleccion);
+void h_decoder(float * x, float * y, char * genotipo);
 
 int main (void) {
     srand(time(NULL));
     printf("[HOST] Starting script\n");
 
-    int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
+    int GRIDSIZE = (POBLACION+BLOCKSIZE-1)/BLOCKSIZE;
     dim3 block(BLOCKSIZE, 1, 1);
     dim3 grid(GRIDSIZE, 1, 1);
 
@@ -238,21 +252,27 @@ int main (void) {
     cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION);
 
     init_poblacion<<<grid, block>>>(dev_poblacion, dev_state);
+    //cudaMemcpy(host_seleccion, dev_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
+    //print_selection(host_seleccion);
 
     do{
         tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
         crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
         eliteKernel<<<grid,block>>>(dev_seleccion);
+        cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
+        print_selection(host_seleccion);
+        getchar();
         generation++;
 
         cudaDeviceSynchronize();
         cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
+        printf("\nbest aptitud: %f\n", BEST.aptitud);
     }while(BEST.aptitud > pow(10,-2));
 
     eliteKernel<<<grid,block>>>(dev_seleccion);
     cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
     float x, y;
-    decoder(&x, &y, BEST.genotipo);
+    h_decoder(&x, &y, BEST.genotipo);
 
     printf ("*************************************\n");
     printf ("*          FIN DEL ALGORITMO        *\n");
@@ -276,8 +296,22 @@ void print_selection(Individuo *host_seleccion){
     int i, j;
     for(i=0; i<POBLACION; i++){
         printf("\nhost_seleccion[%d] = %f", i, host_seleccion[i].aptitud);
-        for(j=0; j<LONG_COD; j++){
-            printf("\nhost_genotipo[%d] = %d", i, host_seleccion[i].genotipo[j]);
-        }
     }
+}
+
+void h_decoder(float * x, float * y, char * genotipo) {
+    int i;
+    *x = *y = 0.0;
+
+    // calculo del primer decimal
+    for(i=0; i<LONG_COD/2; i++){
+        *x += (int)(genotipo[i]) * pow((float)2, (float)(LONG_COD/2)-(i+1));
+    }
+    *x = (*x) * H_INTERVALO + LIMITE;
+
+    //calculo del segundo decimal
+    for(;i<LONG_COD;i++){
+        *y += (int)(genotipo[i]) * pow((float)2, (float)LONG_COD-(i+1));
+    }
+    *y = (*y) * H_INTERVALO + LIMITE;
 }
