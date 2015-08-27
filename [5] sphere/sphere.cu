@@ -7,7 +7,7 @@
 #include <helper_cuda.h>
 #include <helper_functions.h>
 
-#define POBLACION 32
+#define POBLACION 1024
 #define LONG_COD 20
 #define LIMITE -5.12
 #define CROSS_PROBABILITY 0.3
@@ -15,12 +15,10 @@
 #define INTERVALO 10.24/__powf(2,LONG_COD/2)
 #define H_INTERVALO 10.24/pow((float)2,(float)LONG_COD/2)
 
-#define BLOCKSIZE 32
+#define BLOCKSIZE 256
 #define WARPSIZE 32
 
 int N=1024;
-
-#define uint64 unsigned long long
 
 typedef struct {
     char genotipo[LONG_COD];
@@ -175,7 +173,7 @@ float blockReduceCompare(float val) {
         __syncthreads();              // Wait for all partial reductions
 
     //read from shared memory only if that warp existed
-    val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : 0;
+    val = (threadIdx.x < blockDim.x / WARPSIZE) ? shared[lane] : val;
 
     if (wid==0) val = warpAllReduceCompare(val); //Final reduce within first warp
         return val;
@@ -210,9 +208,8 @@ void eliteKernel(Individuo * dev_seleccion){
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     float BEST = 1000000.0f;
     BEST = BEST > dev_seleccion[i].aptitud ? dev_seleccion[i].aptitud : BEST;
-    printf("BEST APTITUD[%i] = %f\n", i, BEST);
-
     BEST = blockReduceCompare(BEST);
+
     if(threadIdx.x==0){
         atomicMinf(&dev_seleccion[0].aptitud, BEST);
     }
@@ -225,11 +222,22 @@ void eliteKernel(Individuo * dev_seleccion){
 void print_selection(Individuo *host_seleccion);
 void h_decoder(float * x, float * y, char * genotipo);
 
-int main (void) {
+int main (int argc, char ** argv) {
     srand(time(NULL));
     printf("[HOST] Starting script\n");
 
-    int GRIDSIZE = (POBLACION+BLOCKSIZE-1)/BLOCKSIZE;
+    StopWatchInterface *gpu_timer;
+    sdkCreateTimer(&gpu_timer);
+    sdkResetTimer(&gpu_timer);
+
+    StopWatchInterface *timer;
+    sdkCreateTimer(&timer);
+    sdkResetTimer(&timer);
+
+    if(argc==2)
+        N = atoi(argv[1]);
+
+    int GRIDSIZE = (N+BLOCKSIZE-1)/BLOCKSIZE;
     dim3 block(BLOCKSIZE, 1, 1);
     dim3 grid(GRIDSIZE, 1, 1);
 
@@ -251,28 +259,35 @@ int main (void) {
     cudaMalloc((void**)&dev_poblacion, sizeof(Individuo)*POBLACION);
     cudaMalloc((void**)&dev_seleccion, sizeof(Individuo)*POBLACION);
 
+    sdkStartTimer(&timer);
     init_poblacion<<<grid, block>>>(dev_poblacion, dev_state);
+    sdkStopTimer(&timer);
+    printf("fill time: %f\n", sdkGetTimerValue(&timer)/1000.0f);
     //cudaMemcpy(host_seleccion, dev_poblacion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
     //print_selection(host_seleccion);
 
+    sdkStartTimer(&gpu_timer);
     do{
         tournamentSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
         crossSelectionKernel<<<grid, block>>>(dev_poblacion, dev_seleccion, dev_state);
         eliteKernel<<<grid,block>>>(dev_seleccion);
         cudaMemcpy(host_seleccion, dev_seleccion, sizeof(Individuo)*POBLACION, cudaMemcpyDeviceToHost);
-        print_selection(host_seleccion);
-        getchar();
+        //print_selection(host_seleccion);
+        //getchar();
         generation++;
 
         cudaDeviceSynchronize();
         cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
-        printf("\nbest aptitud: %f\n", BEST.aptitud);
+        //printf("\nbest aptitud: %f\n", BEST.aptitud);
     }while(BEST.aptitud > pow(10,-2));
 
     eliteKernel<<<grid,block>>>(dev_seleccion);
     cudaMemcpy(&BEST, dev_seleccion, sizeof(Individuo), cudaMemcpyDeviceToHost);
     float x, y;
     h_decoder(&x, &y, BEST.genotipo);
+
+    sdkStopTimer(&gpu_timer);
+    printf("max time: %f\n", sdkGetTimerValue(&gpu_timer)/1000.0f);
 
     printf ("*************************************\n");
     printf ("*          FIN DEL ALGORITMO        *\n");
@@ -293,7 +308,7 @@ int main (void) {
 }
 
 void print_selection(Individuo *host_seleccion){
-    int i, j;
+    int i;
     for(i=0; i<POBLACION; i++){
         printf("\nhost_seleccion[%d] = %f", i, host_seleccion[i].aptitud);
     }
