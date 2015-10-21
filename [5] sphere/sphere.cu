@@ -8,7 +8,7 @@
 #include <helper_functions.h>
 
 #define POBLACION 1024
-#define LONG_COD 20
+#define LONG_COD 32
 #define LIMITE -5.12
 #define CROSS_PROBABILITY 0.3
 #define MUTATION_PROBABILITY 0.001

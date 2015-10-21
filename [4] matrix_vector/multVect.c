@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 int *multMatrixVector(int **A, int *B, int *C, int N, int M);
 void printVector(int *vector, int N);
