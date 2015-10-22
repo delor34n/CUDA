@@ -16,6 +16,7 @@ void display_poblacion(Poblacion poblacion);
 int bitwise_mutation_operator(int a,int x);
 void mutacion_poblacion(Poblacion p);
 void bitwise_crossover_operator(int a, int b);
+void bitwise_crossover_operator_2(int a, int b);
 
 int main(int argc, char **argv){
 	srand(time(NULL));
@@ -30,8 +31,8 @@ int main(int argc, char **argv){
 		display_poblacion(poblacion);
 	}
 
-	bitwise_crossover_operator(121, 120);
-	bitwise_crossover_operator(105, 110);
+	bitwise_crossover_operator_2(2, 5);
+	bitwise_crossover_operator_2(100, 101);
 
 	/*for(i=100;i<110;i+=2){
 		bitwise_crossover_operator(i, i+1);
@@ -141,6 +142,7 @@ iChrom2 = iChrom2 | iChrom1_end; //110010
 mask2 = 0xffff ^ mask1
 output1 = (input1 & mask1) ^ (input2 & mask2)
 output2 = (input1 & mask2) ^ (input2 & mask1)*/
+
 void bitwise_crossover_operator(int a, int b){
 	printf("=============\n");
 	printf("a: %d; b: %d\n", a, b);
@@ -154,7 +156,29 @@ void bitwise_crossover_operator(int a, int b){
 	printf("\n\n");
 
 }
+/*dataLength= 8*sizeof(Datatype);
+realLength=ceil(solutionLength/dataLength);
+word=crossoverPoint/dataLength;
+wordPoint=crossoverPoint%dataLength;
+restW P=dataLength-wordPoint;
+snew1[word] = ((si[word]>>restWP)<<restWP)|((s2[word]<<wordPoint)>>wordPoint);
+snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
+*/
+void bitwise_crossover_operator_2(int a, int b){
 
+	printf("a = %d, b = %d \n",a,b);	
+	int dataLength = 8*sizeof(int);
+	int realLength = 32/dataLength;
+	int crossoverPoint = 4;
+	int word = crossoverPoint/dataLength;
+	int wordPoint = crossoverPoint%dataLength;
+	int restWP = dataLength-wordPoint;
+	int snew1 = ((a>>restWP)<<restWP)|((b<<wordPoint)>>wordPoint);
+	int snew2 = ((b>>restWP)<<restWP)|((a<<wordPoint)>>wordPoint);
+
+	printf("snew1 = %d, snew2 =%d  \n",snew1,snew2);
+
+}
 
 /*
 void fitness(){
