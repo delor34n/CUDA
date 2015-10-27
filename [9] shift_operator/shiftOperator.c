@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #define POBLACION 10
 #define N 5
@@ -25,14 +26,13 @@ int main(int argc, char **argv){
 	poblacion = init_poblacion(poblacion);
 	display_poblacion(poblacion);
 	int i;
-	for(i=0;i<2;i++){
+	/*for(i=0;i<2;i++){
 		mutacion_poblacion(poblacion);
 		printf("CROMOSOMAS CAMBIADOOOS\n");
 		display_poblacion(poblacion);
-	}
+	}*/
 
-	bitwise_crossover_operator_2(2, 5);
-	bitwise_crossover_operator_2(100, 101);
+	bitwise_crossover_operator_2(2, 4);
 
 	/*for(i=100;i<110;i+=2){
 		bitwise_crossover_operator(i, i+1);
@@ -167,16 +167,18 @@ snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
 void bitwise_crossover_operator_2(int a, int b){
 
 	printf("a = %d, b = %d \n",a,b);	
-	int dataLength = 8*sizeof(int);
-	int realLength = 32/dataLength;
-	int crossoverPoint = 4;
-	int word = crossoverPoint/dataLength;
-	int wordPoint = crossoverPoint%dataLength;
-	int restWP = dataLength-wordPoint;
-	int snew1 = ((a>>restWP)<<restWP)|((b<<wordPoint)>>wordPoint);
-	int snew2 = ((b>>restWP)<<restWP)|((a<<wordPoint)>>wordPoint);
-
+	int dataLength = 32;
+	int realLength = 6;
+	int crossoverPoint = 1;
+	int Mask = 255;
+	int word = crossoverPoint/realLength;
+	int wordPoint = crossoverPoint%realLength;
+	int restWP = dataLength-realLength;
+	int snew1 = ((a>>crossoverPoint)<<crossoverPoint)|(((b<<wordPoint)&Mask)>>wordPoint);
+	printf("crossoverPoint %d , wordPoint = %d \n", crossoverPoint,wordPoint);
+	int snew2 = ((b>>crossoverPoint)<<crossoverPoint)|(((a<<wordPoint)&Mask)>>wordPoint);
 	printf("snew1 = %d, snew2 =%d  \n",snew1,snew2);
+
 
 }
 
