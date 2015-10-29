@@ -3,7 +3,7 @@
 #include <time.h>
 #include <math.h>
 
-#define POBLACION 10
+#define POBLACION 5
 #define N 5
 #define PROB_MUTACION 0.01
 
@@ -14,29 +14,32 @@ typedef struct {
 
 Poblacion init_poblacion(Poblacion poblacion);
 void display_poblacion(Poblacion poblacion);
+//Mutation and crossover
+void bitwise_crossover_operator(int a, int b);
 int bitwise_mutation_operator(int a,int x);
 void mutacion_poblacion(Poblacion p);
-void bitwise_crossover_operator(int a, int b);
-void bitwise_crossover_operator_2(int a, int b);
+void tournament_selection(Poblacion poblacion);
+
+float fitness(int **A,int *Vector_b, int *Vector_c);
 
 int main(int argc, char **argv){
 	srand(time(NULL));
 
-	Poblacion poblacion;
+	Poblacion poblacion;	
 	poblacion = init_poblacion(poblacion);
 	display_poblacion(poblacion);
+	int **Matrix = (int **)malloc(N * sizeof(int*)); //matriz del problema
+	int *Vector_b = (int *)malloc(N * sizeof(int)); // vector que resta
+	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 	int i;
 	/*for(i=0;i<2;i++){
 		mutacion_poblacion(poblacion);
 		printf("CROMOSOMAS CAMBIADOOOS\n");
 		display_poblacion(poblacion);
 	}*/
+	tournament_selection(poblacion);
+	bitwise_crossover_operator(2, 4);
 
-	bitwise_crossover_operator_2(2, 4);
-
-	/*for(i=100;i<110;i+=2){
-		bitwise_crossover_operator(i, i+1);
-	}*/
 }
 
 Poblacion init_poblacion(Poblacion poblacion){
@@ -48,6 +51,9 @@ Poblacion init_poblacion(Poblacion poblacion){
 			poblacion.B[i][j] = (10.0*rand()/(RAND_MAX+1.0));
 	}
 	poblacion.aptitud = (int *) malloc (sizeof(Poblacion)*POBLACION);
+	for(j=0;j<N;j++){
+			poblacion.aptitud[j] = (10.0*rand()/(RAND_MAX+1.0));
+	}
 	return poblacion;
 }
 
@@ -59,7 +65,7 @@ void display_poblacion(Poblacion poblacion){
 		for(j=0;j<N;j++){
 			printf(" %d ",poblacion.B[i][j]);
 		}
-		printf(" \n");
+		printf("aptitud :%d \n", poblacion.aptitud[i]);
 	}
 }
 void mutacion_poblacion(Poblacion p){
@@ -83,88 +89,93 @@ int bitwise_mutation_operator(int a, int x){
 	n_use = in_use ^ 1<<car_num; */
 	return a ^ 1<<x;
 }
+float fitness(int **A,int *Vector_b, int *Vector_c){
+	int F0,F1;
+	int F2[N]
+;	int i,j;
+	int prod,E,rmse;
+	for(i=0;i<N;i++){
+		prod = 0;
+		for(j=0;j<N;j++){//hasta N en el caso de una matriz cuadrada.
+			prod = prod + A[i][j]*Vector_b[j];
+		}
+	E = E + abs(prod-Vector_c[i]);
+	}
+	rmse = sqrt(E/N);
+	F0 = rmse;
 
-/*
-int iChrom1 = 101010 
-int iChrom2 = 110110
+	//if (N == 289 || N == 1089){ //Condiciones originales de fitness implementada en el paper de Arturo.
 
-//pick cross over point
-int iChosenPoint = 3;
-int iMask = 1; // 000001
-iMask = iMask<<iChosenPoint; //  001000
-iMask = iMask - 1; //mask is now 000111
+	int sum_b,sum_c;
+	for (i=0;i<N;i++){
+		sum_b = sum_b + Vector_b[i];
+		sum_c = sum_c + Vector_c[i];
+	}
+	F1 = (sum_c <= sum_b)?0:45;
 
-//get tail end
-int iChrom1_end = iChrom1 & iMask; //000010
-int iChrom2_end = iChrom2 & iMask; //000110
+	/*Revisar F2, ya que no entendemos su funcionamiento.
+    %sum nodos <= sumFuente
+  if sum(w) <= sum(b)
+      F1 = 0;
+  else
+      F1 = 30; %se castiga los q no cumplen la cond
+  end
 
-//clear old tails
-int iMask2 = ~iMask; // 111000
-iChrom1 = iChrom1 & iMask2; //101000
-iChrom2 = iChrom2 & iMask2; //110000
+   nodos = size(A,1);
+   fronteras = sort(front); % primera fila estan los nodos frontera, 1x64
+   cant_front = length(fronteras);
+   f2 = rand(cant_front,1); % vector de 64X1 para 289 nodos
 
-//swap tails
-iChrom1 = iChrom1 | iChrom2_end; //101110
-iChrom2 = iChrom2 | iChrom1_end; //110010
-*/
-/*int bitwise_crossover_operator(int a, int b){
+%condicion borde 0, 
+   i=1;
+   for nodo=1:nodos
+      if find(fronteras == nodo) % el nodo esta en la frontera
+          if w(nodo) == 0
+             f2(i) = 0;
+          else
+              if w(nodo) <= 100
+                  f2(i) = 5;
+              else
+                if w(nodo) <= 1000
+                    f2(i) = 20;
+                else
+                    f2(i) = 50; %se castiga a los w cuyo valor en los nodos esta alejado de 0
+                end
+              end
+          end
+           i = i+1;
+           if i > cant_front
+              break;
+           end
+      end
+   end  
+	F2 = sum(f2);
 
-	printf("=============");
-	printf("\na: %d; b: %d", a, b);
+	  if N == 289 || N == 1089
+      fitness = F0 + F1 + F2;
+  		else
+      fitness = F0;
+  	  end*/
 
-	int mask = 1;
-	int chosenPoint = 4;
-
-	mask = mask << chosenPoint;
-	mask = mask - 1;
-
-	int A_1 = a & mask;
-	int B_1 = b & mask;
-
-	printf("\nmask: %d; A_1: %d; B_1: %d\n", mask, A_1, B_1);
-
-	int mask_2 = ~mask;
-	a = a & mask_2;
-	b = b & mask_2;
-
-	printf("mask_2: %d; a: %d; b: %d\n", mask_2, a, b);
-
-	a = a | B_1;
-	b = b | A_1;
-
-	printf("a: %d; b: %d", a, b);
-	printf("\n=============");
-	printf("\n\n");
+  	if (N==289 || N== 1089){
+  		return F0+F1;
+  	}else
+  		return F0;
+  	
+	//} 
 }
-*/
-
-/*mask1 = ((0xffff >> 16*p) << 16*p)
-mask2 = 0xffff ^ mask1
-output1 = (input1 & mask1) ^ (input2 & mask2)
-output2 = (input1 & mask2) ^ (input2 & mask1)*/
-
-void bitwise_crossover_operator(int a, int b){
-	printf("=============\n");
-	printf("a: %d; b: %d\n", a, b);
-	int chosenPoint = 8;
-	int mask1 = ((0xffff >> 32*chosenPoint) << 32*chosenPoint);
-	int mask2 = 0xffff ^ mask1;
-	int output1 = (a & mask1) ^ (b & mask2);
-	int output2 = (a & mask2) ^ (b & mask1);
-	printf("output1: %d; output2: %d\n", output1, output2);
-	printf("\n=============");
-	printf("\n\n");
-
-}
-/*dataLength= 8*sizeof(Datatype);
+/*void cruzamiento_poblacion(){
+dataLength= 8*sizeof(Datatype);
 realLength=ceil(solutionLength/dataLength);
 word=crossoverPoint/dataLength;
 wordPoint=crossoverPoint%dataLength;
 restW P=dataLength-wordPoint;
 snew1[word] = ((si[word]>>restWP)<<restWP)|((s2[word]<<wordPoint)>>wordPoint);
 snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
+
+got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
-void bitwise_crossover_operator_2(int a, int b){
+void bitwise_crossover_operator(int a, int b){
 
 	printf("a = %d, b = %d \n",a,b);	
 	int dataLength = 32;
@@ -178,22 +189,36 @@ void bitwise_crossover_operator_2(int a, int b){
 	printf("crossoverPoint %d , wordPoint = %d \n", crossoverPoint,wordPoint);
 	int snew2 = ((b>>crossoverPoint)<<crossoverPoint)|(((a<<wordPoint)&Mask)>>wordPoint);
 	printf("snew1 = %d, snew2 =%d  \n",snew1,snew2);
-
-
 }
 
-/*
-void fitness(){
-	//Coming soon...
+void tournament_selection(Poblacion poblacion){
+	Poblacion cand_a,cand_b,selection;
+	int i,j,piv;
+	cand_a = init_poblacion(cand_a);
+	cand_b = init_poblacion(cand_b);
+	selection = init_poblacion(selection);
+	for(i=0;i<POBLACION-1;i++){
+		piv = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
+		cand_a.B[i] = poblacion.B[piv];
+		cand_a.aptitud[i] = poblacion.aptitud[piv];
+		piv = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
+		cand_b.B[i] = poblacion.B[piv];
+		cand_b.aptitud[i] = poblacion.aptitud[piv];
+
+		if(cand_a.aptitud[i]<cand_b.aptitud[i]){
+			selection.B[i] = cand_a.B[i];
+			selection.aptitud[i] = cand_a.aptitud[i];
+		}else{
+			selection.B[i] = cand_b.B[i];
+			selection.aptitud[i] = cand_b.aptitud[i];
+
+		}
+	}
+	for (i = 0; i < N; ++i){
+		for (j = 0; j < POBLACION; j++){
+			printf(" B[%d][%d] : %d, ", i,j,selection.B[i][j]);			
+		}
+		printf(" aptitud[%d]: %d \n", i,selection.aptitud[i]);
+	}
+	
 }
-Poblacion seleccion_poblacion(){
-
-}
-void cruzamiento_poblacion(){
-
-}
-void aptitud{
-
-}*/
-
-
