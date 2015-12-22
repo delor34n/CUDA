@@ -2,21 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <stdint.h>
 
 #define POBLACION 5
 #define N 5
 #define PROB_MUTACION 0.01
 
 typedef struct {
-	int **B;
-	int *aptitud;
+	float **B;
+	float *aptitud;
 } Poblacion;
 
 Poblacion init_poblacion(Poblacion poblacion);
 void display_poblacion(Poblacion poblacion);
 //Mutation and crossover
 void bitwise_crossover_operator(int a, int b);
-int bitwise_mutation_operator(int a,int x);
+float bitwise_mutation_operator(float a, int x);
 void mutacion_poblacion(Poblacion p);
 void tournament_selection(Poblacion poblacion);
 
@@ -27,67 +28,77 @@ int main(int argc, char **argv){
 
 	Poblacion poblacion;	
 	poblacion = init_poblacion(poblacion);
-	display_poblacion(poblacion);
-	int **Matrix = (int **)malloc(N * sizeof(int*)); //matriz del problema
-	int *Vector_b = (int *)malloc(N * sizeof(int)); // vector que resta
+	//display_poblacion(poblacion);
+	
+	float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
+	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 	int i;
-	/*for(i=0;i<2;i++){
+	for(i=0;i<2;i++){
 		mutacion_poblacion(poblacion);
 		printf("CROMOSOMAS CAMBIADOOOS\n");
 		display_poblacion(poblacion);
-	}*/
+	}
 	tournament_selection(poblacion);
 	bitwise_crossover_operator(2, 4);
-
 }
 
 Poblacion init_poblacion(Poblacion poblacion){
-	poblacion.B = (int **) malloc (sizeof(Poblacion)*POBLACION);
+	poblacion.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
 	int i,j;
 	for(i=0;i<POBLACION;i++){
-		poblacion.B[i] = (int *) malloc (sizeof(int)*N);
+		poblacion.B[i] = (float *) malloc (sizeof(float)*N);
 		for(j=0;j<N;j++)
 			poblacion.B[i][j] = (10.0*rand()/(RAND_MAX+1.0));
 	}
-	poblacion.aptitud = (int *) malloc (sizeof(Poblacion)*POBLACION);
+	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
 	for(j=0;j<N;j++){
-			poblacion.aptitud[j] = (10.0*rand()/(RAND_MAX+1.0));
+		poblacion.aptitud[j] = (10.0*rand()/(RAND_MAX+1.0));
 	}
 	return poblacion;
 }
 
 void display_poblacion(Poblacion poblacion){
 	int i,j;
+	printf("\n####### DISPLAY POBLACION #######\n");
 	for(i=0;i<POBLACION;i++){
-		//printf("Genotipo número %d \n",i);
-		printf("Valor del cromosoma ");
+		printf("Valor del cromosoma |");
 		for(j=0;j<N;j++){
-			printf(" %d ",poblacion.B[i][j]);
+			printf(" %f |",poblacion.B[i][j]);
 		}
-		printf("aptitud :%d \n", poblacion.aptitud[i]);
+		printf("\nAptitud :%f \n", poblacion.aptitud[i]);
 	}
+	printf("################################\n");
 }
+
 void mutacion_poblacion(Poblacion p){
-	int i,j,x;
-	for(i=0;i<POBLACION;i++) {
-		for(j=0;j<N;j++)
-			if ((double) rand()/(RAND_MAX+1.0) < PROB_MUTACION){
-				x = rand()/(RAND_MAX+1.0);
-				printf("Valor de la wea %d\n", x);
-				p.B[i][j] = bitwise_mutation_operator(p.B[i][j],x);
-			}
+	int i,j;
+	double x;
+	printf("\n####### MUTACION POBLACION #######\n");
+	for(i=0;i<POBLACION;i++){
+		for(j=0;j<N;j++){
+			x = (double)rand()/(RAND_MAX+1.0);
+			if (x < PROB_MUTACION)
+				bitwise_mutation_operator(p.B[i][j], (int)x);
 		}
+	}
+	printf("################################\n");
 }
 
-int bitwise_mutation_operator(int a, int x){
-
-	/* Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
+/* Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
 	los numeros pueden llegar a cambiar demasiado.*/
 	//x = a/(rand()%a);
 	/* Obtenido de esta pagina: http://www.cprogramming.com/tutorial/bitwise_operators.html
 	n_use = in_use ^ 1<<car_num; */
-	return a ^ 1<<x;
+float bitwise_mutation_operator(float a, int x){
+	unsigned char *c = reinterpret_cast<unsigned char *>(&a);
+
+	printf("antes c[0] = %u       s = 1\n", c[0]);
+    c[3] = c[3] ^ ('1' << x);
+	printf("despues c[0] = %u \n", c[0]);
+    unsigned float a2 = reinterpret_cast<float>(c);
+    printf("%f /n", a2);
+    return a2;
 }
 float fitness(int **A,int *Vector_b, int *Vector_c){
 	int F0,F1;
@@ -216,9 +227,9 @@ void tournament_selection(Poblacion poblacion){
 	}
 	for (i = 0; i < N; ++i){
 		for (j = 0; j < POBLACION; j++){
-			printf(" B[%d][%d] : %d, ", i,j,selection.B[i][j]);			
+			printf(" B[%d][%d] : %f, ", i,j,selection.B[i][j]);			
 		}
-		printf(" aptitud[%d]: %d \n", i,selection.aptitud[i]);
+		printf(" aptitud[%d]: %f \n", i,selection.aptitud[i]);
 	}
 	
 }
