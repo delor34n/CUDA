@@ -1,12 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
 #include <time.h>
 #include <math.h>
-#include <stdint.h>
 
 #define POBLACION 5
 #define N 5
-#define PROB_MUTACION 0.01
+#define PROB_MUTACION 1
 
 typedef struct {
 	float **B;
@@ -17,7 +17,7 @@ Poblacion init_poblacion(Poblacion poblacion);
 void display_poblacion(Poblacion poblacion);
 //Mutation and crossover
 void bitwise_crossover_operator(int a, int b);
-float bitwise_mutation_operator(float a, int x);
+float bitwise_mutation_operator(float a);
 void mutacion_poblacion(Poblacion p);
 void tournament_selection(Poblacion poblacion);
 
@@ -34,15 +34,16 @@ int main(int argc, char **argv){
 	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 	int i;
-	for(i=0;i<2;i++){
+	for(i=0;i<1;i++){
 		mutacion_poblacion(poblacion);
-		printf("CROMOSOMAS CAMBIADOOOS\n");
+		printf("CROMOSOMAS MUTADOS\n");
 		display_poblacion(poblacion);
 	}
 	tournament_selection(poblacion);
 	bitwise_crossover_operator(2, 4);
 }
 
+//http://stackoverflow.com/questions/3830663/random-and-negative-numbers
 Poblacion init_poblacion(Poblacion poblacion){
 	poblacion.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
 	int i,j;
@@ -72,38 +73,53 @@ void display_poblacion(Poblacion poblacion){
 }
 
 void mutacion_poblacion(Poblacion p){
-	int i,j;
-	double x;
 	printf("\n####### MUTACION POBLACION #######\n");
-	for(i=0;i<POBLACION;i++){
-		for(j=0;j<N;j++){
-			x = (double)rand()/(RAND_MAX+1.0);
-			if (x < PROB_MUTACION)
-				bitwise_mutation_operator(p.B[i][j], (int)x);
+	for(int i=0;i<POBLACION;i++){
+		for(int j=0;j<N;j++){
+			if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
+				p.B[i][j] = bitwise_mutation_operator(p.B[i][j]);
+			//printf("p.B[%d][%d] , %f\n", i, j, p.B[i][j]);
 		}
 	}
-	printf("################################\n");
+	//printf("################################\n");
 }
 
-/* Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
-	los numeros pueden llegar a cambiar demasiado.*/
+/*  Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
+	los numeros pueden llegar a cambiar demasiado.
 	//x = a/(rand()%a);
-	/* Obtenido de esta pagina: http://www.cprogramming.com/tutorial/bitwise_operators.html
-	n_use = in_use ^ 1<<car_num; */
-float bitwise_mutation_operator(float a, int x){
+    Obtenido de esta pagina: http://www.cprogramming.com/tutorial/bitwise_operators.html
+	n_use = in_use ^ 1<<car_num;
+*/
+float bitwise_mutation_operator(float a){
 	unsigned char *c = reinterpret_cast<unsigned char *>(&a);
+	int x = rand() % 7;
+	int quarter = rand() % 3;
 
-	printf("antes c[0] = %u       s = 1\n", c[0]);
-    c[3] = c[3] ^ ('1' << x);
-	printf("despues c[0] = %u \n", c[0]);
-    unsigned float a2 = reinterpret_cast<float>(c);
-    printf("%f /n", a2);
-    return a2;
+	/*
+	printf("\na: %f, quarter: %d; c length: %lu; c[%d]: ", a, quarter, sizeof(c), x);
+	std::cout << std::bitset<8>(c[x])[x] << std::endl << std::endl;
+	for(size_t i=0; i<sizeof a; ++i){
+		std::cout << std::bitset<8>(c[i]) << std::endl;
+	}
+	*/
+
+    c[quarter] = c[quarter] ^ (1<<x);
+
+    /*
+    for(size_t i=0; i<sizeof a; ++i){
+		std::cout << std::bitset<8>(c[i]) << std::endl;
+	}
+	std::cout << std::endl;
+	*/
+
+	//printf("a despues: %f \n", *a2);
+    return (float) *(reinterpret_cast<float *>(c));
 }
+
 float fitness(int **A,int *Vector_b, int *Vector_c){
 	int F0,F1;
-	int F2[N]
-;	int i,j;
+	int F2[N];
+	int i,j;
 	int prod,E,rmse;
 	for(i=0;i<N;i++){
 		prod = 0;
