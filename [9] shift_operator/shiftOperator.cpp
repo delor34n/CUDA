@@ -92,8 +92,8 @@ void mutacion_poblacion(Poblacion p){
 */
 float bitwise_mutation_operator(float a){
 	unsigned char *c = reinterpret_cast<unsigned char *>(&a);
-	int x = rand() % 7;
-	int quarter = rand() % 3;
+	int x = ranged_rand(0,7);
+	int quarter = ranged_rand(0,3);
 
 	/*
 	printf("\na: %f, quarter: %d; c length: %lu; c[%d]: ", a, quarter, sizeof(c), x);
