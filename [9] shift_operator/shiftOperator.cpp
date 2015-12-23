@@ -22,6 +22,7 @@ void mutacion_poblacion(Poblacion p);
 void tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
+float ranged_rand(int min, int max);
 
 int main(int argc, char **argv){
 	srand(time(NULL));
@@ -43,19 +44,18 @@ int main(int argc, char **argv){
 	bitwise_crossover_operator(2, 4);
 }
 
-//http://stackoverflow.com/questions/3830663/random-and-negative-numbers
 Poblacion init_poblacion(Poblacion poblacion){
 	poblacion.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
 	int i,j;
 	for(i=0;i<POBLACION;i++){
 		poblacion.B[i] = (float *) malloc (sizeof(float)*N);
 		for(j=0;j<N;j++)
-			poblacion.B[i][j] = (10.0*rand()/(RAND_MAX+1.0));
+			poblacion.B[i][j] = ranged_rand(-10, 10);
 	}
+	
 	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
-	for(j=0;j<N;j++){
-		poblacion.aptitud[j] = (10.0*rand()/(RAND_MAX+1.0));
-	}
+	for(j=0;j<N;j++)
+		poblacion.aptitud[j] = ranged_rand(-10, 10);
 	return poblacion;
 }
 
@@ -247,5 +247,8 @@ void tournament_selection(Poblacion poblacion){
 		}
 		printf(" aptitud[%d]: %f \n", i,selection.aptitud[i]);
 	}
-	
+}
+
+float ranged_rand(int min, int max){
+    return min + ((float)(max - min) * (rand() / (RAND_MAX + 1.0)));
 }
