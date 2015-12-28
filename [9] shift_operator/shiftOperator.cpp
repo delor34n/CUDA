@@ -4,9 +4,10 @@
 #include <time.h>
 #include <math.h>
 
-#define POBLACION 5
+#define POBLACION 50
 #define N 5
-#define PROB_MUTACION 1
+#define PROB_MUTACION 0.001
+#define GENERATIONS 100
 
 typedef struct {
 	float **B;
@@ -14,12 +15,13 @@ typedef struct {
 } Poblacion;
 
 Poblacion init_poblacion(Poblacion poblacion);
+Poblacion init_selection(Poblacion selection);
 void display_poblacion(Poblacion poblacion);
 //Mutation and crossover
-void bitwise_crossover_operator(int a, int b);
+void crossover(Poblacion poblacion, int individual_a, int individual_b);
 float bitwise_mutation_operator(float a);
 void mutacion_poblacion(Poblacion p);
-void tournament_selection(Poblacion poblacion);
+Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
 float ranged_rand(int min, int max);
@@ -29,19 +31,17 @@ int main(int argc, char **argv){
 
 	Poblacion poblacion;	
 	poblacion = init_poblacion(poblacion);
-	//display_poblacion(poblacion);
 	
 	float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
 	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 	int i;
-	for(i=0;i<1;i++){
+	for(i=0;i<GENERATIONS;i++){
+		display_poblacion(poblacion);
 		mutacion_poblacion(poblacion);
 		printf("CROMOSOMAS MUTADOS\n");
-		display_poblacion(poblacion);
+		poblacion = tournament_selection(poblacion);
 	}
-	tournament_selection(poblacion);
-	bitwise_crossover_operator(2, 4);
 }
 
 Poblacion init_poblacion(Poblacion poblacion){
@@ -55,8 +55,17 @@ Poblacion init_poblacion(Poblacion poblacion){
 	
 	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
 	for(j=0;j<N;j++)
-		poblacion.aptitud[j] = ranged_rand(-10, 10);
+		poblacion.aptitud[j] = ranged_rand(0, 10);
 	return poblacion;
+}
+
+Poblacion init_selection(Poblacion selection){
+	selection.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
+	for(int i=0;i<POBLACION;i++)
+		selection.B[i] = (float *) malloc (sizeof(float)*N);
+	
+	selection.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
+	return selection;
 }
 
 void display_poblacion(Poblacion poblacion){
@@ -202,51 +211,29 @@ snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
 
 got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
-void bitwise_crossover_operator(int a, int b){
-
-	printf("a = %d, b = %d \n",a,b);	
-	int dataLength = 32;
-	int realLength = 6;
-	int crossoverPoint = 1;
-	int Mask = 255;
-	int word = crossoverPoint/realLength;
-	int wordPoint = crossoverPoint%realLength;
-	int restWP = dataLength-realLength;
-	int snew1 = ((a>>crossoverPoint)<<crossoverPoint)|(((b<<wordPoint)&Mask)>>wordPoint);
-	printf("crossoverPoint %d , wordPoint = %d \n", crossoverPoint,wordPoint);
-	int snew2 = ((b>>crossoverPoint)<<crossoverPoint)|(((a<<wordPoint)&Mask)>>wordPoint);
-	printf("snew1 = %d, snew2 =%d  \n",snew1,snew2);
+void crossover(Poblacion poblacion, int individual_a, int individual_b){
+	
 }
 
-void tournament_selection(Poblacion poblacion){
-	Poblacion cand_a,cand_b,selection;
-	int i,j,piv;
-	cand_a = init_poblacion(cand_a);
-	cand_b = init_poblacion(cand_b);
-	selection = init_poblacion(selection);
-	for(i=0;i<POBLACION-1;i++){
-		piv = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
-		cand_a.B[i] = poblacion.B[piv];
-		cand_a.aptitud[i] = poblacion.aptitud[piv];
-		piv = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
-		cand_b.B[i] = poblacion.B[piv];
-		cand_b.aptitud[i] = poblacion.aptitud[piv];
+Poblacion tournament_selection(Poblacion poblacion){
+	Poblacion selection;
+	selection = init_selection(selection);
+	int cand_a, cand_b;
 
-		if(cand_a.aptitud[i]<cand_b.aptitud[i]){
-			selection.B[i] = cand_a.B[i];
-			selection.aptitud[i] = cand_a.aptitud[i];
+	for(int i=0;i<POBLACION-1;i++){
+		cand_a = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
+		cand_b = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
+
+		if(poblacion.aptitud[cand_a]<poblacion.aptitud[cand_b]){
+			selection.B[i] = poblacion.B[cand_a];
+			selection.aptitud[i] = poblacion.aptitud[cand_a];
 		}else{
-			selection.B[i] = cand_b.B[i];
-			selection.aptitud[i] = cand_b.aptitud[i];
+			selection.B[i] = poblacion.B[cand_b];
+			selection.aptitud[i] = poblacion.aptitud[cand_b];
 
 		}
 	}
-	for (i = 0; i < N; ++i){
-		for (j = 0; j < POBLACION; j++){
-			printf(" B[%d][%d] : %f, ", i,j,selection.B[i][j]);			
-		}
-		printf(" aptitud[%d]: %f \n", i,selection.aptitud[i]);
-	}
+	return selection;
 }
 
 float ranged_rand(int min, int max){
