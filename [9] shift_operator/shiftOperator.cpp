@@ -4,10 +4,10 @@
 #include <time.h>
 #include <math.h>
 
-#define POBLACION 50
+#define POBLACION 10
 #define N 5
 #define PROB_MUTACION 0.001
-#define GENERATIONS 100
+#define GENERATIONS 10
 
 typedef struct {
 	float **B;
@@ -17,10 +17,10 @@ typedef struct {
 Poblacion init_poblacion(Poblacion poblacion);
 Poblacion init_selection(Poblacion selection);
 void display_poblacion(Poblacion poblacion);
-//Mutation and crossover
+
 void crossover(Poblacion poblacion, int individual_a, int individual_b);
 float bitwise_mutation_operator(float a);
-void mutacion_poblacion(Poblacion p);
+void mutacion_poblacion(Poblacion *p);
 Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
@@ -35,10 +35,10 @@ int main(int argc, char **argv){
 	float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
 	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
-	int i;
-	for(i=0;i<GENERATIONS;i++){
+
+	for(int i=0;i<GENERATIONS;i++){
 		display_poblacion(poblacion);
-		mutacion_poblacion(poblacion);
+		mutacion_poblacion(&poblacion);
 		printf("CROMOSOMAS MUTADOS\n");
 		poblacion = tournament_selection(poblacion);
 	}
@@ -46,16 +46,14 @@ int main(int argc, char **argv){
 
 Poblacion init_poblacion(Poblacion poblacion){
 	poblacion.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
-	int i,j;
-	for(i=0;i<POBLACION;i++){
+	for(int i=0;i<POBLACION;i++){
 		poblacion.B[i] = (float *) malloc (sizeof(float)*N);
-		for(j=0;j<N;j++)
+		for(int j=0;j<N;j++)
 			poblacion.B[i][j] = ranged_rand(-10, 10);
 	}
-	
 	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
-	for(j=0;j<N;j++)
-		poblacion.aptitud[j] = ranged_rand(0, 10);
+	for(int i=0;i<POBLACION;i++)
+		poblacion.aptitud[i] = ranged_rand(2, 10);
 	return poblacion;
 }
 
@@ -81,12 +79,12 @@ void display_poblacion(Poblacion poblacion){
 	printf("################################\n");
 }
 
-void mutacion_poblacion(Poblacion p){
+void mutacion_poblacion(Poblacion *p){
 	printf("\n####### MUTACION POBLACION #######\n");
 	for(int i=0;i<POBLACION;i++){
 		for(int j=0;j<N;j++){
 			if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
-				p.B[i][j] = bitwise_mutation_operator(p.B[i][j]);
+				p->B[i][j] = bitwise_mutation_operator(p->B[i][j]);
 			//printf("p.B[%d][%d] , %f\n", i, j, p.B[i][j]);
 		}
 	}
