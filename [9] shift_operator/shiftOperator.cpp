@@ -9,6 +9,8 @@
 #define PROB_MUTACION 0.001
 #define GENERATIONS 10
 
+//#define DEBUG
+
 typedef struct {
 	float **B;
 	float *aptitud;
@@ -37,9 +39,13 @@ int main(int argc, char **argv){
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 
 	for(int i=0;i<GENERATIONS;i++){
-		display_poblacion(poblacion);
+		//display_poblacion(poblacion);
 		mutacion_poblacion(&poblacion);
-		printf("CROMOSOMAS MUTADOS\n");
+
+		#ifdef DEBUG
+			printf("CROMOSOMAS MUTADOS\n");
+		#endif
+
 		poblacion = tournament_selection(poblacion);
 	}
 }
@@ -67,11 +73,10 @@ Poblacion init_selection(Poblacion selection){
 }
 
 void display_poblacion(Poblacion poblacion){
-	int i,j;
 	printf("\n####### DISPLAY POBLACION #######\n");
-	for(i=0;i<POBLACION;i++){
+	for(int i=0;i<POBLACION;i++){
 		printf("Valor del cromosoma |");
-		for(j=0;j<N;j++){
+		for(int j=0;j<N;j++){
 			printf(" %f |",poblacion.B[i][j]);
 		}
 		printf("\nAptitud :%f \n", poblacion.aptitud[i]);
@@ -80,15 +85,21 @@ void display_poblacion(Poblacion poblacion){
 }
 
 void mutacion_poblacion(Poblacion *p){
-	printf("\n####### MUTACION POBLACION #######\n");
+	#ifdef DEBUG
+		printf("\n####### MUTACION POBLACION #######\n");
+	#endif
 	for(int i=0;i<POBLACION;i++){
 		for(int j=0;j<N;j++){
 			if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
 				p->B[i][j] = bitwise_mutation_operator(p->B[i][j]);
-			//printf("p.B[%d][%d] , %f\n", i, j, p.B[i][j]);
+			#ifdef DEBUG
+				printf("p.B[%d][%d] , %f\n", i, j, p->B[i][j]);
+			#endif
 		}
 	}
-	//printf("################################\n");
+	#ifdef DEBUG
+		printf("################################\n");
+	#endif
 }
 
 /*  Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
@@ -102,24 +113,23 @@ float bitwise_mutation_operator(float a){
 	int x = ranged_rand(0,7);
 	int quarter = ranged_rand(0,3);
 
-	/*
-	printf("\na: %f, quarter: %d; c length: %lu; c[%d]: ", a, quarter, sizeof(c), x);
-	std::cout << std::bitset<8>(c[x])[x] << std::endl << std::endl;
-	for(size_t i=0; i<sizeof a; ++i){
-		std::cout << std::bitset<8>(c[i]) << std::endl;
-	}
-	*/
+	#ifdef DEBUG
+		printf("\na: %f, quarter: %d; c length: %lu; c[%d]: ", a, quarter, sizeof(c), x);
+		std::cout << std::bitset<8>(c[x])[x] << std::endl << std::endl;
+		for(size_t i=0; i<sizeof a; ++i){
+			std::cout << std::bitset<8>(c[i]) << std::endl;
+		}
+	#endif
 
     c[quarter] = c[quarter] ^ (1<<x);
 
-    /*
-    for(size_t i=0; i<sizeof a; ++i){
-		std::cout << std::bitset<8>(c[i]) << std::endl;
-	}
-	std::cout << std::endl;
-	*/
+	#ifdef DEBUG
+	    for(size_t i=0; i<sizeof a; ++i){
+			std::cout << std::bitset<8>(c[i]) << std::endl;
+		}
+		std::cout << std::endl;
+	#endif
 
-	//printf("a despues: %f \n", *a2);
     return (float) *(reinterpret_cast<float *>(c));
 }
 
