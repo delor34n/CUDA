@@ -22,7 +22,7 @@ void display_poblacion(Poblacion poblacion);
 
 void crossover(Poblacion poblacion, int individual_a, int individual_b);
 float bitwise_mutation_operator(float a);
-void mutacion_poblacion(Poblacion *p);
+void mutacion_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
@@ -84,19 +84,12 @@ void display_poblacion(Poblacion poblacion){
 	printf("################################\n");
 }
 
-void mutacion_poblacion(Poblacion *p){
+void mutacion_poblacion(float *B){
 	#ifdef DEBUG
 		printf("\n####### MUTACION POBLACION #######\n");
 	#endif
-	for(int i=0;i<POBLACION;i++){
-		for(int j=0;j<N;j++){
-			if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
-				p->B[i][j] = bitwise_mutation_operator(p->B[i][j]);
-			#ifdef DEBUG
-				printf("p.B[%d][%d] , %f\n", i, j, p->B[i][j]);
-			#endif
-		}
-	}
+	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
+		*B[i][j] = bitwise_mutation_operator(B[i][j]);	
 	#ifdef DEBUG
 		printf("################################\n");
 	#endif
@@ -219,8 +212,27 @@ snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
 
 got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
-void crossover(Poblacion poblacion, int individual_a, int individual_b){
-	
+//void crossover(Poblacion poblacion, int individual_a, int individual_b){
+void crossover(Poblacion poblacion){
+	float aux;
+	int point,j,i;
+	for(i=0;i<POBLACION-1;i+2){
+		if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
+			point=ranged_rand(1,N-1);
+			for(j=point;j<N-1;j++){
+				aux=poblacion[i].B[j];
+				poblacion[i].B[j]=poblacion[i+1].B[j];
+				poblacion[i+1].B[j]=aux;
+			}
+			mutacion_poblacion(poblacion[i].B);
+
+			//Aqui viene la fitness*******************
+			/*
+			fitness(**A,*B,poblacion[i].B[]);
+
+			*/
+		}
+	}
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
