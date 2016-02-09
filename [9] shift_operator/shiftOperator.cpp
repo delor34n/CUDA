@@ -9,6 +9,7 @@
 #define PROB_MUTACION 0.001
 #define GENERATIONS 1
 #define PROB_CRUCE 0.3
+#define PUNISHMENT_F1 30
 
 //#define DEBUG
 
@@ -141,20 +142,26 @@ double RMSE(float **A, float *B, float *w){
 	return sqrt(E/POBLACION);
 }
 
+float vector_plus(float vector){
+	float total = 0;
+	for(int i=0; i<N; i++)
+		total += vector[i];
+	return total;
+}
+
 float fitness(float **A, float *B, float *w){
 	int F0,F1;
 	int F2[N];
 	
 	F0 = RMSE(A, B, w);
 
-	//if (N == 289 || N == 1089){ //Condiciones originales de fitness implementada en el paper de Arturo.
-
-	int sum_b,sum_c;
-	for (i=0;i<N;i++){
-		sum_b = sum_b + Vector_b[i];
-		sum_c = sum_c + Vector_c[i];
+	//	Condiciones originales de fitness implementada en el paper de Arturo Longton.
+	if (POBLACION == 289 || POBLACION == 1089){
+		if(vector_plus(w) < vector_plus(B))
+			F1 = 0;
+		else
+			F1 = PUNISHMENT_F1;
 	}
-	F1 = (sum_c <= sum_b)?0:45;
 
 	/*Revisar F2, ya que no entendemos su funcionamiento.
     %sum nodos <= sumFuente
