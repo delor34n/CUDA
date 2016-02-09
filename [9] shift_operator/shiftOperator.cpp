@@ -5,9 +5,9 @@
 #include <math.h>
 
 #define POBLACION 10
-#define N 5
+#define N 6
 #define PROB_MUTACION 0.001
-#define GENERATIONS 10
+#define GENERATIONS 1
 #define PROB_CRUCE 0.3
 
 //#define DEBUG
@@ -23,7 +23,7 @@ void display_poblacion(Poblacion poblacion);
 
 void crossover(Poblacion * poblacion);
 float bitwise_mutation_operator(float a);
-void mutacion_poblacion(float *B);
+void mutation_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
@@ -40,9 +40,10 @@ int main(int argc, char **argv){
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 
 	for(int i=0;i<GENERATIONS;i++){
-		poblacion = tournament_selection(poblacion);
-		//display_poblacion(poblacion);
+		display_poblacion(poblacion);
+		//poblacion = tournament_selection(poblacion);
 		crossover(&poblacion);
+		display_poblacion(poblacion);
 
 		#ifdef DEBUG
 			printf("CROMOSOMAS MUTADOS\n");
@@ -84,7 +85,7 @@ void display_poblacion(Poblacion poblacion){
 	printf("################################\n");
 }
 
-void mutacion_poblacion(float *B){
+void mutation_poblacion(float *B){
 	#ifdef DEBUG
 		printf("\n####### MUTACION POBLACION #######\n");
 	#endif
@@ -218,29 +219,30 @@ got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.p
 void crossover(Poblacion * poblacion){
 	float aux;
 	//	if one
-	if(ranged_rand(0,1)){
+	if(!ranged_rand(-1,1)){
+		printf("cruce 1");
 		for(int i=0;i<POBLACION-1;i+=2){
-			printf("%d\n", i);
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
-				for(int j=(int)(N/2);j<N-1;j++){
+				for(int j=(int)(N/2);j<N;j++){
 					aux=poblacion->B[i][j];
 					poblacion->B[i][j]=poblacion->B[i+1][j];
 					poblacion->B[i+1][j]=aux;
 				}
 			}
-			mutacion_poblacion(poblacion->B[i]);
+			mutation_poblacion(poblacion->B[i]);
 		}
 	} else {
 		//	if zero
-		for(int i=0, i_aux = 0;i<POBLACION-1;i+=2, i_aux++){
+		printf("cruce 0");
+		for(int i=0; i<POBLACION-1; i+=2){
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
-				for(int j=(int)(N/2);j<N-1;j++){
+				for(int j=(int)(N/2), i_aux = 0; j<N; j++, i_aux++){
 					aux=poblacion->B[i][i_aux];
 					poblacion->B[i][i_aux]=poblacion->B[i+1][j];
 					poblacion->B[i+1][j]=aux;
 				}
 			}
-			mutacion_poblacion(poblacion->B[i]);
+			mutation_poblacion(poblacion->B[i]);
 		}
 	}
 	//Aqui viene la fitness*******************
