@@ -41,7 +41,7 @@ int main(int argc, char **argv){
 
 	for(int i=0;i<GENERATIONS;i++){
 		display_poblacion(poblacion);
-		//poblacion = tournament_selection(poblacion);
+		poblacion = tournament_selection(poblacion);
 		crossover(&poblacion);
 		display_poblacion(poblacion);
 
@@ -220,7 +220,6 @@ void crossover(Poblacion * poblacion){
 	float aux;
 	//	if one
 	if(!ranged_rand(-1,1)){
-		printf("cruce 1");
 		for(int i=0;i<POBLACION-1;i+=2){
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
 				for(int j=(int)(N/2);j<N;j++){
@@ -233,7 +232,6 @@ void crossover(Poblacion * poblacion){
 		}
 	} else {
 		//	if zero
-		printf("cruce 0");
 		for(int i=0; i<POBLACION-1; i+=2){
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
 				for(int j=(int)(N/2), i_aux = 0; j<N; j++, i_aux++){
