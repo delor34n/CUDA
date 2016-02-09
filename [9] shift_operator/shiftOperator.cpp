@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
+#include <algorithm>
 #include <time.h>
 #include <math.h>
 
@@ -10,6 +11,9 @@
 #define GENERATIONS 1
 #define PROB_CRUCE 0.3
 #define PUNISHMENT_F1 30
+#define PUNISHMENT_F2_100 5
+#define PUNISHMENT_F2_1000 20
+#define PUNISHMENT_F2_NONE 50
 
 //#define DEBUG
 
@@ -29,6 +33,9 @@ Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
 double RMSE(float **A, float *B, float *w);
+float vector_plus(float *vector);
+float* init_f2();
+float* init_front();
 float ranged_rand(int min, int max);
 
 int main(int argc, char **argv){
@@ -137,25 +144,39 @@ double RMSE(float **A, float *B, float *w){
 		prod = 0;
 		for(int j=0;j<N;j++)
 			prod += A[i][j]*w[j];
-		E += abs(pow(prod-B[i],2));
+		E += fabs(pow(prod-B[i],2));
 	}
 	return sqrt(E/POBLACION);
 }
 
-float vector_plus(float vector){
+float vector_plus(float *vector){
 	float total = 0;
 	for(int i=0; i<N; i++)
 		total += vector[i];
 	return total;
 }
 
-float fitness(float **A, float *B, float *w){
-	int F0,F1;
-	int F2[N];
+/*
+*	TODO: preguntar largo de vector frontera.
+*/
+float* init_front(){
+	float *front = (float *) malloc (sizeof(float)*N);
+	for(int i=0;i<N;i++)
+		front[i] = pow(2, i);
+	return front;
+}
+
+/*
+*	front viene ordenado.
+*/
+float fitness(float **A, float *B, float *w, float *front){
+	float F0, F1, F2;
+	float * f2 = init_f2();
 	
+	//	F0: primera condicion RMSE
 	F0 = RMSE(A, B, w);
 
-	//	Condiciones originales de fitness implementada en el paper de Arturo Longton.
+	//	F1: Condiciones originales de fitness implementada en el paper de Arturo Benson.
 	if (POBLACION == 289 || POBLACION == 1089){
 		if(vector_plus(w) < vector_plus(B))
 			F1 = 0;
@@ -163,57 +184,36 @@ float fitness(float **A, float *B, float *w){
 			F1 = PUNISHMENT_F1;
 	}
 
-	/*Revisar F2, ya que no entendemos su funcionamiento.
-    %sum nodos <= sumFuente
-  if sum(w) <= sum(b)
-      F1 = 0;
-  else
-      F1 = 30; %se castiga los q no cumplen la cond
-  end
+	//	F2: condiciones reculias.
+	for(int node=0, i=0; node<POBLACION; node++, i++){
+		if(std::find(front, front+N, node)){
+			if(w[node] == 0)
+				f2[i] = 0;
+			else if(w[node] <= 100)
+				f2[i] = PUNISHMENT_F2_100;
+			else if(w[node] <= 1000)
+				f2[i] = PUNISHMENT_F2_1000;
+			else
+				f2[i] = PUNISHMENT_F2_NONE;
+		}
+		if(i>N)
+			break;
+	}
+	F2 = vector_plus(f2);
 
-   nodos = size(A,1);
-   fronteras = sort(front); % primera fila estan los nodos frontera, 1x64
-   cant_front = length(fronteras);
-   f2 = rand(cant_front,1); % vector de 64X1 para 289 nodos
-
-%condicion borde 0, 
-   i=1;
-   for nodo=1:nodos
-      if find(fronteras == nodo) % el nodo esta en la frontera
-          if w(nodo) == 0
-             f2(i) = 0;
-          else
-              if w(nodo) <= 100
-                  f2(i) = 5;
-              else
-                if w(nodo) <= 1000
-                    f2(i) = 20;
-                else
-                    f2(i) = 50; %se castiga a los w cuyo valor en los nodos esta alejado de 0
-                end
-              end
-          end
-           i = i+1;
-           if i > cant_front
-              break;
-           end
-      end
-   end  
-	F2 = sum(f2);
-
-	  if N == 289 || N == 1089
-      fitness = F0 + F1 + F2;
-  		else
-      fitness = F0;
-  	  end*/
-
-  	if (N==289 || N== 1089){
+	if (POBLACION == 289 || POBLACION == 1089)
   		return F0+F1;
-  	}else
+  	else
   		return F0;
-  	
-	//} 
 }
+
+float* init_f2(){
+	float *f2 = (float *) malloc (sizeof(float)*N);
+	for(int i=0;i<N;i++)
+		f2[i] = ranged_rand(0, N-1);
+	return f2;
+}
+
 /*void cruzamiento_poblacion(){
 dataLength= 8*sizeof(Datatype);
 realLength=ceil(solutionLength/dataLength);
