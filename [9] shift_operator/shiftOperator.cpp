@@ -8,6 +8,7 @@
 #define N 5
 #define PROB_MUTACION 0.001
 #define GENERATIONS 10
+#define PROB_CRUCE 0.3
 
 //#define DEBUG
 
@@ -20,7 +21,7 @@ Poblacion init_poblacion(Poblacion poblacion);
 Poblacion init_selection(Poblacion selection);
 void display_poblacion(Poblacion poblacion);
 
-void crossover(Poblacion poblacion, int individual_a, int individual_b);
+void crossover(Poblacion * poblacion);
 float bitwise_mutation_operator(float a);
 void mutacion_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
@@ -39,14 +40,13 @@ int main(int argc, char **argv){
 	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 
 	for(int i=0;i<GENERATIONS;i++){
+		poblacion = tournament_selection(poblacion);
 		//display_poblacion(poblacion);
-		mutacion_poblacion(&poblacion);
+		crossover(&poblacion);
 
 		#ifdef DEBUG
 			printf("CROMOSOMAS MUTADOS\n");
 		#endif
-
-		poblacion = tournament_selection(poblacion);
 	}
 }
 
@@ -88,8 +88,10 @@ void mutacion_poblacion(float *B){
 	#ifdef DEBUG
 		printf("\n####### MUTACION POBLACION #######\n");
 	#endif
-	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION)
-		*B[i][j] = bitwise_mutation_operator(B[i][j]);	
+	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION){
+		int j = (int)ranged_rand(0, N-1);
+		B[j] = bitwise_mutation_operator(B[j]);	
+	}
 	#ifdef DEBUG
 		printf("################################\n");
 	#endif
@@ -213,26 +215,38 @@ snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
 got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
 //void crossover(Poblacion poblacion, int individual_a, int individual_b){
-void crossover(Poblacion poblacion){
+void crossover(Poblacion * poblacion){
 	float aux;
-	int point,j,i;
-	for(i=0;i<POBLACION-1;i+2){
-		if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
-			point=ranged_rand(1,N-1);
-			for(j=point;j<N-1;j++){
-				aux=poblacion[i].B[j];
-				poblacion[i].B[j]=poblacion[i+1].B[j];
-				poblacion[i+1].B[j]=aux;
+	//	if one
+	if(ranged_rand(0,1)){
+		for(int i=0;i<POBLACION-1;i+=2){
+			printf("%d\n", i);
+			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
+				for(int j=(int)(N/2);j<N-1;j++){
+					aux=poblacion->B[i][j];
+					poblacion->B[i][j]=poblacion->B[i+1][j];
+					poblacion->B[i+1][j]=aux;
+				}
 			}
-			mutacion_poblacion(poblacion[i].B);
-
-			//Aqui viene la fitness*******************
-			/*
-			fitness(**A,*B,poblacion[i].B[]);
-
-			*/
+			mutacion_poblacion(poblacion->B[i]);
+		}
+	} else {
+		//	if zero
+		for(int i=0, i_aux = 0;i<POBLACION-1;i+=2, i_aux++){
+			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
+				for(int j=(int)(N/2);j<N-1;j++){
+					aux=poblacion->B[i][i_aux];
+					poblacion->B[i][i_aux]=poblacion->B[i+1][j];
+					poblacion->B[i+1][j]=aux;
+				}
+			}
+			mutacion_poblacion(poblacion->B[i]);
 		}
 	}
+	//Aqui viene la fitness*******************
+	/*
+		fitness(**A,*B,poblacion[i].B[]);
+	*/
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
