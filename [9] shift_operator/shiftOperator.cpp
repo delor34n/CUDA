@@ -31,7 +31,7 @@ float bitwise_mutation_operator(float a);
 void mutation_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
 
-float fitness(int **A,int *Vector_b, int *Vector_c);
+float fitness(float **A, float *B, float *w, float *front);
 double RMSE(float **A, float *B, float *w);
 float vector_plus(float *vector);
 float* init_f2();
@@ -253,10 +253,7 @@ void crossover(Poblacion * poblacion){
 			mutation_poblacion(poblacion->B[i]);
 		}
 	}
-	//Aqui viene la fitness*******************
-	/*
-		fitness(**A,*B,poblacion[i].B[]);
-	*/
+	//fitness(A, B, poblacion->B, init_front());
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
