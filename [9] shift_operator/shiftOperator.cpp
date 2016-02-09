@@ -27,6 +27,7 @@ void mutation_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
 
 float fitness(int **A,int *Vector_b, int *Vector_c);
+double RMSE(float **A, float *B, float *w);
 float ranged_rand(int min, int max);
 
 int main(int argc, char **argv){
@@ -129,20 +130,22 @@ float bitwise_mutation_operator(float a){
     return (float) *(reinterpret_cast<float *>(c));
 }
 
-float fitness(int **A,int *Vector_b, int *Vector_c){
+double RMSE(float **A, float *B, float *w){
+	double prod, E;
+	for(int i=0;i<POBLACION;i++){
+		prod = 0;
+		for(int j=0;j<N;j++)
+			prod += A[i][j]*w[j];
+		E += abs(pow(prod-B[i],2));
+	}
+	return sqrt(E/POBLACION);
+}
+
+float fitness(float **A, float *B, float *w){
 	int F0,F1;
 	int F2[N];
-	int i,j;
-	int prod,E,rmse;
-	for(i=0;i<N;i++){
-		prod = 0;
-		for(j=0;j<N;j++){//hasta N en el caso de una matriz cuadrada.
-			prod = prod + A[i][j]*Vector_b[j];
-		}
-	E = E + abs(prod-Vector_c[i]);
-	}
-	rmse = sqrt(E/N);
-	F0 = rmse;
+	
+	F0 = RMSE(A, B, w);
 
 	//if (N == 289 || N == 1089){ //Condiciones originales de fitness implementada en el paper de Arturo.
 
