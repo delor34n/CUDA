@@ -22,6 +22,15 @@ typedef struct {
 	float *aptitud;
 } Poblacion;
 
+float **A;
+float *B;
+float *VECTOR_FRONTERAS;
+
+void init();
+void init_A();
+void init_B();
+void init_vector();
+
 Poblacion init_poblacion(Poblacion poblacion);
 Poblacion init_selection(Poblacion selection);
 void display_poblacion(Poblacion poblacion);
@@ -31,7 +40,7 @@ float bitwise_mutation_operator(float a);
 void mutation_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
 
-float fitness(float **A, float *B, float *w, float *front);
+float fitness(float **A, float *B, float *w);
 double RMSE(float **A, float *B, float *w);
 float vector_plus(float *vector);
 float* init_f2();
@@ -41,8 +50,10 @@ float ranged_rand(int min, int max);
 int main(int argc, char **argv){
 	srand(time(NULL));
 
-	Poblacion poblacion;	
+	Poblacion poblacion;
 	poblacion = init_poblacion(poblacion);
+
+	init();
 	
 	float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
 	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
@@ -60,12 +71,39 @@ int main(int argc, char **argv){
 	}
 }
 
+void init(){
+	init_A();
+	init_B();
+	init_vector();
+}
+
+void init_A(){
+	A = (float **) malloc (sizeof(Poblacion)*POBLACION);
+	for(int i=0; i<POBLACION; i++){
+		A[i] = (float *) malloc (sizeof(float)*N);
+		for(int j=0; j<N; j++)
+			std::cin >> A[i][j];
+	}
+}
+
+void init_B(){
+	B = (float *) malloc (sizeof(float)*N);
+	for(int i=0; i<N; i++)
+		std::cin >> B[i];
+}
+
+void init_vector(){
+	VECTOR_FRONTERAS = (float *) malloc (sizeof(float)*N);
+	for(int i=0; i<N; i++)
+		std::cin >> VECTOR_FRONTERAS[i];
+}
+
 Poblacion init_poblacion(Poblacion poblacion){
 	poblacion.B = (float **) malloc (sizeof(Poblacion)*POBLACION);
 	for(int i=0;i<POBLACION;i++){
 		poblacion.B[i] = (float *) malloc (sizeof(float)*N);
 		for(int j=0;j<N;j++)
-			poblacion.B[i][j] = ranged_rand(-10, 10);
+			std::cin >> poblacion.B[i][j];
 	}
 	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
 	for(int i=0;i<POBLACION;i++)
@@ -169,7 +207,7 @@ float* init_front(){
 /*
 *	front viene ordenado.
 */
-float fitness(float **A, float *B, float *w, float *front){
+float fitness(float **A, float *B, float *w){
 	float F0, F1, F2;
 	float * f2 = init_f2();
 	
@@ -186,7 +224,7 @@ float fitness(float **A, float *B, float *w, float *front){
 
 	//	F2: condiciones reculias.
 	for(int node=0, i=0; node<POBLACION; node++, i++){
-		if(std::find(front, front+N, node)){
+		if(std::find(VECTOR_FRONTERAS, VECTOR_FRONTERAS+N, node)){
 			if(w[node] == 0)
 				f2[i] = 0;
 			else if(w[node] <= 100)
@@ -253,7 +291,7 @@ void crossover(Poblacion * poblacion){
 			mutation_poblacion(poblacion->B[i]);
 		}
 	}
-	//fitness(A, B, poblacion->B, init_front());
+	fitness(A, B, poblacion->B);
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
