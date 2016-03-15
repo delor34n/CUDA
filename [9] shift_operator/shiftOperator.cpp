@@ -207,7 +207,7 @@ float* init_front(){
 /*
 *	front viene ordenado.
 */
-float fitness(float **A, float *B, float *w){
+float fitness(float **A, float *w, float *B){
 	float F0, F1, F2;
 	float * f2 = init_f2();
 	
@@ -291,7 +291,7 @@ void crossover(Poblacion * poblacion){
 			mutation_poblacion(poblacion->B[i]);
 		}
 	}
-	fitness(A, B, poblacion->B);
+	fitness(A, C, poblacion->B);
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
