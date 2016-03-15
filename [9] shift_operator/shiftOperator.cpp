@@ -23,12 +23,12 @@ typedef struct {
 } Poblacion;
 
 float **A;
-float *B;
+float *C;
 float *VECTOR_FRONTERAS;
 
 void init();
 void init_A();
-void init_B();
+void init_C();
 void init_vector();
 
 Poblacion init_poblacion(Poblacion poblacion);
@@ -55,9 +55,9 @@ int main(int argc, char **argv){
 
 	init();
 	
-	float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
-	float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
-	int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
+	//float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
+	//float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
+	//int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 
 	for(int i=0;i<GENERATIONS;i++){
 		display_poblacion(poblacion);
@@ -73,7 +73,7 @@ int main(int argc, char **argv){
 
 void init(){
 	init_A();
-	init_B();
+	init_C();
 	init_vector();
 }
 
@@ -86,10 +86,10 @@ void init_A(){
 	}
 }
 
-void init_B(){
-	B = (float *) malloc (sizeof(float)*N);
+void init_C(){
+	C = (float *) malloc (sizeof(float)*N);
 	for(int i=0; i<N; i++)
-		std::cin >> B[i];
+		std::cin >> C[i];
 }
 
 void init_vector(){
@@ -207,7 +207,7 @@ float* init_front(){
 /*
 *	front viene ordenado.
 */
-float fitness(float **A, float *w, float *B){
+float fitness(float **A, float *B, float *w){
 	float F0, F1, F2;
 	float * f2 = init_f2();
 	
@@ -277,6 +277,11 @@ void crossover(Poblacion * poblacion){
 				}
 			}
 			mutation_poblacion(poblacion->B[i]);
+			/*
+			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
+			Vector que se trabaja en el AG.
+			*/
+			fitness(A, C, poblacion->B[i]);
 		}
 	} else {
 		//	if zero
@@ -289,9 +294,13 @@ void crossover(Poblacion * poblacion){
 				}
 			}
 			mutation_poblacion(poblacion->B[i]);
+			/*
+			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
+			Vector que se trabaja en el AG.
+			*/
+			fitness(A, C, poblacion->B[i]);			
 		}
 	}
-	fitness(A, C, poblacion->B);
 }
 
 Poblacion tournament_selection(Poblacion poblacion){
