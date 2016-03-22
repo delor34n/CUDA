@@ -5,15 +5,16 @@
 #include <time.h>
 #include <math.h>
 
-#define POBLACION 10
-#define N 6
 #define PROB_MUTACION 0.001
-#define GENERATIONS 1
 #define PROB_CRUCE 0.3
 #define PUNISHMENT_F1 30
 #define PUNISHMENT_F2_100 5
 #define PUNISHMENT_F2_1000 20
 #define PUNISHMENT_F2_NONE 50
+
+int POBLACION;
+int N;
+int GENERATIONS = 1;
 
 //#define DEBUG
 
@@ -39,6 +40,7 @@ void crossover(Poblacion * poblacion);
 float bitwise_mutation_operator(float a);
 void mutation_poblacion(float *B);
 Poblacion tournament_selection(Poblacion poblacion);
+int elite(Poblacion poblacion);
 
 float fitness(float **A, float *B, float *w);
 double RMSE(float **A, float *B, float *w);
@@ -50,25 +52,47 @@ float ranged_rand(int min, int max);
 int main(int argc, char **argv){
 	srand(time(NULL));
 
+	std::cin >> N;
+	std::cin >> POBLACION;
+
 	Poblacion poblacion;
 	poblacion = init_poblacion(poblacion);
 
 	init();
-	
-	//float **Matrix = (float **)malloc(N * sizeof(float*)); //matriz del problema
-	//float *Vector_b = (float *)malloc(N * sizeof(float)); // vector que resta
-	//int *Vector_d = (int *)malloc(N * sizeof(int)); //vector resultado
 
-	for(int i=0;i<GENERATIONS;i++){
+	int elite_index;
+	do{
 		display_poblacion(poblacion);
 		poblacion = tournament_selection(poblacion);
+
+		elite_index = elite(poblacion);
+		poblacion.B[POBLACION-1] = poblacion.B[elite_index];
+		poblacion.aptitud[POBLACION-1] = poblacion.aptitud[elite_index];
 		crossover(&poblacion);
-		display_poblacion(poblacion);
 
 		#ifdef DEBUG
+			display_poblacion(poblacion);
 			printf("CROMOSOMAS MUTADOS\n");
 		#endif
-	}
+
+		GENERATIONS++;
+	}while(poblacion.aptitud[elite(poblacion)] > pow(10,-2));
+
+	int best = elite(poblacion);
+
+	printf ("\n*************************************\n");
+    printf ("*          FIN DEL ALGORITMO        *\n");
+    printf ("*************************************\n");
+    printf (" - El sujeto mas pulento de la poblacion: [");
+    for(int i=0; i<POBLACION-1; i++){
+    	if(i == POBLACION-2)
+    		printf("%f]\n", poblacion.B[best][i]);
+    	else
+    		printf("%f-", poblacion.B[best][i]);
+    }
+    printf (" - Su aptitud/fenotipo es %.5f\n", poblacion.aptitud[best]);
+    printf (" - Es la generacion numero %i\n", GENERATIONS);
+    printf ("*************************************\n");
 }
 
 void init(){
@@ -222,7 +246,7 @@ float fitness(float **A, float *B, float *w){
 			F1 = PUNISHMENT_F1;
 	}
 
-	//	F2: condiciones reculias.
+	//F2: condiciones.
 	for(int node=0, i=0; node<POBLACION; node++, i++){
 		if(std::find(VECTOR_FRONTERAS, VECTOR_FRONTERAS+N, node)){
 			if(w[node] == 0)
@@ -308,20 +332,28 @@ Poblacion tournament_selection(Poblacion poblacion){
 	selection = init_selection(selection);
 	int cand_a, cand_b;
 
-	for(int i=0;i<POBLACION-1;i++){
+	for(int i=0;i<POBLACION;i++){
 		cand_a = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
 		cand_b = (int) (((double) POBLACION)*rand()/(RAND_MAX+1.0));
 
 		if(poblacion.aptitud[cand_a]<poblacion.aptitud[cand_b]){
 			selection.B[i] = poblacion.B[cand_a];
 			selection.aptitud[i] = poblacion.aptitud[cand_a];
-		}else{
+		} else {
 			selection.B[i] = poblacion.B[cand_b];
 			selection.aptitud[i] = poblacion.aptitud[cand_b];
-
 		}
 	}
 	return selection;
+}
+
+int elite(Poblacion poblacion){
+    int best = 0;
+    for(int i=0; i<POBLACION; i++){
+        if(poblacion.aptitud[best] > poblacion.aptitud[i])
+            best = i;
+    }
+    return best;
 }
 
 float ranged_rand(int min, int max){
