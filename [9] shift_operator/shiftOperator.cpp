@@ -17,6 +17,7 @@ int N;
 int GENERATIONS = 1;
 
 //#define DEBUG
+#define DEBUG_1
 
 typedef struct {
 	float **B;
@@ -62,7 +63,9 @@ int main(int argc, char **argv){
 
 	int elite_index;
 	do{
-		display_poblacion(poblacion);
+		#ifdef DEBUG_1
+			display_poblacion(poblacion);
+		#endif
 		poblacion = tournament_selection(poblacion);
 
 		elite_index = elite(poblacion);
@@ -76,7 +79,8 @@ int main(int argc, char **argv){
 		#endif
 
 		GENERATIONS++;
-	}while(poblacion.aptitud[elite(poblacion)] > pow(10,-2));
+	}while(poblacion.aptitud[elite(poblacion)] > pow(10,-1));
+	//}while(GENERATIONS < 10);	
 
 	int best = elite(poblacion);
 
@@ -127,7 +131,7 @@ Poblacion init_poblacion(Poblacion poblacion){
 	for(int i=0;i<POBLACION;i++){
 		poblacion.B[i] = (float *) malloc (sizeof(float)*N);
 		for(int j=0;j<N;j++)
-			std::cin >> poblacion.B[i][j];
+			poblacion.B[i][j] = ranged_rand(1, 5);
 	}
 	poblacion.aptitud = (float *) malloc (sizeof(Poblacion)*POBLACION);
 	for(int i=0;i<POBLACION;i++)
@@ -264,7 +268,7 @@ float fitness(float **A, float *B, float *w){
 	F2 = vector_plus(f2);
 
 	if (POBLACION == 289 || POBLACION == 1089)
-  		return F0+F1;
+  		return F0+F1+F2;
   	else
   		return F0;
 }
