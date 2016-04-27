@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Matriz.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Matriz.hpp</h1><a href="../../d3/dfa/_matriz_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Matriz_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Matriz_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="../../db/d20/_vector_8hpp.html">Vector.hpp</a>"</span>
+<a name="l00004"></a>00004 
+<a name="l00006"></a><a class="code" href="../../d4/d09/class_matriz.html">00006</a> <span class="keyword">class </span><a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>
+<a name="l00007"></a>00007 {
+<a name="l00008"></a>00008    <span class="keyword">protected</span>:
+<a name="l00010"></a><a class="code" href="../../d4/d09/class_matriz.html#b89586fcac217e27663f216b1eaf9e54">00010</a>       <span class="keywordtype">double</span> **<a class="code" href="../../d4/d09/class_matriz.html#b89586fcac217e27663f216b1eaf9e54" title="Puntero de 2 dimensiones.">M</a>;
+<a name="l00012"></a><a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f">00012</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  <a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f" title="Numero de columnas.">Col</a>;
+<a name="l00014"></a><a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c">00014</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   <a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c" title="Numero de filas.">Fil</a>;
+<a name="l00016"></a><a class="code" href="../../d4/d09/class_matriz.html#b0f7d97b0918f8a8209af51be64f9574">00016</a>       <span class="keywordtype">char</span> *<a class="code" href="../../d4/d09/class_matriz.html#b0f7d97b0918f8a8209af51be64f9574" title="Nombre de la matriz.">Nmb</a>;
+<a name="l00017"></a>00017 
+<a name="l00018"></a>00018    
+<a name="l00019"></a>00019    <span class="keyword">public</span>:
+<a name="l00020"></a>00020            
+<a name="l00022"></a><a class="code" href="../../d4/d09/class_matriz.html#7de756301bddbc4b0b5d2a0f2b1fc695">00022</a>       <a class="code" href="../../d4/d09/class_matriz.html#7de756301bddbc4b0b5d2a0f2b1fc695" title="Constructor de la clase.">Matriz</a>(){}
+<a name="l00023"></a>00023                   
+<a name="l00025"></a><a class="code" href="../../d4/d09/class_matriz.html#1021eba29faf9ee9b96000e76e38101c">00025</a>       <a class="code" href="../../d4/d09/class_matriz.html#7de756301bddbc4b0b5d2a0f2b1fc695" title="Constructor de la clase.">Matriz</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   fil,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   col)
+<a name="l00026"></a>00026       {<a class="code" href="../../d4/d09/class_matriz.html#a06886e02a6eb98b9e1ae364c4174c6a" title="Asigna memoria.">Solicita_Memoria</a>(fil,col);}
+<a name="l00027"></a>00027           
+<a name="l00029"></a><a class="code" href="../../d4/d09/class_matriz.html#2092b7a289ecec369e1da407d5839f5a">00029</a>       <a class="code" href="../../d4/d09/class_matriz.html#2092b7a289ecec369e1da407d5839f5a" title="Destructor de la clase.">~Matriz</a>()
+<a name="l00030"></a>00030           {<a class="code" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria.">Libera_Memoria</a>();}
+<a name="l00031"></a>00031                   
+<a name="l00033"></a>00033           <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#666bbf0ace05302d9c4f91e816875911" title="Muestra la matriz.">Visualiza</a>();
+<a name="l00034"></a>00034           
+<a name="l00036"></a>00036       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#9b36322185d6eb00165a0aa8c0bdca9e" title="Asigna nombre a la matriz.">AsignaNombre</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *nmb);
+<a name="l00037"></a>00037    
+<a name="l00039"></a><a class="code" href="../../d4/d09/class_matriz.html#50dd66377bd2aa16122d29f09f9fc18c">00039</a>           <span class="keywordtype">double</span> **<a class="code" href="../../d4/d09/class_matriz.html#50dd66377bd2aa16122d29f09f9fc18c" title="Retorna el puntero donde se almacena la matriz.">Retorna_Puntero_Datos</a>()
+<a name="l00040"></a>00040           {<span class="keywordflow">return</span> <a class="code" href="../../d4/d09/class_matriz.html#b89586fcac217e27663f216b1eaf9e54" title="Puntero de 2 dimensiones.">M</a>;}
+<a name="l00041"></a>00041           
+<a name="l00043"></a><a class="code" href="../../d4/d09/class_matriz.html#ddcb3685ed55135696dd89ebe2fe8d42">00043</a>       <span class="keywordtype">char</span> *<a class="code" href="../../d4/d09/class_matriz.html#ddcb3685ed55135696dd89ebe2fe8d42" title="Retorna el nombre de la matriz.">Nombre</a>(<span class="keywordtype">void</span>)
+<a name="l00044"></a>00044       { <span class="keywordflow">return</span> <a class="code" href="../../d4/d09/class_matriz.html#b0f7d97b0918f8a8209af51be64f9574" title="Nombre de la matriz.">Nmb</a>;}
+<a name="l00045"></a>00045           
+<a name="l00047"></a><a class="code" href="../../d4/d09/class_matriz.html#23e2fc71a0e2e0ebf5a9c2550a68e9d2">00047</a>       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#23e2fc71a0e2e0ebf5a9c2550a68e9d2" title="Asignar numero de filas.">SetFilas</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   fil)
+<a name="l00048"></a>00048       { <a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c" title="Numero de filas.">Fil</a>=fil; }
+<a name="l00049"></a>00049 
+<a name="l00051"></a><a class="code" href="../../d4/d09/class_matriz.html#26ec5476291dc6aae01662d7e0e6b471">00051</a>       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#26ec5476291dc6aae01662d7e0e6b471" title="Asignar numero de columnas.">SetColumnas</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   col)
+<a name="l00052"></a>00052       { <a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f" title="Numero de columnas.">Col</a>=col; }
+<a name="l00054"></a><a class="code" href="../../d4/d09/class_matriz.html#42cedb6b70724eff1b10e4bacbf94fda">00054</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   <a class="code" href="../../d4/d09/class_matriz.html#42cedb6b70724eff1b10e4bacbf94fda" title="Retorna el numero de filas.">Filas</a>(<span class="keywordtype">void</span>)
+<a name="l00055"></a>00055       { <span class="keywordflow">return</span> <a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c" title="Numero de filas.">Fil</a>; }
+<a name="l00056"></a>00056 
+<a name="l00058"></a><a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a">00058</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   <a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas.">Columnas</a>(<span class="keywordtype">void</span>)
+<a name="l00059"></a>00059       { <span class="keywordflow">return</span> <a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f" title="Numero de columnas.">Col</a>; }
+<a name="l00060"></a>00060       
+<a name="l00062"></a>00062       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#a06886e02a6eb98b9e1ae364c4174c6a" title="Asigna memoria.">Solicita_Memoria</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   fil,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   col);
+<a name="l00063"></a>00063           
+<a name="l00065"></a>00065           <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria.">Libera_Memoria</a>();
+<a name="l00066"></a>00066           
+<a name="l00067"></a>00067           
+<a name="l00069"></a><a class="code" href="../../d4/d09/class_matriz.html#4d1f96909ec692037ef7b81f80fbd6dc">00069</a>       <span class="keywordtype">int</span> <a class="code" href="../../d4/d09/class_matriz.html#4d1f96909ec692037ef7b81f80fbd6dc" title="Retorna 1 si es matriz cuadrada en caso contrario regresa 0.">Matriz_Cuadrada</a>(<span class="keywordtype">void</span>)
+<a name="l00070"></a>00070       { <span class="keywordflow">return</span> (<a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f" title="Numero de columnas.">Col</a> == <a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c" title="Numero de filas.">Fil</a> ? 1: 0); }
+<a name="l00071"></a>00071       
+<a name="l00073"></a>00073       <span class="keywordtype">int</span> <a class="code" href="../../d4/d09/class_matriz.html#a0f3ec31bd6c020f14262ea7c8c196ff" title="Revisa si tienen la misma dimension regresando 1 en caso afirmativo y cero en caso...">Misma_Dimension</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a);
+<a name="l00074"></a>00074       
+<a name="l00076"></a><a class="code" href="../../d4/d09/class_matriz.html#62c825700677eae525dc6282016ad60c">00076</a>       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#62c825700677eae525dc6282016ad60c" title="Visualiza el error de falta de memoria para soportar la matriz.">FaltaMemoria</a>(<span class="keywordtype">void</span>)
+<a name="l00077"></a>00077       {
+<a name="l00078"></a>00078          printf(<span class="stringliteral">"\nError no hay memoria para la matriz\n"</span>);
+<a name="l00079"></a>00079          exit(1);
+<a name="l00080"></a>00080       }
+<a name="l00081"></a>00081       
+<a name="l00083"></a><a class="code" href="../../d4/d09/class_matriz.html#7888d1d448a62c98ca75c2f54b727eea">00083</a>       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#7888d1d448a62c98ca75c2f54b727eea" title="Visualiza información general de la matriz.">Ver_Informacion</a>(<span class="keywordtype">void</span>)
+<a name="l00084"></a>00084       {
+<a name="l00085"></a>00085          printf(<span class="stringliteral">"\"%s\" de dimensión: %Ld x %Ld\n"</span>,<a class="code" href="../../d4/d09/class_matriz.html#b0f7d97b0918f8a8209af51be64f9574" title="Nombre de la matriz.">Nmb</a>,<a class="code" href="../../d4/d09/class_matriz.html#cd3b681158a1cf8d8d888127491bb94c" title="Numero de filas.">Fil</a>,<a class="code" href="../../d4/d09/class_matriz.html#f97ccdf6623e99f44f1bae8226de378f" title="Numero de columnas.">Col</a>);
+<a name="l00086"></a>00086       }
+<a name="l00087"></a>00087 
+<a name="l00089"></a><a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a">00089</a>       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   fila, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   columna, <span class="keyword">const</span> <span class="keywordtype">double</span> valor)
+<a name="l00090"></a>00090           {
+<a name="l00091"></a>00091                 <a class="code" href="../../d4/d09/class_matriz.html#b89586fcac217e27663f216b1eaf9e54" title="Puntero de 2 dimensiones.">M</a>[fila][columna]=valor; 
+<a name="l00092"></a>00092           }
+<a name="l00093"></a>00093 
+<a name="l00095"></a><a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25">00095</a>       <span class="keywordtype">double</span> <a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   fila, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   columna)
+<a name="l00096"></a>00096           {
+<a name="l00097"></a>00097                   <span class="keywordflow">return</span> <a class="code" href="../../d4/d09/class_matriz.html#b89586fcac217e27663f216b1eaf9e54" title="Puntero de 2 dimensiones.">M</a>[fila][columna];
+<a name="l00098"></a>00098           }
+<a name="l00099"></a>00099       
+<a name="l00101"></a>00101       <span class="keywordtype">double</span> <a class="code" href="../../d4/d09/class_matriz.html#973927533bd3758d51eb1e972c57b597" title="Tamaño del vector (aproximado) en Kb.">Tamano</a>(<span class="keywordtype">void</span>);
+<a name="l00102"></a>00102 
+<a name="l00104"></a>00104       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#3940ae02f31f5f776b3e0c8b5e373228" title="Inicializa la matriz con el valor val.">Inicializa</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> valor);
+<a name="l00105"></a>00105 
+<a name="l00107"></a>00107       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#666bbf0ace05302d9c4f91e816875911" title="Muestra la matriz.">Visualiza</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> tp);
+<a name="l00108"></a>00108 
+<a name="l00110"></a>00110       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#659de37a940bb4303e53c3751f1a2c5f" title="Copia el contenido de la matriz a la matriz a.">Copia</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a);
+<a name="l00111"></a>00111 
+<a name="l00113"></a>00113       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#752402f8a4dde7d217cfb54d6752125b" title="Suma las matrices A y B.">Suma</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a, <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *b);
+<a name="l00114"></a>00114 
+<a name="l00116"></a>00116       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#752402f8a4dde7d217cfb54d6752125b" title="Suma las matrices A y B.">Suma</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a);
+<a name="l00117"></a>00117 
+<a name="l00119"></a>00119       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#5781e4a33a088bbd669937e5b3946b61" title="Resta a la matriz A la matriz B.">Resta</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a, <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *b);
+<a name="l00120"></a>00120 
+<a name="l00122"></a>00122       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#5781e4a33a088bbd669937e5b3946b61" title="Resta a la matriz A la matriz B.">Resta</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a);
+<a name="l00123"></a>00123 
+<a name="l00125"></a>00125       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#f508444c1182581eebcca988cdc28e26" title="Multiplica la matriz por el escalar ESC.">Multiplica</a>(<span class="keywordtype">double</span> escalar);
+<a name="l00126"></a>00126 
+<a name="l00128"></a>00128       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#f508444c1182581eebcca988cdc28e26" title="Multiplica la matriz por el escalar ESC.">Multiplica</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a, <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *b);
+<a name="l00129"></a>00129 
+<a name="l00131"></a>00131       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#f508444c1182581eebcca988cdc28e26" title="Multiplica la matriz por el escalar ESC.">Multiplica</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *b);
+<a name="l00132"></a>00132 
+<a name="l00134"></a>00134       <span class="keywordtype">void</span> <a class="code" href="../../d4/d09/class_matriz.html#f508444c1182581eebcca988cdc28e26" title="Multiplica la matriz por el escalar ESC.">Multiplica</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *b, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *r);
+<a name="l00135"></a>00135           
+<a name="l00137"></a>00137           <span class="keywordtype">int</span> <a class="code" href="../../d4/d09/class_matriz.html#ffafab976746c41efbc9b42ab0a2ce21" title="Verifica si es estrictamente dominante la matriz.">Dominante</a>();
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 };
+<a name="l00140"></a>00140 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:35 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

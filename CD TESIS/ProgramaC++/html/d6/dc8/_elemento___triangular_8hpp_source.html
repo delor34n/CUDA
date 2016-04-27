@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Elemento_Triangular.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Elemento_Triangular.hpp</h1><a href="../../d6/dc8/_elemento___triangular_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Elemento_Triangular_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Elemento_Triangular_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="../../da/d93/_elemento_8hpp.html">Elemento.hpp</a>"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="../../d3/dfa/_matriz_8hpp.html">Matriz.hpp</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include "<a class="code" href="../../d1/da5/_matriz___entera_8hpp.html">Matriz_Entera.hpp</a>"</span>
+<a name="l00007"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#bbb6e6e965768c1d4a7ed60404bccbc2">00007</a> <span class="preprocessor">#define ai 0 </span>
+<a name="l00009"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#8049c0cea1bb380f362a38e716be78c3">00009</a> <span class="preprocessor">#define bi 1 </span>
+<a name="l00011"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#b5821998a51a8c88ddb0b2c3e0ee419f">00011</a> <span class="preprocessor">#define ci 2 </span>
+<a name="l00013"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#598a3330b3c21701223ee0ca14316eca">00013</a> <span class="preprocessor">#define PI 3.14159265 </span>
+<a name="l00015"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#f55a829f4398336678c24c58c6e1daaa">00015</a> <span class="preprocessor">#define BordeML                           1 </span>
+<a name="l00017"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#31ba84b9867af72ebd6070080e753aef">00017</a> <span class="preprocessor">#define BordeHibrido              2 </span>
+<a name="l00019"></a><a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html#860c7c08279640492fa825985fd3ee0f">00019</a> <span class="preprocessor">#define BordeNormalGradiente  3 </span>
+<a name="l00020"></a>00020 <span class="preprocessor"></span>
+<a name="l00022"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html">00022</a> <span class="keyword">class </span><a class="code" href="../../d6/db7/class_elemento___triangular.html" title="Clase que define un elemento finito triangular lineal de 3 nodos.">Elemento_Triangular</a>:<span class="keyword">public</span> <a class="code" href="../../d9/d09/class_elemento.html" title="Clase que define un elemento finito, donde se indica el tipo de elemento y el indice...">Elemento</a>
+<a name="l00023"></a>00023 {
+<a name="l00024"></a>00024     <span class="keyword">protected</span>:
+<a name="l00025"></a>00025         
+<a name="l00027"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06">00027</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06" title="Nodos locales del elemento, se utiliza como un vector de objetos Nodo_2D[].">Nodos_Elemento</a>;
+<a name="l00028"></a>00028         
+<a name="l00030"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328">00030</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328" title="Nodos almacenados como coordenadas locales (Solo se utiliza si se quieren utilizar...">Coordenadas_locales</a>;
+<a name="l00031"></a>00031         
+<a name="l00033"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#ecb088b7ace57d2614e2edbb260c9891">00033</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#ecb088b7ace57d2614e2edbb260c9891" title="Puntos internos en un elemento (REVISAR POR QUE LO DEFINI).">Puntos_internos</a>;
+<a name="l00034"></a>00034         
+<a name="l00036"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#60bd88f9c791fd4a280e1d2928d6dbc6">00036</a>     <span class="keywordtype">int</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#60bd88f9c791fd4a280e1d2928d6dbc6" title="Numero de nodos del elemento.">numero_nodos_elemento</a>;
+<a name="l00037"></a>00037         
+<a name="l00039"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#d51793568c1ab8733267aec21d9fb2e9">00039</a>         <span class="keywordtype">int</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#d51793568c1ab8733267aec21d9fb2e9" title="Dominio al cual pertenece el elemento.">dominio</a>;
+<a name="l00040"></a>00040         
+<a name="l00042"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#e15dc108a2c70a8fb24fcbbfc74b9ebf">00042</a>         <span class="keywordtype">int</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#e15dc108a2c70a8fb24fcbbfc74b9ebf" title="Indica si el elemento contiene a una fuente.">eFuente</a>;
+<a name="l00043"></a>00043         
+<a name="l00045"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#c3f7533336f103e78d9334edf245758c">00045</a>     <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#c3f7533336f103e78d9334edf245758c" title="Densidad aproximada del elemento.">eDensidad</a>;   
+<a name="l00046"></a>00046         
+<a name="l00048"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#13744acc1b4c56e9bcdd8dd91563a5b2">00048</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#13744acc1b4c56e9bcdd8dd91563a5b2" title="Area del elemento.">area</a>;
+<a name="l00049"></a>00049         
+<a name="l00051"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#b7f3c88fc8817f2275d8191e2458161a">00051</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#b7f3c88fc8817f2275d8191e2458161a" title="Aporte que hace el elemento a la fuente.">f</a>;
+<a name="l00052"></a>00052         
+<a name="l00054"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#312c68dcfbbb2cb1d57802da8b34f549">00054</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#312c68dcfbbb2cb1d57802da8b34f549" title="Variable fisica 1 del elemento asociada al comportamiento fisico-geometrico.">kVariable</a>;
+<a name="l00055"></a>00055         
+<a name="l00057"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#f5d7ba7f469301d392c657645af6100d">00057</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#f5d7ba7f469301d392c657645af6100d" title="Variable fisica 2 del elemento asociado a la fisico-masa.">mVariable</a>;
+<a name="l00058"></a>00058         
+<a name="l00060"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#9a3e29dd716ffb24f271e161e71fa21a">00060</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#9a3e29dd716ffb24f271e161e71fa21a" title="Variable secundaria de dispersion del elemento.">sVariable</a>;
+<a name="l00061"></a>00061         
+<a name="l00063"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81">00063</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>;
+<a name="l00064"></a>00064         
+<a name="l00066"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c">00066</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c" title="Vector Gradiente de un nodo del Elemento.">GradienteV</a>;
+<a name="l00067"></a>00067         
+<a name="l00069"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e">00069</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e" title="Centro geometrico del elemento.">centroide</a>;
+<a name="l00070"></a>00070         
+<a name="l00072"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae">00072</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>;
+<a name="l00073"></a>00073         
+<a name="l00075"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#04e9f464ab5a626ea79c68eec272c942">00075</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#04e9f464ab5a626ea79c68eec272c942" title="Coeficientes ai,bi,ci de la funcion de forma del elemento.">Coeficientes_Permutacion</a>;
+<a name="l00076"></a>00076         
+<a name="l00078"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#6524872ca62d2a80b8fe7816f60ccf7b">00078</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#6524872ca62d2a80b8fe7816f60ccf7b" title="Matriz Rigidez Elemento - Stiffness.">MRE</a>; 
+<a name="l00079"></a>00079         
+<a name="l00081"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#3deb02c4e95ee6ff0e264c9216c48de1">00081</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#3deb02c4e95ee6ff0e264c9216c48de1" title="Matriz de Masa Elemento.">MMC</a>; 
+<a name="l00082"></a>00082         
+<a name="l00084"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#1c6708dfc7442d9a6e73636a2776c403">00084</a>         <a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#1c6708dfc7442d9a6e73636a2776c403" title="Matriz de pertenencia global (numeracion nodal global) del Elemento.">Pertenencia</a>;
+<a name="l00085"></a>00085         
+<a name="l00086"></a>00086         <span class="keyword">public</span>:
+<a name="l00087"></a>00087     
+<a name="l00089"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#e46edbdb4b2e16bbb0e0fc6f766affe8">00089</a>         <a class="code" href="../../d6/db7/class_elemento___triangular.html#e46edbdb4b2e16bbb0e0fc6f766affe8" title="Constructor de la CLase.">Elemento_Triangular</a>(){}
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 
+<a name="l00093"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#cf35241e4c1f713e547b3d631c050871">00093</a>         <a class="code" href="../../d6/db7/class_elemento___triangular.html#cf35241e4c1f713e547b3d631c050871" title="Destructor de la Clase.">~Elemento_Triangular</a>(){}
+<a name="l00094"></a>00094         
+<a name="l00096"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#6bf84551c07a7bdb2d1500bad296034b">00096</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#6bf84551c07a7bdb2d1500bad296034b" title="Asigna el numero de nodos del elemento.">Set_Numero_Nodos_Elemento</a>(<span class="keywordtype">int</span> NNE)
+<a name="l00097"></a>00097     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#60bd88f9c791fd4a280e1d2928d6dbc6" title="Numero de nodos del elemento.">numero_nodos_elemento</a>=NNE;}
+<a name="l00098"></a>00098         
+<a name="l00100"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#833a708e90f2ce900564c3d4b34e8d2c">00100</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#833a708e90f2ce900564c3d4b34e8d2c" title="Reserva memoria y define un arreglo de objetos Nodo_2D[] que pertenecen al elemento...">Set_Reserva_Memoria_Nodos_Triangulo</a>(<span class="keywordtype">int</span> NNE)
+<a name="l00101"></a>00101     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06" title="Nodos locales del elemento, se utiliza como un vector de objetos Nodo_2D[].">Nodos_Elemento</a>=<span class="keyword">new</span> <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a>[NNE];}
+<a name="l00102"></a>00102         
+<a name="l00104"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#ca1b723f71dc399da3c921cf2ed0c162">00104</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#ca1b723f71dc399da3c921cf2ed0c162" title="Reserva memoria y define un arreglo de objetos Nodo_2D[] que pertenecen al elemento...">Set_Reserva_Memoria_Coordenadas_locales</a>(<span class="keywordtype">int</span> NNE)
+<a name="l00105"></a>00105     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328" title="Nodos almacenados como coordenadas locales (Solo se utiliza si se quieren utilizar...">Coordenadas_locales</a>=<span class="keyword">new</span> <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a>[NNE];}
+<a name="l00106"></a>00106         
+<a name="l00108"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#671c5caa06025572ac3a31f077433c4c">00108</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#671c5caa06025572ac3a31f077433c4c" title="Reserva memoria para la matriz de Rigidez del elemento.">Set_Reserva_Memoria_Matriz_Rigidez_Elemento</a>()
+<a name="l00109"></a>00109     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#6524872ca62d2a80b8fe7816f60ccf7b" title="Matriz Rigidez Elemento - Stiffness.">MRE</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(3,3);} 
+<a name="l00110"></a>00110         
+<a name="l00112"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#e54e95523abe8677f2d0b1a5fdaa4527">00112</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#e54e95523abe8677f2d0b1a5fdaa4527" title="Reserva memoria para la matriz de masa del elemento.">Set_Reserva_Memoria_Matriz_Masa_Elemento</a>()
+<a name="l00113"></a>00113     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#3deb02c4e95ee6ff0e264c9216c48de1" title="Matriz de Masa Elemento.">MMC</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(3,3);}    
+<a name="l00114"></a>00114         
+<a name="l00116"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#e78e678300e815fb8d394524c7ae5a43">00116</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#e78e678300e815fb8d394524c7ae5a43" title="Reserva memoria para la matriz de pertenencia del elemento.">Set_Reserva_Memoria_Matriz_Pertenencia_Elemento</a>()
+<a name="l00117"></a>00117     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#1c6708dfc7442d9a6e73636a2776c403" title="Matriz de pertenencia global (numeracion nodal global) del Elemento.">Pertenencia</a>=<span class="keyword">new</span> <a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a>(3,3);}    
+<a name="l00118"></a>00118         
+<a name="l00119"></a>00119         <span class="comment">//Asigna el identificador global de un nodo al elemento a la posicion local "Posicion_Nodal" </span>
+<a name="l00120"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#1321c865b4da3d603b74f6534ea9710a">00120</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#1321c865b4da3d603b74f6534ea9710a">Set_Nodo_Elemento</a>(<span class="keywordtype">int</span> Posicion_Nodal,<span class="keywordtype">int</span> nodo_global)
+<a name="l00121"></a>00121     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06" title="Nodos locales del elemento, se utiliza como un vector de objetos Nodo_2D[].">Nodos_Elemento</a>[Posicion_Nodal].<a class="code" href="../../da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo.">Set_Id_Nodo</a>(nodo_global);}
+<a name="l00122"></a>00122         
+<a name="l00124"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#89a907f667f267e2fc263d8497920ff6">00124</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#89a907f667f267e2fc263d8497920ff6" title="Asigna constante Fuente, solo se utiliza para problemas con distribucion de energia...">Set_Constante_Fuente</a>(<span class="keywordtype">double</span> fi)
+<a name="l00125"></a>00125     { 
+<a name="l00126"></a>00126                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#b7f3c88fc8817f2275d8191e2458161a" title="Aporte que hace el elemento a la fuente.">f</a>=<a class="code" href="../../d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b" title="retorna el area del elemento">Get_Area</a>()/3.0;
+<a name="l00127"></a>00127         }
+<a name="l00128"></a>00128         
+<a name="l00130"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#4740d65549497d17f8ce1c7f1ad9f554">00130</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#4740d65549497d17f8ce1c7f1ad9f554" title="Reserva memoria para el centroide y asigna el valor del centro geometrico del elemento...">Set_Centroide</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y)
+<a name="l00131"></a>00131     {  <a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e" title="Centro geometrico del elemento.">centroide</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(2);
+<a name="l00132"></a>00132                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e" title="Centro geometrico del elemento.">centroide</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(0,x);
+<a name="l00133"></a>00133                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e" title="Centro geometrico del elemento.">centroide</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(1,y);
+<a name="l00134"></a>00134         }
+<a name="l00135"></a>00135         
+<a name="l00137"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#af6e62e79ff2f4e0194f3b3693cb82d9">00137</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#af6e62e79ff2f4e0194f3b3693cb82d9" title="Reserva memoria y asigna el vector gradiente del elemento.">Set_Vector_Gradiente</a>(<span class="keywordtype">double</span> Bi, <span class="keywordtype">double</span> Ci)
+<a name="l00138"></a>00138     {  <a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c" title="Vector Gradiente de un nodo del Elemento.">GradienteV</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(2);
+<a name="l00139"></a>00139                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c" title="Vector Gradiente de un nodo del Elemento.">GradienteV</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(0,Bi);
+<a name="l00140"></a>00140                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c" title="Vector Gradiente de un nodo del Elemento.">GradienteV</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(1,Ci);
+<a name="l00141"></a>00141         }
+<a name="l00142"></a>00142         
+<a name="l00144"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#b795eeb7625818abbf323b8b7e284138">00144</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#b795eeb7625818abbf323b8b7e284138" title="Reserva memoria para vector de carga del elemento.">Set_Reserva_Memoria_Vector_Carga</a>()
+<a name="l00145"></a>00145     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(3);}
+<a name="l00146"></a>00146         
+<a name="l00148"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#4c2eb3607ee39a9197a3cb691b7db359">00148</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#4c2eb3607ee39a9197a3cb691b7db359" title="Asigna los valores al vector de carga del elemento.">Set_Vector_Carga</a>(<span class="keywordtype">double</span> fi, <span class="keywordtype">double</span> fj,<span class="keywordtype">double</span> fk)
+<a name="l00149"></a>00149     {  
+<a name="l00150"></a>00150                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(0,fi);
+<a name="l00151"></a>00151                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(1,fj);
+<a name="l00152"></a>00152                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(2,fk);
+<a name="l00153"></a>00153         }
+<a name="l00154"></a>00154         
+<a name="l00156"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#f17a4e0b43822d242ff75bb1518b8af5">00156</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#f17a4e0b43822d242ff75bb1518b8af5" title="Reserva memoria para ma matriz de permutacion del elemento.">Set_Reserva_Memoria_Permutacion</a>()
+<a name="l00157"></a>00157     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#04e9f464ab5a626ea79c68eec272c942" title="Coeficientes ai,bi,ci de la funcion de forma del elemento.">Coeficientes_Permutacion</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(3,3);}
+<a name="l00158"></a>00158         
+<a name="l00160"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#ce66cbd1290897324281a73523651a98">00160</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#ce66cbd1290897324281a73523651a98" title="Asigna un valor a la matriz de permutacion del elemento.">Set_Permutacion</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col,<span class="keywordtype">double</span> valor)
+<a name="l00161"></a>00161     {   
+<a name="l00162"></a>00162                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#04e9f464ab5a626ea79c68eec272c942" title="Coeficientes ai,bi,ci de la funcion de forma del elemento.">Coeficientes_Permutacion</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(fil,col,valor);
+<a name="l00163"></a>00163         }
+<a name="l00164"></a>00164         
+<a name="l00166"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#54db68fe2f0a76aaef878bcfee7967d0">00166</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#54db68fe2f0a76aaef878bcfee7967d0" title="Asigna un valor a la matriz de rigidez en la posicion fil, col.">Set_Matriz_Rigidez_Elemento</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col,<span class="keywordtype">double</span> valor)
+<a name="l00167"></a>00167     {   
+<a name="l00168"></a>00168                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#6524872ca62d2a80b8fe7816f60ccf7b" title="Matriz Rigidez Elemento - Stiffness.">MRE</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(fil,col,valor);
+<a name="l00169"></a>00169         }
+<a name="l00170"></a>00170         
+<a name="l00172"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#58291cb4f1e9d5a6d2a20743367f762b">00172</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#58291cb4f1e9d5a6d2a20743367f762b" title="Asigna un valor a la matriz de masa en la posicion fil, col.">Set_Matriz_Masa_Elemento</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col,<span class="keywordtype">double</span> valor)
+<a name="l00173"></a>00173     {   
+<a name="l00174"></a>00174                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#3deb02c4e95ee6ff0e264c9216c48de1" title="Matriz de Masa Elemento.">MMC</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(fil,col,valor);
+<a name="l00175"></a>00175         }
+<a name="l00176"></a>00176         
+<a name="l00178"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#c20e6e3b5d4dcebc25b41fda0fbb6a04">00178</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#c20e6e3b5d4dcebc25b41fda0fbb6a04" title="Asigna un valor a la matriz de pertenencia en la posicion fil, col.">Set_Matriz_Pertenencia_Elemento</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col,<span class="keywordtype">int</span> valor)
+<a name="l00179"></a>00179     {   
+<a name="l00180"></a>00180                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#1c6708dfc7442d9a6e73636a2776c403" title="Matriz de pertenencia global (numeracion nodal global) del Elemento.">Pertenencia</a>-&gt;<a class="code" href="../../df/d98/class_matriz___entera.html#b982645d04ece06fbc48831a2b766c23" title="Asigna valor en fila, columna.">Asigna</a>(fil,col,valor);
+<a name="l00181"></a>00181         }
+<a name="l00182"></a>00182         
+<a name="l00183"></a>00183         
+<a name="l00185"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#bf5ef952a5f0cb46f09e10aa9cd7c9f2">00185</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#bf5ef952a5f0cb46f09e10aa9cd7c9f2" title="Reserva memoria y asigna los valores de la matriz gradiente.">Set_Matriz_Gradiente</a>(<span class="keywordtype">double</span> Bi,<span class="keywordtype">double</span> Ci)
+<a name="l00186"></a>00186     {  
+<a name="l00187"></a>00187                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(3,2);
+<a name="l00188"></a>00188                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(0,0,Bi);
+<a name="l00189"></a>00189                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(0,1,0.0);
+<a name="l00190"></a>00190                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(1,0,0.0);
+<a name="l00191"></a>00191                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(1,1,Ci);
+<a name="l00192"></a>00192                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(2,0,Ci);
+<a name="l00193"></a>00193                 <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(2,1,Bi);
+<a name="l00194"></a>00194         }
+<a name="l00195"></a>00195         
+<a name="l00197"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#4c0576e03780aef2c0eefed05ab979d2">00197</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#4c0576e03780aef2c0eefed05ab979d2" title="Asigna el area del elemento.">Set_Area</a>(<span class="keywordtype">double</span> area_elemento)
+<a name="l00198"></a>00198     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#13744acc1b4c56e9bcdd8dd91563a5b2" title="Area del elemento.">area</a>=area_elemento;}
+<a name="l00199"></a>00199         
+<a name="l00201"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#33b54b8d5822a803d1d728efc7e66fc4">00201</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#33b54b8d5822a803d1d728efc7e66fc4" title="Asigna el dominio al cual pertenece el elemento.">Set_Dominio_Elemento</a>(<span class="keywordtype">int</span> Dom)
+<a name="l00202"></a>00202     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#d51793568c1ab8733267aec21d9fb2e9" title="Dominio al cual pertenece el elemento.">dominio</a>=Dom;}
+<a name="l00203"></a>00203         
+<a name="l00205"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#5c0f397fb71f4543ab2e7f96f2f8155a">00205</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#5c0f397fb71f4543ab2e7f96f2f8155a" title="Asigna un 1 si es un elemento que contiene a una fuente.">Set_Elemento_Fuente</a>(<span class="keywordtype">int</span> asignacion)
+<a name="l00206"></a>00206     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#e15dc108a2c70a8fb24fcbbfc74b9ebf" title="Indica si el elemento contiene a una fuente.">eFuente</a>=asignacion;}
+<a name="l00207"></a>00207         
+<a name="l00209"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#95741af745c6df5b6ee74568f5b46eeb">00209</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#95741af745c6df5b6ee74568f5b46eeb" title="Asigna constante kVariable del elemento, generamente asociada al comportamiento fisico-geometrico...">Set_kVariable_Elemento</a>(<span class="keywordtype">double</span> Valor)
+<a name="l00210"></a>00210     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#312c68dcfbbb2cb1d57802da8b34f549" title="Variable fisica 1 del elemento asociada al comportamiento fisico-geometrico.">kVariable</a>=Valor;}
+<a name="l00211"></a>00211         
+<a name="l00213"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#07974c5996ed31824c5e73d53b05c6ac">00213</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#07974c5996ed31824c5e73d53b05c6ac" title="Asigna constante sVariable del elemento asociada al comportamiento fisico del elemento...">Set_sVariable_Elemento</a>(<span class="keywordtype">double</span> Valor)
+<a name="l00214"></a>00214     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#9a3e29dd716ffb24f271e161e71fa21a" title="Variable secundaria de dispersion del elemento.">sVariable</a>=Valor;}
+<a name="l00215"></a>00215         
+<a name="l00217"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#614384dc4912faea60417976b2e33b66">00217</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#614384dc4912faea60417976b2e33b66" title="Asigna la densisad del elemento.">Set_Densidad_Elemento</a>(<span class="keywordtype">double</span> Valor)
+<a name="l00218"></a>00218     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#c3f7533336f103e78d9334edf245758c" title="Densidad aproximada del elemento.">eDensidad</a>=Valor;}
+<a name="l00219"></a>00219         
+<a name="l00221"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#9f7f4536052a01024a7c0be5a3bfb8fc">00221</a>         <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#9f7f4536052a01024a7c0be5a3bfb8fc" title="Asigna constante mVariable del elemento, generamente asociada al comportamiento fisico-masa...">Set_mVariable_Elemento</a>(<span class="keywordtype">double</span> Valor)
+<a name="l00222"></a>00222     {<a class="code" href="../../d6/db7/class_elemento___triangular.html#f5d7ba7f469301d392c657645af6100d" title="Variable fisica 2 del elemento asociado a la fisico-masa.">mVariable</a>=Valor;}
+<a name="l00223"></a>00223         
+<a name="l00225"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#22b2b6cb483a4b88e09e2f99410478da">00225</a>     <span class="keywordtype">void</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#22b2b6cb483a4b88e09e2f99410478da" title="Asigna el valor de una coordenada local del elemento.">Set_Coordenada_Local_Elemento</a>(<span class="keywordtype">int</span> idNodo,<span class="keywordtype">double</span> xCord,<span class="keywordtype">double</span> yCord)
+<a name="l00226"></a>00226         {
+<a name="l00227"></a>00227         <a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328" title="Nodos almacenados como coordenadas locales (Solo se utiliza si se quieren utilizar...">Coordenadas_locales</a>[idNodo].<a class="code" href="../../db/dbc/class_nodo__2_d.html#13812949dff0f268ea05b768f11c124a" title="Asigna un valor flotante en x.">Set_X</a>(xCord);
+<a name="l00228"></a>00228         <a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328" title="Nodos almacenados como coordenadas locales (Solo se utiliza si se quieren utilizar...">Coordenadas_locales</a>[idNodo].<a class="code" href="../../db/dbc/class_nodo__2_d.html#42f47d5db784727501f289aa1248e264" title="Asigna un valor flotante en y.">Set_Y</a>(yCord);       
+<a name="l00229"></a>00229         }
+<a name="l00230"></a>00230         
+<a name="l00232"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#4c0655995692de148ec43529a6c9a013">00232</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#4c0655995692de148ec43529a6c9a013" title="Retorna la numeracion nodal global del nodo local &amp;quot;Posicion_Nodal&amp;quot;.">Get_Valor_Nodo</a>(<span class="keywordtype">int</span> Posicion_Nodal)
+<a name="l00233"></a>00233         {
+<a name="l00234"></a>00234         <span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06" title="Nodos locales del elemento, se utiliza como un vector de objetos Nodo_2D[].">Nodos_Elemento</a>[Posicion_Nodal].<a class="code" href="../../da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo.">Get_Id_Nodo</a>();
+<a name="l00235"></a>00235         }
+<a name="l00236"></a>00236         
+<a name="l00238"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#0bb9fe4aa89cf7d432c50a44129ab29d">00238</a>         <span class="keywordtype">int</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#0bb9fe4aa89cf7d432c50a44129ab29d" title="Retorna el dominio del elemento.">Get_Dominio</a>()
+<a name="l00239"></a>00239     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#d51793568c1ab8733267aec21d9fb2e9" title="Dominio al cual pertenece el elemento.">dominio</a>;}
+<a name="l00240"></a>00240         
+<a name="l00242"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b">00242</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b" title="retorna el area del elemento">Get_Area</a>()
+<a name="l00243"></a>00243     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#13744acc1b4c56e9bcdd8dd91563a5b2" title="Area del elemento.">area</a>;}
+<a name="l00244"></a>00244         
+<a name="l00246"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#1b2abc4a5eed8ff1fe211ceb3999e5ee">00246</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#1b2abc4a5eed8ff1fe211ceb3999e5ee" title="Retorna el valor de la fuente del elemento.">Get_f</a>()
+<a name="l00247"></a>00247     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#b7f3c88fc8817f2275d8191e2458161a" title="Aporte que hace el elemento a la fuente.">f</a>;}
+<a name="l00248"></a>00248         
+<a name="l00250"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#3ce7b023bdc633a2659e5a21dce98fb1">00250</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#3ce7b023bdc633a2659e5a21dce98fb1" title="Retorna la kVariable del elemento.">Get_kVariable</a>()
+<a name="l00251"></a>00251     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#312c68dcfbbb2cb1d57802da8b34f549" title="Variable fisica 1 del elemento asociada al comportamiento fisico-geometrico.">kVariable</a>;}
+<a name="l00252"></a>00252         
+<a name="l00254"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#a9212e0c7fedcdda79c462fb6faaea14">00254</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#a9212e0c7fedcdda79c462fb6faaea14" title="Retorna la mVariable del elemento.">Get_mVariable</a>()
+<a name="l00255"></a>00255     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#f5d7ba7f469301d392c657645af6100d" title="Variable fisica 2 del elemento asociado a la fisico-masa.">mVariable</a>;}
+<a name="l00256"></a>00256         
+<a name="l00258"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#c2e21d81ccebac564e212cd69973232e">00258</a>         <span class="keywordtype">double</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#c2e21d81ccebac564e212cd69973232e" title="Retorna la sVariable del elemento.">Get_sVariable</a>()
+<a name="l00259"></a>00259     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#9a3e29dd716ffb24f271e161e71fa21a" title="Variable secundaria de dispersion del elemento.">sVariable</a>;}
+<a name="l00260"></a>00260         
+<a name="l00262"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#2c69d3075371962e8bb09fa4bb26acc8">00262</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> <a class="code" href="../../d6/db7/class_elemento___triangular.html#2c69d3075371962e8bb09fa4bb26acc8" title="Retorna el objeto Nodo_2D Coordenadas_locales[id] que tiene informacion sobre las...">Get_Coordenada_Local</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)
+<a name="l00263"></a>00263         {
+<a name="l00264"></a>00264         <span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#29aef10d4bb6e64c4c8870aff3429328" title="Nodos almacenados como coordenadas locales (Solo se utiliza si se quieren utilizar...">Coordenadas_locales</a>[id];}
+<a name="l00265"></a>00265         
+<a name="l00267"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#1fb18fcde71244e402c59f9a4b91b5b6">00267</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> <a class="code" href="../../d6/db7/class_elemento___triangular.html#1fb18fcde71244e402c59f9a4b91b5b6" title="Retorna el objeto Nodo_2D Nodos_Elemento[id], que tiene informacion sobre los nodos...">Get_Nodos_Elemento</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)
+<a name="l00268"></a>00268         {
+<a name="l00269"></a>00269         <span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#ae85f6d6fb859a2eb51975b4693e4c06" title="Nodos locales del elemento, se utiliza como un vector de objetos Nodo_2D[].">Nodos_Elemento</a>[id];}
+<a name="l00270"></a>00270         
+<a name="l00272"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50">00272</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50" title="Retorna la matriz de permutacion del elemento.">Get_Coeficientes_Permutacion</a>()
+<a name="l00273"></a>00273         {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#04e9f464ab5a626ea79c68eec272c942" title="Coeficientes ai,bi,ci de la funcion de forma del elemento.">Coeficientes_Permutacion</a>;}
+<a name="l00274"></a>00274         
+<a name="l00276"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#baaa1b5cffd05bf4df92ae70ff8e4172">00276</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#baaa1b5cffd05bf4df92ae70ff8e4172" title="Retorna la matriz de Rigidez del elemento.">Get_Matriz_Rigidez_Elemento</a>()
+<a name="l00277"></a>00277         {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#6524872ca62d2a80b8fe7816f60ccf7b" title="Matriz Rigidez Elemento - Stiffness.">MRE</a>;}
+<a name="l00278"></a>00278         
+<a name="l00280"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#db8bc0cb372ef382fdea187bb0808f15">00280</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#db8bc0cb372ef382fdea187bb0808f15" title="Retorna la matriz de masa del elemento.">Get_Matriz_Masa_Elemento</a>()
+<a name="l00281"></a>00281         {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#3deb02c4e95ee6ff0e264c9216c48de1" title="Matriz de Masa Elemento.">MMC</a>;}
+<a name="l00282"></a>00282         
+<a name="l00284"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d">00284</a>         <a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento.">Get_Matriz_Pertenecia_Elemento</a>()
+<a name="l00285"></a>00285         {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#1c6708dfc7442d9a6e73636a2776c403" title="Matriz de pertenencia global (numeracion nodal global) del Elemento.">Pertenencia</a>;}
+<a name="l00286"></a>00286         
+<a name="l00288"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#f36c61306379b2d051002fbed29d1d7c">00288</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#f36c61306379b2d051002fbed29d1d7c" title="Retorna el vector que contiene el centro geometrico del elemento.">Get_Centroide</a>()
+<a name="l00289"></a>00289     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#2339db5c6a4a309b34c2423b7e202f3e" title="Centro geometrico del elemento.">centroide</a>;}
+<a name="l00290"></a>00290         
+<a name="l00292"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#b4303e5f3f734de4d92fcc052872f91f">00292</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#b4303e5f3f734de4d92fcc052872f91f" title="Retorna el vector que contiene el gradiente del elemento.">Get_GradienteV</a>()
+<a name="l00293"></a>00293     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#b6a54e7ef39c153daed5a44ae7c7588c" title="Vector Gradiente de un nodo del Elemento.">GradienteV</a>;}
+<a name="l00294"></a>00294         
+<a name="l00296"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437">00296</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437" title="Retorna el vector de cargas del elemento.">Get_CargasV</a>()
+<a name="l00297"></a>00297     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#c172bc44bb9931b8b452e57ecf07cc81" title="Vector de Cargas del elemento.">Carga</a>;}
+<a name="l00298"></a>00298         
+<a name="l00300"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#8009bccb2ea2f82595b985325c00206d">00300</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d6/db7/class_elemento___triangular.html#8009bccb2ea2f82595b985325c00206d" title="Retorna la matriz gradiente del elemento.">Get_GradienteM</a>()
+<a name="l00301"></a>00301     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#e808acad1f3c7db08476f74bf6ac51ae" title="Matriz Gradientes del elemento.">GradienteM</a>;}
+<a name="l00302"></a>00302         
+<a name="l00304"></a><a class="code" href="../../d6/db7/class_elemento___triangular.html#f6d388ad37b87f924101c1aa202c2e26">00304</a>         <span class="keywordtype">int</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#f6d388ad37b87f924101c1aa202c2e26" title="Retorna el numero de nodos del elemento.">Get_Numero_Nodos_Elemento</a>()
+<a name="l00305"></a>00305     {<span class="keywordflow">return</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html#60bd88f9c791fd4a280e1d2928d6dbc6" title="Numero de nodos del elemento.">numero_nodos_elemento</a>;}
+<a name="l00306"></a>00306                 
+<a name="l00307"></a>00307 };
+<a name="l00308"></a>00308 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:34 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Vector_Entero.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Vector_Entero.hpp</h1><a href="../../d2/dbe/_vector___entero_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Vector_Entero_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Vector_Entero_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include &lt;stdio.h&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;stdlib.h&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;malloc.h&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include "math.h"</span> 
+<a name="l00010"></a><a class="code" href="../../dd/d59/class_vector___entero.html">00010</a> <span class="keyword">class </span><a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a>
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012    <span class="keyword">protected</span>:
+<a name="l00013"></a>00013 
+<a name="l00015"></a><a class="code" href="../../dd/d59/class_vector___entero.html#3f35a31a07f4f794c93ce22db2e4b5ee">00015</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#3f35a31a07f4f794c93ce22db2e4b5ee" title="Numero de columnas.">Columna</a>;
+<a name="l00016"></a>00016    
+<a name="l00018"></a><a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20">00018</a>       <span class="keywordtype">char</span> *<a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a>;
+<a name="l00019"></a>00019    
+<a name="l00021"></a><a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75">00021</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> *<a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a>;
+<a name="l00022"></a>00022    
+<a name="l00024"></a>00024       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#3a240e41b85b692b7e67127fa619d9f9" title="Solicita la memoria para el vector.">Solicita_Memoria</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> val);
+<a name="l00025"></a>00025 
+<a name="l00026"></a>00026 
+<a name="l00027"></a>00027    <span class="keyword">public</span>:
+<a name="l00028"></a>00028 
+<a name="l00030"></a><a class="code" href="../../dd/d59/class_vector___entero.html#a56c1834a3976afeace507d16f1048b8">00030</a>        <a class="code" href="../../dd/d59/class_vector___entero.html#a56c1834a3976afeace507d16f1048b8" title="Constructor de la clase.">Vector_Entero</a>()
+<a name="l00031"></a>00031       {
+<a name="l00032"></a>00032           }
+<a name="l00034"></a><a class="code" href="../../dd/d59/class_vector___entero.html#9811d1c9b96677ca0c3e9e057da6bb2c">00034</a>       <a class="code" href="../../dd/d59/class_vector___entero.html#a56c1834a3976afeace507d16f1048b8" title="Constructor de la clase.">Vector_Entero</a>( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col)
+<a name="l00035"></a>00035       {
+<a name="l00036"></a>00036          <a class="code" href="../../dd/d59/class_vector___entero.html#3a240e41b85b692b7e67127fa619d9f9" title="Solicita la memoria para el vector.">Solicita_Memoria</a>(col,0);
+<a name="l00037"></a>00037          <a class="code" href="../../dd/d59/class_vector___entero.html#7c9b7667a08d7d74c4edbe96a202dc9f" title="Asigna nombre al vector.">AsignaNombre</a>(<span class="stringliteral">" "</span>);
+<a name="l00038"></a>00038       }
+<a name="l00039"></a>00039 
+<a name="l00041"></a><a class="code" href="../../dd/d59/class_vector___entero.html#40cd4ac4d087fbf1d83b53eacb5cd1da">00041</a>       <a class="code" href="../../dd/d59/class_vector___entero.html#a56c1834a3976afeace507d16f1048b8" title="Constructor de la clase.">Vector_Entero</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col, <span class="keywordtype">int</span> val)
+<a name="l00042"></a>00042       {
+<a name="l00043"></a>00043          <a class="code" href="../../dd/d59/class_vector___entero.html#3a240e41b85b692b7e67127fa619d9f9" title="Solicita la memoria para el vector.">Solicita_Memoria</a>(col, val);
+<a name="l00044"></a>00044          <a class="code" href="../../dd/d59/class_vector___entero.html#7c9b7667a08d7d74c4edbe96a202dc9f" title="Asigna nombre al vector.">AsignaNombre</a>(<span class="stringliteral">" "</span>);
+<a name="l00045"></a>00045       }
+<a name="l00046"></a>00046 
+<a name="l00048"></a><a class="code" href="../../dd/d59/class_vector___entero.html#695818b2d4e332e9e3ec4f6c5b015e4c">00048</a>       <a class="code" href="../../dd/d59/class_vector___entero.html#a56c1834a3976afeace507d16f1048b8" title="Constructor de la clase.">Vector_Entero</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col, <span class="keywordtype">char</span> *nmb)
+<a name="l00049"></a>00049       {
+<a name="l00050"></a>00050          <a class="code" href="../../dd/d59/class_vector___entero.html#3a240e41b85b692b7e67127fa619d9f9" title="Solicita la memoria para el vector.">Solicita_Memoria</a>(col,0);
+<a name="l00051"></a>00051          <a class="code" href="../../dd/d59/class_vector___entero.html#7c9b7667a08d7d74c4edbe96a202dc9f" title="Asigna nombre al vector.">AsignaNombre</a>(nmb);
+<a name="l00052"></a>00052       }
+<a name="l00053"></a>00053 
+<a name="l00055"></a><a class="code" href="../../dd/d59/class_vector___entero.html#130030f152e3ef9aa566677b66b2fa7e">00055</a>       <a class="code" href="../../dd/d59/class_vector___entero.html#130030f152e3ef9aa566677b66b2fa7e" title="Destructor de la clase.">~Vector_Entero</a>()
+<a name="l00056"></a>00056           {
+<a name="l00057"></a>00057           <a class="code" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b">Libera_Memoria</a>();
+<a name="l00058"></a>00058       }
+<a name="l00059"></a>00059           
+<a name="l00061"></a><a class="code" href="../../dd/d59/class_vector___entero.html#4ffa02a33c82d9bdbd90313af305ea93">00061</a>           <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>*<a class="code" href="../../dd/d59/class_vector___entero.html#4ffa02a33c82d9bdbd90313af305ea93" title="Retorna el puntero donde se almacena el vector.">Retorna_Puntero_Datos</a>()
+<a name="l00062"></a>00062           { <span class="keywordflow">return</span> <a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a>; }
+<a name="l00063"></a>00063           
+<a name="l00064"></a><a class="code" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b">00064</a>           <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b">Libera_Memoria</a>()
+<a name="l00065"></a>00065           {
+<a name="l00066"></a>00066            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a>) <span class="keyword">delete</span> []<a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a>;
+<a name="l00067"></a>00067            <a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a> = NULL;
+<a name="l00068"></a>00068            <span class="keywordflow">if</span> (<a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a>) <span class="keyword">delete</span> []<a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a>;
+<a name="l00069"></a>00069            <a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a> = NULL;
+<a name="l00070"></a>00070           }
+<a name="l00071"></a>00071           
+<a name="l00073"></a>00073       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#7c9b7667a08d7d74c4edbe96a202dc9f" title="Asigna nombre al vector.">AsignaNombre</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *nmb);
+<a name="l00074"></a>00074 
+<a name="l00076"></a><a class="code" href="../../dd/d59/class_vector___entero.html#231d8cc157cccf7f3b8248cfab052b08">00076</a>       <span class="keywordtype">char</span> *<a class="code" href="../../dd/d59/class_vector___entero.html#231d8cc157cccf7f3b8248cfab052b08" title="Retorna el nombre al vector.">Nombre</a>(<span class="keywordtype">void</span>)
+<a name="l00077"></a>00077       {<span class="keywordflow">return</span> <a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a>;}
+<a name="l00078"></a>00078 
+<a name="l00080"></a><a class="code" href="../../dd/d59/class_vector___entero.html#d1d5779a63bf05b51bec19fa6a03cd29">00080</a>       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#d1d5779a63bf05b51bec19fa6a03cd29" title="Retorna el numero de columnas.">Columnas</a>(<span class="keywordtype">void</span>)
+<a name="l00081"></a>00081       {<span class="keywordflow">return</span> <a class="code" href="../../dd/d59/class_vector___entero.html#3f35a31a07f4f794c93ce22db2e4b5ee" title="Numero de columnas.">Columna</a>;}
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084           <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#a634ce7235289c7362ba8b2b2a54cc19" title="Busca un valor en el vector y retorna 1 en caso verdadero (solo indica si existe...">Buscar_Valor</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> valor);
+<a name="l00085"></a>00085     
+<a name="l00087"></a>00087           <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#8a5590781f0c14a10b03458a7bc70de8" title="Busca un valor en el vector hasta un cierto indice y retorna 1 en caso verdadero...">Buscar_Valor_Limite</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> valor,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> limite);
+<a name="l00088"></a>00088           
+<a name="l00090"></a>00090       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#1a87086c23261ecb524ced7a9e01d473" title="Inicializa con val el vector.">Inicializa</a>( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> val);
+<a name="l00091"></a>00091 
+<a name="l00093"></a>00093       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col.">Asigna</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> val);
+<a name="l00094"></a>00094     
+<a name="l00096"></a>00096       <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> col);
+<a name="l00097"></a>00097           
+<a name="l00099"></a>00099       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#a514d612f74f35f92693c965f672f09b" title="Visualiza el vector.">Visualiza</a>();
+<a name="l00100"></a>00100 
+<a name="l00102"></a>00102       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#2596eedc3604c306b9d9473f0c03882d" title="Copia el vector a otro vector a.">Copia</a>(<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *a);
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104       
+<a name="l00106"></a><a class="code" href="../../dd/d59/class_vector___entero.html#86446da8d18d7c993c4b76687f1446b3">00106</a>       <span class="keywordtype">float</span> <a class="code" href="../../dd/d59/class_vector___entero.html#86446da8d18d7c993c4b76687f1446b3" title="Tamaño del vector (aproximado) en Kb.">Tamano</a>(<span class="keywordtype">void</span>)
+<a name="l00107"></a>00107       {
+<a name="l00108"></a>00108          <span class="keywordtype">float</span> t = (((<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long ) <span class="keyword">sizeof</span>(<a class="code" href="../../dd/d59/class_vector___entero.html#a82062a47594eee1ac3bca64e96e0c75" title="Puntero al Vector entero.">V</a>) * <a class="code" href="../../dd/d59/class_vector___entero.html#3f35a31a07f4f794c93ce22db2e4b5ee" title="Numero de columnas.">Columna</a>) / 1024.0);
+<a name="l00109"></a>00109          <span class="keywordflow">return</span> t;   
+<a name="l00110"></a>00110       }
+<a name="l00112"></a>00112           <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../dd/d59/class_vector___entero.html#8a95c5b9a1588e219dc5cf816fed33b6" title="Sumatoria de datos del vector.">Sumatoria_Vector</a>();
+<a name="l00113"></a>00113           
+<a name="l00115"></a><a class="code" href="../../dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502">00115</a>       <span class="keywordtype">void</span> <a class="code" href="../../dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502" title="Visualiza información general de la matriz.">Ver_Informacion</a>(<span class="keywordtype">void</span>)
+<a name="l00116"></a>00116       {
+<a name="l00117"></a>00117          printf(<span class="stringliteral">"\nVector \"%s\" de dimensión: %Ld \n"</span>,<a class="code" href="../../dd/d59/class_vector___entero.html#69a37bcccb324394b87b25a30d415f20" title="Nombre del vector.">Nmb</a>,<a class="code" href="../../dd/d59/class_vector___entero.html#3f35a31a07f4f794c93ce22db2e4b5ee" title="Numero de columnas.">Columna</a>);
+<a name="l00118"></a>00118       }
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 };
+<a name="l00121"></a>00121 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:35 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

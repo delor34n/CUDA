@@ -1,0 +1,364 @@
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				16641	     32768	        1	      [1000][1000]	          0.180679	          1.243445	      100.969031	 0.000000	102.393372	102.393547	0.000392
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        1	      [1000][1000]	          0.004138	          0.017775	      0.034394	 0.000000	0.056439	0.056498	0.000191
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        1	      [100][100]	          0.003908	          0.018393	      0.034507	 0.000000	0.056917	0.056976	0.000168
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        1	      [100][100]	          0.004150	          0.020499	      0.034483	 1.257976	0.059248	1.317288	0.000180
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        1	      [200][200]	          0.004313	          0.017524	      0.034997	 5.002054	0.056957	5.059079	0.000191
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [100][100]	          0.003819	          0.022874	      0.034812	 1.259870	0.061624	1.321555	0.000180
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.003845	          0.017638	      0.034403	 31.249039	0.056002	31.305120	0.000195
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.004049	          0.019400	      0.034462	 31.203226	0.058033	31.261328	0.000191
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.024594	          0.017685	      0.035462	 31.106400	0.077806	31.184332	0.000191
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.003736	          0.023686	      0.035512	 31.023141	0.063028	31.086240	0.000165
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.037789	          0.014120	      0.035881	 31.361445	0.087874	31.449511	0.000276
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.003881	          0.019986	      0.035348	 31.194347	0.059313	31.253783	0.000221
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.003752	          0.020238	      0.034556	 31.168645	0.058644	31.227480	0.000289
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [500][500]	          0.003939	          0.022760	      0.035466	 30.991516	0.062290	31.053954	0.000273
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003980	          0.020352	      0.035398	 0.322760	0.059854	0.382668	0.000178
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004144	          0.020764	      0.035694	 0.315919	0.060720	0.376703	0.000182
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004047	          0.020964	      0.035564	 0.315694	0.060695	0.376452	0.000183
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004057	          0.020761	      0.035398	 0.315379	0.060317	0.375743	0.000148
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003908	          0.019943	      0.034502	 0.314864	0.058461	0.373385	0.000168
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004058	          0.021504	      0.034584	 0.314842	0.060267	0.375166	0.000178
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            LSQR Disperso                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003925	          0.015770	      0.035087	 0.314491	0.054893	0.369443	0.000170
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003774	          0.003343	      0.769770	 0.317303	0.777868	1.095216	0.001026
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004188	          0.003516	      0.754977	 0.315887	0.763656	1.079595	0.001027
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003989	          0.002949	      0.358538	 0.316398	0.366840	0.683283	0.001409
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        3	      [50][50]	          0.013269	          0.007182	      16.617606	 1.282497	16.648412	17.931039	0.010485
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				4225	     8192	        3	      [50][50]	          0.090915	          0.033340	      948.631901	 7.450875	948.860650	956.311589	0.104558
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        3	      [50][50]	          0.043911	          0.007145	      17.558934	 1.336683	17.616780	18.953527	0.006854
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.020965	          0.001687	      0.361215	 0.321219	0.384461	0.705723	0.000637
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.032634	          0.003317	      0.354294	 0.315436	0.391254	0.706751	0.001070
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.048422	          0.002039	      0.316042	 0.316718	0.367122	0.683930	0.000709
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        2	      [50][50]	          0.019432	          0.001535	      0.304247	 0.315045	0.325729	0.640814	0.000555
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        2	      [50][50]	          0.004048	          0.003129	      0.307299	 0.315505	0.315563	0.631111	0.001130
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        2	      [50][50]	          0.003846	          0.003093	      0.305755	 0.315073	0.313683	0.628807	0.001040
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004065	          0.003505	      0.305043	 0.314938	0.313654	0.628637	0.001086
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003764	          0.003376	      0.306610	 0.316897	0.314710	0.631649	0.001002
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.004606	          0.003521	      0.316377	 0.315646	0.325539	0.641229	0.001079
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        3	      [50][50]	          0.003938	          0.003668	      0.362495	 0.315042	0.371125	0.686225	0.001082
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        2	      [50][50]	          0.004503	          0.003704	      0.356566	 0.316682	0.365771	0.682495	0.001040
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        2	      [50][50]	          0.003773	          0.003145	      0.356350	 0.316473	0.364246	0.680760	0.001019
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        1	      [50][50]	          0.003961	          0.002972	      0.353773	 0.315576	0.361712	0.677331	0.001049
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        1	      [50][50]	          0.044492	          0.006207	      16.618643	 1.274804	16.678034	17.952884	0.008738
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        2	      [50][50]	          0.014018	          0.006570	      16.616662	 1.273805	16.645073	17.918927	0.007872
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				4225	     8192	        1	      [50][50]	          0.083904	          0.026325	      936.811391	 6.032931	937.013972	943.047017	0.092466
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				4225	     8192	        2	      [50][50]	          0.045290	          0.030433	      935.811724	 5.987703	935.983559	941.971329	0.096179
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        4	      [50][50]	          0.024293	          0.002891	      0.352403	 0.317040	0.380416	0.697517	0.000890
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        5	      [50][50]	          0.004232	          0.003994	      0.353622	 0.314526	0.362955	0.677523	0.001149
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				289	     512	        6	      [50][50]	          0.004212	          0.004556	      0.356250	 0.316351	0.366043	0.682448	0.001079
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        4	      [50][50]	          0.060194	          0.008377	      16.666260	 1.274950	16.743600	18.018597	0.008816
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        5	      [50][50]	          0.025795	          0.009296	      16.730448	 1.308991	16.777954	18.087020	0.012490
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				1089	     2048	        6	      [50][50]	          0.026630	          0.010583	      16.626346	 1.273816	16.674020	17.947882	0.010507
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				4225	     8192	        4	      [50][50]	          0.058754	          0.034657	      1043.134206	 6.742131	1043.318886	1050.061070	0.091322
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+
+ PROCESO:       [Borde]            [Metodo S.E.]         [Condicion Parada S.E. con N Iteraciones]
+     Robin            Gauss-Seidel                       SI
+CPU:1[Nodos]	[Elementos]	[Fuentes ]	[Resolucion Grilla]	Tiempos:[Carga Datos]	[Geometria FEM]	[S.E FEM]	[Total FEM]	[Grilla]	[Global]	[Error estimacion] 
+				4225	     8192	        5	      [50][50]	          0.032709	          0.039510	      986.552877	 7.157556	986.716871	993.874550	0.091898
+[Tiempo Comunicacion FEM] [Tiempo Comunicacion Grilla] [Tiempo Comunicacion Global] [Error estimacion Tiempo Comunicacion Global] 
+       0.000000                       0.000000                 0.000000                  0.000000
+

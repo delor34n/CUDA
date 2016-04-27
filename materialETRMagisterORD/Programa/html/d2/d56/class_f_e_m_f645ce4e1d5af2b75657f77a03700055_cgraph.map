@@ -1,0 +1,49 @@
+<area shape="rect" id="node3" href="$d5/d35/class_geometria2_d___triangulos.html#f0858b4a30c7118f64700b1517b52849" title="Calcula todas las areas de los elementos de la geometria." alt="" coords="264,55,539,83">
+<area shape="rect" id="node11" href="$d5/d35/class_geometria2_d___triangulos.html#ff0abe00a2cb92cf0687156afbb9b803" title="Carga la informacion de los Elementos de la geometria desde el archivo en formato..." alt="" coords="264,1423,539,1451">
+<area shape="rect" id="node47" href="$d5/d35/class_geometria2_d___triangulos.html#70e5eb1ebd6ccbffa5a0cf12d33d6aa1" title="Carga la informacion de las Fronteras de la geometria desde el archivo en formato..." alt="" coords="268,866,535,894">
+<area shape="rect" id="node85" href="$d5/d35/class_geometria2_d___triangulos.html#a6567796bc94639cde89950e61f0c151" title="Carga la informacion de los Nodos de la geometria desde el archivo en formato Matlab&#45;PDETool..." alt="" coords="277,385,525,413">
+<area shape="rect" id="node102" href="$d5/d35/class_geometria2_d___triangulos.html#f845493234981a5489423df055cad16b" title="Calcula los centroides de todos los elementos de la geometria." alt="" coords="251,1474,552,1502">
+<area shape="rect" id="node106" href="$d2/d56/class_f_e_m.html#a86adb47841c30d564d495e71fd76125" title="Retorna el nombre del archivo elementos." alt="" coords="288,1525,515,1553">
+<area shape="rect" id="node108" href="$d2/d56/class_f_e_m.html#53480d350bb8538669e816767d2e27ed" title="Retorna el nombre del archivo fronteras." alt="" coords="292,1575,511,1603">
+<area shape="rect" id="node110" href="$d2/d56/class_f_e_m.html#e2db7bc557e6ed5030beab0e5d022e26" title="Retorna el nombre del archivo nodos." alt="" coords="300,1626,503,1654">
+<area shape="rect" id="node112" href="$d5/d35/class_geometria2_d___triangulos.html#f4bf02e35914dfd2b073b6d683e59ee4" title="Calcula las permutaciones de todos los elementos de la geometria." alt="" coords="237,1803,565,1831">
+<area shape="rect" id="node5" href="$d5/d35/class_geometria2_d___triangulos.html#cab1fc0d604102142752e6f407c04a0d" title="Calcula el area del elemento &quot;id&quot; de la geometria." alt="" coords="704,55,963,83">
+<area shape="rect" id="node9" href="$d5/d35/class_geometria2_d___triangulos.html#a13fa7b1c7f978e403fcf3f0330b9eb3" title="Calculo de area global del dominio." alt="" coords="688,5,979,33">
+<area shape="rect" id="node7" href="$d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50" title="Retorna la matriz de permutacion del elemento." alt="" coords="1103,55,1428,83">
+<area shape="rect" id="node13" href="$d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81" title="Abre el archivo." alt="" coords="784,410,883,438">
+<area shape="rect" id="node15" href="$df/d5d/class_geometria.html#025bc4300131bc12c35b08e49f4af00f" title="Asigna el numero de elementos de la geometria." alt="" coords="697,1423,969,1451">
+<area shape="rect" id="node17" href="$df/d5d/class_geometria.html#6eae9a72b65ebdd973d4ae8203b9cf3c" title="Asigna el numero de nodos por elemento de la geometria (En caso de utilizar otros..." alt="" coords="665,1474,1001,1502">
+<area shape="rect" id="node19" href="$d2/dee/class_archivo.html#9dd5f77b08f09bfef21f03e5a0080bcb" title="Cierra el archivo." alt="" coords="780,1322,887,1350">
+<area shape="rect" id="node21" href="$d5/d35/class_geometria2_d___triangulos.html#dd6c667d4b4f0191083dd473c5f24498" title="Genera la matriz de pertencia del elemento &quot;id&quot;." alt="" coords="635,1525,1032,1553">
+<area shape="rect" id="node23" href="$d6/db7/class_elemento___triangular.html#f6d388ad37b87f924101c1aa202c2e26" title="Retorna el numero de nodos del elemento." alt="" coords="671,1575,996,1603">
+<area shape="rect" id="node25" href="$d2/dee/class_archivo.html#660be3409bea4b7b4f5fdc133bf7e6a5" title="Retorna el archivo." alt="" coords="767,511,900,539">
+<area shape="rect" id="node27" href="$d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9" title="Retorna el numero de lineas del archivo." alt="" coords="753,765,913,793">
+<area shape="rect" id="node29" href="$d6/db7/class_elemento___triangular.html#33b54b8d5822a803d1d728efc7e66fc4" title="Asigna el dominio al cual pertenece el elemento." alt="" coords="692,1626,975,1654">
+<area shape="rect" id="node31" href="$d6/db7/class_elemento___triangular.html#5c0f397fb71f4543ab2e7f96f2f8155a" title="Asigna un 1 si es un elemento que contiene a una fuente." alt="" coords="696,1677,971,1705">
+<area shape="rect" id="node33" href="$d6/db7/class_elemento___triangular.html#1321c865b4da3d603b74f6534ea9710a" title="Elemento_Triangular::Set_Nodo_Elemento" alt="" coords="700,1373,967,1401">
+<area shape="rect" id="node37" href="$d6/db7/class_elemento___triangular.html#6bf84551c07a7bdb2d1500bad296034b" title="Asigna el numero de nodos del elemento." alt="" coords="671,1727,996,1755">
+<area shape="rect" id="node39" href="$d5/d35/class_geometria2_d___triangulos.html#5aad6064c760d6df926a4ddf0eed0f32" title="Reserva memoria para el arreglo de objetos Elemento_Triangular[], que contendran..." alt="" coords="648,1778,1019,1806">
+<area shape="rect" id="node41" href="$d6/db7/class_elemento___triangular.html#833a708e90f2ce900564c3d4b34e8d2c" title="Reserva memoria y define un arreglo de objetos Nodo_2D[] que pertenecen al elemento..." alt="" coords="644,1829,1023,1857">
+<area shape="rect" id="node43" href="$d2/dee/class_archivo.html#4c756c8da75fab13f1c0b5cc636b2724" title="Define el tipo de acceso al archivo." alt="" coords="772,663,895,691">
+<area shape="rect" id="node45" href="$d2/dee/class_archivo.html#3960a9c7863da75e6e704a668c488293" title="Asigna un nombre al archivo." alt="" coords="765,714,901,742">
+<area shape="rect" id="node35" href="$da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo." alt="" coords="1199,1271,1332,1299">
+<area shape="rect" id="node50" href="$dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col." alt="" coords="1189,511,1341,539">
+<area shape="rect" id="node52" href="$df/d5d/class_geometria.html#42242b709209b4e7276e82dd5e2902b7" title="Asigna el numero de fronteras de la geometria." alt="" coords="701,1069,965,1097">
+<area shape="rect" id="node56" href="$d5/d35/class_geometria2_d___triangulos.html#aa68fb7e9e258f1f1d7e45b0fe8aaa1c" title="Retorna la norma entre dos nodos." alt="" coords="692,1119,975,1147">
+<area shape="rect" id="node59" href="$dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col." alt="" coords="755,1170,912,1198">
+<area shape="rect" id="node61" href="$d0/dbd/class_elemento___frontera.html#167788c1516e06189c48a1ed5a1e98b3" title="Asigna el dominio al cual pertenece el nodo." alt="" coords="700,1221,967,1249">
+<area shape="rect" id="node63" href="$d0/dbd/class_elemento___frontera.html#37eb9ea50a81af8fe8a45b1c21507490" title="Asigna un valor a la matriz de borde en fila &#45; columna." alt="" coords="712,613,955,641">
+<area shape="rect" id="node65" href="$d0/dbd/class_elemento___frontera.html#c057a1a65ff347955a7e55973f718252" title="Asigna el indice global a un nodo frontera." alt="" coords="708,1271,959,1299">
+<area shape="rect" id="node68" href="$d0/dbd/class_elemento___frontera.html#ca6a7c4bc1f330b3598f9d7141dd6326" title="Asigna la norma al elemento frontera." alt="" coords="732,815,935,843">
+<area shape="rect" id="node70" href="$d5/d35/class_geometria2_d___triangulos.html#748ca8c89a078b5bd2fa6e71bf7f667f" title="Asigna el numero de nodos frontera en el dominio global." alt="" coords="613,866,1053,894">
+<area shape="rect" id="node72" href="$db/dbc/class_nodo__2_d.html#c12ad56c99e043472540761d009f8327" title="Asigna como nodo borde." alt="" coords="759,359,908,387">
+<area shape="rect" id="node74" href="$d5/d35/class_geometria2_d___triangulos.html#b6b464da08a0799fe7e54ac5c48467b6" title="Reserva memoria para el arreglo de objetos Elemento_Frontera[], que contendran informacion..." alt="" coords="652,917,1015,945">
+<area shape="rect" id="node76" href="$d0/dbd/class_elemento___frontera.html#d905337373dbb2268c2fdb6f0c4da47d" title="Reserva memoria a una matriz 2x2 que contendra informacion del elemento frontera..." alt="" coords="684,967,983,995">
+<area shape="rect" id="node78" href="$d0/dbd/class_elemento___frontera.html#a9370f8c1735fdf85dad2a0fa711ca0f" title="Reserva memoria para alamacenar informacion de los nodos frontera." alt="" coords="649,1018,1017,1046">
+<area shape="rect" id="node80" href="$d0/dbd/class_elemento___frontera.html#1e2f5962c5d099ef6e44259d640bd7cb" title="Asigna un valor al vector de pertenencia en la posicion col." alt="" coords="673,461,993,489">
+<area shape="rect" id="node88" href="$df/d5d/class_geometria.html#56f98ad223109a532e651eb70b1d6a7a" title="Retorna el numero de nodos." alt="" coords="711,207,956,235">
+<area shape="rect" id="node94" href="$d5/d35/class_geometria2_d___triangulos.html#089b4d8e4427f1d817598afcc158449f" title="Reserva memoria para el arreglo de objetos Nodo_2D[], que contendran informacion..." alt="" coords="661,258,1005,286">
+<area shape="rect" id="node96" href="$db/dbc/class_nodo__2_d.html#13812949dff0f268ea05b768f11c124a" title="Asigna un valor flotante en x." alt="" coords="776,106,891,134">
+<area shape="rect" id="node98" href="$db/dbc/class_nodo__2_d.html#42f47d5db784727501f289aa1248e264" title="Asigna un valor flotante en y." alt="" coords="775,157,892,185">
+<area shape="rect" id="node104" href="$d5/d35/class_geometria2_d___triangulos.html#dc700d4abea15dca68c3c9dcdc87edfe" title="Calcula el centroide del elemento &quot;id&quot; de la geometria." alt="" coords="689,1879,977,1907">
+<area shape="rect" id="node114" href="$d5/d35/class_geometria2_d___triangulos.html#62caf4aa4e14e92e34bf72d733b0b094" title="Calcula la permutacion en orden natural, asociada a las funciones de forma del elemento..." alt="" coords="680,1930,987,1958">

@@ -1,0 +1,1046 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Referencia de la Clase FEM2D</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li class="current"><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../annotated.html"><span>Lista&nbsp;de&nbsp;clases</span></a></li>
+      <li><a href="../../classes.html"><span>Índice&nbsp;de&nbsp;clases</span></a></li>
+      <li><a href="../../hierarchy.html"><span>Jerarquía&nbsp;de&nbsp;la&nbsp;clase</span></a></li>
+      <li><a href="../../functions.html"><span>Miembros&nbsp;de&nbsp;las&nbsp;clases</span></a></li>
+    </ul>
+  </div>
+</div>
+<div class="contents">
+<h1>Referencia de la Clase FEM2D</h1><!-- doxytag: class="FEM2D" --><!-- doxytag: inherits="FEM" -->Clase donde se define un problema <a class="el" href="../../d2/d56/class_f_e_m.html" title="Clase que define un procedimiento general del metodo del elemento finito - FEM (Siglas...">FEM</a> de dos dimensiones.  
+<a href="#_details">Más...</a>
+<p>
+<code>#include &lt;<a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>&gt;</code>
+<p>
+<div class="dynheader">
+Diagrama de herencias de FEM2D</div>
+<div class="dynsection">
+<p><center><img src="../../d3/dc5/class_f_e_m2_d__inherit__graph.png" border="0" usemap="#d2/da8/_f_e_m2_d__inherit__map" alt="Inheritance graph"></center>
+<map name="d2/da8/_f_e_m2_d__inherit__map">
+<area shape="rect" id="node2" href="../../d2/d56/class_f_e_m.html" title="Clase que define un procedimiento general del metodo del elemento finito &#45; FEM (Siglas..." alt="" coords="13,6,61,34"></map>
+<center><font size="2">[<a target="top" href="../../graph_legend.html">leyenda</a>]</font></center></div>
+<div class="dynheader">
+Diagrama de colaboración para FEM2D:</div>
+<div class="dynsection">
+<p><center><img src="../../d8/d6a/class_f_e_m2_d__coll__graph.png" border="0" usemap="#d0/dab/_f_e_m2_d__coll__map" alt="Collaboration graph"></center>
+<map name="d0/dab/_f_e_m2_d__coll__map">
+<area shape="rect" id="node2" href="../../d2/d56/class_f_e_m.html" title="Clase que define un procedimiento general del metodo del elemento finito &#45; FEM (Siglas..." alt="" coords="1584,622,1632,650"><area shape="rect" id="node4" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double." alt="" coords="1803,99,1861,127"><area shape="rect" id="node22" href="../../d6/db7/class_elemento___triangular.html" title="Clase que define un elemento finito triangular lineal de 3 nodos." alt="" coords="581,290,720,318"><area shape="rect" id="node30" href="../../d0/dbd/class_elemento___frontera.html" title="Clase que define los elementos que estan en la frontera del dominio, util para un..." alt="" coords="420,402,551,430"><area shape="rect" id="node43" href="../../d9/daf/class_rutinas___paralelas.html" title="Clase para trabajar con rutinas paralelas en almacenamiento y calculos." alt="" coords="1381,290,1507,318"><area shape="rect" id="node6" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double." alt="" coords="681,99,737,127"><area shape="rect" id="node8" href="../../d5/d35/class_geometria2_d___triangulos.html" title="Clase para generar una geometria triangular 2D." alt="" coords="713,529,876,557"><area shape="rect" id="node10" href="../../d8/d4a/class_geometria2_d.html" title="Clase base para generar una geometria en 2D." alt="" coords="1080,290,1176,318"><area shape="rect" id="node12" href="../../df/d5d/class_geometria.html" title="Clase base para generar una geometria." alt="" coords="973,99,1053,127"><area shape="rect" id="node14" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo." alt="" coords="1241,99,1343,127"><area shape="rect" id="node16" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional." alt="" coords="417,99,492,127"><area shape="rect" id="node18" href="../../da/d18/class_nodo.html" title="Clase utilizada para definir un nodo de un elemento finito." alt="" coords="97,6,148,34"><area shape="rect" id="node20" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo." alt="" coords="1357,6,1461,34"><area shape="rect" id="node40" href="../../d9/d85/class_sistema___lineal.html" title="Clase para trabajar con sistema lineales." alt="" coords="1903,194,2012,222"><area shape="rect" id="node24" href="../../d9/d09/class_elemento.html" title="Clase que define un elemento finito, donde se indica el tipo de elemento y el indice..." alt="" coords="217,99,292,127"></map>
+<center><font size="2">[<a target="top" href="../../graph_legend.html">leyenda</a>]</font></center></div>
+
+<p>
+<a href="../../d8/db4/class_f_e_m2_d-members.html">Lista de todos los miembros.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Métodos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3ac4d74d1bb6f1779d3e51efdec9df65">FEM2D</a> (void)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3f8b8ee5a077747329b191c581873984">~FEM2D</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Destructor de la clase.  <a href="#3f8b8ee5a077747329b191c581873984"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#c9e50c528da8b75604b7aa9fb855e937">Libera_Memoria_Carga</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Libera carga de memoria.  <a href="#c9e50c528da8b75604b7aa9fb855e937"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#709608b2ecf3c5aa37f0dacc11eb79b8">Inicializar_FEM2D</a> (int Tipo_resolucion_AX)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserva memoria para el sistema de ecuaciones, segun geometria utilizada.  <a href="#709608b2ecf3c5aa37f0dacc11eb79b8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#242ff498f955bda32814ce88841bf933">Llena_Matriz_B_FEM</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Realiza un llamada al metodo de contruccion de la vector de carga global B segun la geometria utilizada.  <a href="#242ff498f955bda32814ce88841bf933"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#454ecb1640d1701b0eb87bc548f87a57">Llena_Matriz_A_FEM</a> (int borde, int <a class="el" href="../../d2/d56/class_f_e_m.html#ae83e3773acf136590effbd7ee569f9b">tipo_solucion_matricial</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Realiza un llamada al metodo de contruccion de la matriz global A segun la geometria utilizada.  <a href="#454ecb1640d1701b0eb87bc548f87a57"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#54775d895b9af00cd737783d5f90030f">Set_Suma_Nodal_B_FEM</a> (unsigned long long i, double aNodal)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Suma un aporte nodal al vector de cargas global B del sistema de ecuaciones.  <a href="#54775d895b9af00cd737783d5f90030f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f">Set_Suma_Nodal_A_FEM</a> (unsigned long long i, unsigned long long j, double aNodal)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Suma un aporte nodal a la matriz global A del sistema de ecuaciones.  <a href="#f32c69c65fd995c4e51240b4f59ed27f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#16b7d3dff8ea41f086c8d23e5dc9b237">Set_Reserva_Memoria_A_FEM</a> (unsigned long long nNodo)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserva memoria para la matriz global A del sistema de ecuaciones.  <a href="#16b7d3dff8ea41f086c8d23e5dc9b237"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#5ca76aee0142f9958c69ab09fca5ac4e">Set_Reserva_Memoria_B_FEM</a> (unsigned long long nNodos)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserva memoria para la matriz global B del sistema de ecuaciones.  <a href="#5ca76aee0142f9958c69ab09fca5ac4e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#516b526f7cb2abdad10f427b26f888fe">Llena_Matriz_B_FEM_2D_Triangulos</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Construye el vector de cargas global B del sistema de ecuaciones calculada con elementos finitos triangulares.  <a href="#516b526f7cb2abdad10f427b26f888fe"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#a724dbb683ccf08a52d014a56f4a6864">Llena_Matriz_A_FEM_2D_Triangulos</a> (int tipo_AX)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Construye la matriz global A del sistema de ecuaciones a partir de las matrices de rigidez y de masa, calculada con elementos finitos triangulares.  <a href="#a724dbb683ccf08a52d014a56f4a6864"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#174b590b1f85b9adcff6283333c5cc5b">Aporte_Matriz_A_FEM_Borde_2D_Triangulos</a> (int tipo_AX)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Aporta a la matriz global A del sistema de ecuaciones los calculos del borde global.  <a href="#174b590b1f85b9adcff6283333c5cc5b"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Atributos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../df/d98/class_matriz___entera.html">Matriz_Entera</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">RigidezEl</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">MasaEl</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d6/db7/class_elemento___triangular.html">Elemento_Triangular</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d0/dbd/class_elemento___frontera.html">Elemento_Frontera</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3151921a08d7cea3a59acabd6f5742c3">ELF</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d5/db2/class_vector.html">Vector</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#91fe25fdf901ebe01312d93b77325518">QEl</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../dd/d59/class_vector___entero.html">Vector_Entero</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">PerteneciaELF</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">BordeEl</a></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase donde se define un problema <a class="el" href="../../d2/d56/class_f_e_m.html" title="Clase que define un procedimiento general del metodo del elemento finito - FEM (Siglas...">FEM</a> de dos dimensiones. 
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00006">6</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+<hr><h2>Documentación del constructor y destructor</h2>
+<a class="anchor" name="3ac4d74d1bb6f1779d3e51efdec9df65"></a><!-- doxytag: member="FEM2D::FEM2D" ref="3ac4d74d1bb6f1779d3e51efdec9df65" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FEM2D::FEM2D           </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00027">27</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00028"></a>00028    {
+<a name="l00029"></a>00029    }
+</pre></div>
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="3f8b8ee5a077747329b191c581873984"></a><!-- doxytag: member="FEM2D::~FEM2D" ref="3f8b8ee5a077747329b191c581873984" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">FEM2D::~FEM2D           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Destructor de la clase. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00032">32</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00033"></a>00033    {
+<a name="l00034"></a>00034        <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#c9e50c528da8b75604b7aa9fb855e937" title="Libera carga de memoria.">Libera_Memoria_Carga</a>();
+<a name="l00035"></a>00035    }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_3f8b8ee5a077747329b191c581873984_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_3f8b8ee5a077747329b191c581873984_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_3f8b8ee5a077747329b191c581873984_cgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#c9e50c528da8b75604b7aa9fb855e937" title="Libera carga de memoria." alt="" coords="180,81,385,109"><area shape="rect" id="node5" href="../../d5/db2/class_vector.html#7d950d556a8b23c43502037b4e25a0e9" title="Libera memoria." alt="" coords="457,5,617,33"><area shape="rect" id="node7" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria." alt="" coords="459,55,616,83"><area shape="rect" id="node9" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b" title="Vector_Entero::Libera_Memoria" alt="" coords="436,106,639,134"><area shape="rect" id="node11" href="../../df/d98/class_matriz___entera.html#0351dead416844cb92b141df4e567a16" title="Libera memoria de la matriz." alt="" coords="436,157,639,185"></map>
+</div>
+
+</div>
+</div><p>
+<hr><h2>Documentación de las funciones miembro</h2>
+<a class="anchor" name="174b590b1f85b9adcff6283333c5cc5b"></a><!-- doxytag: member="FEM2D::Aporte_Matriz_A_FEM_Borde_2D_Triangulos" ref="174b590b1f85b9adcff6283333c5cc5b" args="(int tipo_AX)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Aporte_Matriz_A_FEM_Borde_2D_Triangulos           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tipo_AX</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Aporta a la matriz global A del sistema de ecuaciones los calculos del borde global. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">168</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00025">BordeEl</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00019">ELF</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00194">FEM::Get_Geometria2D_Triangulos()</a>, <a class="el" href="../../d8/de9/_elemento___frontera_8hpp_source.html#l00045">Elemento_Frontera::Get_MIB()</a>, <a class="el" href="../../d1/d8a/_geometria2_d___triangulos_8hpp_source.html#l00265">Geometria2D_Triangulos::Get_Numero_Nodos_Frontera_Dominio_Global()</a>, <a class="el" href="../../d8/de9/_elemento___frontera_8hpp_source.html#l00053">Elemento_Frontera::Get_pertenencia_Borde()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00133">FEM::Hashing_FEM()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00030">LSQR_DISPERSO</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00023">PerteneciaELF</a>, <a class="el" href="../../d3/dfa/_matriz_8hpp_source.html#l00095">Matriz::Retorna()</a>, <a class="el" href="../../d4/d83/_vector___entero_8cpp_source.html#l00049">Vector_Entero::Retorna()</a>, <a class="el" href="../../d1/dfa/_geometria_8hpp_source.html#l00087">Geometria::Retorna_Numero_Nodos()</a>, <a class="el" href="../../d1/d8a/_geometria2_d___triangulos_8hpp_source.html#l00254">Geometria2D_Triangulos::Retornar_Fronteras_Geometria()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00093">Set_Suma_Nodal_A_FEM()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00062">Llena_Matriz_A_FEM()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00169"></a>00169    {  printf(<span class="stringliteral">"Llenando  Matriz Map - Hashing Borde. ...."</span>);
+<a name="l00170"></a>00170             <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nNodos=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos.">Retorna_Numero_Nodos</a>();
+<a name="l00171"></a>00171            <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3151921a08d7cea3a59acabd6f5742c3">ELF</a>=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../d5/d35/class_geometria2_d___triangulos.html#157ed11ccfef767ec7cffe880dff144a" title="Retorna el arreglo de objetos Elemento_Frontera[] de la geometria.">Retornar_Fronteras_Geometria</a>();
+<a name="l00172"></a>00172            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nElementosFrontera;
+<a name="l00173"></a>00173            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> iTmp,jTmp;
+<a name="l00174"></a>00174            nElementosFrontera=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../d5/d35/class_geometria2_d___triangulos.html#3754768563f41be81597f9a3dc5ae03e" title="Retorna el numero global de nodos en la frontera.">Get_Numero_Nodos_Frontera_Dominio_Global</a>();
+<a name="l00175"></a>00175            
+<a name="l00176"></a>00176            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> idt=0;idt&lt;nElementosFrontera;idt++)
+<a name="l00177"></a>00177        {
+<a name="l00178"></a>00178                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">PerteneciaELF</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3151921a08d7cea3a59acabd6f5742c3">ELF</a>[idt].<a class="code" href="../../d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437" title="Retorna la matriz pertenencia borde.">Get_pertenencia_Borde</a>();
+<a name="l00179"></a>00179                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">BordeEl</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3151921a08d7cea3a59acabd6f5742c3">ELF</a>[idt].<a class="code" href="../../d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633" title="Retorna la matriz borde.">Get_MIB</a>();
+<a name="l00180"></a>00180                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;2;i++)
+<a name="l00181"></a>00181                         {       
+<a name="l00182"></a>00182                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;2;j++)    
+<a name="l00183"></a>00183                                 {
+<a name="l00184"></a>00184                                                                            
+<a name="l00185"></a>00185                                    iTmp=( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long ) <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">PerteneciaELF</a>-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(i);
+<a name="l00186"></a>00186                                    jTmp=( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long ) <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">PerteneciaELF</a>-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(j);                       
+<a name="l00187"></a>00187                                    <span class="keywordflow">if</span>(tipo_AX==<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#e9a4b9f216f53ca47b8fc35199502aae" title="Metodo LSQR para matrices Dispersas.">LSQR_DISPERSO</a>) <span class="comment">//LSQR con hash y Vectores dispersos</span>
+<a name="l00188"></a>00188                    <a class="code" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para...">Hashing_FEM</a>(nNodos*iTmp + jTmp,<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">BordeEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j),iTmp,jTmp);             
+<a name="l00189"></a>00189                            <span class="keywordflow">else</span> <span class="comment">// Metodos secuenciales y con matrices normales</span>
+<a name="l00190"></a>00190                                    <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones.">Set_Suma_Nodal_A_FEM</a>(iTmp,jTmp,<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">BordeEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00191"></a>00191                         }
+<a name="l00192"></a>00192                         }
+<a name="l00193"></a>00193                 }
+<a name="l00194"></a>00194                 
+<a name="l00195"></a>00195                 
+<a name="l00196"></a>00196    }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_cgraph_map">
+<area shape="rect" id="node3" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="497,5,724,33"><area shape="rect" id="node5" href="../../d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633" title="Retorna la matriz borde." alt="" coords="516,55,705,83"><area shape="rect" id="node7" href="../../d5/d35/class_geometria2_d___triangulos.html#3754768563f41be81597f9a3dc5ae03e" title="Retorna el numero global de nodos en la frontera." alt="" coords="391,106,831,134"><area shape="rect" id="node9" href="../../d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437" title="Retorna la matriz pertenencia borde." alt="" coords="473,157,748,185"><area shape="rect" id="node11" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para..." alt="" coords="541,207,680,235"><area shape="rect" id="node13" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="928,359,1037,387"><area shape="rect" id="node15" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col." alt="" coords="532,258,689,286"><area shape="rect" id="node19" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos." alt="" coords="496,359,725,387"><area shape="rect" id="node21" href="../../d5/d35/class_geometria2_d___triangulos.html#157ed11ccfef767ec7cffe880dff144a" title="Retorna el arreglo de objetos Elemento_Frontera[] de la geometria." alt="" coords="436,410,785,438"><area shape="rect" id="node23" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones." alt="" coords="499,461,723,489"><area shape="rect" id="node17" href="../../dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502" title="Visualiza información general de la matriz." alt="" coords="880,258,1085,286"><area shape="rect" id="node25" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="931,461,1035,489"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_174b590b1f85b9adcff6283333c5cc5b_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#454ecb1640d1701b0eb87bc548f87a57" title="Realiza un llamada al metodo de contruccion de la matriz global A segun la geometria..." alt="" coords="391,5,588,33"><area shape="rect" id="node5" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="639,5,687,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="709608b2ecf3c5aa37f0dacc11eb79b8"></a><!-- doxytag: member="FEM2D::Inicializar_FEM2D" ref="709608b2ecf3c5aa37f0dacc11eb79b8" args="(int Tipo_resolucion_AX)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Inicializar_FEM2D           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>Tipo_resolucion_AX</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reserva memoria para el sistema de ecuaciones, segun geometria utilizada. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00018">18</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00012">GEOMETRIA_CUADRILATEROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00014">GEOMETRIA_TETRAHEDROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00010">GEOMETRIA_TRIANGULOS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00194">FEM::Get_Geometria2D_Triangulos()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00269">FEM::GetGeometria()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00030">LSQR_DISPERSO</a>, <a class="el" href="../../d1/dfa/_geometria_8hpp_source.html#l00087">Geometria::Retorna_Numero_Nodos()</a>, <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00097">Set_Reserva_Memoria_A_FEM()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00101">Set_Reserva_Memoria_B_FEM()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../df/d0a/main_8cpp_source.html#l00005">main()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00019"></a>00019    {  
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021           <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nodos;
+<a name="l00022"></a>00022       <span class="keywordflow">if</span>(<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>()==<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d64fdbe91944c7e5ac56e660844a1c06" title="Indica que se utilizara geometria basada en elementos triangulares.">GEOMETRIA_TRIANGULOS</a>)
+<a name="l00023"></a>00023           {
+<a name="l00024"></a>00024                   nodos=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos.">Retorna_Numero_Nodos</a>();
+<a name="l00025"></a>00025          
+<a name="l00026"></a>00026                   <span class="comment">// Uso de matrices tradicional                </span>
+<a name="l00027"></a>00027                   <span class="keywordflow">if</span>(Tipo_resolucion_AX!=<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#e9a4b9f216f53ca47b8fc35199502aae" title="Metodo LSQR para matrices Dispersas.">LSQR_DISPERSO</a>)
+<a name="l00028"></a>00028                   <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#16b7d3dff8ea41f086c8d23e5dc9b237" title="Reserva memoria para la matriz global A del sistema de ecuaciones.">Set_Reserva_Memoria_A_FEM</a>(nodos);
+<a name="l00029"></a>00029                   
+<a name="l00030"></a>00030                                   <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#5ca76aee0142f9958c69ab09fca5ac4e" title="Reserva memoria para la matriz global B del sistema de ecuaciones.">Set_Reserva_Memoria_B_FEM</a>(nodos);      
+<a name="l00031"></a>00031                 }
+<a name="l00032"></a>00032             
+<a name="l00033"></a>00033                   
+<a name="l00034"></a>00034                  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#0ad7df0b7b0ad13361f139b5cdf4f749" title="Indica que se utilizara geometria basada en elementos cuadrilateros.">GEOMETRIA_CUADRILATEROS</a>)
+<a name="l00035"></a>00035                 {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00036"></a>00036            
+<a name="l00037"></a>00037                          <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d68eecabab19549db7126cfe8cb4ae50" title="Indica que se utilizara geometria basada en elementos tetrahedros.">GEOMETRIA_TETRAHEDROS</a>)
+<a name="l00038"></a>00038                         {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00039"></a>00039            
+<a name="l00040"></a>00040                                         <span class="keywordflow">else</span>
+<a name="l00041"></a>00041                                         {
+<a name="l00042"></a>00042                                                 printf(<span class="stringliteral">"No se puede iniciar el proceso FEM2D, la geometria solicitada no esta disponible\n"</span>);
+<a name="l00043"></a>00043                                         }                                 
+<a name="l00044"></a>00044    }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_cgraph_map">
+<area shape="rect" id="node3" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="247,5,473,33"><area shape="rect" id="node5" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado." alt="" coords="291,55,429,83"><area shape="rect" id="node7" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos." alt="" coords="245,106,475,134"><area shape="rect" id="node9" href="../../d1/d5c/class_f_e_m2_d.html#16b7d3dff8ea41f086c8d23e5dc9b237" title="Reserva memoria para la matriz global A del sistema de ecuaciones." alt="" coords="233,157,487,185"><area shape="rect" id="node11" href="../../d1/d5c/class_f_e_m2_d.html#5ca76aee0142f9958c69ab09fca5ac4e" title="Reserva memoria para la matriz global B del sistema de ecuaciones." alt="" coords="233,207,487,235"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_709608b2ecf3c5aa37f0dacc11eb79b8_icgraph_map">
+<area shape="rect" id="node3" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="233,5,281,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="c9e50c528da8b75604b7aa9fb855e937"></a><!-- doxytag: member="FEM2D::Libera_Memoria_Carga" ref="c9e50c528da8b75604b7aa9fb855e937" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Libera_Memoria_Carga           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Libera carga de memoria. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">4</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00025">BordeEl</a>, <a class="el" href="../../db/d20/_vector_8hpp_source.html#l00059">Vector::Libera_Memoria()</a>, <a class="el" href="../../d1/d8b/_matriz_8cpp_source.html#l00065">Matriz::Libera_Memoria()</a>, <a class="el" href="../../d2/dbe/_vector___entero_8hpp_source.html#l00064">Vector_Entero::Libera_Memoria()</a>, <a class="el" href="../../dd/d41/_matriz___entera_8cpp_source.html#l00055">Matriz_Entera::Libera_Memoria()</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00015">MasaEl</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00011">PerteneciaEL</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00023">PerteneciaELF</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00021">QEl</a>, y <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00013">RigidezEl</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00032">~FEM2D()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00005"></a>00005    {
+<a name="l00006"></a>00006           
+<a name="l00007"></a>00007           <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>-&gt;<a class="code" href="../../df/d98/class_matriz___entera.html#0351dead416844cb92b141df4e567a16" title="Libera memoria de la matriz.">Libera_Memoria</a>();
+<a name="l00008"></a>00008           <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">PerteneciaELF</a>-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b">Libera_Memoria</a>();
+<a name="l00009"></a>00009           <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">RigidezEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria.">Libera_Memoria</a>();  
+<a name="l00010"></a>00010       <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">MasaEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria.">Libera_Memoria</a>();   
+<a name="l00011"></a>00011           <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#91fe25fdf901ebe01312d93b77325518">QEl</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#7d950d556a8b23c43502037b4e25a0e9" title="Libera memoria.">Libera_Memoria</a>();         
+<a name="l00012"></a>00012           <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">BordeEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria.">Libera_Memoria</a>();
+<a name="l00013"></a>00013            
+<a name="l00014"></a>00014         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_cgraph_map">
+<area shape="rect" id="node3" href="../../d5/db2/class_vector.html#7d950d556a8b23c43502037b4e25a0e9" title="Libera memoria." alt="" coords="284,5,444,33"><area shape="rect" id="node5" href="../../d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria." alt="" coords="285,55,443,83"><area shape="rect" id="node7" href="../../dd/d59/class_vector___entero.html#c69300642eb2d6f9a0e171c81ceb735b" title="Vector_Entero::Libera_Memoria" alt="" coords="263,106,465,134"><area shape="rect" id="node9" href="../../df/d98/class_matriz___entera.html#0351dead416844cb92b141df4e567a16" title="Libera memoria de la matriz." alt="" coords="263,157,465,185"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_c9e50c528da8b75604b7aa9fb855e937_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#3f8b8ee5a077747329b191c581873984" title="Destructor de la clase." alt="" coords="261,5,387,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="454ecb1640d1701b0eb87bc548f87a57"></a><!-- doxytag: member="FEM2D::Llena_Matriz_A_FEM" ref="454ecb1640d1701b0eb87bc548f87a57" args="(int borde, int tipo_solucion_matricial)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Llena_Matriz_A_FEM           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>borde</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tipo_solucion_matricial</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Realiza un llamada al metodo de contruccion de la matriz global A segun la geometria utilizada. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00062">62</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">Aporte_Matriz_A_FEM_Borde_2D_Triangulos()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00012">GEOMETRIA_CUADRILATEROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00014">GEOMETRIA_TETRAHEDROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00010">GEOMETRIA_TRIANGULOS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00269">FEM::GetGeometria()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../df/d0a/main_8cpp_source.html#l00005">main()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00063"></a>00063         {
+<a name="l00064"></a>00064                 
+<a name="l00065"></a>00065          <span class="keywordflow">if</span>(<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>()==<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d64fdbe91944c7e5ac56e660844a1c06" title="Indica que se utilizara geometria basada en elementos triangulares.">GEOMETRIA_TRIANGULOS</a>)          
+<a name="l00066"></a>00066          {
+<a name="l00067"></a>00067                  
+<a name="l00068"></a>00068                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a724dbb683ccf08a52d014a56f4a6864" title="Construye la matriz global A del sistema de ecuaciones a partir de las matrices de...">Llena_Matriz_A_FEM_2D_Triangulos</a>(<a class="code" href="../../d2/d56/class_f_e_m.html#ae83e3773acf136590effbd7ee569f9b" title="Tipo de solucion matricial a utilizar 1-Matriz completa, 2-Matriz reducida.">tipo_solucion_matricial</a>);
+<a name="l00069"></a>00069                  
+<a name="l00070"></a>00070                  <span class="comment">// Si se considera el borde en el sistema</span>
+<a name="l00071"></a>00071                  <span class="keywordflow">if</span>(borde==1)
+<a name="l00072"></a>00072                  {
+<a name="l00073"></a>00073                   printf(<span class="stringliteral">"Utilizando fronteras con Hash...\n"</span>);  
+<a name="l00074"></a>00074                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#174b590b1f85b9adcff6283333c5cc5b" title="Aporta a la matriz global A del sistema de ecuaciones los calculos del borde global...">Aporte_Matriz_A_FEM_Borde_2D_Triangulos</a>(<a class="code" href="../../d2/d56/class_f_e_m.html#ae83e3773acf136590effbd7ee569f9b" title="Tipo de solucion matricial a utilizar 1-Matriz completa, 2-Matriz reducida.">tipo_solucion_matricial</a>);
+<a name="l00075"></a>00075                  }
+<a name="l00076"></a>00076                                 printf(<span class="stringliteral">"FIN BORDE 2D...\n"</span>);     
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078                          }
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080                  <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#0ad7df0b7b0ad13361f139b5cdf4f749" title="Indica que se utilizara geometria basada en elementos cuadrilateros.">GEOMETRIA_CUADRILATEROS</a>)
+<a name="l00081"></a>00081                 {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00082"></a>00082    
+<a name="l00083"></a>00083                          <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d68eecabab19549db7126cfe8cb4ae50" title="Indica que se utilizara geometria basada en elementos tetrahedros.">GEOMETRIA_TETRAHEDROS</a>)
+<a name="l00084"></a>00084                         {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00085"></a>00085          
+<a name="l00086"></a>00086         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_cgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#174b590b1f85b9adcff6283333c5cc5b" title="Aporta a la matriz global A del sistema de ecuaciones los calculos del borde global..." alt="" coords="253,562,589,590"><area shape="rect" id="node30" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado." alt="" coords="352,613,491,641"><area shape="rect" id="node32" href="../../d1/d5c/class_f_e_m2_d.html#a724dbb683ccf08a52d014a56f4a6864" title="Construye la matriz global A del sistema de ecuaciones a partir de las matrices de..." alt="" coords="277,283,565,311"><area shape="rect" id="node5" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="745,410,972,438"><area shape="rect" id="node7" href="../../d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633" title="Retorna la matriz borde." alt="" coords="764,613,953,641"><area shape="rect" id="node9" href="../../d5/d35/class_geometria2_d___triangulos.html#3754768563f41be81597f9a3dc5ae03e" title="Retorna el numero global de nodos en la frontera." alt="" coords="639,663,1079,691"><area shape="rect" id="node11" href="../../d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437" title="Retorna la matriz pertenencia borde." alt="" coords="721,714,996,742"><area shape="rect" id="node13" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para..." alt="" coords="789,461,928,489"><area shape="rect" id="node15" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="1176,486,1285,514"><area shape="rect" id="node17" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col." alt="" coords="780,815,937,843"><area shape="rect" id="node21" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos." alt="" coords="744,359,973,387"><area shape="rect" id="node23" href="../../d5/d35/class_geometria2_d___triangulos.html#157ed11ccfef767ec7cffe880dff144a" title="Retorna el arreglo de objetos Elemento_Frontera[] de la geometria." alt="" coords="684,765,1033,793"><area shape="rect" id="node25" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones." alt="" coords="747,511,971,539"><area shape="rect" id="node19" href="../../dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502" title="Visualiza información general de la matriz." alt="" coords="1128,815,1333,843"><area shape="rect" id="node27" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="1179,537,1283,565"><area shape="rect" id="node35" href="../../d6/db7/class_elemento___triangular.html#db8bc0cb372ef382fdea187bb0808f15" title="Retorna la matriz de masa del elemento." alt="" coords="703,55,1015,83"><area shape="rect" id="node37" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento." alt="" coords="688,106,1029,134"><area shape="rect" id="node39" href="../../d6/db7/class_elemento___triangular.html#baaa1b5cffd05bf4df92ae70ff8e4172" title="Retorna la matriz de Rigidez del elemento." alt="" coords="697,157,1020,185"><area shape="rect" id="node43" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna." alt="" coords="781,207,936,235"><area shape="rect" id="node45" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos." alt="" coords="731,258,987,286"><area shape="rect" id="node48" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria." alt="" coords="681,5,1036,33"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_454ecb1640d1701b0eb87bc548f87a57_icgraph_map">
+<area shape="rect" id="node3" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="255,5,303,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="a724dbb683ccf08a52d014a56f4a6864"></a><!-- doxytag: member="FEM2D::Llena_Matriz_A_FEM_2D_Triangulos" ref="a724dbb683ccf08a52d014a56f4a6864" args="(int tipo_AX)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Llena_Matriz_A_FEM_2D_Triangulos           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>tipo_AX</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construye la matriz global A del sistema de ecuaciones a partir de las matrices de rigidez y de masa, calculada con elementos finitos triangulares. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">128</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00017">EL</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00194">FEM::Get_Geometria2D_Triangulos()</a>, <a class="el" href="../../d6/dc8/_elemento___triangular_8hpp_source.html#l00280">Elemento_Triangular::Get_Matriz_Masa_Elemento()</a>, <a class="el" href="../../d6/dc8/_elemento___triangular_8hpp_source.html#l00284">Elemento_Triangular::Get_Matriz_Pertenecia_Elemento()</a>, <a class="el" href="../../d6/dc8/_elemento___triangular_8hpp_source.html#l00276">Elemento_Triangular::Get_Matriz_Rigidez_Elemento()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00133">FEM::Hashing_FEM()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00030">LSQR_DISPERSO</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00015">MasaEl</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00011">PerteneciaEL</a>, <a class="el" href="../../d3/dfa/_matriz_8hpp_source.html#l00095">Matriz::Retorna()</a>, <a class="el" href="../../d1/da5/_matriz___entera_8hpp_source.html#l00088">Matriz_Entera::Retorna()</a>, <a class="el" href="../../d1/dfa/_geometria_8hpp_source.html#l00093">Geometria::Retorna_Numero_Elementos()</a>, <a class="el" href="../../d1/dfa/_geometria_8hpp_source.html#l00087">Geometria::Retorna_Numero_Nodos()</a>, <a class="el" href="../../d1/d8a/_geometria2_d___triangulos_8hpp_source.html#l00250">Geometria2D_Triangulos::Retornar_Elementos_Geometria()</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00013">RigidezEl</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00093">Set_Suma_Nodal_A_FEM()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00062">Llena_Matriz_A_FEM()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00129"></a>00129    {            printf(<span class="stringliteral">"Llenando  Matriz Hashing.....\n"</span>);
+<a name="l00130"></a>00130            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nElementos;
+<a name="l00131"></a>00131            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nNodos=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos.">Retorna_Numero_Nodos</a>();
+<a name="l00132"></a>00132            <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> iTmp,jTmp;
+<a name="l00133"></a>00133            <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria.">Retornar_Elementos_Geometria</a>();
+<a name="l00134"></a>00134            nElementos=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos.">Retorna_Numero_Elementos</a>();
+<a name="l00135"></a>00135            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> idt=0;idt&lt;nElementos;idt++)
+<a name="l00136"></a>00136        {
+<a name="l00137"></a>00137                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>[idt].<a class="code" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento.">Get_Matriz_Pertenecia_Elemento</a>();
+<a name="l00138"></a>00138                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">RigidezEl</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>[idt].<a class="code" href="../../d6/db7/class_elemento___triangular.html#baaa1b5cffd05bf4df92ae70ff8e4172" title="Retorna la matriz de Rigidez del elemento.">Get_Matriz_Rigidez_Elemento</a>();
+<a name="l00139"></a>00139                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">MasaEl</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>[idt].<a class="code" href="../../d6/db7/class_elemento___triangular.html#db8bc0cb372ef382fdea187bb0808f15" title="Retorna la matriz de masa del elemento.">Get_Matriz_Masa_Elemento</a>();   
+<a name="l00140"></a>00140         <span class="comment">//      printf("Dominio =%d",EL[idt].Get_Dominio());</span>
+<a name="l00141"></a>00141                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;3;i++)
+<a name="l00142"></a>00142                         {       
+<a name="l00143"></a>00143                                 <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;3;j++)    
+<a name="l00144"></a>00144                                 {
+<a name="l00145"></a>00145                                    iTmp= ( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long ) <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>-&gt;<a class="code" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna.">Retorna</a>(j,i);
+<a name="l00146"></a>00146                                    jTmp= ( <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long ) <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>-&gt;<a class="code" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna.">Retorna</a>(i,j);                     
+<a name="l00147"></a>00147                                    <span class="keywordflow">if</span>(tipo_AX==<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#e9a4b9f216f53ca47b8fc35199502aae" title="Metodo LSQR para matrices Dispersas.">LSQR_DISPERSO</a>)<span class="comment">//LSQR Paralelo con matrices Hash y Vectores dispersos</span>
+<a name="l00148"></a>00148                                    {
+<a name="l00149"></a>00149                                    <a class="code" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para...">Hashing_FEM</a>( (nNodos*iTmp + jTmp),<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">RigidezEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j),iTmp,jTmp);                
+<a name="l00150"></a>00150                                    <a class="code" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para...">Hashing_FEM</a>( (nNodos*iTmp + jTmp),<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">MasaEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j),iTmp,jTmp);   
+<a name="l00151"></a>00151                                            
+<a name="l00152"></a>00152                                         }
+<a name="l00153"></a>00153                     <span class="keywordflow">else</span> <span class="comment">// Metodos secuenciales y con matrices normales</span>
+<a name="l00154"></a>00154                     {
+<a name="l00155"></a>00155                                       <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones.">Set_Suma_Nodal_A_FEM</a>(iTmp,jTmp,<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">RigidezEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00156"></a>00156                               <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones.">Set_Suma_Nodal_A_FEM</a>(iTmp,jTmp,<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">MasaEl</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00157"></a>00157 
+<a name="l00158"></a>00158                                                 }                                               
+<a name="l00159"></a>00159                                         
+<a name="l00160"></a>00160                                         
+<a name="l00161"></a>00161                         }
+<a name="l00162"></a>00162                         }
+<a name="l00163"></a>00163                 }               
+<a name="l00164"></a>00164                 
+<a name="l00165"></a>00165    }    
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_cgraph_map">
+<area shape="rect" id="node3" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="407,5,633,33"><area shape="rect" id="node5" href="../../d6/db7/class_elemento___triangular.html#db8bc0cb372ef382fdea187bb0808f15" title="Retorna la matriz de masa del elemento." alt="" coords="364,55,676,83"><area shape="rect" id="node7" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento." alt="" coords="349,106,691,134"><area shape="rect" id="node9" href="../../d6/db7/class_elemento___triangular.html#baaa1b5cffd05bf4df92ae70ff8e4172" title="Retorna la matriz de Rigidez del elemento." alt="" coords="359,157,681,185"><area shape="rect" id="node11" href="../../d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para..." alt="" coords="451,207,589,235"><area shape="rect" id="node13" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="748,359,857,387"><area shape="rect" id="node15" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna." alt="" coords="443,309,597,337"><area shape="rect" id="node17" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos." alt="" coords="392,359,648,387"><area shape="rect" id="node19" href="../../df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos." alt="" coords="405,410,635,438"><area shape="rect" id="node21" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria." alt="" coords="343,461,697,489"><area shape="rect" id="node23" href="../../d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones." alt="" coords="408,511,632,539"><area shape="rect" id="node25" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="751,511,855,539"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_a724dbb683ccf08a52d014a56f4a6864_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#454ecb1640d1701b0eb87bc548f87a57" title="Realiza un llamada al metodo de contruccion de la matriz global A segun la geometria..." alt="" coords="343,5,540,33"><area shape="rect" id="node5" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="591,5,639,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="242ff498f955bda32814ce88841bf933"></a><!-- doxytag: member="FEM2D::Llena_Matriz_B_FEM" ref="242ff498f955bda32814ce88841bf933" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Llena_Matriz_B_FEM           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Realiza un llamada al metodo de contruccion de la vector de carga global B segun la geometria utilizada. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00047">47</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00012">GEOMETRIA_CUADRILATEROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00014">GEOMETRIA_TETRAHEDROS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00010">GEOMETRIA_TRIANGULOS</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00269">FEM::GetGeometria()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">Llena_Matriz_B_FEM_2D_Triangulos()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../df/d0a/main_8cpp_source.html#l00005">main()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00048"></a>00048    {
+<a name="l00049"></a>00049            
+<a name="l00050"></a>00050          <span class="keywordflow">if</span>(<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>()==<a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d64fdbe91944c7e5ac56e660844a1c06" title="Indica que se utilizara geometria basada en elementos triangulares.">GEOMETRIA_TRIANGULOS</a>)
+<a name="l00051"></a>00051          {<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#516b526f7cb2abdad10f427b26f888fe" title="Construye el vector de cargas global B del sistema de ecuaciones calculada con elementos...">Llena_Matriz_B_FEM_2D_Triangulos</a>();}
+<a name="l00052"></a>00052                 
+<a name="l00053"></a>00053                  <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#0ad7df0b7b0ad13361f139b5cdf4f749" title="Indica que se utilizara geometria basada en elementos cuadrilateros.">GEOMETRIA_CUADRILATEROS</a>)
+<a name="l00054"></a>00054                 {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00055"></a>00055            
+<a name="l00056"></a>00056                          <span class="keywordflow">if</span> (<a class="code" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado.">GetGeometria</a>() == <a class="code" href="../../d7/dd9/_f_e_m_8hpp.html#d68eecabab19549db7126cfe8cb4ae50" title="Indica que se utilizara geometria basada en elementos tetrahedros.">GEOMETRIA_TETRAHEDROS</a>)
+<a name="l00057"></a>00057                         {printf(<span class="stringliteral">"Geometria no disponible...\n"</span>);}
+<a name="l00058"></a>00058 
+<a name="l00059"></a>00059         }
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_cgraph_map">
+<area shape="rect" id="node3" href="../../d2/d56/class_f_e_m.html#4ae1b592cb18f2898c9265c0a7d8c70c" title="Retorna el tipo de geometria utilizado." alt="" coords="328,131,467,159"><area shape="rect" id="node5" href="../../d1/d5c/class_f_e_m2_d.html#516b526f7cb2abdad10f427b26f888fe" title="Construye el vector de cargas global B del sistema de ecuaciones calculada con elementos..." alt="" coords="253,182,541,210"><area shape="rect" id="node7" href="../../d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437" title="Retorna el vector de cargas del elemento." alt="" coords="656,5,880,33"><area shape="rect" id="node9" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="655,55,881,83"><area shape="rect" id="node11" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento." alt="" coords="597,106,939,134"><area shape="rect" id="node13" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="995,309,1107,337"><area shape="rect" id="node17" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna." alt="" coords="691,207,845,235"><area shape="rect" id="node19" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos." alt="" coords="640,258,896,286"><area shape="rect" id="node21" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria." alt="" coords="591,309,945,337"><area shape="rect" id="node23" href="../../d1/d5c/class_f_e_m2_d.html#54775d895b9af00cd737783d5f90030f" title="Suma un aporte nodal al vector de cargas global B del sistema de ecuaciones." alt="" coords="656,359,880,387"><area shape="rect" id="node15" href="../../d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="1155,334,1315,362"><area shape="rect" id="node25" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="997,359,1104,387"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_242ff498f955bda32814ce88841bf933_icgraph_map">
+<area shape="rect" id="node3" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="255,5,303,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="516b526f7cb2abdad10f427b26f888fe"></a><!-- doxytag: member="FEM2D::Llena_Matriz_B_FEM_2D_Triangulos" ref="516b526f7cb2abdad10f427b26f888fe" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Llena_Matriz_B_FEM_2D_Triangulos           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Construye el vector de cargas global B del sistema de ecuaciones calculada con elementos finitos triangulares. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">106</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00017">EL</a>, <a class="el" href="../../d6/dc8/_elemento___triangular_8hpp_source.html#l00296">Elemento_Triangular::Get_CargasV()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00194">FEM::Get_Geometria2D_Triangulos()</a>, <a class="el" href="../../d6/dc8/_elemento___triangular_8hpp_source.html#l00284">Elemento_Triangular::Get_Matriz_Pertenecia_Elemento()</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00011">PerteneciaEL</a>, <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00021">QEl</a>, <a class="el" href="../../d6/d4f/_vector_8cpp_source.html#l00051">Vector::Retorna()</a>, <a class="el" href="../../d1/da5/_matriz___entera_8hpp_source.html#l00088">Matriz_Entera::Retorna()</a>, <a class="el" href="../../d1/dfa/_geometria_8hpp_source.html#l00093">Geometria::Retorna_Numero_Elementos()</a>, <a class="el" href="../../d1/d8a/_geometria2_d___triangulos_8hpp_source.html#l00250">Geometria2D_Triangulos::Retornar_Elementos_Geometria()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00089">Set_Suma_Nodal_B_FEM()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00047">Llena_Matriz_B_FEM()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00107"></a>00107    {
+<a name="l00108"></a>00108         
+<a name="l00109"></a>00109          <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nElementos;<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> iTmp;
+<a name="l00110"></a>00110          <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria.">Retornar_Elementos_Geometria</a>();
+<a name="l00111"></a>00111          nElementos=<a class="code" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo.">Get_Geometria2D_Triangulos</a>()-&gt;<a class="code" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos.">Retorna_Numero_Elementos</a>(); 
+<a name="l00112"></a>00112          
+<a name="l00113"></a>00113            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> idt=0;idt&lt;nElementos;idt++)
+<a name="l00114"></a>00114        {
+<a name="l00115"></a>00115                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>[idt].<a class="code" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento.">Get_Matriz_Pertenecia_Elemento</a>();
+<a name="l00116"></a>00116                  <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#91fe25fdf901ebe01312d93b77325518">QEl</a>=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">EL</a>[idt].<a class="code" href="../../d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437" title="Retorna el vector de cargas del elemento.">Get_CargasV</a>();
+<a name="l00117"></a>00117                                    
+<a name="l00118"></a>00118                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt;3;j++)
+<a name="l00119"></a>00119                         {       
+<a name="l00120"></a>00120                                    iTmp=<a class="code" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">PerteneciaEL</a>-&gt;<a class="code" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna.">Retorna</a>(0,j);
+<a name="l00121"></a>00121                        <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#54775d895b9af00cd737783d5f90030f" title="Suma un aporte nodal al vector de cargas global B del sistema de ecuaciones.">Set_Suma_Nodal_B_FEM</a>(iTmp, <a class="code" href="../../d1/d5c/class_f_e_m2_d.html#91fe25fdf901ebe01312d93b77325518">QEl</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(j));  
+<a name="l00122"></a>00122                         }
+<a name="l00123"></a>00123            }
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125     }   
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_cgraph_map">
+<area shape="rect" id="node3" href="../../d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437" title="Retorna el vector de cargas del elemento." alt="" coords="408,5,632,33"><area shape="rect" id="node5" href="../../d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="407,55,633,83"><area shape="rect" id="node7" href="../../d6/db7/class_elemento___triangular.html#3211f1294c27e6b170d8faae6a3d736d" title="Retorna la matriz de pertenencia del elemento." alt="" coords="349,106,691,134"><area shape="rect" id="node9" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="747,309,859,337"><area shape="rect" id="node13" href="../../df/d98/class_matriz___entera.html#355f39b8f446d466ea7329c150097c70" title="Retorna valor en fila, columna." alt="" coords="443,207,597,235"><area shape="rect" id="node15" href="../../df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos." alt="" coords="392,258,648,286"><area shape="rect" id="node17" href="../../d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria." alt="" coords="343,309,697,337"><area shape="rect" id="node19" href="../../d1/d5c/class_f_e_m2_d.html#54775d895b9af00cd737783d5f90030f" title="Suma un aporte nodal al vector de cargas global B del sistema de ecuaciones." alt="" coords="408,359,632,387"><area shape="rect" id="node11" href="../../d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="907,334,1067,362"><area shape="rect" id="node21" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="749,359,856,387"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_516b526f7cb2abdad10f427b26f888fe_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#242ff498f955bda32814ce88841bf933" title="Realiza un llamada al metodo de contruccion de la vector de carga global B segun..." alt="" coords="343,5,540,33"><area shape="rect" id="node5" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="591,5,639,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="16b7d3dff8ea41f086c8d23e5dc9b237"></a><!-- doxytag: member="FEM2D::Set_Reserva_Memoria_A_FEM" ref="16b7d3dff8ea41f086c8d23e5dc9b237" args="(unsigned long long nNodo)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Set_Reserva_Memoria_A_FEM           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>nNodo</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reserva memoria para la matriz global A del sistema de ecuaciones. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00097">97</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00040">FEM::A</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00018">Inicializar_FEM2D()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00098"></a>00098     {<a class="code" href="../../d2/d56/class_f_e_m.html#d8972f193f24ec53b73316080fa95e63" title="Matriz de riguidez completa del sistema ( Matriz stiffness (Fisico-geometria) + Matriz...">A</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(nNodo,nNodo);}   
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_16b7d3dff8ea41f086c8d23e5dc9b237_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_16b7d3dff8ea41f086c8d23e5dc9b237_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_16b7d3dff8ea41f086c8d23e5dc9b237_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#709608b2ecf3c5aa37f0dacc11eb79b8" title="Reserva memoria para el sistema de ecuaciones, segun geometria utilizada." alt="" coords="309,5,488,33"><area shape="rect" id="node5" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="537,5,585,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="5ca76aee0142f9958c69ab09fca5ac4e"></a><!-- doxytag: member="FEM2D::Set_Reserva_Memoria_B_FEM" ref="5ca76aee0142f9958c69ab09fca5ac4e" args="(unsigned long long nNodos)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Set_Reserva_Memoria_B_FEM           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>nNodos</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reserva memoria para la matriz global B del sistema de ecuaciones. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00101">101</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00043">FEM::B</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00018">Inicializar_FEM2D()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00102"></a>00102    {<a class="code" href="../../d2/d56/class_f_e_m.html#bb2aefb799927f59fecfe657249dc931" title="Vector que contendra los valores conocidos del vector de carga global (Vector Fuente)...">B</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(nNodos,<span class="stringliteral">"Vector de Cargas"</span>);} 
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_5ca76aee0142f9958c69ab09fca5ac4e_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_5ca76aee0142f9958c69ab09fca5ac4e_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_5ca76aee0142f9958c69ab09fca5ac4e_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#709608b2ecf3c5aa37f0dacc11eb79b8" title="Reserva memoria para el sistema de ecuaciones, segun geometria utilizada." alt="" coords="309,5,488,33"><area shape="rect" id="node5" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="537,5,585,33"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="f32c69c65fd995c4e51240b4f59ed27f"></a><!-- doxytag: member="FEM2D::Set_Suma_Nodal_A_FEM" ref="f32c69c65fd995c4e51240b4f59ed27f" args="(unsigned long long i, unsigned long long j, double aNodal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Set_Suma_Nodal_A_FEM           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>j</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>aNodal</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Suma un aporte nodal a la matriz global A del sistema de ecuaciones. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00093">93</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00040">FEM::A</a>, <a class="el" href="../../d3/dfa/_matriz_8hpp_source.html#l00089">Matriz::Asigna()</a>, y <a class="el" href="../../d3/dfa/_matriz_8hpp_source.html#l00095">Matriz::Retorna()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">Aporte_Matriz_A_FEM_Borde_2D_Triangulos()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00094"></a>00094    { <a class="code" href="../../d2/d56/class_f_e_m.html#d8972f193f24ec53b73316080fa95e63" title="Matriz de riguidez completa del sistema ( Matriz stiffness (Fisico-geometria) + Matriz...">A</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(i,j,<a class="code" href="../../d2/d56/class_f_e_m.html#d8972f193f24ec53b73316080fa95e63" title="Matriz de riguidez completa del sistema ( Matriz stiffness (Fisico-geometria) + Matriz...">A</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j) + aNodal);}      
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_cgraph_map">
+<area shape="rect" id="node3" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="284,5,388,33"><area shape="rect" id="node5" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="281,55,391,83"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_f32c69c65fd995c4e51240b4f59ed27f_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#174b590b1f85b9adcff6283333c5cc5b" title="Aporta a la matriz global A del sistema de ecuaciones los calculos del borde global..." alt="" coords="280,5,616,33"><area shape="rect" id="node9" href="../../d1/d5c/class_f_e_m2_d.html#a724dbb683ccf08a52d014a56f4a6864" title="Construye la matriz global A del sistema de ecuaciones a partir de las matrices de..." alt="" coords="304,55,592,83"><area shape="rect" id="node5" href="../../d1/d5c/class_f_e_m2_d.html#454ecb1640d1701b0eb87bc548f87a57" title="Realiza un llamada al metodo de contruccion de la matriz global A segun la geometria..." alt="" coords="665,30,863,58"><area shape="rect" id="node7" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="913,30,961,58"></map>
+</div>
+
+</div>
+</div><p>
+<a class="anchor" name="54775d895b9af00cd737783d5f90030f"></a><!-- doxytag: member="FEM2D::Set_Suma_Nodal_B_FEM" ref="54775d895b9af00cd737783d5f90030f" args="(unsigned long long i, double aNodal)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FEM2D::Set_Suma_Nodal_B_FEM           </td>
+          <td>(</td>
+          <td class="paramtype">unsigned long long&nbsp;</td>
+          <td class="paramname"> <em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>aNodal</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Suma un aporte nodal al vector de cargas global B del sistema de ecuaciones. 
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00089">89</a> del archivo <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a>.</p>
+
+<p>Hace referencia a <a class="el" href="../../d6/d4f/_vector_8cpp_source.html#l00037">Vector::Asigna()</a>, <a class="el" href="../../d7/dd9/_f_e_m_8hpp_source.html#l00043">FEM::B</a>, y <a class="el" href="../../d6/d4f/_vector_8cpp_source.html#l00051">Vector::Retorna()</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">Llena_Matriz_B_FEM_2D_Triangulos()</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00090"></a>00090    {<a class="code" href="../../d2/d56/class_f_e_m.html#bb2aefb799927f59fecfe657249dc931" title="Vector que contendra los valores conocidos del vector de carga global (Vector Fuente)...">B</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(i, aNodal + <a class="code" href="../../d2/d56/class_f_e_m.html#bb2aefb799927f59fecfe657249dc931" title="Vector que contendra los valores conocidos del vector de carga global (Vector Fuente)...">B</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(i) );}
+</pre></div>
+<p>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas para esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_cgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_cgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_cgraph_map">
+<area shape="rect" id="node3" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="283,5,389,33"><area shape="rect" id="node7" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="280,55,392,83"><area shape="rect" id="node5" href="../../d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="440,30,600,58"></map>
+</div>
+
+<p>
+<div class="dynheader">
+Gráfico de llamadas a esta función:</div>
+<div class="dynsection">
+<p><center><img src="../../d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_icgraph.png" border="0" usemap="#d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_icgraph_map" alt=""></center>
+<map name="d1/d5c/class_f_e_m2_d_54775d895b9af00cd737783d5f90030f_icgraph_map">
+<area shape="rect" id="node3" href="../../d1/d5c/class_f_e_m2_d.html#516b526f7cb2abdad10f427b26f888fe" title="Construye el vector de cargas global B del sistema de ecuaciones calculada con elementos..." alt="" coords="280,5,568,33"><area shape="rect" id="node5" href="../../d1/d5c/class_f_e_m2_d.html#242ff498f955bda32814ce88841bf933" title="Realiza un llamada al metodo de contruccion de la vector de carga global B segun..." alt="" coords="617,5,815,33"><area shape="rect" id="node7" href="../../df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="865,5,913,33"></map>
+</div>
+
+</div>
+</div><p>
+<hr><h2>Documentación de los datos miembro</h2>
+<a class="anchor" name="ee074f3f277ec583532b4e6793c8d371"></a><!-- doxytag: member="FEM2D::BordeEl" ref="ee074f3f277ec583532b4e6793c8d371" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#ee074f3f277ec583532b4e6793c8d371">FEM2D::BordeEl</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00025">25</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">Aporte_Matriz_A_FEM_Borde_2D_Triangulos()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a2e7fdc398c313ca6457ae6e8ba45388"></a><!-- doxytag: member="FEM2D::EL" ref="a2e7fdc398c313ca6457ae6e8ba45388" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d6/db7/class_elemento___triangular.html">Elemento_Triangular</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#a2e7fdc398c313ca6457ae6e8ba45388">FEM2D::EL</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00017">17</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">Llena_Matriz_B_FEM_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3151921a08d7cea3a59acabd6f5742c3"></a><!-- doxytag: member="FEM2D::ELF" ref="3151921a08d7cea3a59acabd6f5742c3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/dbd/class_elemento___frontera.html">Elemento_Frontera</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3151921a08d7cea3a59acabd6f5742c3">FEM2D::ELF</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00019">19</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">Aporte_Matriz_A_FEM_Borde_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d7a53bb7f88e1e863b555276dfceacec"></a><!-- doxytag: member="FEM2D::MasaEl" ref="d7a53bb7f88e1e863b555276dfceacec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#d7a53bb7f88e1e863b555276dfceacec">FEM2D::MasaEl</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00015">15</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="57a453b24d99fd42981f85b67bbb47ce"></a><!-- doxytag: member="FEM2D::PerteneciaEL" ref="57a453b24d99fd42981f85b67bbb47ce" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/d98/class_matriz___entera.html">Matriz_Entera</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#57a453b24d99fd42981f85b67bbb47ce">FEM2D::PerteneciaEL</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00011">11</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>, <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">Llena_Matriz_B_FEM_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3ceb3de66abde941294360922fdb9a7b"></a><!-- doxytag: member="FEM2D::PerteneciaELF" ref="3ceb3de66abde941294360922fdb9a7b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d59/class_vector___entero.html">Vector_Entero</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#3ceb3de66abde941294360922fdb9a7b">FEM2D::PerteneciaELF</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00023">23</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00168">Aporte_Matriz_A_FEM_Borde_2D_Triangulos()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="91fe25fdf901ebe01312d93b77325518"></a><!-- doxytag: member="FEM2D::QEl" ref="91fe25fdf901ebe01312d93b77325518" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/db2/class_vector.html">Vector</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#91fe25fdf901ebe01312d93b77325518">FEM2D::QEl</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00021">21</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00106">Llena_Matriz_B_FEM_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="41930d1082010d1d9912c77271a77776"></a><!-- doxytag: member="FEM2D::RigidezEl" ref="41930d1082010d1d9912c77271a77776" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d09/class_matriz.html">Matriz</a>* <a class="el" href="../../d1/d5c/class_f_e_m2_d.html#41930d1082010d1d9912c77271a77776">FEM2D::RigidezEl</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definición en la línea <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html#l00013">13</a> del archivo <a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a>.</p>
+
+<p>Referenciado por <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00004">Libera_Memoria_Carga()</a>, y <a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html#l00128">Llena_Matriz_A_FEM_2D_Triangulos()</a>.</p>
+
+</div>
+</div><p>
+<hr>La documentación para esta clase fue generada a partir de los siguientes ficheros:<ul>
+<li><a class="el" href="../../d4/dff/_f_e_m2_d_8hpp_source.html">FEM2D.hpp</a><li><a class="el" href="../../d8/dcf/_f_e_m2_d_8cpp_source.html">FEM2D.cpp</a></ul>
+</div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:07:02 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

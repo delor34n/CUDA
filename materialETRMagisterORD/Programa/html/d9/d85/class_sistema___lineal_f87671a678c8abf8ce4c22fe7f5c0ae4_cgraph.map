@@ -1,0 +1,15 @@
+<area shape="rect" id="node3" href="$d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="605,8,709,36">
+<area shape="rect" id="node5" href="$d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="604,109,711,137">
+<area shape="rect" id="node9" href="$dd/d59/class_vector___entero.html#8a5590781f0c14a10b03458a7bc70de8" title="Busca un valor en el vector hasta un cierto indice y retorna 1 en caso verdadero..." alt="" coords="315,363,547,391">
+<area shape="rect" id="node11" href="$d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas." alt="" coords="369,413,492,441">
+<area shape="rect" id="node13" href="$d5/db2/class_vector.html#548bf4d3142df8532124c79cc6a9cb4d" title="Copia el vector a otro vector a." alt="" coords="381,211,480,239">
+<area shape="rect" id="node19" href="$d4/d09/class_matriz.html#659de37a940bb4303e53c3751f1a2c5f" title="Copia el contenido de la matriz a la matriz a." alt="" coords="381,59,480,87">
+<area shape="rect" id="node22" href="$d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="603,59,712,87">
+<area shape="rect" id="node24" href="$d5/db2/class_vector.html#7d950d556a8b23c43502037b4e25a0e9" title="Libera memoria." alt="" coords="351,464,511,492">
+<area shape="rect" id="node26" href="$d4/d09/class_matriz.html#1b7ea548801007f4623fef009256d705" title="Libera memoria." alt="" coords="352,515,509,543">
+<area shape="rect" id="node29" href="$d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="601,261,713,289">
+<area shape="rect" id="node32" href="$d5/db2/class_vector.html#91c0508e962ed5ed8d5014c46beea316" title="Solicita la memoria para el vector." alt="" coords="347,312,515,340">
+<area shape="rect" id="node37" href="$d4/d09/class_matriz.html#a06886e02a6eb98b9e1ae364c4174c6a" title="Asigna memoria." alt="" coords="348,565,513,593">
+<area shape="rect" id="node7" href="$d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="768,211,928,239">
+<area shape="rect" id="node16" href="$d5/db2/class_vector.html#2d54c33656543d5cbd083ef3571348ba" title="Retorna el numero de columnas." alt="" coords="595,211,720,239">
+<area shape="rect" id="node34" href="$d5/db2/class_vector.html#a32c56760a4a70f2e8c976cc16db84e8" title="Inicializa con valores val el vector." alt="" coords="599,363,716,391">

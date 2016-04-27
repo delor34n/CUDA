@@ -1,0 +1,11 @@
+<area shape="rect" id="node3" href="$d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81" title="Abre el archivo." alt="" coords="428,5,527,33">
+<area shape="rect" id="node5" href="$df/d5d/class_geometria.html#56f98ad223109a532e651eb70b1d6a7a" title="Retorna el numero de nodos." alt="" coords="355,55,600,83">
+<area shape="rect" id="node7" href="$d2/dee/class_archivo.html#660be3409bea4b7b4f5fdc133bf7e6a5" title="Retorna el archivo." alt="" coords="411,106,544,134">
+<area shape="rect" id="node9" href="$d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9" title="Retorna el numero de lineas del archivo." alt="" coords="397,157,557,185">
+<area shape="rect" id="node11" href="$da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo." alt="" coords="411,207,544,235">
+<area shape="rect" id="node13" href="$db/dbc/class_nodo__2_d.html#c12ad56c99e043472540761d009f8327" title="Asigna como nodo borde." alt="" coords="403,258,552,286">
+<area shape="rect" id="node15" href="$d5/d35/class_geometria2_d___triangulos.html#089b4d8e4427f1d817598afcc158449f" title="Reserva memoria para el arreglo de objetos Nodo_2D[], que contendran informacion..." alt="" coords="305,309,649,337">
+<area shape="rect" id="node17" href="$db/dbc/class_nodo__2_d.html#13812949dff0f268ea05b768f11c124a" title="Asigna un valor flotante en x." alt="" coords="420,359,535,387">
+<area shape="rect" id="node19" href="$db/dbc/class_nodo__2_d.html#42f47d5db784727501f289aa1248e264" title="Asigna un valor flotante en y." alt="" coords="419,410,536,438">
+<area shape="rect" id="node21" href="$d2/dee/class_archivo.html#4c756c8da75fab13f1c0b5cc636b2724" title="Define el tipo de acceso al archivo." alt="" coords="416,461,539,489">
+<area shape="rect" id="node23" href="$d2/dee/class_archivo.html#3960a9c7863da75e6e704a668c488293" title="Asigna un nombre al archivo." alt="" coords="409,511,545,539">

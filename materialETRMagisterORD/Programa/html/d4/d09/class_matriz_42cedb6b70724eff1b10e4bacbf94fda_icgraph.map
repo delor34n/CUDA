@@ -1,0 +1,14 @@
+<area shape="rect" id="node3" href="$dd/d6d/class_matriz___dispersa.html#cf625f41dd5e61b1868589593495fd4d" title="Almacena en formato CSR de una entrada de tipo Matriz." alt="" coords="629,77,904,105">
+<area shape="rect" id="node7" href="$d5/d35/class_geometria2_d___triangulos.html#24c502399a98c374d5aea103051e2498" title="Carga variables fisicas del problema &#45; Dependiendo de los tipos de problemas se deben..." alt="" coords="147,127,581,155">
+<area shape="rect" id="node13" href="$dd/d6d/class_matriz___dispersa.html#bcb34296bee2e4a4782cd45927058dcb" title="Retorna el numero de datos de la Matriz." alt="" coords="261,77,467,105">
+<area shape="rect" id="node16" href="$d2/dee/class_archivo.html#b51ed6de092c0b3593d6a9c501544c1e" title="Escribe una matriz a un archivo." alt="" coords="285,178,443,206">
+<area shape="rect" id="node18" href="$d4/d09/class_matriz.html#a0f3ec31bd6c020f14262ea7c8c196ff" title="Revisa si tienen la misma dimension regresando 1 en caso afirmativo y cero en caso..." alt="" coords="279,229,449,257">
+<area shape="rect" id="node20" href="$d4/d09/class_matriz.html#3b196cdcd64cf0ca2061e38eb4d30d88" title="Multiplica la matriz A por la matriz B." alt="" coords="304,279,424,307">
+<area shape="rect" id="node22" href="$d4/d09/class_matriz.html#5781e4a33a088bbd669937e5b3946b61" title="Resta a la matriz A la matriz B." alt="" coords="315,330,413,358">
+<area shape="rect" id="node24" href="$d9/d85/class_sistema___lineal.html#62051f00d59e3aa833a0d5fc4d2953ab" title="Resuelve Ax=b usando el metodo Gauss Seidel." alt="" coords="235,381,493,409">
+<area shape="rect" id="node29" href="$d9/d85/class_sistema___lineal.html#f9c6e4765b533131244361805898a91a" title="Resuelve Ax=b usando el metodo Jacobi." alt="" coords="257,431,471,459">
+<area shape="rect" id="node32" href="$d4/d09/class_matriz.html#752402f8a4dde7d217cfb54d6752125b" title="Suma las matrices A y B." alt="" coords="315,482,413,510">
+<area shape="rect" id="node5" href="$dd/d6d/class_matriz___dispersa.html#9764ca0ba62368fdf8553ac8e93853fa" title="Constructor sobrecargado de la clase con entrada Matriz y almacenamiento en formato..." alt="" coords="953,77,1169,105">
+<area shape="rect" id="node9" href="$d2/d56/class_f_e_m.html#6792c500fd0b5bf2e08dbb77dff47de2" title="Inicializa problema ETRAD (rECORDAR CAMBIAR IMPLEMNETACION Y DEJARLA EN UNA CLASE..." alt="" coords="657,127,876,155">
+<area shape="rect" id="node11" href="$df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="1037,254,1085,282">
+<area shape="rect" id="node26" href="$d2/d56/class_f_e_m.html#7af0f0176badaa510abdc09c28588c8d" title="Resolucion del sistema de ecuaciones." alt="" coords="669,381,864,409">

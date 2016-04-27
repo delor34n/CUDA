@@ -1,0 +1,17 @@
+<area shape="rect" id="node3" href="$d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="495,106,601,134">
+<area shape="rect" id="node7" href="$d5/db2/class_vector.html#2d54c33656543d5cbd083ef3571348ba" title="Retorna el numero de columnas." alt="" coords="485,157,611,185">
+<area shape="rect" id="node9" href="$d5/d35/class_geometria2_d___triangulos.html#9089a85d017170b4d4d92f2810294041" title="Calcula la funcion de forma del Elemento &quot;id&quot;, funcion &quot;indice&quot;..." alt="" coords="772,157,1028,185">
+<area shape="rect" id="node23" href="$db/dbc/class_nodo__2_d.html#4033af02c47c0927b2dfa7fca12bf653" title="Retorna el valor del nodo." alt="" coords="467,309,629,337">
+<area shape="rect" id="node25" href="$d6/db7/class_elemento___triangular.html#4c0655995692de148ec43529a6c9a013" title="Retorna la numeracion nodal global del nodo local &quot;Posicion_Nodal&quot;." alt="" coords="427,359,669,387">
+<area shape="rect" id="node29" href="$d5/d35/class_geometria2_d___triangulos.html#0eecce6c0fccc46ff6cd82a3321e83b4" title="Verifica si un punto pertence al interior de un elemento finito triangular id." alt="" coords="393,258,703,286">
+<area shape="rect" id="node39" href="$d8/d4a/class_geometria2_d.html#26dd9eb4afa9d64c03c8b69d09d1e23f" title="Retorna puntos de la grilla." alt="" coords="432,410,664,438">
+<area shape="rect" id="node5" href="$d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="820,106,980,134">
+<area shape="rect" id="node11" href="$d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b" title="retorna el area del elemento" alt="" coords="1181,55,1384,83">
+<area shape="rect" id="node13" href="$d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50" title="Retorna la matriz de permutacion del elemento." alt="" coords="1120,106,1445,134">
+<area shape="rect" id="node15" href="$d5/d35/class_geometria2_d___triangulos.html#4220aca1068abfee1e2acead1e570685" title="Calcula la funcion de forma con los parametros: Area del elemento, Ai, Bi y Ci (constantes..." alt="" coords="1140,157,1425,185">
+<area shape="rect" id="node17" href="$db/dbc/class_nodo__2_d.html#a9cce743fba2794634bae77d2a5ac3e0" title="Retorna el valor de x del nodo." alt="" coords="1224,207,1341,235">
+<area shape="rect" id="node19" href="$db/dbc/class_nodo__2_d.html#1b0220277e032a60ae32cceea2b776e3" title="Retorna el valor de y del nodo." alt="" coords="1223,258,1343,286">
+<area shape="rect" id="node21" href="$d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="1228,5,1337,33">
+<area shape="rect" id="node27" href="$da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo." alt="" coords="833,359,967,387">
+<area shape="rect" id="node33" href="$d5/d35/class_geometria2_d___triangulos.html#d1982ec18936f526de577ba76ffdd6ea" title="Retorna la orientacion de un triangulo dado 3 Nodos." alt="" coords="752,309,1048,337">
+<area shape="rect" id="node37" href="$d5/d35/class_geometria2_d___triangulos.html#656f2c25f6b6cc81130b38300bf73836" title="Retorna la orientacion de un triangulo dadas las 3 coordenadas." alt="" coords="1097,309,1468,337">

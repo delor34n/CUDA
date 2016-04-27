@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Elemento_Frontera.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Elemento_Frontera.hpp</h1><a href="../../d8/de9/_elemento___frontera_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Elemento_Frontera_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Elemento_Frontera_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="../../d6/dc8/_elemento___triangular_8hpp.html">Elemento_Triangular.hpp</a>"</span>
+<a name="l00005"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html">00005</a> <span class="keyword">class </span><a class="code" href="../../d0/dbd/class_elemento___frontera.html" title="Clase que define los elementos que estan en la frontera del dominio, util para un...">Elemento_Frontera</a>:<span class="keyword">public</span> <a class="code" href="../../d6/db7/class_elemento___triangular.html" title="Clase que define un elemento finito triangular lineal de 3 nodos.">Elemento_Triangular</a>
+<a name="l00006"></a>00006 {
+<a name="l00007"></a>00007     <span class="keyword">protected</span>:
+<a name="l00009"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c">00009</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c" title="Arreglo de objetos Nodo_2D[] que contendran informacion sobre la frontera.">Nodos_Frontera</a>;
+<a name="l00011"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#e9da1e2d872ff47c1db1b0bb64c5d5f4">00011</a>         <a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#e9da1e2d872ff47c1db1b0bb64c5d5f4" title="Indices globales de los nodos de la frontera.">Nodos_Borde</a>;
+<a name="l00013"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773">00013</a>         <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773" title="Matriz de borde Integral.">MIB</a>;
+<a name="l00015"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#40dc4e7704c8d48fc317f52809826b0e">00015</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#40dc4e7704c8d48fc317f52809826b0e" title="Vector de borde Integral.">VIB</a>;
+<a name="l00017"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#58598f6aa245356b0bc7165bdc667671">00017</a>         <span class="keywordtype">int</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#58598f6aa245356b0bc7165bdc667671" title="Dominio de la frontera.">dominio_frontera</a>;
+<a name="l00019"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#0ecf60071bf65ca95920d174bc07a3b4">00019</a>     <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#0ecf60071bf65ca95920d174bc07a3b4" title="Factor experimental de Fressnel (No se usa, pero se deja para una futura implementacion)...">R</a>; 
+<a name="l00021"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#1eb8f601c271421730e6972f603589d2">00021</a>     <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#1eb8f601c271421730e6972f603589d2" title="Factor asociado a la difusion (No se usa, pero se deja para una futura implementacion)...">A_Factor</a>;
+<a name="l00023"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1a0003f8f428238374c687d5a5d28f">00023</a>     <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1a0003f8f428238374c687d5a5d28f" title="Factor asociado a la dispersion (No se usa, pero se deja para una futura implementacion)...">Yn</a>;
+<a name="l00025"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#2ca4dc30c8035da33a7385dd57985b7c">00025</a>         <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#2ca4dc30c8035da33a7385dd57985b7c" title="Constante asociada al scattering.">kScatering</a>;
+<a name="l00027"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#04fea63978e419acf765d18b381e5fb8">00027</a>         <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#04fea63978e419acf765d18b381e5fb8" title="Norma - Distancia, usada para el calculo integral entre dos puntos.">Norma</a>;
+<a name="l00029"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1393001cf5a563f4e51cf820e9bad9">00029</a>         <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1393001cf5a563f4e51cf820e9bad9" title="Vector normal.">Normal</a>;
+<a name="l00030"></a>00030         
+<a name="l00031"></a>00031         
+<a name="l00032"></a>00032         <span class="keyword">public</span>:
+<a name="l00033"></a>00033         
+<a name="l00035"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#36577ed35012f3462a94b29d08011f12">00035</a>         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#36577ed35012f3462a94b29d08011f12" title="Constructor de la clase.">Elemento_Frontera</a>()
+<a name="l00036"></a>00036         {
+<a name="l00037"></a>00037         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#e9da1e2d872ff47c1db1b0bb64c5d5f4" title="Indices globales de los nodos de la frontera.">Nodos_Borde</a>=<span class="keyword">new</span> <a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a>(2);       
+<a name="l00038"></a>00038         }
+<a name="l00039"></a>00039                 
+<a name="l00041"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#786b33dccb71e4d2dab8c9fa7bee31d3">00041</a>         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#786b33dccb71e4d2dab8c9fa7bee31d3" title="Destructor de la clase (RECORDAR LIBERAR RAM).">~Elemento_Frontera</a>(){}
+<a name="l00042"></a>00042         
+<a name="l00043"></a>00043                 
+<a name="l00045"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633">00045</a>          <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633" title="Retorna la matriz borde.">Get_MIB</a>()
+<a name="l00046"></a>00046     {<span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773" title="Matriz de borde Integral.">MIB</a>;}
+<a name="l00047"></a>00047         
+<a name="l00049"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#2f27c08ce41c987cc2aab18daaa57e39">00049</a>          <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#2f27c08ce41c987cc2aab18daaa57e39" title="Retorna la vector borde.">Get_VIB</a>()
+<a name="l00050"></a>00050     {<span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#40dc4e7704c8d48fc317f52809826b0e" title="Vector de borde Integral.">VIB</a>;}
+<a name="l00051"></a>00051         
+<a name="l00053"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437">00053</a>          <a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437" title="Retorna la matriz pertenencia borde.">Get_pertenencia_Borde</a>()
+<a name="l00054"></a>00054     {<span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#e9da1e2d872ff47c1db1b0bb64c5d5f4" title="Indices globales de los nodos de la frontera.">Nodos_Borde</a>;}
+<a name="l00055"></a>00055         
+<a name="l00057"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#1e2f5962c5d099ef6e44259d640bd7cb">00057</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#1e2f5962c5d099ef6e44259d640bd7cb" title="Asigna un valor al vector de pertenencia en la posicion col.">Set_Vector_Pertenencia_Borde</a>(<span class="keywordtype">int</span> col,<span class="keywordtype">int</span> valor)
+<a name="l00058"></a>00058     {   
+<a name="l00059"></a>00059                 <a class="code" href="../../d0/dbd/class_elemento___frontera.html#e9da1e2d872ff47c1db1b0bb64c5d5f4" title="Indices globales de los nodos de la frontera.">Nodos_Borde</a>-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col.">Asigna</a>(col,valor);
+<a name="l00060"></a>00060         }
+<a name="l00061"></a>00061         
+<a name="l00062"></a>00062         
+<a name="l00064"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#2dbdca3a0c74dcdee1e387f61e92312b">00064</a>         <span class="keywordtype">int</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#2dbdca3a0c74dcdee1e387f61e92312b" title="Retorna el indice global de un nodo frontera.">Get_Valor_Nodo_Frontera</a>(<span class="keywordtype">int</span> nNodo)
+<a name="l00065"></a>00065         {
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c" title="Arreglo de objetos Nodo_2D[] que contendran informacion sobre la frontera.">Nodos_Frontera</a>[nNodo].<a class="code" href="../../da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo.">Get_Id_Nodo</a>();
+<a name="l00067"></a>00067         }       
+<a name="l00068"></a>00068         
+<a name="l00070"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#678779f9e821625c85e8976066f08743">00070</a>         <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d0/dbd/class_elemento___frontera.html#678779f9e821625c85e8976066f08743" title="Retorna el arreglo Nodo_2D[] que contiene informacion de los nodos de la frontera...">Get_Nodo_Frontera</a>()
+<a name="l00071"></a>00071         {
+<a name="l00072"></a>00072         <span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c" title="Arreglo de objetos Nodo_2D[] que contendran informacion sobre la frontera.">Nodos_Frontera</a>;
+<a name="l00073"></a>00073         }       
+<a name="l00074"></a>00074         
+<a name="l00076"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#269d9a97ab7e17721ee53d9a723d5961">00076</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#269d9a97ab7e17721ee53d9a723d5961" title="Reserva memoria para las matrices asociadas al borde.">Set_Reserva_Memoria_Matriz_Borde</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col)
+<a name="l00077"></a>00077     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773" title="Matriz de borde Integral.">MIB</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(fil,col);}   
+<a name="l00078"></a>00078         
+<a name="l00080"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#204e99ab9e96c478be70d6d7392c670e">00080</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#204e99ab9e96c478be70d6d7392c670e" title="Reserva memoria para las matrices asociadas al borde.">Set_Reserva_Memoria_Vector_Borde</a>(<span class="keywordtype">int</span> col)
+<a name="l00081"></a>00081     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#40dc4e7704c8d48fc317f52809826b0e" title="Vector de borde Integral.">VIB</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(col);} 
+<a name="l00082"></a>00082         
+<a name="l00084"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#d905337373dbb2268c2fdb6f0c4da47d">00084</a>     <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#d905337373dbb2268c2fdb6f0c4da47d" title="Reserva memoria a una matriz 2x2 que contendra informacion del elemento frontera...">Set_Reserva_Memoria_MIB</a>()
+<a name="l00085"></a>00085     {
+<a name="l00086"></a>00086           <a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773" title="Matriz de borde Integral.">MIB</a>=<span class="keyword">new</span> <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a>(2,2);
+<a name="l00087"></a>00087           
+<a name="l00088"></a>00088         }
+<a name="l00089"></a>00089         
+<a name="l00091"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#37eb9ea50a81af8fe8a45b1c21507490">00091</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#37eb9ea50a81af8fe8a45b1c21507490" title="Asigna un valor a la matriz de borde en fila - columna.">Set_Matriz_Borde</a>(<span class="keywordtype">int</span> fil,<span class="keywordtype">int</span> col,<span class="keywordtype">double</span> valor)
+<a name="l00092"></a>00092     {   
+<a name="l00093"></a>00093                 <a class="code" href="../../d0/dbd/class_elemento___frontera.html#def04e0535b7287cb2ea0f6eeaa1d773" title="Matriz de borde Integral.">MIB</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(fil,col,valor);
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095         
+<a name="l00097"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#47ee4edb292f2d752ef7206d427880d0">00097</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#47ee4edb292f2d752ef7206d427880d0" title="Asigna un valor al vector borde en columna.">Set_Vector_Borde</a>(<span class="keywordtype">int</span> col,<span class="keywordtype">double</span> valor)
+<a name="l00098"></a>00098     {   
+<a name="l00099"></a>00099                 <a class="code" href="../../d0/dbd/class_elemento___frontera.html#40dc4e7704c8d48fc317f52809826b0e" title="Vector de borde Integral.">VIB</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(col,valor);
+<a name="l00100"></a>00100         }
+<a name="l00101"></a>00101         
+<a name="l00103"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#a9370f8c1735fdf85dad2a0fa711ca0f">00103</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#a9370f8c1735fdf85dad2a0fa711ca0f" title="Reserva memoria para alamacenar informacion de los nodos frontera.">Set_Reserva_Memoria_Nodos_Frontera</a>(<span class="keywordtype">int</span> NNE)
+<a name="l00104"></a>00104     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c" title="Arreglo de objetos Nodo_2D[] que contendran informacion sobre la frontera.">Nodos_Frontera</a>=<span class="keyword">new</span> <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a>[NNE];}  
+<a name="l00105"></a>00105         
+<a name="l00107"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#c057a1a65ff347955a7e55973f718252">00107</a>     <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#c057a1a65ff347955a7e55973f718252" title="Asigna el indice global a un nodo frontera.">Set_Nodo_Frontera</a>(<span class="keywordtype">int</span> Posicion_Nodal,<span class="keywordtype">int</span> nodo_global)
+<a name="l00108"></a>00108     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#98a8624fc489afc8a0004516077b169c" title="Arreglo de objetos Nodo_2D[] que contendran informacion sobre la frontera.">Nodos_Frontera</a>[Posicion_Nodal].<a class="code" href="../../da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo.">Set_Id_Nodo</a>(nodo_global);}  
+<a name="l00109"></a>00109         
+<a name="l00111"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#167788c1516e06189c48a1ed5a1e98b3">00111</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#167788c1516e06189c48a1ed5a1e98b3" title="Asigna el dominio al cual pertenece el nodo.">Set_Dominio_Frontera</a>(<span class="keywordtype">int</span> Dom)
+<a name="l00112"></a>00112     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#58598f6aa245356b0bc7165bdc667671" title="Dominio de la frontera.">dominio_frontera</a>=Dom;}
+<a name="l00113"></a>00113         
+<a name="l00115"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#681ff6bdc03b02e376f3ff00557d7de5">00115</a>         <span class="keywordtype">int</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#681ff6bdc03b02e376f3ff00557d7de5" title="Retorna el dominio al cual pertenece el nodo frontera.">Get_Dominio_Frontera</a>()
+<a name="l00116"></a>00116     {<span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#58598f6aa245356b0bc7165bdc667671" title="Dominio de la frontera.">dominio_frontera</a>;}
+<a name="l00117"></a>00117         
+<a name="l00119"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#ca6a7c4bc1f330b3598f9d7141dd6326">00119</a>         <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#ca6a7c4bc1f330b3598f9d7141dd6326" title="Asigna la norma al elemento frontera.">Set_Norma</a>(<span class="keywordtype">double</span> nNorma)
+<a name="l00120"></a>00120     {<a class="code" href="../../d0/dbd/class_elemento___frontera.html#04fea63978e419acf765d18b381e5fb8" title="Norma - Distancia, usada para el calculo integral entre dos puntos.">Norma</a>=nNorma;}
+<a name="l00121"></a>00121         
+<a name="l00122"></a>00122                 
+<a name="l00124"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#3c97022e4c9ade163e8fb4f3571a280d">00124</a>         <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#3c97022e4c9ade163e8fb4f3571a280d" title="Asigna la norma al elemento frontera.">Get_Norma</a>()
+<a name="l00125"></a>00125     {<span class="keywordflow">return</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#04fea63978e419acf765d18b381e5fb8" title="Norma - Distancia, usada para el calculo integral entre dos puntos.">Norma</a>;}
+<a name="l00126"></a>00126         
+<a name="l00128"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#460a31a3bed0989d9b7c6c9b8a0ca337">00128</a>          <span class="keywordtype">void</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#460a31a3bed0989d9b7c6c9b8a0ca337" title="Reserva memoria y asigna el vector normal a un elemento frontera.">Set_Vector_Normal</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> vNormal)
+<a name="l00129"></a>00129     {
+<a name="l00130"></a>00130         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1393001cf5a563f4e51cf820e9bad9" title="Vector normal.">Normal</a>=<span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(2);
+<a name="l00131"></a>00131         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1393001cf5a563f4e51cf820e9bad9" title="Vector normal.">Normal</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(0,vNormal.<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(0));
+<a name="l00132"></a>00132         <a class="code" href="../../d0/dbd/class_elemento___frontera.html#7c1393001cf5a563f4e51cf820e9bad9" title="Vector normal.">Normal</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(1,vNormal.<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(1));
+<a name="l00133"></a>00133         }
+<a name="l00134"></a>00134         
+<a name="l00136"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#b0eb7f7df8fd549f5c0df2a4938ce7ca">00136</a>         <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#b0eb7f7df8fd549f5c0df2a4938ce7ca" title="Calculo de la matriz asociada al borde.">Calculo_MBorde_ML</a>(<span class="keywordtype">double</span> qi,<span class="keywordtype">double</span> nNorma,<span class="keywordtype">int</span> peso)
+<a name="l00137"></a>00137         {
+<a name="l00138"></a>00138         <span class="keywordtype">double</span> ML;
+<a name="l00139"></a>00139         ML=qi*nNorma*(1.0 + (double)peso)/6.0;
+<a name="l00140"></a>00140     <span class="keywordflow">return</span> ML;          
+<a name="l00141"></a>00141         }
+<a name="l00142"></a>00142         
+<a name="l00144"></a><a class="code" href="../../d0/dbd/class_elemento___frontera.html#83f1c01237cb693668ab62b8a1ae2c42">00144</a>         <span class="keywordtype">double</span> <a class="code" href="../../d0/dbd/class_elemento___frontera.html#83f1c01237cb693668ab62b8a1ae2c42" title="Calculo del Vector asociado al borde.">Calculo_VBorde_ML</a>(<span class="keywordtype">double</span> qi,<span class="keywordtype">double</span> nNorma)
+<a name="l00145"></a>00145         {
+<a name="l00146"></a>00146         <span class="keywordtype">double</span> ML;
+<a name="l00147"></a>00147         ML=qi*nNorma/2.0;
+<a name="l00148"></a>00148     <span class="keywordflow">return</span> ML;          
+<a name="l00149"></a>00149         }
+<a name="l00150"></a>00150     
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         
+<a name="l00153"></a>00153 };
+<a name="l00154"></a>00154 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:34 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

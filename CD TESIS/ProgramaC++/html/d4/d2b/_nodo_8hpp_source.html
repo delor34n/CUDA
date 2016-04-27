@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Nodo.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Nodo.hpp</h1><a href="../../d4/d2b/_nodo_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Nodo_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Nodo_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="../../d2/dbe/_vector___entero_8hpp.html">Vector_Entero.hpp</a>"</span>
+<a name="l00005"></a><a class="code" href="../../da/d18/class_nodo.html">00005</a> <span class="keyword">class </span><a class="code" href="../../da/d18/class_nodo.html" title="Clase utilizada para definir un nodo de un elemento finito.">Nodo</a>
+<a name="l00006"></a>00006 {
+<a name="l00007"></a>00007     <span class="keyword">protected</span>:
+<a name="l00009"></a><a class="code" href="../../da/d18/class_nodo.html#6fb195bc7fcd7944587a128f0effb44c">00009</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../da/d18/class_nodo.html#6fb195bc7fcd7944587a128f0effb44c" title="Identificador del nodo.">id_nodo</a>;
+<a name="l00010"></a>00010         
+<a name="l00012"></a><a class="code" href="../../da/d18/class_nodo.html#03097405b9a056cf679d9f2ea9788cff">00012</a>     <span class="keywordtype">int</span> <a class="code" href="../../da/d18/class_nodo.html#03097405b9a056cf679d9f2ea9788cff" title="Dimension del nodo.">dimension_nodo</a>;
+<a name="l00013"></a>00013     
+<a name="l00014"></a>00014     <span class="keyword">public</span>:
+<a name="l00015"></a>00015         
+<a name="l00017"></a><a class="code" href="../../da/d18/class_nodo.html#5d4d976358a70718a527061f3c90a20b">00017</a>         <a class="code" href="../../da/d18/class_nodo.html#5d4d976358a70718a527061f3c90a20b" title="Constructor de la clase Nodo.">Nodo</a>(<span class="keywordtype">void</span>){}
+<a name="l00018"></a>00018         
+<a name="l00020"></a><a class="code" href="../../da/d18/class_nodo.html#a9f9b63092a2c9d412a57d9784f0c292">00020</a>         <a class="code" href="../../da/d18/class_nodo.html#a9f9b63092a2c9d412a57d9784f0c292" title="Destructor de la clase Nodo.">~Nodo</a>(<span class="keywordtype">void</span>){}
+<a name="l00021"></a>00021         
+<a name="l00023"></a><a class="code" href="../../da/d18/class_nodo.html#7cc2ac0501591817bc1aacab6c2c4f57">00023</a>     <span class="keywordtype">void</span> <a class="code" href="../../da/d18/class_nodo.html#7cc2ac0501591817bc1aacab6c2c4f57" title="Asigna dimension del nodo.">Set_Dimension_Nodo</a>(<span class="keywordtype">int</span> dimension)
+<a name="l00024"></a>00024     {<a class="code" href="../../da/d18/class_nodo.html#03097405b9a056cf679d9f2ea9788cff" title="Dimension del nodo.">dimension_nodo</a>=dimension;}
+<a name="l00025"></a>00025     
+<a name="l00027"></a><a class="code" href="../../da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b">00027</a>     <span class="keywordtype">void</span> <a class="code" href="../../da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo.">Set_Id_Nodo</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>)
+<a name="l00028"></a>00028     {<a class="code" href="../../da/d18/class_nodo.html#6fb195bc7fcd7944587a128f0effb44c" title="Identificador del nodo.">id_nodo</a>=id;}       
+<a name="l00029"></a>00029         
+<a name="l00031"></a><a class="code" href="../../da/d18/class_nodo.html#6d4eb6ea50a6f21d210f4b19e3807cda">00031</a>         <span class="keywordtype">int</span> <a class="code" href="../../da/d18/class_nodo.html#6d4eb6ea50a6f21d210f4b19e3807cda" title="Retorna la dimension del nodo.">Get_Dimension_Nodo</a>()
+<a name="l00032"></a>00032     {<span class="keywordflow">return</span> <a class="code" href="../../da/d18/class_nodo.html#03097405b9a056cf679d9f2ea9788cff" title="Dimension del nodo.">dimension_nodo</a>;}
+<a name="l00033"></a>00033     
+<a name="l00035"></a><a class="code" href="../../da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99">00035</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo.">Get_Id_Nodo</a>()
+<a name="l00036"></a>00036     {<span class="keywordflow">return</span> <a class="code" href="../../da/d18/class_nodo.html#6fb195bc7fcd7944587a128f0effb44c" title="Identificador del nodo.">id_nodo</a>;}   
+<a name="l00037"></a>00037 
+<a name="l00038"></a>00038         
+<a name="l00039"></a>00039 };
+<a name="l00040"></a>00040 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:35 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

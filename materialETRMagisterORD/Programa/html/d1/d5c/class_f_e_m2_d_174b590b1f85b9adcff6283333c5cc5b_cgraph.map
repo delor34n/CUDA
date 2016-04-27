@@ -1,0 +1,12 @@
+<area shape="rect" id="node3" href="$d2/d56/class_f_e_m.html#dc741809ba703314c6a34b101d15e1dd" title="Retorna la geometria de trabajo." alt="" coords="497,5,724,33">
+<area shape="rect" id="node5" href="$d0/dbd/class_elemento___frontera.html#2c4fa706ad80f831760792a405381633" title="Retorna la matriz borde." alt="" coords="516,55,705,83">
+<area shape="rect" id="node7" href="$d5/d35/class_geometria2_d___triangulos.html#3754768563f41be81597f9a3dc5ae03e" title="Retorna el numero global de nodos en la frontera." alt="" coords="391,106,831,134">
+<area shape="rect" id="node9" href="$d0/dbd/class_elemento___frontera.html#ab8f2b72a3ae31b4d43cd99fe031a437" title="Retorna la matriz pertenencia borde." alt="" coords="473,157,748,185">
+<area shape="rect" id="node11" href="$d2/d56/class_f_e_m.html#8dc941bf058e2406f773ff4963d828b6" title="Almacena y suma los aportea a una Map que utiliza el Hashing como referencia para..." alt="" coords="541,207,680,235">
+<area shape="rect" id="node13" href="$d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="928,359,1037,387">
+<area shape="rect" id="node15" href="$dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col." alt="" coords="532,258,689,286">
+<area shape="rect" id="node19" href="$df/d5d/class_geometria.html#8883f64fa3d61833004018ac8e28d774" title="Retorna el numero de nodos." alt="" coords="496,359,725,387">
+<area shape="rect" id="node21" href="$d5/d35/class_geometria2_d___triangulos.html#157ed11ccfef767ec7cffe880dff144a" title="Retorna el arreglo de objetos Elemento_Frontera[] de la geometria." alt="" coords="436,410,785,438">
+<area shape="rect" id="node23" href="$d1/d5c/class_f_e_m2_d.html#f32c69c65fd995c4e51240b4f59ed27f" title="Suma un aporte nodal a la matriz global A del sistema de ecuaciones." alt="" coords="499,461,723,489">
+<area shape="rect" id="node17" href="$dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502" title="Visualiza información general de la matriz." alt="" coords="880,258,1085,286">
+<area shape="rect" id="node25" href="$d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="931,461,1035,489">

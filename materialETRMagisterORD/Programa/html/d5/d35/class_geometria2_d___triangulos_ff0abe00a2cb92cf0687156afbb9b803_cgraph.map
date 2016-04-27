@@ -1,0 +1,22 @@
+<area shape="rect" id="node3" href="$d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81" title="Abre el archivo." alt="" coords="479,5,577,33">
+<area shape="rect" id="node5" href="$df/d5d/class_geometria.html#025bc4300131bc12c35b08e49f4af00f" title="Asigna el numero de elementos de la geometria." alt="" coords="392,55,664,83">
+<area shape="rect" id="node7" href="$df/d5d/class_geometria.html#6eae9a72b65ebdd973d4ae8203b9cf3c" title="Asigna el numero de nodos por elemento de la geometria (En caso de utilizar otros..." alt="" coords="360,106,696,134">
+<area shape="rect" id="node9" href="$d2/dee/class_archivo.html#9dd5f77b08f09bfef21f03e5a0080bcb" title="Cierra el archivo." alt="" coords="475,157,581,185">
+<area shape="rect" id="node11" href="$d5/d35/class_geometria2_d___triangulos.html#dd6c667d4b4f0191083dd473c5f24498" title="Genera la matriz de pertencia del elemento &quot;id&quot;." alt="" coords="329,207,727,235">
+<area shape="rect" id="node23" href="$d6/db7/class_elemento___triangular.html#f6d388ad37b87f924101c1aa202c2e26" title="Retorna el numero de nodos del elemento." alt="" coords="365,258,691,286">
+<area shape="rect" id="node25" href="$d2/dee/class_archivo.html#660be3409bea4b7b4f5fdc133bf7e6a5" title="Retorna el archivo." alt="" coords="461,309,595,337">
+<area shape="rect" id="node27" href="$d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9" title="Retorna el numero de lineas del archivo." alt="" coords="448,359,608,387">
+<area shape="rect" id="node29" href="$d6/db7/class_elemento___triangular.html#33b54b8d5822a803d1d728efc7e66fc4" title="Asigna el dominio al cual pertenece el elemento." alt="" coords="387,410,669,438">
+<area shape="rect" id="node31" href="$d6/db7/class_elemento___triangular.html#5c0f397fb71f4543ab2e7f96f2f8155a" title="Asigna un 1 si es un elemento que contiene a una fuente." alt="" coords="391,461,665,489">
+<area shape="rect" id="node33" href="$d6/db7/class_elemento___triangular.html#1321c865b4da3d603b74f6534ea9710a" title="Elemento_Triangular::Set_Nodo_Elemento" alt="" coords="395,511,661,539">
+<area shape="rect" id="node37" href="$d6/db7/class_elemento___triangular.html#6bf84551c07a7bdb2d1500bad296034b" title="Asigna el numero de nodos del elemento." alt="" coords="365,562,691,590">
+<area shape="rect" id="node39" href="$d5/d35/class_geometria2_d___triangulos.html#5aad6064c760d6df926a4ddf0eed0f32" title="Reserva memoria para el arreglo de objetos Elemento_Triangular[], que contendran..." alt="" coords="343,613,713,641">
+<area shape="rect" id="node41" href="$d6/db7/class_elemento___triangular.html#833a708e90f2ce900564c3d4b34e8d2c" title="Reserva memoria y define un arreglo de objetos Nodo_2D[] que pertenecen al elemento..." alt="" coords="339,663,717,691">
+<area shape="rect" id="node43" href="$d2/dee/class_archivo.html#4c756c8da75fab13f1c0b5cc636b2724" title="Define el tipo de acceso al archivo." alt="" coords="467,714,589,742">
+<area shape="rect" id="node45" href="$d2/dee/class_archivo.html#3960a9c7863da75e6e704a668c488293" title="Asigna un nombre al archivo." alt="" coords="460,765,596,793">
+<area shape="rect" id="node13" href="$d6/db7/class_elemento___triangular.html#4c0655995692de148ec43529a6c9a013" title="Retorna la numeracion nodal global del nodo local &quot;Posicion_Nodal&quot;." alt="" coords="884,157,1127,185">
+<area shape="rect" id="node17" href="$d6/db7/class_elemento___triangular.html#c20e6e3b5d4dcebc25b41fda0fbb6a04" title="Asigna un valor a la matriz de pertenencia en la posicion fil, col." alt="" coords="832,207,1179,235">
+<area shape="rect" id="node21" href="$d6/db7/class_elemento___triangular.html#e78e678300e815fb8d394524c7ae5a43" title="Reserva memoria para la matriz de pertenencia del elemento." alt="" coords="776,258,1235,286">
+<area shape="rect" id="node15" href="$da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo." alt="" coords="1292,157,1425,185">
+<area shape="rect" id="node19" href="$df/d98/class_matriz___entera.html#b982645d04ece06fbc48831a2b766c23" title="Asigna valor en fila, columna." alt="" coords="1284,207,1433,235">
+<area shape="rect" id="node35" href="$da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo." alt="" coords="939,511,1072,539">

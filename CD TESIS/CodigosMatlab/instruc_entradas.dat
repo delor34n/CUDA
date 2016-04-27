@@ -1,0 +1,8 @@
+orden del SEL: Puede ser 289, 1089 o 4225
+número de fuentes: Puede ser 1, 2, 3, 4, 5 o 6
+tamaño de la población: puede ser cualquier entero positivo > 2
+número de generaciones: puede ser cualquier entero positivo > 1
+
+
+Además en la carpeta principal (la que contiene a todo) click derecho- add to path-select folders and subfolders
+

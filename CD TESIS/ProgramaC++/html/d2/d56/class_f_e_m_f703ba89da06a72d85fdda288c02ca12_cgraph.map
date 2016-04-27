@@ -1,0 +1,34 @@
+<area shape="rect" id="node3" href="$d5/d35/class_geometria2_d___triangulos.html#8e3504f64cbfec69c5dcbc968db1545d" title="Genera las matrices de masa de todos los elementos de la geometria." alt="" coords="281,233,684,261">
+<area shape="rect" id="node17" href="$d5/d35/class_geometria2_d___triangulos.html#6382c1920105197bbe1936df4034438a" title="Genera las matrices de rigides de todos los elementos de la geometria." alt="" coords="276,283,689,311">
+<area shape="rect" id="node33" href="$d5/d35/class_geometria2_d___triangulos.html#43dd2fd9626fe1baaf4b7e718d3c36c8" title="Calcula los vectores de carga de todos los elementos del dominio." alt="" coords="311,638,655,666">
+<area shape="rect" id="node5" href="$d5/d35/class_geometria2_d___triangulos.html#acaf758d81f9d5ebe710eb5fb06cba62" title="Genera la matriz de masa de un elemento &quot;id&quot; de la geometria." alt="" coords="1159,106,1519,134">
+<area shape="rect" id="node7" href="$d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b" title="retorna el area del elemento" alt="" coords="1688,309,1891,337">
+<area shape="rect" id="node9" href="$d6/db7/class_elemento___triangular.html#a9212e0c7fedcdda79c462fb6faaea14" title="Retorna la mVariable del elemento." alt="" coords="1673,55,1905,83">
+<area shape="rect" id="node11" href="$d6/db7/class_elemento___triangular.html#58291cb4f1e9d5a6d2a20743367f762b" title="Asigna un valor a la matriz de masa en la posicion fil, col." alt="" coords="1633,5,1945,33">
+<area shape="rect" id="node15" href="$d6/db7/class_elemento___triangular.html#e54e95523abe8677f2d0b1a5fdaa4527" title="Reserva memoria para la matriz de masa del elemento." alt="" coords="1579,106,2000,134">
+<area shape="rect" id="node13" href="$d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="2188,106,2292,134">
+<area shape="rect" id="node19" href="$d5/d35/class_geometria2_d___triangulos.html#f6d61099307df293bbc657c9c021783d" title="Genera la matriz de rigidez de un elemento &quot;id&quot; de la geometria." alt="" coords="1153,283,1524,311">
+<area shape="rect" id="node22" href="$d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50" title="Retorna la matriz de permutacion del elemento." alt="" coords="1627,410,1952,438">
+<area shape="rect" id="node24" href="$d6/db7/class_elemento___triangular.html#3ce7b023bdc633a2659e5a21dce98fb1" title="Retorna la kVariable del elemento." alt="" coords="1675,157,1904,185">
+<area shape="rect" id="node26" href="$d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="1735,359,1844,387">
+<area shape="rect" id="node28" href="$d6/db7/class_elemento___triangular.html#54db68fe2f0a76aaef878bcfee7967d0" title="Asigna un valor a la matriz de rigidez en la posicion fil, col." alt="" coords="1628,207,1951,235">
+<area shape="rect" id="node31" href="$d6/db7/class_elemento___triangular.html#671c5caa06025572ac3a31f077433c4c" title="Reserva memoria para la matriz de Rigidez del elemento." alt="" coords="1573,258,2005,286">
+<area shape="rect" id="node35" href="$d5/d35/class_geometria2_d___triangulos.html#4da3b66daecb575bbaebfe54b3756e9d" title="Calcula el vector de carga de un elemento &quot;id&quot;." alt="" coords="739,638,1104,666">
+<area shape="rect" id="node79" href="$d6/db7/class_elemento___triangular.html#b795eeb7625818abbf323b8b7e284138" title="Reserva memoria para vector de carga del elemento." alt="" coords="740,689,1103,717">
+<area shape="rect" id="node37" href="$d5/d35/class_geometria2_d___triangulos.html#9089a85d017170b4d4d92f2810294041" title="Calcula la funcion de forma del Elemento &quot;id&quot;, funcion &quot;indice&quot;..." alt="" coords="1211,461,1467,489">
+<area shape="rect" id="node48" href="$d6/db7/class_elemento___triangular.html#55cebce082a2e271353c3a4864c83437" title="Retorna el vector de cargas del elemento." alt="" coords="1227,663,1451,691">
+<area shape="rect" id="node50" href="$db/dbc/class_nodo__2_d.html#4033af02c47c0927b2dfa7fca12bf653" title="Retorna el valor del nodo." alt="" coords="1257,714,1420,742">
+<area shape="rect" id="node52" href="$d5/d35/class_geometria2_d___triangulos.html#ce4f34d1f5a5edc5a6ba854c350ba67f" title="Asigna como nodo revisado." alt="" coords="1185,765,1492,793">
+<area shape="rect" id="node56" href="$d5/d35/class_geometria2_d___triangulos.html#0eecce6c0fccc46ff6cd82a3321e83b4" title="Verifica si un punto pertence al interior de un elemento finito triangular id." alt="" coords="1184,562,1493,590">
+<area shape="rect" id="node66" href="$d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="1283,815,1395,843">
+<area shape="rect" id="node70" href="$d5/d35/class_geometria2_d___triangulos.html#cb3f7d0e39c31575d59791839340b01a" title="Retorna el arreglo de objetos Nodo_2D[] que tienen informacion de las fuentes." alt="" coords="1189,511,1488,539">
+<area shape="rect" id="node72" href="$df/d5d/class_geometria.html#042698780525fe36cb7d42d6a6f8b0c0" title="Retorna el numero de fuentes." alt="" coords="1208,613,1469,641">
+<area shape="rect" id="node74" href="$d6/db7/class_elemento___triangular.html#4c2eb3607ee39a9197a3cb691b7db359" title="Asigna los valores al vector de carga del elemento." alt="" coords="1212,866,1465,894">
+<area shape="rect" id="node41" href="$d5/d35/class_geometria2_d___triangulos.html#4220aca1068abfee1e2acead1e570685" title="Calcula la funcion de forma con los parametros: Area del elemento, Ai, Bi y Ci (constantes..." alt="" coords="1647,461,1932,489">
+<area shape="rect" id="node43" href="$db/dbc/class_nodo__2_d.html#a9cce743fba2794634bae77d2a5ac3e0" title="Retorna el valor de x del nodo." alt="" coords="2181,562,2299,590">
+<area shape="rect" id="node45" href="$db/dbc/class_nodo__2_d.html#1b0220277e032a60ae32cceea2b776e3" title="Retorna el valor de y del nodo." alt="" coords="2180,663,2300,691">
+<area shape="rect" id="node54" href="$db/dbc/class_nodo__2_d.html#d6d8bf47298e7721a2456bd0833281b9" title="Asigna el valor de la bandera." alt="" coords="1712,765,1867,793">
+<area shape="rect" id="node60" href="$d5/d35/class_geometria2_d___triangulos.html#d1982ec18936f526de577ba76ffdd6ea" title="Retorna la orientacion de un triangulo dado 3 Nodos." alt="" coords="1641,613,1937,641">
+<area shape="rect" id="node64" href="$d5/d35/class_geometria2_d___triangulos.html#656f2c25f6b6cc81130b38300bf73836" title="Retorna la orientacion de un triangulo dadas las 3 coordenadas." alt="" coords="2055,613,2425,641">
+<area shape="rect" id="node68" href="$d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="2160,841,2320,869">
+<area shape="rect" id="node76" href="$d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="1736,866,1843,894">

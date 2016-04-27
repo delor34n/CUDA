@@ -1,0 +1,14 @@
+<area shape="rect" id="node3" href="$d9/daf/class_rutinas___paralelas.html#8c69adffccf5332ba7f9ccb7b9a69214" title="Almacena en una fila especifica de la matriz Datos_Elementos (id elemento, area,..." alt="" coords="340,55,639,83">
+<area shape="rect" id="node15" href="$d6/db7/class_elemento___triangular.html#d067704991ae4527c9f216abc134b45b" title="retorna el area del elemento" alt="" coords="388,106,591,134">
+<area shape="rect" id="node17" href="$d6/db7/class_elemento___triangular.html#1c51055dbe2c2eca303110d31e830b50" title="Retorna la matriz de permutacion del elemento." alt="" coords="327,157,652,185">
+<area shape="rect" id="node19" href="$d6/db7/class_elemento___triangular.html#4c0655995692de148ec43529a6c9a013" title="Retorna la numeracion nodal global del nodo local &quot;Posicion_Nodal&quot;." alt="" coords="368,207,611,235">
+<area shape="rect" id="node23" href="$d9/daf/class_rutinas___paralelas.html#016bfdd04bd24732d2f32e17bf9c44d7" title="Reserva memoria para los datos de todo el calculo realizado por la aproximacion original..." alt="" coords="293,258,685,286">
+<area shape="rect" id="node25" href="$d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector." alt="" coords="745,283,857,311">
+<area shape="rect" id="node28" href="$df/d5d/class_geometria.html#cca22abfeb1e3fdb0499efd69c9aaec9" title="Retorna el numero de elementos." alt="" coords="361,359,617,387">
+<area shape="rect" id="node30" href="$d5/d35/class_geometria2_d___triangulos.html#d05da9769648adf32919e53c1786b928" title="Retorna el arreglo de objetos Elemento_Triangular[] de la geometria." alt="" coords="312,410,667,438">
+<area shape="rect" id="node5" href="$d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col." alt="" coords="748,5,855,33">
+<area shape="rect" id="node9" href="$d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="749,55,853,83">
+<area shape="rect" id="node11" href="$d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas." alt="" coords="740,106,863,134">
+<area shape="rect" id="node13" href="$d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna." alt="" coords="747,157,856,185">
+<area shape="rect" id="node7" href="$d5/db2/class_vector.html#1e61a24886a05a02609e75c3d2a53e16" title="Visualiza información general de la matriz." alt="" coords="917,145,1077,173">
+<area shape="rect" id="node21" href="$da/d18/class_nodo.html#938759f4a728e7c0f849a77b2e0dcb99" title="Retorna el identificador del nodo." alt="" coords="735,207,868,235">

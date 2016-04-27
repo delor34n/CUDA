@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Archivo.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Archivo.cpp</h1><a href="../../d1/dad/_archivo_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &lt;sys/stat.h&gt;</span>
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;unistd.h&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="../../de/dc7/_archivo_8hpp.html">Archivo.hpp</a>"</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;iostream&gt;</span> 
+<a name="l00006"></a><a class="code" href="../../d1/dad/_archivo_8cpp.html#936d30dd336f3d98d5739aa502bc3ee9">00006</a> <span class="preprocessor">#define ESCRITURA_OK      06</span>
+<a name="l00007"></a><a class="code" href="../../d1/dad/_archivo_8cpp.html#a55b686539080b34f99d093a8a35c364">00007</a> <span class="preprocessor"></span><span class="preprocessor">#define LECTURA_OK      04</span>
+<a name="l00008"></a>00008 <span class="preprocessor"></span>
+<a name="l00009"></a>00009 
+<a name="l00010"></a>00010 
+<a name="l00012"></a><a class="code" href="../../d2/dee/class_archivo.html#9dd5f77b08f09bfef21f03e5a0080bcb">00012</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#9dd5f77b08f09bfef21f03e5a0080bcb" title="Cierra el archivo.">Archivo::Cerrar</a>(<span class="keywordtype">void</span>)
+<a name="l00013"></a>00013 {
+<a name="l00014"></a>00014    <span class="keywordflow">if</span> (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>) {
+<a name="l00015"></a>00015       fflush(<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>);
+<a name="l00016"></a>00016       fclose(<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>);
+<a name="l00017"></a>00017    }
+<a name="l00018"></a>00018    <a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a> = NULL;
+<a name="l00019"></a>00019 }
+<a name="l00021"></a><a class="code" href="../../d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81">00021</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81" title="Abre el archivo.">Archivo::Abrir</a>()
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023  <span class="keywordflow">if</span> (<a class="code" href="../../d2/dee/class_archivo.html#e0933c86a4bc3bee1e5fbc6b8c23b0fb" title="Modo en el cual se esta utilizando el archivo Lectura - escritura.">MODO</a> == <a class="code" href="../../de/dc7/_archivo_8hpp.html#c26ef99fafef4065dd8c8fd219f6a08c">LEE_ARCHIVO</a>)      <a class="code" href="../../d2/dee/class_archivo.html#c23de871b8192bacdb4105454636bbd2" title="Definicion de permisos del archivo.">ACCESO</a> = <span class="stringliteral">"r"</span>;
+<a name="l00024"></a>00024  <span class="keywordflow">if</span> (<a class="code" href="../../d2/dee/class_archivo.html#e0933c86a4bc3bee1e5fbc6b8c23b0fb" title="Modo en el cual se esta utilizando el archivo Lectura - escritura.">MODO</a> == <a class="code" href="../../de/dc7/_archivo_8hpp.html#406416501f9b8dd55765eb0686ced406">GRABA_ARCHIVO</a>)    <a class="code" href="../../d2/dee/class_archivo.html#c23de871b8192bacdb4105454636bbd2" title="Definicion de permisos del archivo.">ACCESO</a> = <span class="stringliteral">"wb"</span>;
+<a name="l00025"></a>00025  <span class="keywordflow">if</span> (<a class="code" href="../../d2/dee/class_archivo.html#e0933c86a4bc3bee1e5fbc6b8c23b0fb" title="Modo en el cual se esta utilizando el archivo Lectura - escritura.">MODO</a> == <a class="code" href="../../de/dc7/_archivo_8hpp.html#89bdbff167b2d45350a2f8686d98ccc7">GRABA_LINEA_ARCHIVO</a>)    <a class="code" href="../../d2/dee/class_archivo.html#c23de871b8192bacdb4105454636bbd2" title="Definicion de permisos del archivo.">ACCESO</a> = <span class="stringliteral">"a"</span>;       
+<a name="l00026"></a>00026    <a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a> = fopen(<a class="code" href="../../d2/dee/class_archivo.html#7f0e868d534a49371d0fe16253dc4f31" title="Nombre del archivo.">ARCHIVO</a>,<a class="code" href="../../d2/dee/class_archivo.html#c23de871b8192bacdb4105454636bbd2" title="Definicion de permisos del archivo.">ACCESO</a>);
+<a name="l00027"></a>00027     <span class="keywordflow">if</span> (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a> == NULL) 
+<a name="l00028"></a>00028         {
+<a name="l00029"></a>00029         printf (<span class="stringliteral">"No se pudo abrir el archivo: %s\n"</span>, <a class="code" href="../../d2/dee/class_archivo.html#7f0e868d534a49371d0fe16253dc4f31" title="Nombre del archivo.">ARCHIVO</a>);
+<a name="l00030"></a>00030      }
+<a name="l00031"></a>00031 
+<a name="l00032"></a>00032 }
+<a name="l00033"></a>00033 
+<a name="l00035"></a><a class="code" href="../../d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9">00035</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> <a class="code" href="../../d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9" title="Retorna el numero de lineas del archivo.">Archivo::Numero_Lineas</a>()
+<a name="l00036"></a>00036 {
+<a name="l00037"></a>00037 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>   <span class="keywordtype">long</span> nlineas;
+<a name="l00038"></a>00038 <span class="keywordtype">char</span> cadena[10000];
+<a name="l00039"></a>00039         <span class="keywordflow">if</span>(<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>!=NULL)
+<a name="l00040"></a>00040         {
+<a name="l00041"></a>00041         nlineas=0;
+<a name="l00042"></a>00042                 <span class="keywordflow">while</span>(fscanf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>, <span class="stringliteral">"%s"</span>, cadena) != EOF)
+<a name="l00043"></a>00043                 {
+<a name="l00044"></a>00044                 <span class="comment">//printf("El numero lineas del archivo es: %d\n",nlineas);      </span>
+<a name="l00045"></a>00045                 nlineas++;
+<a name="l00046"></a>00046                 }
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048 rewind(<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>);
+<a name="l00049"></a>00049 <span class="keywordflow">return</span> nlineas;
+<a name="l00050"></a>00050 }
+<a name="l00052"></a><a class="code" href="../../d2/dee/class_archivo.html#d1120aa3740cdc037ce2a3fb49351133">00052</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#d1120aa3740cdc037ce2a3fb49351133" title="Escribe un Vector a un archivo (Recordar cambiar a Escribe_Vector).">Archivo::Escribe_Vector</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *a,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nodos)
+<a name="l00053"></a>00053 {
+<a name="l00054"></a>00054         
+<a name="l00055"></a>00055          <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  i=0;i&lt;nodos;i++) 
+<a name="l00056"></a>00056          { 
+<a name="l00057"></a>00057                  
+<a name="l00058"></a>00058                  fprintf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>, <span class="stringliteral">"%4.16f\n"</span>, a-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(i));
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060          }
+<a name="l00061"></a>00061 }
+<a name="l00063"></a><a class="code" href="../../d2/dee/class_archivo.html#6e33983516bd0f023e8b15391f4a3cf1">00063</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#6e33983516bd0f023e8b15391f4a3cf1" title="Escribe una matriz cuadrada a un archivo.">Archivo::Escribe_MatrizCuadrada</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nodos)
+<a name="l00064"></a>00064 {
+<a name="l00065"></a>00065         
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067          <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> i=0;i&lt;nodos;i++) 
+<a name="l00068"></a>00068          <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> j=0;j&lt;nodos;j++) 
+<a name="l00069"></a>00069          {
+<a name="l00070"></a>00070         
+<a name="l00071"></a>00071                 
+<a name="l00072"></a>00072          fprintf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>, <span class="stringliteral">"%4.8f,"</span>, a-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00073"></a>00073          <span class="keywordflow">if</span>(j==nodos-1)
+<a name="l00074"></a>00074          fprintf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>,<span class="stringliteral">"\n"</span>);
+<a name="l00075"></a>00075          }
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00079"></a><a class="code" href="../../d2/dee/class_archivo.html#b51ed6de092c0b3593d6a9c501544c1e">00079</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#b51ed6de092c0b3593d6a9c501544c1e" title="Escribe una matriz a un archivo.">Archivo::Escribe_Matriz</a>(<a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *a)
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081         
+<a name="l00082"></a>00082 
+<a name="l00083"></a>00083          <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> i=0;i&lt;a-&gt;<a class="code" href="../../d4/d09/class_matriz.html#42cedb6b70724eff1b10e4bacbf94fda" title="Retorna el numero de filas.">Filas</a>();i++) 
+<a name="l00084"></a>00084          <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> j=0;j&lt;a-&gt;<a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas.">Columnas</a>();j++) 
+<a name="l00085"></a>00085          {
+<a name="l00086"></a>00086         
+<a name="l00087"></a>00087                 
+<a name="l00088"></a>00088          fprintf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>, <span class="stringliteral">"%4.8f,"</span>, a-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00089"></a>00089          <span class="keywordflow">if</span>(j==a-&gt;<a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas.">Columnas</a>()-1)
+<a name="l00090"></a>00090          fprintf (<a class="code" href="../../d2/dee/class_archivo.html#5c0c2207133a05adacbd5a3f44d6abd2" title="Puntero a un archivo.">ARCHIVO_TRABAJO</a>,<span class="stringliteral">"\n"</span>);
+<a name="l00091"></a>00091          }
+<a name="l00092"></a>00092 }
+<a name="l00093"></a>00093 
+<a name="l00094"></a>00094 
+<a name="l00096"></a><a class="code" href="../../d2/dee/class_archivo.html#47e24a612866b4e83a95b4c122a8b32f">00096</a> <span class="keywordtype">void</span> <a class="code" href="../../d2/dee/class_archivo.html#47e24a612866b4e83a95b4c122a8b32f" title="Muestra el nombre del archivo.">Archivo::VerNombre</a>()
+<a name="l00097"></a>00097 { 
+<a name="l00098"></a>00098         printf(<span class="stringliteral">"El nombre del archivo es: %s"</span>,<a class="code" href="../../d2/dee/class_archivo.html#da2c0dd30a3e9e86a478ba4f65c82569" title="Retrona Nombre del archivo.">GetNombre</a>());
+<a name="l00099"></a>00099 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:34 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

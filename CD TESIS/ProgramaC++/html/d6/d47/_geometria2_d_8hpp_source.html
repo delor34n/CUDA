@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Geometria2D.hpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Geometria2D.hpp</h1><a href="../../d6/d47/_geometria2_d_8hpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef _Geometria2D_</span>
+<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define _Geometria2D_</span>
+<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include "<a class="code" href="../../d1/dfa/_geometria_8hpp.html">Geometria.hpp</a>"</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include "<a class="code" href="../../d1/da5/_matriz___entera_8hpp.html">Matriz_Entera.hpp</a>"</span>
+<a name="l00005"></a>00005 
+<a name="l00006"></a>00006 
+<a name="l00008"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html">00008</a> <span class="keyword">class </span><a class="code" href="../../d8/d4a/class_geometria2_d.html" title="Clase base para generar una geometria en 2D.">Geometria2D</a> : <span class="keyword">public</span> <a class="code" href="../../df/d5d/class_geometria.html" title="Clase base para generar una geometria.">Geometria</a>
+<a name="l00009"></a>00009 {
+<a name="l00010"></a>00010   <span class="keyword">protected</span>:
+<a name="l00011"></a>00011   
+<a name="l00013"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#6db154dceff6c152b77b600c328c9eb2">00013</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#6db154dceff6c152b77b600c328c9eb2" title="Tipo de geometria, 2 - Triangulo, 3 Cuadrilatero.">tipoGeometria2D</a>; 
+<a name="l00014"></a>00014   
+<a name="l00016"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#97028a8da81cb947d1aa6b552da3edf6">00016</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#97028a8da81cb947d1aa6b552da3edf6" title="Numero de particiones - Uitlizado en calculo paralelo.">nParticiones</a>;
+<a name="l00017"></a>00017   
+<a name="l00019"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#04f7d8b07ac69348a4fb780b0486fdfa">00019</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#04f7d8b07ac69348a4fb780b0486fdfa" title="Numero Filas particion paralela.">FilaGrilla</a>;
+<a name="l00020"></a>00020   
+<a name="l00022"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#636f7245c2fd7f43404329e2e7451755">00022</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#636f7245c2fd7f43404329e2e7451755" title="Numero de columnas particion paralela.">ColumnaGrilla</a>;
+<a name="l00023"></a>00023   
+<a name="l00025"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#665b61413acfed8d7bab62e2bc6996e6">00025</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#c730809f55df6c053e2b1724c1c683d9" title="Resolucion X,Y.">ResolucionX</a>,<a class="code" href="../../d8/d4a/class_geometria2_d.html#665b61413acfed8d7bab62e2bc6996e6">ResolucionY</a>;
+<a name="l00026"></a>00026   
+<a name="l00028"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#db2b0c926bffe37d8d570ed2aa98f6a9">00028</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#df54db29515e2fe7f0ac8cb12f577ca1" title="Fronteras de la Grilla.">minX</a>,<a class="code" href="../../d8/d4a/class_geometria2_d.html#db2b0c926bffe37d8d570ed2aa98f6a9">minY</a>,<a class="code" href="../../d8/d4a/class_geometria2_d.html#453f9ecfcc755d07aa4c331c61fdb947">maxX</a>,<a class="code" href="../../d8/d4a/class_geometria2_d.html#37eb51215df2d2c364b92bee108ea9d9">maxY</a>;
+<a name="l00029"></a>00029   
+<a name="l00031"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#9e87a599f23b60efbbc4b301080af3e7">00031</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#9e87a599f23b60efbbc4b301080af3e7" title="Area diferencial.">Area_DIferencial</a>;
+<a name="l00032"></a>00032   
+<a name="l00034"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#06035a675285e5786f749a07990beaec">00034</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#06035a675285e5786f749a07990beaec" title="Tipo Grilla aproximacion en vertice = 1, en centro geometrico de 4 vertices que forman...">tipoGrilla</a>; 
+<a name="l00035"></a>00035   
+<a name="l00037"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#bcb76ab2655c9269f69c4eed0f474f55">00037</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#99600ccabbed0d6d4c3ae3794d40d4a7" title="Distancias de la grilla.">distanciaX</a>,<a class="code" href="../../d8/d4a/class_geometria2_d.html#bcb76ab2655c9269f69c4eed0f474f55">distanciaY</a>;
+<a name="l00038"></a>00038   
+<a name="l00039"></a>00039   <span class="keyword">public</span>:
+<a name="l00040"></a>00040 
+<a name="l00042"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#3cbef31b5dbab6273e0e7e820b517d54">00042</a>   <a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a> *<a class="code" href="../../d8/d4a/class_geometria2_d.html#3cbef31b5dbab6273e0e7e820b517d54" title="Grilla que almacena datos del dominio de la geometria 1=pertenece al dominio, 0 EOC...">GrillaDominio</a>;
+<a name="l00043"></a>00043   
+<a name="l00045"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#e38ddcd330a5494d75ab3b3fc5308743">00045</a>   <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d8/d4a/class_geometria2_d.html#e38ddcd330a5494d75ab3b3fc5308743" title="Puntos a evaluar de la grilla.">PuntosGrilla</a>;
+<a name="l00046"></a>00046   
+<a name="l00048"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#6f0fb43f84002aa5c135f1759ab81d25">00048</a>   <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d8/d4a/class_geometria2_d.html#6f0fb43f84002aa5c135f1759ab81d25" title="Centroides de particiones de la grilla, utilizado en la seleccion de elementos que...">CentroidesGrilla</a>;
+<a name="l00049"></a>00049   
+<a name="l00051"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#d430e18be569449aaf7877c45f01692c">00051</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#d430e18be569449aaf7877c45f01692c" title="Numero de puntos a calcular de la grilla.">NumeroPuntosGrilla</a>;
+<a name="l00052"></a>00052   
+<a name="l00054"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#ac8a65767e5fc7d5e3b40362c46dd35a">00054</a>    <a class="code" href="../../d8/d4a/class_geometria2_d.html#ac8a65767e5fc7d5e3b40362c46dd35a" title="Constructor de la clase.">Geometria2D</a>(<span class="keywordtype">void</span>)
+<a name="l00055"></a>00055    {}
+<a name="l00056"></a>00056 
+<a name="l00058"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#e4a166209d693a5f118eeeb75c582ca5">00058</a>    <a class="code" href="../../d8/d4a/class_geometria2_d.html#e4a166209d693a5f118eeeb75c582ca5" title="Destructor de la clase.">~Geometria2D</a>()
+<a name="l00059"></a>00059    {
+<a name="l00060"></a>00060        
+<a name="l00061"></a>00061    }
+<a name="l00062"></a>00062  
+<a name="l00063"></a>00063   
+<a name="l00065"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#ee839af6c6494cf577005b0abba5a9ac">00065</a>   <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#ee839af6c6494cf577005b0abba5a9ac" title="Asigna el tipo de geometria 2D.">Asigna_Tipo_Geometria</a>(<span class="keywordtype">int</span> tipoGeometria)
+<a name="l00066"></a>00066   { 
+<a name="l00067"></a>00067                 <a class="code" href="../../d8/d4a/class_geometria2_d.html#6db154dceff6c152b77b600c328c9eb2" title="Tipo de geometria, 2 - Triangulo, 3 Cuadrilatero.">tipoGeometria2D</a> = tipoGeometria;
+<a name="l00068"></a>00068   }
+<a name="l00069"></a>00069   
+<a name="l00071"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#f895ac4bd4c3d697bc89220b3a7fe5f3">00071</a>   <a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a>* <a class="code" href="../../d8/d4a/class_geometria2_d.html#f895ac4bd4c3d697bc89220b3a7fe5f3" title="Retorna la pertenencia del dominio de la grilla.">Get_Grilla</a>()
+<a name="l00072"></a>00072   {
+<a name="l00073"></a>00073         <span class="keywordflow">return</span>  <a class="code" href="../../d8/d4a/class_geometria2_d.html#3cbef31b5dbab6273e0e7e820b517d54" title="Grilla que almacena datos del dominio de la geometria 1=pertenece al dominio, 0 EOC...">GrillaDominio</a>; 
+<a name="l00074"></a>00074   }
+<a name="l00075"></a>00075   
+<a name="l00077"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#26dd9eb4afa9d64c03c8b69d09d1e23f">00077</a>   <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> <a class="code" href="../../d8/d4a/class_geometria2_d.html#26dd9eb4afa9d64c03c8b69d09d1e23f" title="Retorna puntos de la grilla.">Retornar_Punto_Grilla</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>)
+<a name="l00078"></a>00078    {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#e38ddcd330a5494d75ab3b3fc5308743" title="Puntos a evaluar de la grilla.">PuntosGrilla</a>[id];}
+<a name="l00079"></a>00079   
+<a name="l00081"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#8c2de1ffddc2282b6059d53bb012e982">00081</a>    <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> <a class="code" href="../../d8/d4a/class_geometria2_d.html#8c2de1ffddc2282b6059d53bb012e982" title="Retorna los centroides de la grilla.">Retornar_Centroide_Grilla</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">id</span>)
+<a name="l00082"></a>00082    {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#6f0fb43f84002aa5c135f1759ab81d25" title="Centroides de particiones de la grilla, utilizado en la seleccion de elementos que...">CentroidesGrilla</a>[id];}
+<a name="l00083"></a>00083   
+<a name="l00085"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#e2b8072cb7ab903d772398b45805b364">00085</a>     <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d8/d4a/class_geometria2_d.html#e2b8072cb7ab903d772398b45805b364" title="Retorna puntero de los puntos de la grilla.">Retornar_Puntos_Grilla</a>()
+<a name="l00086"></a>00086    {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#e38ddcd330a5494d75ab3b3fc5308743" title="Puntos a evaluar de la grilla.">PuntosGrilla</a>;}
+<a name="l00087"></a>00087    
+<a name="l00089"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#a1767da8aaef8bcf51957c49b6541315">00089</a>   <a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *<a class="code" href="../../d8/d4a/class_geometria2_d.html#a1767da8aaef8bcf51957c49b6541315" title="Retorna puntero de centroides de la grilla.">Retornar_Centroides_Grilla</a>()
+<a name="l00090"></a>00090    {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#6f0fb43f84002aa5c135f1759ab81d25" title="Centroides de particiones de la grilla, utilizado en la seleccion de elementos que...">CentroidesGrilla</a>;}
+<a name="l00091"></a>00091    
+<a name="l00093"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#e473290067f0314ca4472678065c7e13">00093</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#e473290067f0314ca4472678065c7e13" title="Retorna el tipo de geometria 2D.">Retorna_Tipo_Geometria</a>()
+<a name="l00094"></a>00094   { 
+<a name="l00095"></a>00095   <span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#6db154dceff6c152b77b600c328c9eb2" title="Tipo de geometria, 2 - Triangulo, 3 Cuadrilatero.">tipoGeometria2D</a>;
+<a name="l00096"></a>00096   }
+<a name="l00097"></a>00097   
+<a name="l00099"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#5db5b525a1406c54ccbf50a42b9a801f">00099</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#5db5b525a1406c54ccbf50a42b9a801f" title="Calcula el area diferencial por cada nodo a partir de una grilla de entrada.">Calculo_Area_Diferencial</a>()
+<a name="l00100"></a>00100   {
+<a name="l00101"></a>00101         <span class="keywordflow">return</span>  (<span class="keywordtype">double</span>)( ( <a class="code" href="../../d8/d4a/class_geometria2_d.html#2a8ec2cb35c69fe67d6a45c84d5a27fb" title="Retorna la distancia de X.">Get_DistanciaX</a>() * <a class="code" href="../../d8/d4a/class_geometria2_d.html#49fe8507432b27490fa80913ac8f2495" title="Retorna la distancia de Y.">Get_DistanciaY</a>() )/<a class="code" href="../../d8/d4a/class_geometria2_d.html#3110085cc513f2de781885d52a35ea53" title="Retorna el numeo de puntos de la grilla.">Get_NumeroPuntosGrilla</a>()); 
+<a name="l00102"></a>00102   }
+<a name="l00103"></a>00103   
+<a name="l00105"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#33094565999d81eef58c03af71938e1e">00105</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#33094565999d81eef58c03af71938e1e" title="Almacena los minimo del dominio global.">Set_MinXY</a>(<span class="keywordtype">double</span> mX,<span class="keywordtype">double</span> mY)
+<a name="l00106"></a>00106   {
+<a name="l00107"></a>00107         <a class="code" href="../../d8/d4a/class_geometria2_d.html#df54db29515e2fe7f0ac8cb12f577ca1" title="Fronteras de la Grilla.">minX</a>=mX;
+<a name="l00108"></a>00108         <a class="code" href="../../d8/d4a/class_geometria2_d.html#db2b0c926bffe37d8d570ed2aa98f6a9">minY</a>=mY; 
+<a name="l00109"></a>00109   }
+<a name="l00110"></a>00110   
+<a name="l00112"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#fbd6b4e0b67f921d2cb7ad7a18254005">00112</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#fbd6b4e0b67f921d2cb7ad7a18254005" title="Almacena los maximos del dominio global.">Set_MaxXY</a>(<span class="keywordtype">double</span> mX,<span class="keywordtype">double</span> mY)
+<a name="l00113"></a>00113   {
+<a name="l00114"></a>00114         <a class="code" href="../../d8/d4a/class_geometria2_d.html#453f9ecfcc755d07aa4c331c61fdb947">maxX</a>=mX;
+<a name="l00115"></a>00115         <a class="code" href="../../d8/d4a/class_geometria2_d.html#37eb51215df2d2c364b92bee108ea9d9">maxY</a>=mY; 
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117   
+<a name="l00119"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#a353ce1ba526b421633ca59633d8d2a7">00119</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#a353ce1ba526b421633ca59633d8d2a7" title="Almacena el numero total de puntos de la grilla.">Set_NumeroPuntosGrilla</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> valor)
+<a name="l00120"></a>00120   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#d430e18be569449aaf7877c45f01692c" title="Numero de puntos a calcular de la grilla.">NumeroPuntosGrilla</a>=valor;}
+<a name="l00121"></a>00121 
+<a name="l00123"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#3110085cc513f2de781885d52a35ea53">00123</a>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#3110085cc513f2de781885d52a35ea53" title="Retorna el numeo de puntos de la grilla.">Get_NumeroPuntosGrilla</a>()
+<a name="l00124"></a>00124   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#d430e18be569449aaf7877c45f01692c" title="Numero de puntos a calcular de la grilla.">NumeroPuntosGrilla</a>;}
+<a name="l00125"></a>00125   
+<a name="l00127"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#d8990405ef81084b277ea7921fb3237b">00127</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#d8990405ef81084b277ea7921fb3237b" title="Almacena la distancia entre el minimo y el maximo del eje X de la grilla.">Set_DistanciaX</a>(<span class="keywordtype">double</span> valor)
+<a name="l00128"></a>00128   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#99600ccabbed0d6d4c3ae3794d40d4a7" title="Distancias de la grilla.">distanciaX</a>=valor;}
+<a name="l00129"></a>00129   
+<a name="l00131"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#e027f2128b5c0315f9794119587eb907">00131</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#e027f2128b5c0315f9794119587eb907" title="Almacena la distancia entre el maximo y el minimo del eje Y de la grilla.">Set_DistanciaY</a>(<span class="keywordtype">double</span> valor)
+<a name="l00132"></a>00132   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#bcb76ab2655c9269f69c4eed0f474f55">distanciaY</a>=valor;}
+<a name="l00133"></a>00133   
+<a name="l00135"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#998a47d4bc8ebddafec7080bc27cc151">00135</a>   <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#998a47d4bc8ebddafec7080bc27cc151" title="Asigna el numero de filas a particionar la grilla en proceso paralelo.">Set_FilaGrilla</a>(<span class="keywordtype">int</span> valor)
+<a name="l00136"></a>00136   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#04f7d8b07ac69348a4fb780b0486fdfa" title="Numero Filas particion paralela.">FilaGrilla</a>=valor;}
+<a name="l00137"></a>00137   
+<a name="l00139"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#8c78ea1fe41b2705bfe27afea451c518">00139</a>   <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#8c78ea1fe41b2705bfe27afea451c518" title="Asigna el numero de Columnas a particionar la grilla en el proceso paralelo.">Set_ColumnaGrilla</a>(<span class="keywordtype">int</span> valor)
+<a name="l00140"></a>00140   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#636f7245c2fd7f43404329e2e7451755" title="Numero de columnas particion paralela.">ColumnaGrilla</a>=valor;}
+<a name="l00141"></a>00141 
+<a name="l00143"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#c95ff8c34fa6a7c9e633df6f58694f57">00143</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#c95ff8c34fa6a7c9e633df6f58694f57" title="Asigna la resolucion X de la grilla.">Set_ResolucionX</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> valor)
+<a name="l00144"></a>00144   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#c730809f55df6c053e2b1724c1c683d9" title="Resolucion X,Y.">ResolucionX</a>=valor;}
+<a name="l00145"></a>00145 
+<a name="l00147"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#0b1aa680f85b12a4296ab096addd82a5">00147</a>    <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#0b1aa680f85b12a4296ab096addd82a5" title="Asigna la resolucion Y de la grilla.">Set_ResolucionY</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> valor)
+<a name="l00148"></a>00148   {<a class="code" href="../../d8/d4a/class_geometria2_d.html#665b61413acfed8d7bab62e2bc6996e6">ResolucionY</a>=valor;}
+<a name="l00149"></a>00149   
+<a name="l00151"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#2a8ec2cb35c69fe67d6a45c84d5a27fb">00151</a>    <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#2a8ec2cb35c69fe67d6a45c84d5a27fb" title="Retorna la distancia de X.">Get_DistanciaX</a>()
+<a name="l00152"></a>00152   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#99600ccabbed0d6d4c3ae3794d40d4a7" title="Distancias de la grilla.">distanciaX</a>;}
+<a name="l00153"></a>00153   
+<a name="l00155"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#49fe8507432b27490fa80913ac8f2495">00155</a>    <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#49fe8507432b27490fa80913ac8f2495" title="Retorna la distancia de Y.">Get_DistanciaY</a>()
+<a name="l00156"></a>00156   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#bcb76ab2655c9269f69c4eed0f474f55">distanciaY</a>;}
+<a name="l00157"></a>00157   
+<a name="l00159"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#ff05436ca4cbf4b72a8fe0ca336200c1">00159</a>    <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#ff05436ca4cbf4b72a8fe0ca336200c1" title="Retorna el numero de filas de la grilla.">Get_FilaGrilla</a>()
+<a name="l00160"></a>00160   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#04f7d8b07ac69348a4fb780b0486fdfa" title="Numero Filas particion paralela.">FilaGrilla</a>;}
+<a name="l00161"></a>00161   
+<a name="l00163"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#b4b16d352b9fe3e6e1cdf8b132d2b17a">00163</a>    <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#b4b16d352b9fe3e6e1cdf8b132d2b17a" title="Retorna el numero de columnas de la grilla.">Get_ColumnaGrilla</a>()
+<a name="l00164"></a>00164   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#636f7245c2fd7f43404329e2e7451755" title="Numero de columnas particion paralela.">ColumnaGrilla</a>;}
+<a name="l00165"></a>00165   
+<a name="l00167"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#ee7ff27650a7091ffc29b1620ba2dff9">00167</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#ee7ff27650a7091ffc29b1620ba2dff9" title="Retorna el maximo valor del dominio en X.">Get_MaxX</a>()
+<a name="l00168"></a>00168   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#453f9ecfcc755d07aa4c331c61fdb947">maxX</a>;}
+<a name="l00169"></a>00169 
+<a name="l00171"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#1de1e0a17216c4bf08a84d1fb2069392">00171</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#1de1e0a17216c4bf08a84d1fb2069392" title="Retorna el maximo valor del dominio en Y.">Get_MaxY</a>()
+<a name="l00172"></a>00172   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#37eb51215df2d2c364b92bee108ea9d9">maxY</a>;}
+<a name="l00173"></a>00173 
+<a name="l00175"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#5853b8aef20c8232b8b2e30ef4ba4aa9">00175</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#5853b8aef20c8232b8b2e30ef4ba4aa9" title="Retorna el minimo valor del dominio en X.">Get_MinX</a>()
+<a name="l00176"></a>00176   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#df54db29515e2fe7f0ac8cb12f577ca1" title="Fronteras de la Grilla.">minX</a>;}
+<a name="l00177"></a>00177 
+<a name="l00179"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#1dc5e8351258ed2be05ae01e449342ef">00179</a>   <span class="keywordtype">double</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#1dc5e8351258ed2be05ae01e449342ef" title="Retorna el minimo valor del dominio en Y.">Get_MinY</a>()
+<a name="l00180"></a>00180   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#db2b0c926bffe37d8d570ed2aa98f6a9">minY</a>;}
+<a name="l00181"></a>00181 
+<a name="l00183"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#07fbf4dd4cde2819e99d13d827c85cf4">00183</a>   <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#07fbf4dd4cde2819e99d13d827c85cf4" title="Retorna la resolucion en X.">Get_ResolucionX</a>()
+<a name="l00184"></a>00184   {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#c730809f55df6c053e2b1724c1c683d9" title="Resolucion X,Y.">ResolucionX</a>;}
+<a name="l00185"></a>00185         
+<a name="l00187"></a><a class="code" href="../../d8/d4a/class_geometria2_d.html#9ad4a0cb67f8dcda028fb1a04617d9cc">00187</a>    <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#9ad4a0cb67f8dcda028fb1a04617d9cc" title="Retorna la solucion en Y.">Get_ResolucionY</a>()
+<a name="l00188"></a>00188    {<span class="keywordflow">return</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#665b61413acfed8d7bab62e2bc6996e6">ResolucionY</a>;}
+<a name="l00189"></a>00189   
+<a name="l00191"></a>00191     <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#d92f8d9c32a60d43e8e7c7cb071d628e" title="Calcula particiones Grilla.">Calcula_Particiones_Grilla</a>(<span class="keywordtype">int</span> particiones);
+<a name="l00192"></a>00192            
+<a name="l00194"></a>00194         <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#820416567f0c6544a7f9d2bf51971325" title="Carga la informacion de la imagen binaria del dominio a calcular densidad.">Carga_Imagen_Binaria</a>(<span class="keywordtype">char</span> *arch);
+<a name="l00195"></a>00195          
+<a name="l00197"></a>00197         <span class="keywordtype">int</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#9d75b2278cebc2c00207545990cbce68" title="Carga la informacion de puntos donde se desea obtener densidad.">Carga_Puntos_Archivo</a>(<span class="keywordtype">char</span> *arch);
+<a name="l00198"></a>00198            
+<a name="l00200"></a>00200         <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#cd7be59d30b8b459bfcd01ca1fca62fa" title="Genera una grilla de puntos a partir de informacion particionada de la grilla y almacena...">Generar_Grilla_Vectores</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *dominio,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *Resolucion,<a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a> *Dim_Fila_Columna,<a class="code" href="../../df/d98/class_matriz___entera.html" title="Clase para el trabajar con matrices Enteras sin signo.">Matriz_Entera</a> *Bandera_Fila_Columna,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *gX,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *gY,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *CentroGeometrico,<span class="keywordtype">int</span> Proceso);
+<a name="l00201"></a>00201         
+<a name="l00203"></a>00203         <span class="keywordtype">void</span> <a class="code" href="../../d8/d4a/class_geometria2_d.html#3d7d64283f7a6cc5f2ebfa87bb300c0c" title="Genera una grilla para un procesador.">Generar_Grilla_Memoria</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *dominio,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *Resolucion);
+<a name="l00204"></a>00204           
+<a name="l00205"></a>00205   
+<a name="l00206"></a>00206 };
+<a name="l00207"></a>00207 <span class="preprocessor">#endif</span>
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:35 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<area shape="rect" id="node3" href="$d2/dee/class_archivo.html#812b1ef63ac695139f6b4bfb3aa7ff81" title="Abre el archivo." alt="" coords="493,5,592,33">
+<area shape="rect" id="node5" href="$dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col." alt="" coords="813,461,965,489">
+<area shape="rect" id="node9" href="$df/d5d/class_geometria.html#42242b709209b4e7276e82dd5e2902b7" title="Asigna el numero de fronteras de la geometria." alt="" coords="411,106,675,134">
+<area shape="rect" id="node11" href="$d2/dee/class_archivo.html#9dd5f77b08f09bfef21f03e5a0080bcb" title="Cierra el archivo." alt="" coords="489,157,596,185">
+<area shape="rect" id="node13" href="$d2/dee/class_archivo.html#660be3409bea4b7b4f5fdc133bf7e6a5" title="Retorna el archivo." alt="" coords="476,207,609,235">
+<area shape="rect" id="node15" href="$d5/d35/class_geometria2_d___triangulos.html#aa68fb7e9e258f1f1d7e45b0fe8aaa1c" title="Retorna la norma entre dos nodos." alt="" coords="401,55,684,83">
+<area shape="rect" id="node21" href="$d2/dee/class_archivo.html#447aa0d5e486aa5972aacc1cd302c2f9" title="Retorna el numero de lineas del archivo." alt="" coords="463,309,623,337">
+<area shape="rect" id="node23" href="$dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col." alt="" coords="811,283,968,311">
+<area shape="rect" id="node26" href="$d0/dbd/class_elemento___frontera.html#167788c1516e06189c48a1ed5a1e98b3" title="Asigna el dominio al cual pertenece el nodo." alt="" coords="409,410,676,438">
+<area shape="rect" id="node28" href="$d0/dbd/class_elemento___frontera.html#37eb9ea50a81af8fe8a45b1c21507490" title="Asigna un valor a la matriz de borde en fila &#45; columna." alt="" coords="421,359,664,387">
+<area shape="rect" id="node32" href="$d0/dbd/class_elemento___frontera.html#c057a1a65ff347955a7e55973f718252" title="Asigna el indice global a un nodo frontera." alt="" coords="417,866,668,894">
+<area shape="rect" id="node36" href="$d0/dbd/class_elemento___frontera.html#ca6a7c4bc1f330b3598f9d7141dd6326" title="Asigna la norma al elemento frontera." alt="" coords="441,562,644,590">
+<area shape="rect" id="node38" href="$d5/d35/class_geometria2_d___triangulos.html#748ca8c89a078b5bd2fa6e71bf7f667f" title="Asigna el numero de nodos frontera en el dominio global." alt="" coords="323,613,763,641">
+<area shape="rect" id="node40" href="$db/dbc/class_nodo__2_d.html#c12ad56c99e043472540761d009f8327" title="Asigna como nodo borde." alt="" coords="468,663,617,691">
+<area shape="rect" id="node42" href="$d5/d35/class_geometria2_d___triangulos.html#b6b464da08a0799fe7e54ac5c48467b6" title="Reserva memoria para el arreglo de objetos Elemento_Frontera[], que contendran informacion..." alt="" coords="361,714,724,742">
+<area shape="rect" id="node44" href="$d0/dbd/class_elemento___frontera.html#d905337373dbb2268c2fdb6f0c4da47d" title="Reserva memoria a una matriz 2x2 que contendra informacion del elemento frontera..." alt="" coords="393,765,692,793">
+<area shape="rect" id="node46" href="$d0/dbd/class_elemento___frontera.html#a9370f8c1735fdf85dad2a0fa711ca0f" title="Reserva memoria para alamacenar informacion de los nodos frontera." alt="" coords="359,815,727,843">
+<area shape="rect" id="node48" href="$d0/dbd/class_elemento___frontera.html#1e2f5962c5d099ef6e44259d640bd7cb" title="Asigna un valor al vector de pertenencia en la posicion col." alt="" coords="383,461,703,489">
+<area shape="rect" id="node51" href="$d2/dee/class_archivo.html#4c756c8da75fab13f1c0b5cc636b2724" title="Define el tipo de acceso al archivo." alt="" coords="481,917,604,945">
+<area shape="rect" id="node53" href="$d2/dee/class_archivo.html#3960a9c7863da75e6e704a668c488293" title="Asigna un nombre al archivo." alt="" coords="475,967,611,995">
+<area shape="rect" id="node7" href="$dd/d59/class_vector___entero.html#f598217377e836e5c86f5c15ae8c6502" title="Visualiza información general de la matriz." alt="" coords="1016,373,1221,401">
+<area shape="rect" id="node17" href="$db/dbc/class_nodo__2_d.html#a9cce743fba2794634bae77d2a5ac3e0" title="Retorna el valor de x del nodo." alt="" coords="831,30,948,58">
+<area shape="rect" id="node19" href="$db/dbc/class_nodo__2_d.html#1b0220277e032a60ae32cceea2b776e3" title="Retorna el valor de y del nodo." alt="" coords="829,81,949,109">
+<area shape="rect" id="node30" href="$d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna." alt="" coords="837,359,941,387">
+<area shape="rect" id="node34" href="$da/d18/class_nodo.html#6ebadc4bef21564fa6f51383b10eb27b" title="Asigna el identificador del nodo." alt="" coords="823,866,956,894">

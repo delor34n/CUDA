@@ -1,0 +1,14 @@
+
+Para compilar ingresar realize lo siguiente:
+
+1.- Entrar a la carpeta ./src
+2.- lo q sta en makefile, eso escribirlo en la terminal y enter (mpic++  -o .....)
+
+MAKE
+3.- salir del directorio src (cd ..)
+
+4.- Leer instrucciones.txt para ejecutar el programa
+
+ejcutar: entrar en ./Programa
+         sh Ejecutar21.sh 
+

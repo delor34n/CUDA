@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>ETRAD: Fichero Fuente Rutinas_Paralelas.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css">
+<link href="../../doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.9 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="../../main.html"><span>Página&nbsp;principal</span></a></li>
+      <li><a href="../../annotated.html"><span>Clases</span></a></li>
+      <li class="current"><a href="../../files.html"><span>Archivos</span></a></li>
+    <li>
+      <form action="../../search.php" method="get">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tr>
+            <td><label>&nbsp;Buscar&nbsp;</label></td>
+            <td><input type="text" name="query" value="" size="20" accesskey="s"/></td>
+          </tr>
+        </table>
+      </form>
+    </li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="../../files.html"><span>Lista&nbsp;de&nbsp;archivos</span></a></li>
+      <li><a href="../../globals.html"><span>Miembros&nbsp;de&nbsp;los&nbsp;ficheros</span></a></li>
+    </ul>
+  </div>
+<h1>Rutinas_Paralelas.cpp</h1><a href="../../d8/d7f/_rutinas___paralelas_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="../../d5/d9e/_rutinas___paralelas_8hpp.html">Rutinas_Paralelas.hpp</a>"</span>
+<a name="l00002"></a>00002 
+<a name="l00004"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59a20a3a5d6071a7d0e97b59f2724941">00004</a>    <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59a20a3a5d6071a7d0e97b59f2724941" title="Almacena en punteros los nodos de la geometria FEM para distribucion de informacion...">Rutinas_Paralelas::Almacenar_Nodos_Geometria</a>(<a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *GeometriaFEM,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> nNodos)
+<a name="l00005"></a>00005    {
+<a name="l00006"></a>00006            
+<a name="l00007"></a>00007            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#1bdd16226d55344af15e9c3c14ffff1d" title="Vector que contiene datos de los nodos en X del dominio FEM.">nodoX</a> = <span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(nNodos);
+<a name="l00008"></a>00008        <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0cf2d991edd829f78a45e99f9094bac8" title="Vector que contiene datos de los nodos en Y del dominio FEM.">nodoY</a> = <span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(nNodos);
+<a name="l00009"></a>00009            
+<a name="l00010"></a>00010            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> i=0;i&lt;nNodos;i++)
+<a name="l00011"></a>00011            { 
+<a name="l00012"></a>00012                 <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#1bdd16226d55344af15e9c3c14ffff1d" title="Vector que contiene datos de los nodos en X del dominio FEM.">nodoX</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(i,GeometriaFEM[i].Get_X());  
+<a name="l00013"></a>00013         <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0cf2d991edd829f78a45e99f9094bac8" title="Vector que contiene datos de los nodos en Y del dominio FEM.">nodoY</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(i,GeometriaFEM[i].Get_Y());  
+<a name="l00014"></a>00014            }   
+<a name="l00015"></a>00015 
+<a name="l00016"></a>00016         }
+<a name="l00018"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#449530405be50371719b28f7c5cc7c04">00018</a>    <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#449530405be50371719b28f7c5cc7c04" title="Almacena en punteros los nodos de la grilla para distribucion de informacion entre...">Rutinas_Paralelas::Almacenar_Nodos_Grilla</a>(<a class="code" href="../../db/dbc/class_nodo__2_d.html" title="Clase para definir un nodo bidimensional.">Nodo_2D</a> *GrillaFEM,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nNodos)
+<a name="l00019"></a>00019    {
+<a name="l00020"></a>00020            
+<a name="l00021"></a>00021            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#90ab68209468f4c28205277236116dae" title="Vector que contiene datos de las coordenadas X para el calculo paralelo de la grilla...">puntosX</a> = <span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(nNodos);
+<a name="l00022"></a>00022        <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#d9ebdc095f7e5b4aea92df19aad500e9" title="Vector que contiene datos de las ordenadas Y para el calculo paralelo de la grilla...">puntosY</a> = <span class="keyword">new</span> <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a>(nNodos);
+<a name="l00023"></a>00023            
+<a name="l00024"></a>00024            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> i=0;i&lt;nNodos;i++)
+<a name="l00025"></a>00025            { 
+<a name="l00026"></a>00026                 <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#90ab68209468f4c28205277236116dae" title="Vector que contiene datos de las coordenadas X para el calculo paralelo de la grilla...">puntosX</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(i,GrillaFEM[i].Get_X());  
+<a name="l00027"></a>00027         <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#d9ebdc095f7e5b4aea92df19aad500e9" title="Vector que contiene datos de las ordenadas Y para el calculo paralelo de la grilla...">puntosY</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(i,GrillaFEM[i].Get_Y());  
+<a name="l00028"></a>00028            }   
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030         }
+<a name="l00031"></a>00031         
+<a name="l00033"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#8c69adffccf5332ba7f9ccb7b9a69214">00033</a>    <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#8c69adffccf5332ba7f9ccb7b9a69214" title="Almacena en una fila especifica de la matriz Datos_Elementos (id elemento, area,...">Rutinas_Paralelas::Almacenar_Datos_Elemento</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  id_fila,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  id_elemento,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nodo1,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nodo2,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nodo3,<span class="keywordtype">double</span> area,<span class="keywordtype">double</span> fi1,<span class="keywordtype">double</span> fi2,<span class="keywordtype">double</span> fi3, <a class="code" href="../../d4/d09/class_matriz.html" title="Clase para el trabajar con matrices de tipo double.">Matriz</a> *Coeficientes_PermutacionEL)
+<a name="l00034"></a>00034    {
+<a name="l00035"></a>00035            <span class="keywordtype">int</span> contador=0;
+<a name="l00036"></a>00036            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,0,(<span class="keywordtype">double</span>)id_elemento);
+<a name="l00037"></a>00037            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,1,(<span class="keywordtype">double</span>)nodo1);
+<a name="l00038"></a>00038            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,2,(<span class="keywordtype">double</span>)nodo2);
+<a name="l00039"></a>00039            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,3,(<span class="keywordtype">double</span>)nodo3);
+<a name="l00040"></a>00040            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,4,(<span class="keywordtype">double</span>)area);
+<a name="l00041"></a>00041            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,5,(<span class="keywordtype">double</span>)fi1);
+<a name="l00042"></a>00042            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,6,(<span class="keywordtype">double</span>)fi2);
+<a name="l00043"></a>00043            <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,7,(<span class="keywordtype">double</span>)fi3);
+<a name="l00044"></a>00044            
+<a name="l00045"></a>00045             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 , (<span class="keywordtype">double</span>)id_elemento);
+<a name="l00046"></a>00046             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 1 , (<span class="keywordtype">double</span>)nodo1);
+<a name="l00047"></a>00047             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 2, (<span class="keywordtype">double</span>)nodo2);
+<a name="l00048"></a>00048             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 3, (<span class="keywordtype">double</span>)nodo3);
+<a name="l00049"></a>00049             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 4, (<span class="keywordtype">double</span>)area);
+<a name="l00050"></a>00050             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 5, (<span class="keywordtype">double</span>)fi1);
+<a name="l00051"></a>00051             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 6, (<span class="keywordtype">double</span>)fi2);
+<a name="l00052"></a>00052             <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 7, (<span class="keywordtype">double</span>)fi3);
+<a name="l00053"></a>00053             
+<a name="l00054"></a>00054            
+<a name="l00055"></a>00055            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;(int) Coeficientes_PermutacionEL-&gt;<a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas.">Columnas</a>();i++)
+<a name="l00056"></a>00056            { 
+<a name="l00057"></a>00057                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0;j&lt; (int) Coeficientes_PermutacionEL-&gt;<a class="code" href="../../d4/d09/class_matriz.html#45dd5eb4b50fa4371a0ebc9cc0eb270a" title="Retorna el numero de columnas.">Columnas</a>();j++)
+<a name="l00058"></a>00058                            {
+<a name="l00059"></a>00059                                    <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#51a1f2b5b2a637956032ea1a79eb5cec" title="Matriz que contiene todo los datos de los elementos (id elemento, area, coeficientes...">Datos_Elementos</a>-&gt;<a class="code" href="../../d4/d09/class_matriz.html#ef90ff9c24c5474b0e09818be945207a" title="Asigna valor en fila, columna.">Asigna</a>(id_fila,8 + contador,Coeficientes_PermutacionEL-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j)); 
+<a name="l00060"></a>00060                                  
+<a name="l00061"></a>00061                    <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#59191181af4169812795bafdb040ec3e">Datos_Elementos_Vector</a>-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(id_fila*17 + 8 + contador, Coeficientes_PermutacionEL-&gt;<a class="code" href="../../d4/d09/class_matriz.html#a16830eeeea822a3d5e1277d4b718c25" title="Retorna valor en fila, columna.">Retorna</a>(i,j));
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063                                    contador++;
+<a name="l00064"></a>00064                            }
+<a name="l00065"></a>00065         }   
+<a name="l00066"></a>00066         }
+<a name="l00067"></a>00067    
+<a name="l00068"></a>00068         
+<a name="l00070"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#196af3cdf301ea19da6a2fa1b387844f">00070</a>         <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#196af3cdf301ea19da6a2fa1b387844f" title="Multiplica una matriz traspuesta dispersa por un vector, guardando en vector salida...">Rutinas_Paralelas::Producto_MatrizT_Dispersa_Vector</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *x,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *Salida,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *INDICES,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *COLUMNAS, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *DATOS,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> dim,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> inicio)<span class="comment">//,int FilaInicio)//fila inicio no se utiliza</span>
+<a name="l00071"></a>00071    {
+<a name="l00072"></a>00072                           
+<a name="l00073"></a>00073                   <span class="keywordtype">int</span> size,rank;
+<a name="l00074"></a>00074                   MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);  
+<a name="l00075"></a>00075                   MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+<a name="l00076"></a>00076                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nDimensionFilasMatriz=dim;
+<a name="l00077"></a>00077                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  LimiteInicial,LimiteFinal,nDatosRango;
+<a name="l00078"></a>00078                   <span class="keywordtype">double</span> suma;
+<a name="l00079"></a>00079                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  cont=0;
+<a name="l00080"></a>00080                   <span class="keywordtype">double</span> tmp; 
+<a name="l00081"></a>00081            
+<a name="l00082"></a>00082                         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  k=0;k&lt;nDimensionFilasMatriz;k++)
+<a name="l00083"></a>00083                         {
+<a name="l00084"></a>00084                                 suma=0.0;
+<a name="l00085"></a>00085                                 LimiteInicial=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k);
+<a name="l00086"></a>00086                                 LimiteFinal=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k+1);
+<a name="l00087"></a>00087                                 nDatosRango=LimiteFinal-LimiteInicial;
+<a name="l00088"></a>00088                                 
+<a name="l00089"></a>00089                                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  i=0;i&lt;nDatosRango;i++)
+<a name="l00090"></a>00090                                 {
+<a name="l00091"></a>00091                                 tmp = Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>( COLUMNAS-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>( cont ) );     
+<a name="l00092"></a>00092                                 Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(COLUMNAS-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>( cont )  , tmp +  DATOS-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>( cont )*x-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(k)); 
+<a name="l00093"></a>00093                                 cont++;
+<a name="l00094"></a>00094                                         
+<a name="l00095"></a>00095                                 }
+<a name="l00096"></a>00096                                 
+<a name="l00097"></a>00097                         }
+<a name="l00098"></a>00098                         
+<a name="l00099"></a>00099                 
+<a name="l00100"></a>00100         } 
+<a name="l00101"></a>00101         
+<a name="l00102"></a>00102 
+<a name="l00104"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#40b52e00f2965f80e1241e6446e76ef5">00104</a>         <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#40b52e00f2965f80e1241e6446e76ef5" title="Multiplica una matriz dispersa por un vector, guardando en vector salida el resultado...">Rutinas_Paralelas::Producto_Matriz_Dispersa_Vector</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *x,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *Salida,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *INDICES,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *COLUMNAS, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *DATOS)<span class="comment">//,int FilaInicio)//fila inicio no se utiliza</span>
+<a name="l00105"></a>00105    {
+<a name="l00106"></a>00106                           
+<a name="l00107"></a>00107                   <span class="keywordtype">int</span> size,rank;
+<a name="l00108"></a>00108                   MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);  
+<a name="l00109"></a>00109                   MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+<a name="l00110"></a>00110                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nDimensionFilasMatriz=Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#2d54c33656543d5cbd083ef3571348ba" title="Retorna el numero de columnas.">Columnas</a>();
+<a name="l00111"></a>00111                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  contadorFila=0;
+<a name="l00112"></a>00112                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  LimiteInicial,LimiteFinal,nDatosRango;
+<a name="l00113"></a>00113                   <span class="keywordtype">double</span> suma;
+<a name="l00114"></a>00114                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  cont=0;
+<a name="l00115"></a>00115                 
+<a name="l00116"></a>00116                           
+<a name="l00117"></a>00117                         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  k=0;k&lt;nDimensionFilasMatriz;k++)
+<a name="l00118"></a>00118                         {
+<a name="l00119"></a>00119                                 suma=0.0;
+<a name="l00120"></a>00120                                 LimiteInicial=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k);
+<a name="l00121"></a>00121                                 LimiteFinal=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k+1);
+<a name="l00122"></a>00122                                 nDatosRango=LimiteFinal-LimiteInicial;
+<a name="l00123"></a>00123                                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  i=0;i&lt;nDatosRango;i++)
+<a name="l00124"></a>00124                                 {
+<a name="l00125"></a>00125                                         suma=suma+DATOS-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(i+cont)*x-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(COLUMNAS-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(i+cont)); 
+<a name="l00126"></a>00126                                 }       
+<a name="l00127"></a>00127                                 cont=cont+nDatosRango;
+<a name="l00128"></a>00128                                 Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>(contadorFila,suma);  
+<a name="l00129"></a>00129                                 
+<a name="l00130"></a>00130                                 
+<a name="l00131"></a>00131                                 contadorFila++;
+<a name="l00132"></a>00132                           
+<a name="l00133"></a>00133                                 
+<a name="l00134"></a>00134                         }
+<a name="l00135"></a>00135                         
+<a name="l00136"></a>00136                         
+<a name="l00137"></a>00137         } 
+<a name="l00138"></a>00138  
+<a name="l00140"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#64a4c2c4d1c46176706617cb510155c9">00140</a>         <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#64a4c2c4d1c46176706617cb510155c9" title="Multiplica una matriz dispersa por un vector, guardando en una seccion el vector...">Rutinas_Paralelas::Producto_Matriz_Dispersa_Vector_Seccion</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *x,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *Salida,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *INDICES,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *COLUMNAS, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *DATOS,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> dim,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> inicio)<span class="comment">//,int FilaInicio)//fila inicio no se utiliza</span>
+<a name="l00141"></a>00141    {
+<a name="l00142"></a>00142                           
+<a name="l00143"></a>00143                   <span class="keywordtype">int</span> size,rank;
+<a name="l00144"></a>00144                   MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);  
+<a name="l00145"></a>00145                   MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+<a name="l00146"></a>00146                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nDimensionFilasMatriz=dim;
+<a name="l00147"></a>00147                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  contadorFila=0;
+<a name="l00148"></a>00148                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  LimiteInicial,LimiteFinal,nDatosRango;
+<a name="l00149"></a>00149                   <span class="keywordtype">double</span> suma;
+<a name="l00150"></a>00150                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  cont=0;
+<a name="l00151"></a>00151                 <span class="comment">//  Salida-&gt;Ver_Informacion();</span>
+<a name="l00152"></a>00152                 <span class="comment">//        printf("INICIO = %Ld",inicio);</span>
+<a name="l00153"></a>00153                         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  k=0;k&lt;nDimensionFilasMatriz;k++)
+<a name="l00154"></a>00154                         {
+<a name="l00155"></a>00155                                 suma=0.0;
+<a name="l00156"></a>00156                                 LimiteInicial=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k);
+<a name="l00157"></a>00157                                 LimiteFinal=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k+1);
+<a name="l00158"></a>00158                                 nDatosRango=LimiteFinal-LimiteInicial;
+<a name="l00159"></a>00159                                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  i=0;i&lt;nDatosRango;i++)
+<a name="l00160"></a>00160                                 {
+<a name="l00161"></a>00161                                         suma=suma+DATOS-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(i+cont)*x-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(COLUMNAS-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(i+cont)); 
+<a name="l00162"></a>00162                                         
+<a name="l00163"></a>00163                                         
+<a name="l00164"></a>00164                                         
+<a name="l00165"></a>00165                                 }       
+<a name="l00166"></a>00166                                 cont=cont+nDatosRango;
+<a name="l00167"></a>00167                                 Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>( (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>) inicio +  contadorFila ,suma);
+<a name="l00168"></a>00168                                 contadorFila++;
+<a name="l00169"></a>00169                           
+<a name="l00170"></a>00170                                 
+<a name="l00171"></a>00171                         }
+<a name="l00172"></a>00172                         
+<a name="l00173"></a>00173                         
+<a name="l00174"></a>00174         } 
+<a name="l00175"></a>00175         
+<a name="l00177"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#a2330a25fa9c96abba245b59d0207969">00177</a>         <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#a2330a25fa9c96abba245b59d0207969" title="Multiplica una matriz dispersa por un vector, guardando en una seccion el vector...">Rutinas_Paralelas::Producto_Matriz_Dispersa_Vector_Seccion_LSQR</a>(<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *x,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *Salida,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *INDICES,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *COLUMNAS, <a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *DATOS,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> dim,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> inicio,<span class="keywordtype">double</span> normaIn,<span class="keywordtype">double</span> normaOut,<a class="code" href="../../d5/db2/class_vector.html" title="Clase para el trabajar con vectores de tipo double.">Vector</a> *u)<span class="comment">//,int FilaInicio)//fila inicio no se utiliza</span>
+<a name="l00178"></a>00178    {
+<a name="l00179"></a>00179                           
+<a name="l00180"></a>00180            
+<a name="l00181"></a>00181            
+<a name="l00182"></a>00182            
+<a name="l00183"></a>00183                   <span class="comment">//dentro del ciclo</span>
+<a name="l00184"></a>00184                 <span class="comment">//for (unsigned long long j=0; j &lt; nfilas; j++)</span>
+<a name="l00185"></a>00185                 <span class="comment">//u-&gt;Asigna(j,X_STAR-&gt;Retorna(j) - alpha*u-&gt;Retorna(j));</span>
+<a name="l00186"></a>00186            
+<a name="l00187"></a>00187            <span class="comment">// u = normal</span>
+<a name="l00188"></a>00188                 <span class="comment">// dentro del siguiente producto con un factor beta   </span>
+<a name="l00189"></a>00189                 <span class="comment">//for (unsigned long long j=0; j &lt; nfilas; j++)</span>
+<a name="l00190"></a>00190                 <span class="comment">//u-&gt;Asigna(j,u-&gt;Retorna(j)/beta);</span>
+<a name="l00191"></a>00191            <span class="comment">// en el ciclo anterior</span>
+<a name="l00192"></a>00192                 <span class="comment">//                       for (unsigned long long k=0; k &lt; ncols; k++)</span>
+<a name="l00193"></a>00193                 <span class="comment">//                       V-&gt;Asigna(k, X_NEW-&gt;Retorna(k) - beta*V-&gt;Retorna(k) );  </span>
+<a name="l00194"></a>00194            
+<a name="l00195"></a>00195                   <span class="keywordtype">int</span> size,rank;
+<a name="l00196"></a>00196                   MPI_Comm_rank(MPI_COMM_WORLD,&amp;rank);  
+<a name="l00197"></a>00197                   MPI_Comm_size(MPI_COMM_WORLD, &amp;size);
+<a name="l00198"></a>00198                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  nDimensionFilasMatriz=dim;
+<a name="l00199"></a>00199                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  contadorFila=0;
+<a name="l00200"></a>00200                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  LimiteInicial,LimiteFinal,nDatosRango;
+<a name="l00201"></a>00201                   <span class="keywordtype">double</span> suma;
+<a name="l00202"></a>00202               <span class="keywordtype">double</span> tmp,tmp2=0.0;
+<a name="l00203"></a>00203                   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  cont=0;
+<a name="l00204"></a>00204                 <span class="comment">//  Salida-&gt;Ver_Informacion();</span>
+<a name="l00205"></a>00205                 <span class="comment">//        printf("INICIO = %Ld",inicio);</span>
+<a name="l00206"></a>00206                         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  k=0;k&lt;nDimensionFilasMatriz;k++)
+<a name="l00207"></a>00207                         {
+<a name="l00208"></a>00208                                 suma=0.0;
+<a name="l00209"></a>00209                                 LimiteInicial=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k);
+<a name="l00210"></a>00210                                 LimiteFinal=INDICES-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(k+1);
+<a name="l00211"></a>00211                                 nDatosRango=LimiteFinal-LimiteInicial;
+<a name="l00212"></a>00212                                 <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  i=0;i&lt;nDatosRango;i++)
+<a name="l00213"></a>00213                                 {
+<a name="l00214"></a>00214                                         suma=suma+DATOS-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(i+cont)*x-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>(COLUMNAS-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(i+cont)); 
+<a name="l00215"></a>00215                                         
+<a name="l00216"></a>00216                                         
+<a name="l00217"></a>00217                                         
+<a name="l00218"></a>00218                                 }       
+<a name="l00219"></a>00219                                 
+<a name="l00220"></a>00220                                 tmp = suma - normaIn*u-&gt;<a class="code" href="../../d5/db2/class_vector.html#26f38adeb1c2a385b7d5480dd7e474dd" title="Retorna valor de la columna col del vector.">Retorna</a>( inicio +  contadorFila );
+<a name="l00221"></a>00221                                 u-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>( inicio +  contadorFila , tmp );
+<a name="l00222"></a>00222                                 tmp2+= tmp*tmp;
+<a name="l00223"></a>00223                                 
+<a name="l00224"></a>00224                                 cont= cont + nDatosRango;
+<a name="l00225"></a>00225                                 Salida-&gt;<a class="code" href="../../d5/db2/class_vector.html#4d890dc75bc2047d453e4c4f5704e76b" title="Asigna valor de una elemento del vector en columna col.">Asigna</a>( (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>) inicio +  contadorFila ,suma);
+<a name="l00226"></a>00226                                 contadorFila++;
+<a name="l00227"></a>00227                           
+<a name="l00228"></a>00228                                 
+<a name="l00229"></a>00229                         }
+<a name="l00230"></a>00230                         normaOut = tmp2;
+<a name="l00231"></a>00231                                                 printf(<span class="stringliteral">"SECCION[%d] = %f   "</span>,rank,normaOut); 
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233                         
+<a name="l00234"></a>00234         } 
+<a name="l00235"></a>00235         
+<a name="l00236"></a>00236         
+<a name="l00238"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#a7a2afdf1dbd7cdf9dac4d2df692002e">00238</a>  <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#a7a2afdf1dbd7cdf9dac4d2df692002e" title="Particiona un vector segun numero de procesadores, almacenando el largo de cada sub...">Rutinas_Paralelas::Obtener_Vector_Particion</a>(<span class="keywordtype">int</span> size,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  orden,<a class="code" href="../../dd/d59/class_vector___entero.html" title="Clase para el trabajar con vectores enteros long long sin signo.">Vector_Entero</a> *vParticion)
+<a name="l00239"></a>00239 {
+<a name="l00240"></a>00240 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> particion= (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long )orden/size;  
+<a name="l00241"></a>00241 <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  cont=0;
+<a name="l00242"></a>00242                         <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> i=0;i&lt;(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> long) size;i++)
+<a name="l00243"></a>00243                         {
+<a name="l00244"></a>00244                                 <span class="keywordflow">if</span>(i==(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>)(size-1))
+<a name="l00245"></a>00245                                 {       
+<a name="l00246"></a>00246                                         vParticion-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col.">Asigna</a>(i,orden - cont);     
+<a name="l00247"></a>00247                                 }
+<a name="l00248"></a>00248                                 <span class="keywordflow">else</span>
+<a name="l00249"></a>00249                                 vParticion-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#3864383d67e707d428456afa29aa6711" title="Asigna un valor en posicion col.">Asigna</a>(i,particion);        
+<a name="l00250"></a>00250                                 cont = cont + vParticion-&gt;<a class="code" href="../../dd/d59/class_vector___entero.html#10ed0238f4d5d6dd098d23eeb8ffc077" title="Retorna valor de col.">Retorna</a>(i);
+<a name="l00251"></a>00251                         }
+<a name="l00252"></a>00252 } 
+<a name="l00253"></a>00253 
+<a name="l00255"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#17722cd138194ddc69b1df3c486c7b41">00255</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#17722cd138194ddc69b1df3c486c7b41" title="Envia un mensaje que contiene un vector entero.">Rutinas_Paralelas::Envio_Vector_Entero</a>(<span class="keywordtype">int</span> procesador_destino,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  posicion_indice,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  largo,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  *vector)
+<a name="l00256"></a>00256 {
+<a name="l00257"></a>00257         MPI_Send(&amp;vector[posicion_indice],largo,MPI_UNSIGNED_LONG_LONG,procesador_destino,TAG, MPI_COMM_WORLD); <span class="comment">//Envia el numero de filas de la particion</span>
+<a name="l00258"></a>00258 }
+<a name="l00259"></a>00259         
+<a name="l00261"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#be4c57217dc8887079cf99fa1a61df47">00261</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#be4c57217dc8887079cf99fa1a61df47" title="Envia un mensaje que contiene un vector flotante.">Rutinas_Paralelas::Envio_Vector_Double</a>(<span class="keywordtype">int</span> procesador_destino,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  posicion_indice,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  largo,<span class="keywordtype">double</span> *vector)
+<a name="l00262"></a>00262 {
+<a name="l00263"></a>00263         MPI_Send(&amp;vector[posicion_indice],largo,MPI_DOUBLE,procesador_destino,TAG, MPI_COMM_WORLD);     <span class="comment">//Envia el numero de filas de la particion</span>
+<a name="l00264"></a>00264 }
+<a name="l00265"></a>00265 
+<a name="l00267"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#4da9db5d2d6cb15e7bbe35b248b2181e">00267</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#4da9db5d2d6cb15e7bbe35b248b2181e" title="Envia un mensaje que contiene un dato flotante.">Rutinas_Paralelas::Envio_Dato_Double</a>(<span class="keywordtype">int</span> procesador_destino,<span class="keywordtype">int</span> TAG,<span class="keywordtype">double</span> Dato) 
+<a name="l00268"></a>00268 {
+<a name="l00269"></a>00269         MPI_Send(&amp;Dato,1,MPI_DOUBLE,procesador_destino,TAG, MPI_COMM_WORLD);    <span class="comment">//Envia el numero de filas de la particion</span>
+<a name="l00270"></a>00270 }       
+<a name="l00271"></a>00271 
+<a name="l00273"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#c509ce125818bca83ad37f24194a4df3">00273</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#c509ce125818bca83ad37f24194a4df3" title="Recibe un mensaje que contiene un dato flotante.">Rutinas_Paralelas::Recibe_Dato_Double</a>(<span class="keywordtype">int</span> procesador_origen,<span class="keywordtype">int</span> TAG,<span class="keywordtype">double</span> *con)
+<a name="l00274"></a>00274 {
+<a name="l00275"></a>00275 MPI_Status status;
+<a name="l00276"></a>00276         MPI_Recv(con,1,MPI_DOUBLE,procesador_origen,TAG,MPI_COMM_WORLD,&amp;status);  <span class="comment">//Recibe el dato entero</span>
+<a name="l00277"></a>00277 }
+<a name="l00278"></a>00278 
+<a name="l00280"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0e4f48806ae96b733b4571c86ed760eb">00280</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0e4f48806ae96b733b4571c86ed760eb" title="Envia un mensaje que contiene un dato entero.">Rutinas_Paralelas::Envio_Dato_Entero</a>(<span class="keywordtype">int</span> procesador_destino,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  Dato) 
+<a name="l00281"></a>00281 {
+<a name="l00282"></a>00282         MPI_Send(&amp;Dato,1,MPI_UNSIGNED_LONG_LONG,procesador_destino,TAG, MPI_COMM_WORLD);        
+<a name="l00283"></a>00283 }       
+<a name="l00284"></a>00284 
+<a name="l00286"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#75f07d2a047ad643fcf2f3c1acf5604d">00286</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#75f07d2a047ad643fcf2f3c1acf5604d" title="Recibe un mensaje que contiene un dato entero.">Rutinas_Paralelas::Recibe_Dato_Entero</a>(<span class="keywordtype">int</span> procesador_origen,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  *con)
+<a name="l00287"></a>00287 {
+<a name="l00288"></a>00288 MPI_Status status;
+<a name="l00289"></a>00289         MPI_Recv(con,1,MPI_UNSIGNED_LONG_LONG,procesador_origen,TAG,MPI_COMM_WORLD,&amp;status);  
+<a name="l00290"></a>00290 }
+<a name="l00291"></a>00291 
+<a name="l00293"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0dea97290a4e9bfd6bfee90c18d0e491">00293</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#0dea97290a4e9bfd6bfee90c18d0e491" title="Recibe un vector de tipo entero long long sin signo.">Rutinas_Paralelas::Recibe_Vector_Entero</a>(<span class="keywordtype">int</span> procesador_origen,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  largo,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  *vector,MPI_Status status)
+<a name="l00294"></a>00294 {
+<a name="l00295"></a>00295         MPI_Recv(&amp;vector[0],largo,MPI_UNSIGNED_LONG_LONG, procesador_origen, TAG, MPI_COMM_WORLD,&amp;status);
+<a name="l00296"></a>00296 }
+<a name="l00297"></a>00297 
+<a name="l00299"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#c2091f3c2aeb31739e024e351ccdb935">00299</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#c2091f3c2aeb31739e024e351ccdb935" title="Recibe un vector de tipo double.">Rutinas_Paralelas::Recibe_Vector_Double</a>(<span class="keywordtype">int</span> procesador_origen,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  largo,<span class="keywordtype">double</span> *vector,MPI_Status status)
+<a name="l00300"></a>00300 {
+<a name="l00301"></a>00301         MPI_Recv(&amp;vector[0],largo,MPI_DOUBLE, procesador_origen, TAG, MPI_COMM_WORLD,&amp;status);
+<a name="l00302"></a>00302 }
+<a name="l00303"></a>00303 
+<a name="l00305"></a><a class="code" href="../../d9/daf/class_rutinas___paralelas.html#b5f8902aa77413b7f3a867da58b169ec">00305</a> <span class="keywordtype">void</span> <a class="code" href="../../d9/daf/class_rutinas___paralelas.html#b5f8902aa77413b7f3a867da58b169ec" title="Recibe un vector de tipo double indicando la posicion del indicie desde donde se...">Rutinas_Paralelas::Recibe_Vector_Double_Puntero</a>(<span class="keywordtype">int</span> procesador_origen,<span class="keywordtype">int</span> TAG,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  posicion_indice,<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>  largo,<span class="keywordtype">double</span> *vector,MPI_Status status)
+<a name="l00306"></a>00306 {
+<a name="l00307"></a>00307         MPI_Recv(&amp;vector[posicion_indice],largo,MPI_DOUBLE, procesador_origen, TAG, MPI_COMM_WORLD,&amp;status);
+<a name="l00308"></a>00308 }
+</pre></div></div>
+<hr size="1"><address style="text-align: right;"><small>Generado el Mon Oct 5 22:06:35 2009 para ETRAD por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="../../doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.9 </small></address>
+</body>
+</html>
