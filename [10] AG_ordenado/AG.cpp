@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstdlib>
 #include <cstdio>
@@ -6,6 +7,11 @@
 #include <math.h>
 #include <float.h>
 
+/*************************************************************************************************
+**************************************************************************************************
+									Declaración de Macros
+**************************************************************************************************
+***************************************************************************************************/
 
 #define PROB_MUTACION 1
 #define PROB_CRUCE 1
@@ -13,13 +19,6 @@
 #define PUNISHMENT_F2_100 5
 #define PUNISHMENT_F2_1000 20
 #define PUNISHMENT_F2_NONE 50
-
-
-int POBLACION;
-int N;
-int GENERATIONS = 1;
-int SUMANDO =0;
-
 //#define DEBUG
 //#define DEBUG_1
 
@@ -28,10 +27,11 @@ typedef struct {
 	float *aptitud;
 } Poblacion;
 
-float **A;
-float *C;
-float *VECTOR_FRONTERAS;
-
+/*************************************************************************************************
+**************************************************************************************************
+									Declaración de funciones
+**************************************************************************************************
+***************************************************************************************************/
 void init();
 void init_A();
 void init_C();
@@ -55,6 +55,22 @@ float vector_plus(float *vector);
 float* init_f2();
 float* init_front();
 float ranged_rand(int min, int max);
+
+
+/*************************************************************************************************
+**************************************************************************************************
+											Main
+**************************************************************************************************
+***************************************************************************************************/
+
+int POBLACION;
+int N;
+int GENERATIONS = 1;
+int SUMANDO =0;
+
+float **A;
+float *C;
+float *VECTOR_FRONTERAS;
 
 int main(int argc, char **argv){
 	srand(time(NULL));
@@ -119,6 +135,12 @@ int main(int argc, char **argv){
     #endif
 }
 
+/*************************************************************************************************
+**************************************************************************************************
+									Funciones de iniciación
+**************************************************************************************************
+***************************************************************************************************/
+
 void init(){
 	init_A();
 	init_C();
@@ -131,15 +153,6 @@ void init_A(){
 		A[i] = (float *) malloc (sizeof(float)*N);
 		for(int j=0; j<N; j++)
 			std::cin >> A[i][j];
-	}
-}
-
-void display_A(){	
-	for(int i=0; i<POBLACION; i++){		
-		for(int j=0; j<N; j++){
-			printf("%f ",A[i][j] );			
-		}
-		printf("\n" );
 	}
 }
 
@@ -177,6 +190,35 @@ Poblacion init_selection(Poblacion selection){
 	return selection;
 }
 
+float* init_front(){
+	float *front = (float *) malloc (sizeof(float)*N);
+	for(int i=0;i<N;i++)
+		front[i] = pow(2, i);
+	return front;
+}
+
+float* init_f2(){
+	float *f2 = (float *) malloc (sizeof(float)*N);
+	for(int i=0;i<N;i++)
+		f2[i] = ranged_rand(0, N-1);
+	return f2;
+}
+
+/*************************************************************************************************
+**************************************************************************************************
+									Funciones de Muestra
+**************************************************************************************************
+***************************************************************************************************/
+
+void display_A(){	
+	for(int i=0; i<POBLACION; i++){		
+		for(int j=0; j<N; j++){
+			printf("%f ",A[i][j] );			
+		}
+		printf("\n" );
+	}
+}
+
 void display_poblacion(Poblacion poblacion){
 	printf("\n####### DISPLAY POBLACION #######\n");
 	for(int i=0;i<POBLACION;i++){
@@ -189,18 +231,13 @@ void display_poblacion(Poblacion poblacion){
 	printf("################################\n");
 }
 
-void mutation_poblacion(float *B){
-	#ifdef DEBUG
-		printf("\n####### MUTACION POBLACION #######\n");
-	#endif
-	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION){
-		int j = (int)ranged_rand(0, N-1);
-		B[j] = bitwise_mutation_operator(B[j]);	
-	}
-	#ifdef DEBUG
-		printf("################################\n");
-	#endif
-}
+/*************************************************************************************************
+**************************************************************************************************
+									Funciones del AG
+**************************************************************************************************
+***************************************************************************************************/
+
+/****Mutacion*****/
 
 /*  Debemos obtener una forma de cambiar un bit no tan drasticamente, ya que si no lo hacemos bien,
 	los numeros pueden llegar a cambiar demasiado.
@@ -238,33 +275,101 @@ float bitwise_mutation_operator(float a){
     return (float) *(reinterpret_cast<float *>(c));
 }
 
-double RMSE(float **A, float *B, float *w){
-	double prod, E;
-	for(int i=0;i<POBLACION;i++){
-		prod = 0;
-		for(int j=0;j<N;j++)
-			prod += A[i][j]*w[j];
-		E += fabs(pow(prod-B[i],2));
+void mutation_poblacion(float *B){
+	#ifdef DEBUG
+		printf("\n####### MUTACION POBLACION #######\n");
+	#endif
+	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION){
+		int j = (int)ranged_rand(0, N-1);
+		B[j] = bitwise_mutation_operator(B[j]);	
 	}
-	return sqrt(E/POBLACION);
+	#ifdef DEBUG
+		printf("################################\n");
+	#endif
 }
 
-float vector_plus(float *vector){
-	float total = 0;
-	for(int i=0; i<N; i++)
-		total += vector[i];
-	return total;
-}
+/****Cruzamiento*****/
 
 /*
-*	TODO: preguntar largo de vector frontera.
+got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
-float* init_front(){
-	float *front = (float *) malloc (sizeof(float)*N);
-	for(int i=0;i<N;i++)
-		front[i] = pow(2, i);
-	return front;
+void crossover(Poblacion * poblacion){
+	float aux;
+	//	if one
+	if(ranged_rand(-1,1) > 0){
+		for(int i=0;i<POBLACION-1;i+=2){
+			
+			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
+				for(int j=(int)(N/2);j<N;j++){
+					aux=poblacion->B[i][j];
+					poblacion->B[i][j]=poblacion->B[i+1][j];
+					poblacion->B[i+1][j]=aux;
+				}
+			}
+			mutation_poblacion(poblacion->B[i]);
+			/*			
+			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
+			Vector que se trabaja en el AG.
+			*/
+			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
+			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
+
+		}
+	} else {
+		//	if zero
+		for(int i=0; i<POBLACION-1; i+=2){
+			
+			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
+				for(int j=(int)(N/2), i_aux = 0; j<N; j++, i_aux++){
+					aux=poblacion->B[i][i_aux];
+					poblacion->B[i][i_aux]=poblacion->B[i+1][j];
+					poblacion->B[i+1][j]=aux;
+				}
+			}
+			mutation_poblacion(poblacion->B[i]);
+			/*
+			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
+			Vector que se trabaja en el AG.
+			*/
+			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
+			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
+		}
+	}
 }
+
+/****Torneo y Elite*****/
+
+Poblacion tournament_selection(Poblacion poblacion){
+	Poblacion selection;
+	//selection = init_selection(selection);
+	selection = poblacion;
+	int cand_a, cand_b;
+
+	for(int i=0;i<POBLACION;i++){
+		cand_a = ranged_rand(0,POBLACION);
+		cand_b = ranged_rand(0,POBLACION);
+
+		if(poblacion.aptitud[cand_a]<poblacion.aptitud[cand_b]){
+			selection.B[cand_b] = poblacion.B[cand_a];
+			selection.aptitud[cand_b] = poblacion.aptitud[cand_a];
+		} else {
+			selection.B[cand_a] = poblacion.B[cand_b];
+			selection.aptitud[cand_a] = poblacion.aptitud[cand_b];
+		}
+	}
+	return selection;
+}
+
+int elite(Poblacion poblacion,int elite_index){
+    int best = elite_index;
+    for(int i=0; i<POBLACION; i++){
+        if(poblacion.aptitud[best] > poblacion.aptitud[i])
+            best = i;
+    }
+    return best;
+}
+
+/****Fitness*****/
 
 /*
 *	front viene ordenado.
@@ -308,99 +413,26 @@ float fitness(float **A, float *B, float *w){
   		return F0;
 }
 
-float* init_f2(){
-	float *f2 = (float *) malloc (sizeof(float)*N);
-	for(int i=0;i<N;i++)
-		f2[i] = ranged_rand(0, N-1);
-	return f2;
-}
-
-/*void cruzamiento_poblacion(){
-dataLength= 8*sizeof(Datatype);
-realLength=ceil(solutionLength/dataLength);
-word=crossoverPoint/dataLength;
-wordPoint=crossoverPoint%dataLength;
-restW P=dataLength-wordPoint;
-snew1[word] = ((si[word]>>restWP)<<restWP)|((s2[word]<<wordPoint)>>wordPoint);
-snew2[word] = ((s2[word]>>restWP)<<restWP)|((s1[word]<<wordPoint)>>wordPoint);
-
-got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
-*/
-//void crossover(Poblacion poblacion, int individual_a, int individual_b){
-void crossover(Poblacion * poblacion){
-	float aux;
-	//	if one
-	if(ranged_rand(-1,1)>0){
-		for(int i=0;i<POBLACION-1;i+=2){
-			
-			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
-				for(int j=(int)(N/2);j<N;j++){
-					aux=poblacion->B[i][j];
-					poblacion->B[i][j]=poblacion->B[i+1][j];
-					poblacion->B[i+1][j]=aux;
-				}
-			}
-			mutation_poblacion(poblacion->B[i]);
-			/*			
-			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
-			Vector que se trabaja en el AG.
-			*/
-			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
-			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
-
-		}
-	} else {
-		//	if zero
-		for(int i=0; i<POBLACION-1; i+=2){
-			
-			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
-				for(int j=(int)(N/2), i_aux = 0; j<N; j++, i_aux++){
-					aux=poblacion->B[i][i_aux];
-					poblacion->B[i][i_aux]=poblacion->B[i+1][j];
-					poblacion->B[i+1][j]=aux;
-				}
-			}
-			mutation_poblacion(poblacion->B[i]);
-			/*
-			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
-			Vector que se trabaja en el AG.
-			*/
-			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
-			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
-		}
-	}
-}
-
-Poblacion tournament_selection(Poblacion poblacion){
-	Poblacion selection;
-	//selection = init_selection(selection);
-	selection = poblacion;
-	int cand_a, cand_b;
-
+double RMSE(float **A, float *B, float *w){
+	double prod, E;
 	for(int i=0;i<POBLACION;i++){
-		cand_a = ranged_rand(0,POBLACION);
-		cand_b = ranged_rand(0,POBLACION);
-
-		if(poblacion.aptitud[cand_a]<poblacion.aptitud[cand_b]){
-			selection.B[cand_b] = poblacion.B[cand_a];
-			selection.aptitud[cand_b] = poblacion.aptitud[cand_a];
-		} else {
-			selection.B[cand_a] = poblacion.B[cand_b];
-			selection.aptitud[cand_a] = poblacion.aptitud[cand_b];
-		}
+		prod = 0;
+		for(int j=0;j<N;j++)
+			prod += A[i][j]*w[j];
+		E += fabs(pow(prod-B[i],2));
 	}
-	return selection;
+	return sqrt(E/POBLACION);
 }
 
-int elite(Poblacion poblacion,int elite_index){
-    int best = elite_index;
-    for(int i=0; i<POBLACION; i++){
-        if(poblacion.aptitud[best] > poblacion.aptitud[i])
-            best = i;
-    }
-    return best;
+float vector_plus(float *vector){
+	float total = 0;
+	for(int i=0; i<N; i++)
+		total += vector[i];
+	return total;
 }
+/****Otras Funciones*****/
 
 float ranged_rand(int min, int max){
     return min + ((float)(max - min) * (rand() / (RAND_MAX + 1.0)));
 }
+
