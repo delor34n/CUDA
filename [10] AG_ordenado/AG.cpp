@@ -27,42 +27,6 @@ typedef struct {
 	float *aptitud;
 } Poblacion;
 
-/*************************************************************************************************
-**************************************************************************************************
-									Declaración de funciones
-**************************************************************************************************
-***************************************************************************************************/
-void init();
-void init_A();
-void init_C();
-void init_vector();
-
-Poblacion init_poblacion(Poblacion poblacion);
-Poblacion init_selection(Poblacion selection);
-void display_poblacion(Poblacion poblacion);
-//void display_A();
-
-void crossover(Poblacion * poblacion);
-float bitwise_mutation_operator(float a);
-void mutation_poblacion(float *B);
-Poblacion tournament_selection(Poblacion poblacion);
-//int elite(Poblacion poblacion);
-int elite(Poblacion poblacion,int elite_index);
-
-float fitness(float **A, float *B, float *w);
-double RMSE(float **A, float *B, float *w);
-float vector_plus(float *vector);
-float* init_f2();
-float* init_front();
-float ranged_rand(int min, int max);
-
-
-/*************************************************************************************************
-**************************************************************************************************
-											Main
-**************************************************************************************************
-***************************************************************************************************/
-
 int POBLACION;
 int N;
 int GENERATIONS = 1;
@@ -72,66 +36,100 @@ float **A;
 float *C;
 float *VECTOR_FRONTERAS;
 
+/*************************************************************************************************
+**************************************************************************************************
+									Declaración de funciones
+**************************************************************************************************
+***************************************************************************************************/
+void init();
+void init_A();
+void init_C();
+void init_vector();
+float* init_f2();
+float* init_front();
+Poblacion init_poblacion(Poblacion poblacion);
+Poblacion init_selection(Poblacion selection);
+
+void display_poblacion(Poblacion poblacion);
+void display_best (Poblacion poblacion, int best);
+//void display_A();
+
+void mutation_poblacion(Poblacion * poblacion);
+float bitwise_mutation_operator(float a);
+void crossover(Poblacion * poblacion);
+Poblacion tournament_selection(Poblacion poblacion);
+int elite(Poblacion poblacion,int elite_index);
+//int elite(Poblacion poblacion);
+void fitness(Poblacion * poblacion, float **A, float *B);
+double RMSE(float **A, float *B, float *w);
+float vector_plus(float *vector);
+
+float ranged_rand(int min, int max);
+
+
+/*************************************************************************************************
+**************************************************************************************************
+											Main
+**************************************************************************************************
+***************************************************************************************************/
+
 int main(int argc, char **argv){
 	srand(time(NULL));
 
 	std::cin >> N;
 	std::cin >> POBLACION;
 
-
 	Poblacion poblacion;
+	Poblacion selection;
 	poblacion = init_poblacion(poblacion);
+	int elite_index = 0;
+	int elite_index_2 = 0;
+	float MINIMO_GLOBAL = 0;
+
 	init();	
 	
-	for(int x=0;x<POBLACION;x++){
-		poblacion.aptitud[x] = RMSE(A, C, poblacion.B[x]);
-	}
-	
-	int elite_index = 0;
+	fitness(&poblacion,A,C);
+	elite_index = elite(poblacion,elite_index_2);
+	MINIMO_GLOBAL = poblacion.aptitud[elite_index_2];
+
 	do{
 		#ifdef DEBUG_1
 			display_poblacion(poblacion);
 		#endif
-		poblacion = tournament_selection(poblacion);		
-		crossover(&poblacion);
+		//display_poblacion(poblacion);
+		GENERATIONS++;		
+		selection = tournament_selection(poblacion);		
+		crossover(&selection);
+		mutation_poblacion(&selection);
+		fitness(&selection,A,C);		
 		elite_index = elite(poblacion,elite_index);
-		poblacion.B[POBLACION-1] = poblacion.B[elite_index];
-		poblacion.aptitud[POBLACION-1] = poblacion.aptitud[elite_index];
+		elite_index_2 = elite(selection,elite_index_2);
+		if (poblacion.aptitud[elite_index]>=selection.aptitud[elite_index_2]){
+			poblacion.B[POBLACION-1] = selection.B[elite_index];
+			poblacion.aptitud[POBLACION-1] = selection.aptitud[elite_index];
+		}else{
+			poblacion.B[POBLACION-1] = poblacion.B[elite_index];
+			poblacion.aptitud[POBLACION-1] = poblacion.aptitud[elite_index];
+		}		
+		for (int i = 0; i < POBLACION-1; ++i)
+		{
+			if (poblacion.aptitud[i]<MINIMO_GLOBAL)
+				MINIMO_GLOBAL = poblacion.aptitud[i];
+			poblacion.B[i]=selection.B[i];
+			poblacion.aptitud[i]=selection.aptitud[i];
 
-
-
-		#ifdef DEBUG
-			display_poblacion(poblacion);
-			printf("CROMOSOMAS MUTADOS\n");
-		#endif
-
-		GENERATIONS++;
-		printf("Generacion numero: %d \n",GENERATIONS);
-		/*
-		for(int m=0;m<POBLACION;m++){
-			printf("aptitud de la poblacion: %f en el indice: %d \n\n",poblacion.aptitud[m],m);
-		}*/
-		printf("aptitud del elite: %f en el indice: %d \n\n",poblacion.aptitud[elite_index],elite_index);
+		}
+		//	display_poblacion(poblacion);		
+		printf("generation: %d, elite_index numero: %d con valor %f, MINIMO_GLOBAL: %f\n", GENERATIONS,elite_index_2,poblacion.aptitud[POBLACION-1], MINIMO_GLOBAL);
 
 	//}while(poblacion.aptitud[elite(poblacion)] > pow(10,-1));
-	}while(GENERATIONS < 5000);		
+	}while(GENERATIONS < 500000);		
 
 	int best = elite(poblacion, elite_index);
 	#ifdef DEBUG_1
-	printf ("\n*************************************\n");
-    printf ("*          FIN DEL ALGORITMO        *\n");
-    printf ("*************************************\n");
-    printf (" - El sujeto mas pulento de la poblacion: [");
-    for(int i=0; i<POBLACION-1; i++){
-    	if(i == POBLACION-2)
-    		printf("%f]\n", poblacion.B[best][i]);
-    	else
-    		printf("%f-", poblacion.B[best][i]);
-    }
-    printf (" - Su aptitud/fenotipo es %.5f\n", poblacion.aptitud[best]);
-    printf (" - Es la generacion numero %i\n", GENERATIONS);
-    printf ("\n sumando :%d\n", SUMANDO);
-    printf ("*************************************\n");
+		display_best(poblacion,best);
+		printf (" - Es la generacion numero %i\n", GENERATIONS);
+    	printf ("\n sumando :%d\n", SUMANDO);
     #endif
 }
 
@@ -231,6 +229,23 @@ void display_poblacion(Poblacion poblacion){
 	printf("################################\n");
 }
 
+void display_best (Poblacion poblacion, int best){
+	printf ("\n*************************************\n");
+    printf ("*          FIN DEL ALGORITMO        *\n");
+    printf ("*************************************\n");
+    printf (" - El sujeto mas pulento de la poblacion: [");
+    for(int i=0; i<POBLACION-1; i++){
+    	if(i == POBLACION-2)
+    		printf("%f]\n", poblacion.B[best][i]);
+    	else
+    		printf("%f-", poblacion.B[best][i]);
+    }
+    printf (" - Su aptitud/fenotipo es %.5f\n", poblacion.aptitud[best]);    
+    printf ("*************************************\n");
+
+
+}
+
 /*************************************************************************************************
 **************************************************************************************************
 									Funciones del AG
@@ -262,6 +277,7 @@ float bitwise_mutation_operator(float a){
     		c[quarter] = c[quarter] ^ (1<<x);
     	}
     	quarter = ranged_rand(0,3);
+    	
 	}while((float) *(reinterpret_cast<float *>(c)) >= PTRDIFF_MAX);
 
 
@@ -275,14 +291,20 @@ float bitwise_mutation_operator(float a){
     return (float) *(reinterpret_cast<float *>(c));
 }
 
-void mutation_poblacion(float *B){
+void mutation_poblacion(Poblacion * poblacion){
+
+	float *B;
 	#ifdef DEBUG
 		printf("\n####### MUTACION POBLACION #######\n");
 	#endif
-	if ((double)rand()/(RAND_MAX+1.0) < PROB_MUTACION){
-		int j = (int)ranged_rand(0, N-1);
-		B[j] = bitwise_mutation_operator(B[j]);	
-	}
+	for(int i=0;i<POBLACION;i++){
+		B=poblacion->B[i];
+		if (ranged_rand(0,1) < PROB_MUTACION){
+			int j = (int)ranged_rand(0, N-1);
+			B[j] = bitwise_mutation_operator(B[j]);	
+		}
+		poblacion->B[i] = B;
+	}	
 	#ifdef DEBUG
 		printf("################################\n");
 	#endif
@@ -294,45 +316,29 @@ void mutation_poblacion(float *B){
 got it from = https://www.lri.fr/~hansen/proceedings/2011/GECCO/companion/p439.pdf
 */
 void crossover(Poblacion * poblacion){
+
 	float aux;
-	//	if one
-	if(ranged_rand(-1,1) > 0){
-		for(int i=0;i<POBLACION-1;i+=2){
-			
+	//	if greater than cero
+	if(ranged_rand(-1,1) > 0){		
+		for(int i=0;i<POBLACION-1;i+=2){			
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
 				for(int j=(int)(N/2);j<N;j++){
 					aux=poblacion->B[i][j];
 					poblacion->B[i][j]=poblacion->B[i+1][j];
 					poblacion->B[i+1][j]=aux;
 				}
-			}
-			mutation_poblacion(poblacion->B[i]);
-			/*			
-			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
-			Vector que se trabaja en el AG.
-			*/
-			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
-			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
-
+			}			
 		}
 	} else {
-		//	if zero
-		for(int i=0; i<POBLACION-1; i+=2){
-			
+		//	if lower than cero		
+		for(int i=0; i<POBLACION-1; i+=2){			
 			if((double) rand()/(RAND_MAX+1.0) < PROB_CRUCE){
 				for(int j=(int)(N/2), i_aux = 0; j<N; j++, i_aux++){
 					aux=poblacion->B[i][i_aux];
 					poblacion->B[i][i_aux]=poblacion->B[i+1][j];
 					poblacion->B[i+1][j]=aux;
 				}
-			}
-			mutation_poblacion(poblacion->B[i]);
-			/*
-			Donde A es la matriz que se obtiene de los datos, C es el Vector que se resta a la ecuación y poblacion-B es el
-			Vector que se trabaja en el AG.
-			*/
-			//poblacion->aptitud[i] = fitness(A, C, poblacion->B[i]);
-			poblacion->aptitud[i] =RMSE(A, C, poblacion->B[i]);
+			}			
 		}
 	}
 }
@@ -341,8 +347,8 @@ void crossover(Poblacion * poblacion){
 
 Poblacion tournament_selection(Poblacion poblacion){
 	Poblacion selection;
-	//selection = init_selection(selection);
-	selection = poblacion;
+	selection = init_selection(selection);
+	//selection = poblacion;
 	int cand_a, cand_b;
 
 	for(int i=0;i<POBLACION;i++){
@@ -350,11 +356,11 @@ Poblacion tournament_selection(Poblacion poblacion){
 		cand_b = ranged_rand(0,POBLACION);
 
 		if(poblacion.aptitud[cand_a]<poblacion.aptitud[cand_b]){
-			selection.B[cand_b] = poblacion.B[cand_a];
-			selection.aptitud[cand_b] = poblacion.aptitud[cand_a];
+			selection.B[i] = poblacion.B[cand_a];
+			selection.aptitud[i] = poblacion.aptitud[cand_a];
 		} else {
-			selection.B[cand_a] = poblacion.B[cand_b];
-			selection.aptitud[cand_a] = poblacion.aptitud[cand_b];
+			selection.B[i] = poblacion.B[cand_b];
+			selection.aptitud[i] = poblacion.aptitud[cand_b];
 		}
 	}
 	return selection;
@@ -374,11 +380,13 @@ int elite(Poblacion poblacion,int elite_index){
 /*
 *	front viene ordenado.
 */
-float fitness(float **A, float *B, float *w){
+void fitness(Poblacion * poblacion, float **A, float *B){
 	float F0, F1, F2;
 	float * f2 = init_f2();
-	
-	//	F0: primera condicion RMSE
+	for(int i=0;i<POBLACION;i++){		
+		poblacion->aptitud[i] = RMSE(A, B, poblacion->B[i]);	  	
+	}	
+	/*//	F0: primera condicion RMSE	
 	F0 = RMSE(A, B, w);
 
 	//	F1: Condiciones originales de fitness implementada en el paper de Arturo Benson.
@@ -410,16 +418,17 @@ float fitness(float **A, float *B, float *w){
   		//return F0+F1+F2;
   		return F0;
   	else
-  		return F0;
+  		return F0;*/
 }
 
 double RMSE(float **A, float *B, float *w){
 	double prod, E;
+	E=0;
 	for(int i=0;i<POBLACION;i++){
 		prod = 0;
 		for(int j=0;j<N;j++)
 			prod += A[i][j]*w[j];
-		E += fabs(pow(prod-B[i],2));
+		E += fabs(prod-B[i]);
 	}
 	return sqrt(E/POBLACION);
 }
