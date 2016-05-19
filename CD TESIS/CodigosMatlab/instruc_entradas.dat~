@@ -1,9 +1,0 @@
-orden del SEL: Puede ser 289, 1089 o 4225
-numero de fuentes: Puede ser 1,2 o 3
-tamaño de la poblacion: puede ser cualquier entero positivo > 2
-numero de generaciones: puede ser cualquier entero positivo > 1
-
-
-Ademas en la carpeta principal(la q contiene a todo) click derecho- add to path-select folders and subfolders
-
-web util ag toolbox: http://www.mathworks.com/help/gads/examples/constrained-minimization-using-the-genetic-algorithm.html?prodcode=GD&language=en

@@ -1,9 +1,0 @@
-<area shape="rect" id="node3" href="$d5/d35/class_geometria2_d___triangulos.html#a6567796bc94639cde89950e61f0c151" title="Carga la informacion de los Nodos de la geometria desde el archivo en formato Matlab&#45;PDETool..." alt="" coords="264,5,512,33">
-<area shape="rect" id="node9" href="$d8/d4a/class_geometria2_d.html#9d75b2278cebc2c00207545990cbce68" title="Carga la informacion de puntos donde se desea obtener densidad." alt="" coords="271,55,505,83">
-<area shape="rect" id="node11" href="$d5/d35/class_geometria2_d___triangulos.html#24c502399a98c374d5aea103051e2498" title="Carga variables fisicas del problema &#45; Dependiendo de los tipos de problemas se deben..." alt="" coords="171,106,605,134">
-<area shape="rect" id="node16" href="$d8/d4a/class_geometria2_d.html#3d7d64283f7a6cc5f2ebfa87bb300c0c" title="Genera una grilla para un procesador." alt="" coords="265,157,511,185">
-<area shape="rect" id="node21" href="$d6/db7/class_elemento___triangular.html#22b2b6cb483a4b88e09e2f99410478da" title="Asigna el valor de una coordenada local del elemento." alt="" coords="216,207,560,235">
-<area shape="rect" id="node5" href="$d2/d56/class_f_e_m.html#f645ce4e1d5af2b75657f77a03700055" title="Carga la geometria y calcula las areas de los elementos y matrices de permutacion..." alt="" coords="672,30,856,58">
-<area shape="rect" id="node7" href="$df/d0a/main_8cpp.html#0ddf1224851353fc92bfbff6f499fa97" title="Programa principal &#45; Soluciona la ecuacion diferencial de transporte de la luz en..." alt="" coords="924,106,972,134">
-<area shape="rect" id="node13" href="$d2/d56/class_f_e_m.html#6792c500fd0b5bf2e08dbb77dff47de2" title="Inicializa problema ETRAD (rECORDAR CAMBIAR IMPLEMNETACION Y DEJARLA EN UNA CLASE..." alt="" coords="655,106,873,134">
-<area shape="rect" id="node18" href="$d2/d56/class_f_e_m.html#7b894b8fda86f5a0b917a24c64b7efb8" title="Adquisicion de datos de la grilla a calcular." alt="" coords="659,157,869,185">
