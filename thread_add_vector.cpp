@@ -38,10 +38,10 @@ void *vector_add(void *threadarg){
 
     
     for(;start<end;start++){    // Find min in my range
-    	/* Lock the mutex and update the global sum, then exit */
+		/* Lock the mutex and update the global sum, then exit */
 		pthread_mutex_lock (&sum_mutex);
 		vector_c[start] = vector_a[start] + vector_b[start];
-    	pthread_mutex_unlock (&sum_mutex);
+		pthread_mutex_unlock (&sum_mutex);
     }
 
 	pthread_exit(NULL);
